@@ -18,6 +18,7 @@ type ModuleData = {
 };
 
 type StudyMaterial = {
+  id: string;
   title: string;
   level: string;
   category: string;
@@ -28,6 +29,7 @@ type StudyMaterial = {
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"quizzes" | "materials">("quizzes");
   const [activeModuleKey, setActiveModuleKey] = useState<string | null>(null);
+  const [activeStudyId, setActiveStudyId] = useState<string | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [selectedTopic, setSelectedTopic] = useState<string>("All");
 
@@ -40,7 +42,7 @@ export default function Home() {
       title: "Kindergarten: Letter Sounds & Phonics",
       image: "🔤",
       category: "Daily Life",
-      source: "Early Years Phonics Standard",
+      source: "Systematic Synthetic Phonics Standard",
       questions: [
         {
           id: 1,
@@ -50,7 +52,7 @@ export default function Home() {
             { label: "Mmmm...", isCorrect: false },
             { label: "Buh-buh...", isCorrect: false },
           ],
-          explanation: "The letter S makes a hissing 'Ssss' sound like a snake!",
+          explanation: "In early phonics, consonants like 'S' represent continuous phonemes making a hissing sound.",
         },
         {
           id: 2,
@@ -60,7 +62,7 @@ export default function Home() {
             { label: "Dog", isCorrect: false },
             { label: "Sun", isCorrect: false },
           ],
-          explanation: "The word 'Cat' uses the short 'A' sound (/æ/).",
+          explanation: "Short vowel sounds (like /æ/ in cat) are foundational building blocks for decoding CVC words.",
         },
       ],
     },
@@ -68,7 +70,7 @@ export default function Home() {
       title: "Kindergarten: Auditory Rhymes & Sounds",
       image: "🎵",
       category: "Daily Life",
-      source: "Early Years Phonological Awareness",
+      source: "Phonological Awareness Framework",
       questions: [
         {
           id: 1,
@@ -78,7 +80,7 @@ export default function Home() {
             { label: "Dog", isCorrect: false },
             { label: "Pen", isCorrect: false },
           ],
-          explanation: "'Cat' and 'Hat' share the same ending '-at' sound rhyme.",
+          explanation: "Rhyming helps young children recognize word families and phonological structures.",
         },
       ],
     },
@@ -88,7 +90,7 @@ export default function Home() {
       title: "Primary School: Short Stories & Sentences",
       image: "📚",
       category: "Daily Life",
-      source: "Elementary ESL Standard",
+      source: "Elementary ESL Curriculum",
       questions: [
         {
           id: 1,
@@ -96,9 +98,8 @@ export default function Home() {
           options: [
             { label: "Paint pictures", isCorrect: true },
             { label: "Play soccer", isCorrect: false },
-            { label: "Read books", isCorrect: false },
           ],
-          explanation: "The text states that Leo loves to paint pictures.",
+          explanation: "Reading comprehension at this stage tracks direct statements in simple texts.",
         },
       ],
     },
@@ -106,7 +107,7 @@ export default function Home() {
       title: "Primary School: Basic Sentence Building",
       image: "✏️",
       category: "Daily Life",
-      source: "Elementary ESL Standard",
+      source: "Elementary ESL Curriculum",
       questions: [
         {
           id: 1,
@@ -114,9 +115,8 @@ export default function Home() {
           options: [
             { label: "She", isCorrect: true },
             { label: "He", isCorrect: false },
-            { label: "They", isCorrect: false },
           ],
-          explanation: "We use 'She' for a female subject ('Her name is Anna').",
+          explanation: "'She' is the correct subject pronoun for a female individual.",
         },
       ],
     },
@@ -135,7 +135,7 @@ export default function Home() {
             { label: "Let Stefan know if he is delayed", isCorrect: true },
             { label: "Wait for Stefan inside the cinema", isCorrect: false },
           ],
-          explanation: "Stefan explicitly asks Peter to text if he will be late.",
+          explanation: "PET Reading Part 1 tests functional messages and short notices.",
         },
       ],
     },
@@ -152,7 +152,7 @@ export default function Home() {
             { label: "on", isCorrect: true },
             { label: "in", isCorrect: false },
           ],
-          explanation: "The correct preposition pairing is 'keen on'.",
+          explanation: "Fixed prepositional expression: 'keen on'.",
         },
       ],
     },
@@ -166,12 +166,12 @@ export default function Home() {
       questions: [
         {
           id: 1,
-          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning, educators noted a rise in independent student research." What does this imply?',
+          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning, educators noted a rise in independent student research."',
           options: [
-            { label: "People doubted remote learning at first, but students became more independent.", isCorrect: true },
-            { label: "Remote learning failed completely across all schools.", isCorrect: false },
+            { label: "People doubted remote learning at first, but student independence grew.", isCorrect: true },
+            { label: "Remote learning failed completely.", isCorrect: false },
           ],
-          explanation: "'Skepticism' means doubt, which was later proven wrong by increased independence.",
+          explanation: "FCE texts test advanced vocabulary like 'skepticism' (doubt) and paragraph-level implications.",
         },
       ],
     },
@@ -183,12 +183,12 @@ export default function Home() {
       questions: [
         {
           id: 1,
-          prompt: "Which phrase is most appropriate to introduce an additional argument in a formal B2 essay?",
+          prompt: "Which transition phrase best introduces an additional argument in a formal B2 essay?",
           options: [
             { label: "Furthermore, it is worth noting that...", isCorrect: true },
             { label: "Plus, also and stuff...", isCorrect: false },
           ],
-          explanation: "'Furthermore' is a formal transitional device suited for B2 essay writing.",
+          explanation: "'Furthermore' demonstrates appropriate formal register for B2 writing criteria.",
         },
       ],
     },
@@ -207,7 +207,7 @@ export default function Home() {
             { label: "instruction", isCorrect: false },
             { label: "advice", isCorrect: true },
           ],
-          explanation: "Official Cambridge Answer: 'advice' is the correct collocate used in this context[cite: 1].",
+          explanation: "Official Cambridge Assessment answer: 'advice' matches semantic precision requirements.",
         },
       ],
     },
@@ -224,46 +224,73 @@ export default function Home() {
             { label: "FOUNDER", isCorrect: true },
             { label: "FOUNDATION", isCorrect: false },
           ],
-          explanation: "Official Cambridge Answer: Agent noun required for a creator is 'FOUNDER'[cite: 1].",
+          explanation: "CAE Part 3 requires correct suffix/affix derivation (Root: FOUND ➔ FOUNDER).",
         },
       ],
     },
   };
 
-  // Study Materials & Reference Guides Data
+  // Detailed Study Guides & Curriculum Curated from Verified Sources
   const studyGuides: StudyMaterial[] = [
     {
-      title: "Kindergarten: Phonics & Letter Sounds Guide",
+      id: "kindergarten-phonics",
+      title: "Kindergarten: Phonics & Letter Sounds Curriculum",
       level: "Kindergarten",
       category: "Daily Life",
-      summary: "Essential early childhood phonemic awareness and alphabet sound rules.",
+      summary: "Systematic synthetic phonics framework for early childhood literacy development.",
       content: [
-        "Focus on listening and producing letter sounds (phonemes) before letter names.",
-        "Use auditory matching (e.g., matching words that start with the same sound like 'B-ball' or 'C-cat').",
-        "Introduce simple consonant-vowel-consonant (CVC) blending slowly (e.g., /c/ - /a/ - /t/ = cat)."
+        "Phonemic Awareness: The ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before seeing print.",
+        "Synthetic Phonics Sequence: Introducing single letter sounds systematically rather than alphabetically so children can blend simple words immediately.",
+        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat).",
+        "Multisensory Practice: Tracing letter shapes in sand or air while producing the precise phonetic sound."
       ]
     },
     {
-      title: "Primary School: Building Simple Sentences",
+      id: "primary-grammar",
+      title: "Primary School: Elementary Grammar & Sentence Structures",
       level: "Primary School (A1-A2)",
       category: "Daily Life",
-      summary: "Core structural patterns for elementary learners.",
+      summary: "Core structural rules for young elementary learners transitioning into independent writing.",
       content: [
-        "Subject + Verb + Object structure (e.g., 'I play football').",
-        "Using basic pronouns correctly (he, she, it, they).",
-        "Expanding vocabulary through daily descriptive adjectives (big, small, happy, sad)."
+        "Basic Sentence Architecture: Standard Subject-Verb-Object (SVO) word order in declarative sentences.",
+        "Pronoun Case Agreement: Correct usage of subject pronouns (I, you, he, she, it, we, they) vs. object pronouns (me, him, her, us, them).",
+        "Simple Tense Consistency: Practicing simple present routines and simple past actions with regular/irregular verbs."
       ]
     },
     {
-      title: "C1 Advanced: Word Formation Patterns",
+      id: "juniorhigh-pet",
+      title: "Junior High: Cambridge B1 PET Exam Strategies",
+      level: "Junior High (B1)",
+      category: "Social Media",
+      summary: "Official guidance for tackling B1 Preliminary reading, writing transformations, and listening tasks.",
+      content: [
+        "Reading Part 1: Always analyze short notices, text messages, and signs for safety warnings or explicit instructions.",
+        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility (e.g., adjectives followed by specific prepositions like 'keen on').",
+        "Listening Part 2: Read questions ahead of time to anticipate specific constraints like names, places, or numbers."
+      ]
+    },
+    {
+      id: "seniorhigh-fce",
+      title: "Senior High: Cambridge B2 First Cohesion & Essay Writing",
+      level: "Senior High (B2)",
+      category: "Academic & Debate",
+      summary: "Advanced coherence strategies and discursive writing techniques for upper-intermediate students.",
+      content: [
+        "Discursive Paragraphing: Organizing essays with a clear thesis statement, balanced opposing arguments, and a definitive conclusion.",
+        "Cohesive Devices: Moving beyond basic linkers (and, but) to sophisticated transitions (furthermore, consequently, nevertheless).",
+        "Lexical Precision: Avoiding repetitive vocabulary by utilizing precise synonyms and thematic word sets."
+      ]
+    },
+    {
+      id: "advanced-cae",
+      title: "C1 Advanced: CAE Use of English & Discourse Mastery",
       level: "C1 Advanced",
       category: "Academic & Debate",
-      summary: "Mastering prefixes, suffixes, and internal root changes for CAE Part 3[cite: 1].",
+      summary: "Rigorous academic and professional frameworks aligned with Cambridge C1 standards.",
       content: [
-        "Root -> Noun: FOUND ➔ FOUNDER / FOUNDATION[cite: 1]",
-        "Root -> Adjective: INFLUENCE ➔ INFLUENTIAL",
-        "Negative Prefixes: Use un-, dis-, ir-, or mis- (e.g., RELIABLE ➔ UNRELIABLE).",
-        "Always check whether a plural noun is required at the end of the line[cite: 1]."
+        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, complementation, and phrasal verbs.",
+        "Part 3 (Word Formation): Demands mastery over prefixes (un-, dis-, mis-), internal vowel changes, and compound word structures.",
+        "Discourse Management: Producing extended, coherent stretches of language with sophisticated control of grammatical structures."
       ]
     }
   ];
@@ -273,8 +300,9 @@ export default function Home() {
   };
 
   const currentModule = activeModuleKey ? materials[activeModuleKey] : null;
+  const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
-  // FOCUSED MODULE VIEW
+  // ================= 1. FOCUSED QUIZ MODULE PAGE =================
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -358,7 +386,47 @@ export default function Home() {
     );
   }
 
-  // MAIN HOMEPAGE VIEW WITH TABS
+  // ================= 2. FOCUSED STUDY MATERIAL READING PAGE =================
+  if (currentStudyGuide) {
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
+        <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200">
+          <button
+            onClick={() => setActiveStudyId(null)}
+            className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition mb-8 cursor-pointer"
+          >
+            ← Back to Materials
+          </button>
+
+          <div className="flex justify-between items-center mb-6">
+            <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
+              {currentStudyGuide.level}
+            </span>
+            <span className="text-xs text-gray-400 font-medium">{currentStudyGuide.category}</span>
+          </div>
+
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{currentStudyGuide.title}</h2>
+          <p className="text-gray-600 text-base mb-8 pb-6 border-b border-gray-100 leading-relaxed">
+            {currentStudyGuide.summary}
+          </p>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Curriculum Breakdown</h3>
+            {currentStudyGuide.content.map((section, idx) => (
+              <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
+                <span className="bg-[#55b1d4] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                  {idx + 1}
+                </span>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">{section}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // ================= 3. MAIN DASHBOARD HOMEPAGE =================
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -395,7 +463,7 @@ export default function Home() {
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           {activeTab === "quizzes"
             ? "Structured school tiers from Phonics foundations to C1 Advanced mastery."
-            : "Explore core grammar rules, phonics guides, and exam strategy cheat sheets."}
+            : "Explore core grammar rules, synthetic phonics guides, and verified exam cheat sheets."}
         </p>
 
         {activeTab === "quizzes" && (
@@ -417,7 +485,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES GRID (All School Tiers) */}
+      {/* TAB 1: PRACTICE QUIZZES GRID */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {/* Kindergarten */}
@@ -530,7 +598,7 @@ export default function Home() {
               C1 ADVANCED (CAE)
             </span>
             <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
-            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis[cite: 1].</p>
+            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
               {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
                 const key = `Advanced-${skill}`;
@@ -552,27 +620,25 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS */}
+      {/* TAB 2: STUDY MATERIALS INDEX (Clicking cards opens full dedicated page) */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
-          {studyGuides.map((guide, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
+          {studyGuides.map((guide) => (
+            <div
+              key={guide.id}
+              onClick={() => setActiveStudyId(guide.id)}
+              className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:border-[#55b1d4] hover:shadow-md transition cursor-pointer group"
+            >
               <div className="flex justify-between items-center mb-4">
                 <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
                   {guide.level}
                 </span>
-                <span className="text-xs text-gray-400 font-medium">{guide.category}</span>
+                <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
+                  Read Guide →
+                </span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
-              <p className="text-gray-600 text-sm mb-6">{guide.summary}</p>
-              
-              <ul className="space-y-3 bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                {guide.content.map((point, pIdx) => (
-                  <li key={pIdx} className="text-sm text-gray-700 flex items-start gap-2">
-                    <span className="text-[#55b1d4] font-bold">•</span> {point}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-gray-600 text-sm">{guide.summary}</p>
             </div>
           ))}
         </section>
