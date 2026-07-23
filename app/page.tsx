@@ -45,7 +45,6 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Quiz banks
   const quizDataBank: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
@@ -135,7 +134,6 @@ export default function Home() {
     },
   };
 
-  // Detailed Study Guides with Clickable Sub-Topics & Deep Explanations
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
@@ -163,15 +161,6 @@ export default function Home() {
             "The standard first group of sounds taught is usually S, A, T, P, I, N."
           ],
           examples: ["Using S, A, T children can instantly decode words like 'sat', 'at', 'tap', and 'pat'."]
-        },
-        {
-          title: "3. CVC Blending",
-          subtitle: "Connecting Consonant-Vowel-Consonant sounds smoothly",
-          explanation: [
-            "Blending is the process of sliding individual sounds together without stopping between them to form a complete spoken word.",
-            "Children practice saying /m/ - /a/ - /p/ slowly, then speeding it up to say 'map'."
-          ],
-          examples: ["/p/ - /i/ - /g/ = pig", "/d/ - /o/ - /g/ = dog"]
         }
       ]
     },
@@ -188,19 +177,19 @@ export default function Home() {
           title: "1. Basic Sentence Architecture (SVO)",
           subtitle: "Mastering Subject-Verb-Object word order",
           explanation: [
-            "In English, simple sentences follow a strict order: Who/What does the action (Subject) + Action (Verb) + Receiver of action (Object).",
+            "In English, simple sentences follow a strict order: Subject + Verb + Object.",
             "This creates clear, direct communication for elementary writers."
           ],
-          examples: ["'The cat (Subject) eats (Verb) fish (Object).'", "'Maria (Subject) plays (Verb) soccer (Object).'"]
+          examples: ["'The cat (Subject) eats (Verb) fish (Object).'", "'Maria plays soccer.'"]
         },
         {
           title: "2. Pronoun Case Agreement",
           subtitle: "Subject vs. Object pronouns",
           explanation: [
-            "Subject pronouns perform the action at the beginning of a clause (I, you, he, she, it, we, they).",
-            "Object pronouns receive the action after verbs or prepositions (me, you, him, her, it, us, them)."
+            "Subject pronouns perform the action (I, you, he, she, it, we, they).",
+            "Object pronouns receive the action (me, you, him, her, it, us, them)."
           ],
-          examples: ["'She (Subject) gave the book to him (Object).'", "'They invited us to the party.'"]
+          examples: ["'She gave the book to him.'", "'They invited us to the party.'"]
         }
       ]
     },
@@ -217,8 +206,8 @@ export default function Home() {
           title: "1. Reading Part 1 (Signs & Notices)",
           subtitle: "Analyzing short functional messages and public warnings",
           explanation: [
-            "Cambridge PET Reading Part 1 tests your ability to understand short notices, text messages, website blurbs, and signs.",
-            "Always distinguish between what a sign *says* versus what it *implies* or warns against."
+            "Cambridge PET Reading Part 1 tests your ability to understand short notices, text messages, and signs.",
+            "Always distinguish between what a sign says versus what it implies or warns against."
           ],
           examples: ["'Staff Only' -> Customers are not allowed to enter this area."]
         },
@@ -227,7 +216,7 @@ export default function Home() {
           subtitle: "Rewriting sentences using a specific grammar target",
           explanation: [
             "You must rewrite a sentence so it means the exact same thing using a given keyword.",
-            "This heavily tests adjectives followed by fixed prepositions and passive-to-active voice swaps."
+            "This heavily tests adjectives followed by fixed prepositions and passive voices."
           ],
           examples: ["'Niko really enjoys basketball.' -> 'Niko is very keen ON basketball.'"]
         }
@@ -246,7 +235,7 @@ export default function Home() {
           title: "1. Discursive Essay Structure",
           subtitle: "Crafting balanced arguments and clear thesis statements",
           explanation: [
-            "A B2 First essay requires an introduction stating your stance, two well-argued body paragraphs addressing prompt points, and a conclusive summary.",
+            "A B2 First essay requires an introduction stating your stance, two well-argued body paragraphs, and a conclusive summary.",
             "Avoid overly emotional language; maintain a neutral, formal academic tone."
           ],
           examples: ["Introduction thesis: 'While online learning offers flexibility, social interaction remains vital.'"]
@@ -256,9 +245,9 @@ export default function Home() {
           subtitle: "Moving beyond basic linkers like 'and' and 'but'",
           explanation: [
             "Upper-intermediate writing requires transition markers that signal contrast, concession, or addition smoothly.",
-            "Using words like 'furthermore', 'neveretheless', and 'consequently' elevates your score."
+            "Using words like 'furthermore', 'nevertheless', and 'consequently' elevates your score."
           ],
-          examples: ["'The project was costly; nevertheless, the long-term benefits outweighed the expenses.'"]
+          examples: ["'The project was costly; nevertheless, the benefits outweighed the expenses.'"]
         }
       ]
     },
@@ -272,31 +261,40 @@ export default function Home() {
       accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       subTopics: [
         {
-          title: "1. Part 3 Word Formation",
-          subtitle: "Mastering complex root transformations and prefix modifications",
+          title: "1. Part 1 (Multiple-Choice Cloze)",
+          subtitle: "Analyzing subtle semantic differences, fixed collocations, idiom constraints, and phrasal verb valency.",
           explanation: [
-            "CAE Part 3 requires you to take a root word and transform it into a noun, adjective, adverb, or verb depending on the sentence gap.",
-            "You must also watch out for negative prefixes (un-, dis-, mis-, in-) and plural noun endings (-s/-es)."
+            "Words in options often look similar in meaning, but only one collocates naturally with the surrounding context.",
+            "Mastering dependent prepositions and fixed phrasal verb patterns is essential here."
           ],
-          examples: ["Root: FOUND -> Noun person: FOUNDER | Noun abstract: FOUNDATION"],
+          examples: ["'That is the advice from Britain's foremost female engineers.'"]
         },
         {
-          title: "2. Part 1 Multiple-Choice Cloze",
-          subtitle: "Analyzing subtle semantic differences and fixed collocations",
+          title: "2. Part 3 (Word Formation)",
+          subtitle: "Mastering complex root transformations, prefix modifications (un-, dis-, mis-), and plural noun agreements.",
           explanation: [
-            "Words in options often look similar in meaning (e.g., advice, information, opinion, instruction), but only one collocates naturally with the surrounding context.",
-            "Mastering dependent prepositions and fixed idioms is essential here."
+            "CAE Part 3 requires you to take a root word and transform it into a noun, adjective, adverb, or verb depending on the sentence gap.",
+            "You must also watch out for negative prefixes and plural noun endings."
           ],
-          explanationText: ["Example: 'That is the **advice** from Britain's foremost female engineers.' (Advice collocates correctly with professional guidance guidance)."]
+          examples: ["Root: FOUND -> Noun person: FOUNDER | Noun abstract: FOUNDATION"]
         },
         {
           title: "3. Advanced Syntax & Inversion",
-          subtitle: "Utilizing negative adverbial inversions for rhetorical impact",
+          subtitle: "Utilizing negative adverbial inversions for rhetorical impact (e.g., 'Not only was the experiment successful...')",
           explanation: [
             "For dramatic or formal emphasis, negative expressions can be placed at the start of a sentence, forcing the auxiliary verb before the subject.",
             "Formula: Negative Adverb + Auxiliary Verb + Subject + Main Verb."
           ],
           examples: ["'Not only was the experiment successful, but it was also completed under budget.'"]
+        },
+        {
+          title: "4. Discourse Management",
+          subtitle: "Structuring spoken and written arguments with absolute grammatical precision and nuanced stylistic control.",
+          explanation: [
+            "Discourse management evaluates how well your ideas hang together logically across sentences and paragraphs.",
+            "It requires balancing complex grammatical structures with an appropriate formal tone."
+          ],
+          examples: ["Using advanced concession clauses like 'Notwithstanding the initial setbacks...'"]
         }
       ]
     }
@@ -309,7 +307,6 @@ export default function Home() {
   const currentModule = activeModuleKey ? quizDataBank[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
-  // FOCUSED QUIZ MODULE PAGE
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -393,7 +390,6 @@ export default function Home() {
     );
   }
 
-  // FOCUSED SUB-TOPIC DETAILED LEARNING PAGE
   if (activeSubTopic) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -442,7 +438,6 @@ export default function Home() {
     );
   }
 
-  // FOCUSED STUDY MATERIAL OVERVIEW PAGE
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -497,7 +492,6 @@ export default function Home() {
     );
   }
 
-  // MAIN DASHBOARD HOMEPAGE
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -556,7 +550,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES GRID */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -631,7 +624,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS INDEX */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => {
