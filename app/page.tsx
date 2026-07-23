@@ -33,28 +33,97 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Quiz Materials
+  // Comprehensive Quizzes across all school tiers
   const materials: Record<string, ModuleData> = {
-    "Kindergarten-Reading": {
-      title: "Kindergarten: Weather & Basic Words",
-      image: "☀️",
+    // ================= KINDERGARTEN (Phonics Focus) =================
+    "Kindergarten-Phonics": {
+      title: "Kindergarten: Letter Sounds & Phonics",
+      image: "🔤",
       category: "Daily Life",
-      source: "Basic EFL Standard",
+      source: "Early Years Phonics Standard",
       questions: [
         {
           id: 1,
-          prompt: "Look at the picture ☀️. What is the weather like today?",
+          prompt: "What sound does the letter 'S' make at the beginning of 'Snake'?",
           options: [
-            { label: "It is Sunny", isCorrect: true },
-            { label: "It is Rainy", isCorrect: false },
-            { label: "It is Cold", isCorrect: false },
+            { label: "Ssss...", isCorrect: true },
+            { label: "Mmmm...", isCorrect: false },
+            { label: "Buh-buh...", isCorrect: false },
           ],
-          explanation: "The sun icon ☀️ means it is Sunny!",
+          explanation: "The letter S makes a hissing 'Ssss' sound like a snake!",
+        },
+        {
+          id: 2,
+          prompt: "Which word starts with the short 'A' sound (/æ/), like in 'Apple'?",
+          options: [
+            { label: "Cat", isCorrect: true },
+            { label: "Dog", isCorrect: false },
+            { label: "Sun", isCorrect: false },
+          ],
+          explanation: "The word 'Cat' uses the short 'A' sound (/æ/).",
         },
       ],
     },
+    "Kindergarten-Listening": {
+      title: "Kindergarten: Auditory Rhymes & Sounds",
+      image: "🎵",
+      category: "Daily Life",
+      source: "Early Years Phonological Awareness",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which word rhymes with 'Cat'?",
+          options: [
+            { label: "Hat", isCorrect: true },
+            { label: "Dog", isCorrect: false },
+            { label: "Pen", isCorrect: false },
+          ],
+          explanation: "'Cat' and 'Hat' share the same ending '-at' sound rhyme.",
+        },
+      ],
+    },
+
+    // ================= PRIMARY SCHOOL (Elementary A1-A2) =================
+    "Primary-Reading": {
+      title: "Primary School: Short Stories & Sentences",
+      image: "📚",
+      category: "Daily Life",
+      source: "Elementary ESL Standard",
+      questions: [
+        {
+          id: 1,
+          prompt: 'Story excerpt: "Leo loves to paint pictures of blue oceans and green trees." What does Leo like to do?',
+          options: [
+            { label: "Paint pictures", isCorrect: true },
+            { label: "Play soccer", isCorrect: false },
+            { label: "Read books", isCorrect: false },
+          ],
+          explanation: "The text states that Leo loves to paint pictures.",
+        },
+      ],
+    },
+    "Primary-Writing": {
+      title: "Primary School: Basic Sentence Building",
+      image: "✏️",
+      category: "Daily Life",
+      source: "Elementary ESL Standard",
+      questions: [
+        {
+          id: 1,
+          prompt: "Choose the correct pronoun: '____ is my best friend. Her name is Anna.'",
+          options: [
+            { label: "She", isCorrect: true },
+            { label: "He", isCorrect: false },
+            { label: "They", isCorrect: false },
+          ],
+          explanation: "We use 'She' for a female subject ('Her name is Anna').",
+        },
+      ],
+    },
+
+    // ================= JUNIOR HIGH SCHOOL (B1 Preliminary) =================
     "Junior High-Reading": {
-      title: "Junior High: Cambridge B1 Reading Comprehension",
+      title: "Junior High: Cambridge B1 Reading",
       image: "📱",
       category: "Social Media",
       source: "Cambridge Assessment English (PET)",
@@ -64,13 +133,67 @@ export default function Home() {
           prompt: 'Message from Stefan: "We\'re outside the cinema. Text if you\'re going to be late..." What should Peter do?',
           options: [
             { label: "Let Stefan know if he is delayed", isCorrect: true },
-            { label: "Tell Stefan which film he wants to watch", isCorrect: false },
             { label: "Wait for Stefan inside the cinema", isCorrect: false },
           ],
-          explanation: "Stefan explicitly asks Peter to text if he will be late so they can adjust plans.",
+          explanation: "Stefan explicitly asks Peter to text if he will be late.",
         },
       ],
     },
+    "Junior High-Writing": {
+      title: "Junior High: Key Word Transformations",
+      image: "✍️",
+      category: "Daily Life",
+      source: "Cambridge Assessment English (PET)",
+      questions: [
+        {
+          id: 1,
+          prompt: 'Original: "Niko really enjoys playing basketball."\nRewrite: "Niko is very keen _______ basketball."',
+          options: [
+            { label: "on", isCorrect: true },
+            { label: "in", isCorrect: false },
+          ],
+          explanation: "The correct preposition pairing is 'keen on'.",
+        },
+      ],
+    },
+
+    // ================= SENIOR HIGH SCHOOL (B2 First / FCE) =================
+    "Senior High-Reading": {
+      title: "Senior High: B2 Discursive Reading",
+      image: "📰",
+      category: "Academic & Debate",
+      source: "Cambridge B2 First (FCE)",
+      questions: [
+        {
+          id: 1,
+          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning, educators noted a rise in independent student research." What does this imply?',
+          options: [
+            { label: "People doubted remote learning at first, but students became more independent.", isCorrect: true },
+            { label: "Remote learning failed completely across all schools.", isCorrect: false },
+          ],
+          explanation: "'Skepticism' means doubt, which was later proven wrong by increased independence.",
+        },
+      ],
+    },
+    "Senior High-Writing": {
+      title: "Senior High: B2 Essay Cohesion",
+      image: "📝",
+      category: "Academic & Debate",
+      source: "Cambridge B2 First (FCE)",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which phrase is most appropriate to introduce an additional argument in a formal B2 essay?",
+          options: [
+            { label: "Furthermore, it is worth noting that...", isCorrect: true },
+            { label: "Plus, also and stuff...", isCorrect: false },
+          ],
+          explanation: "'Furthermore' is a formal transitional device suited for B2 essay writing.",
+        },
+      ],
+    },
+
+    // ================= C1 ADVANCED (CAE) =================
     "Advanced-Reading": {
       title: "C1 Advanced: Reading & Use of English",
       image: "📖",
@@ -82,50 +205,65 @@ export default function Home() {
           prompt: 'Part 1 Multiple Choice Cloze (Girls & Technology): "That is the _____ from Britain\'s foremost female engineers."',
           options: [
             { label: "instruction", isCorrect: false },
-            { label: "information", isCorrect: false },
-            { label: "opinion", isCorrect: false },
             { label: "advice", isCorrect: true },
           ],
-          explanation: "Official Cambridge Answer: 'advice' is the correct collocate used in this context.",
+          explanation: "Official Cambridge Answer: 'advice' is the correct collocate used in this context[cite: 1].",
+        },
+      ],
+    },
+    "Advanced-Writing": {
+      title: "C1 Advanced: Word Formation",
+      image: "✒️",
+      category: "Academic & Debate",
+      source: "Cambridge Certificate in Advanced English (CAE)",
+      questions: [
+        {
+          id: 1,
+          prompt: 'Part 3 Word Formation (Freud and Dreams): "Sigmund Freud is regarded as the _____ (FOUND) of psychoanalysis."',
+          options: [
+            { label: "FOUNDER", isCorrect: true },
+            { label: "FOUNDATION", isCorrect: false },
+          ],
+          explanation: "Official Cambridge Answer: Agent noun required for a creator is 'FOUNDER'[cite: 1].",
         },
       ],
     },
   };
 
-  // Study Materials / Reference Guide Data
+  // Study Materials & Reference Guides Data
   const studyGuides: StudyMaterial[] = [
+    {
+      title: "Kindergarten: Phonics & Letter Sounds Guide",
+      level: "Kindergarten",
+      category: "Daily Life",
+      summary: "Essential early childhood phonemic awareness and alphabet sound rules.",
+      content: [
+        "Focus on listening and producing letter sounds (phonemes) before letter names.",
+        "Use auditory matching (e.g., matching words that start with the same sound like 'B-ball' or 'C-cat').",
+        "Introduce simple consonant-vowel-consonant (CVC) blending slowly (e.g., /c/ - /a/ - /t/ = cat)."
+      ]
+    },
+    {
+      title: "Primary School: Building Simple Sentences",
+      level: "Primary School (A1-A2)",
+      category: "Daily Life",
+      summary: "Core structural patterns for elementary learners.",
+      content: [
+        "Subject + Verb + Object structure (e.g., 'I play football').",
+        "Using basic pronouns correctly (he, she, it, they).",
+        "Expanding vocabulary through daily descriptive adjectives (big, small, happy, sad)."
+      ]
+    },
     {
       title: "C1 Advanced: Word Formation Patterns",
       level: "C1 Advanced",
       category: "Academic & Debate",
-      summary: "Mastering prefixes, suffixes, and internal root changes for CAE Part 3.",
+      summary: "Mastering prefixes, suffixes, and internal root changes for CAE Part 3[cite: 1].",
       content: [
-        "Root -> Noun: FOUND ➔ FOUNDER / FOUNDATION",
+        "Root -> Noun: FOUND ➔ FOUNDER / FOUNDATION[cite: 1]",
         "Root -> Adjective: INFLUENCE ➔ INFLUENTIAL",
         "Negative Prefixes: Use un-, dis-, ir-, or mis- (e.g., RELIABLE ➔ UNRELIABLE).",
-        "Always check whether a plural noun is required at the end of the line."
-      ]
-    },
-    {
-      title: "B1 Preliminary: Key Prepositions of Time & Place",
-      level: "Junior High (B1)",
-      category: "Daily Life",
-      summary: "Quick rules for using IN, ON, and AT correctly.",
-      content: [
-        "AT: Specific times (at 5 PM) and exact locations (at the door).",
-        "ON: Days of the week (on Monday) and surfaces (on the table).",
-        "IN: Months, years, centuries, and larger spaces (in London, in July)."
-      ]
-    },
-    {
-      title: "Kindergarten: Daily Sight Words",
-      level: "Kindergarten",
-      category: "Daily Life",
-      summary: "Foundational vocabulary for early learners.",
-      content: [
-        "Greetings: Good morning, hello, goodbye, good night.",
-        "Weather: Sunny, rainy, cloudy, windy, cold, hot.",
-        "Colors & Objects: Apple (A-P-P-L-E), Pencil (P-E-N-C-I-L)."
+        "Always check whether a plural noun is required at the end of the line[cite: 1]."
       ]
     }
   ];
@@ -207,7 +345,7 @@ export default function Home() {
 
                   {selectedOptIdx !== undefined && (
                     <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-100 text-sm text-blue-900 leading-relaxed">
-                      <span className="font-bold text-blue-950 block mb-1">Source Explanation:</span>
+                      <span className="font-bold text-blue-950 block mb-1">Explanation:</span>
                       {q.explanation}
                     </div>
                   )}
@@ -220,16 +358,14 @@ export default function Home() {
     );
   }
 
-  // MAIN HOMEPAGE VIEW WITH TABS (Quizzes vs Study Materials)
+  // MAIN HOMEPAGE VIEW WITH TABS
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
-      {/* Navigation Header */}
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
         <h1 className="text-3xl font-light text-[#E95599] tracking-wide">
           Future<span className="font-bold text-[#55b1d4]">English</span>
         </h1>
         
-        {/* Top Tab Switcher */}
         <div className="bg-gray-200 p-1 rounded-full flex gap-1">
           <button
             onClick={() => setActiveTab("quizzes")}
@@ -250,7 +386,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="max-w-4xl mx-auto text-center my-10">
         <h2 className="text-5xl font-light text-gray-900 mb-6 leading-tight">
           Learn English <span className="text-[#E95599] font-normal">Fun</span>,{" "}
@@ -259,8 +394,8 @@ export default function Home() {
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           {activeTab === "quizzes"
-            ? "Test your skills with authentic Cambridge practice materials and interactive modules."
-            : "Explore core grammar rules, vocabulary lists, and exam strategy cheat sheets."}
+            ? "Structured school tiers from Phonics foundations to C1 Advanced mastery."
+            : "Explore core grammar rules, phonics guides, and exam strategy cheat sheets."}
         </p>
 
         {activeTab === "quizzes" && (
@@ -282,18 +417,18 @@ export default function Home() {
         )}
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES GRID */}
+      {/* TAB 1: PRACTICE QUIZZES GRID (All School Tiers) */}
       {activeTab === "quizzes" && (
-        <section className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+        <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {/* Kindergarten */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#E95599]/10 text-[#E95599] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               KINDERGARTEN
             </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Vocabulary Basics</h3>
-            <p className="text-sm text-gray-500 mb-6">Food, weather, animals, and daily greetings with fun visuals.</p>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Phonics & Sounds</h3>
+            <p className="text-sm text-gray-500 mb-6">Focus on phonics, letter sounds, and early phonological awareness.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
+              {["Phonics", "Listening"].map((skill) => {
                 const key = `Kindergarten-${skill}`;
                 const item = materials[key];
                 return (
@@ -311,13 +446,39 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Primary School */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              PRIMARY SCHOOL
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Elementary Foundations</h3>
+            <p className="text-sm text-gray-500 mb-6">Simple sentences, basic reading comprehension, and vocabulary.</p>
+            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
+              {["Reading", "Writing"].map((skill) => {
+                const key = `Primary-${skill}`;
+                const item = materials[key];
+                return (
+                  <button
+                    key={skill}
+                    onClick={() => item && setActiveModuleKey(key)}
+                    className={`p-2 rounded-lg border transition font-medium ${
+                      item ? "bg-gray-50 hover:bg-[#22c55e] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
+                    }`}
+                  >
+                    {skill} {item ? `(${item.questions.length})` : ""}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Junior High */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               JUNIOR HIGH (B1)
             </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 Materials</h3>
-            <p className="text-sm text-gray-500 mb-6">Verified Cambridge English PET reading, writing, and interview dialogs.</p>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 PET</h3>
+            <p className="text-sm text-gray-500 mb-6">Intermediate grammar, messaging texts, and key-word transformations.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
               {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
                 const key = `Junior High-${skill}`;
@@ -337,13 +498,39 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Senior High */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#a855f7]/10 text-[#a855f7] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              SENIOR HIGH (B2)
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B2 First</h3>
+            <p className="text-sm text-gray-500 mb-6">Discursive reading articles, essay transitions, and formal cohesion.</p>
+            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
+              {["Reading", "Writing"].map((skill) => {
+                const key = `Senior High-${skill}`;
+                const item = materials[key];
+                return (
+                  <button
+                    key={skill}
+                    onClick={() => item && setActiveModuleKey(key)}
+                    className={`p-2 rounded-lg border transition font-medium ${
+                      item ? "bg-gray-50 hover:bg-[#a855f7] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
+                    }`}
+                  >
+                    {skill} {item ? `(${item.questions.length})` : ""}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Advanced */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               C1 ADVANCED (CAE)
             </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 Materials</h3>
-            <p className="text-sm text-gray-500 mb-6">Authentic Cambridge CAE multiple choice cloze, word formation, & listening.</p>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
+            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis[cite: 1].</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
               {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
                 const key = `Advanced-${skill}`;
@@ -365,7 +552,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS & REFERENCE GUIDES */}
+      {/* TAB 2: STUDY MATERIALS */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide, idx) => (
