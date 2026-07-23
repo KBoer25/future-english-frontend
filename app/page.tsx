@@ -79,7 +79,7 @@ export default function Home() {
 
   const topics = getTopicsForLevel(selectedLevel);
 
-  // COMPLETELY CLEAN, VERCEL-COMPLIANT QUIZ GENERATOR USING poolData CORRECTLY
+  // COMPLETELY CLEAN, VERCEL-COMPLIANT QUIZ GENERATOR
   const getCurrentLevelQuizzes = () => {
     const list: Record<string, ModuleData> = {};
     const icons = ["🍎", "📱", "ABC", "🔢", "🎒", "🔬", "🗺️", "💼", "🏛️", "📊"];
@@ -210,126 +210,6 @@ export default function Home() {
             poolData = pools[batchNum - 1];
           }
         } 
-        else if (selectedLevel === "Primary School") {
-          if (top === "Daily Life") {
-            const pools = [
-              [
-                { id: 1, prompt: "Which school subject involves addition and subtraction?", img: "📐", opts: [{ l: "Mathematics", c: true }, { l: "Art", c: false }], exp: "Math deals with numbers." },
-                { id: 2, prompt: "What tool erases graphite pencil marks?", img: "📝", opts: [{ l: "An eraser", c: true }, { l: "A ruler", c: false }], exp: "Erasers clean pencil." },
-                { id: 3, prompt: "Where do kids play outside during recess?", img: "⚽", opts: [{ l: "The school playground", c: true }, { l: "The principal's desk", c: false }], exp: "Playgrounds are outdoor." },
-                { id: 4, prompt: "What instrument draws straight lines?", img: "📏", opts: [{ l: "A ruler", c: true }, { l: "A sponge", c: false }], exp: "Rulers give straight lines." },
-                { id: 5, prompt: "Who helps students when they feel sick?", img: "🏥", opts: [{ l: "The school nurse", c: true }, { l: "The music teacher", c: false }], exp: "Nurses handle health." }
-              ],
-              [
-                { id: 1, prompt: "What writing tool uses liquid blue or black ink inside a casing?", img: "✒️", opts: [{ l: "A ballpoint pen", c: true }, { l: "A wooden block", c: false }], exp: "Pens use liquid ink." },
-                { id: 2, prompt: "What book gives definitions and meanings of English words?", img: "📖", opts: [{ l: "A dictionary", c: true }, { l: "A comic book", c: false }], exp: "Dictionaries define words." },
-                { id: 3, prompt: "Where do you store your textbooks, pencils, and lunchbox at school?", img: "🎒", opts: [{ l: "In a school backpack", c: true }, { l: "In your pocket", c: false }], exp: "Backpacks carry supplies." },
-                { id: 4, prompt: "What school room is filled with computers and keyboards?", img: "💻", opts: [{ l: "Computer lab", c: true }, { l: "Gymnasium", c: false }], exp: "Computer labs hold PCs." },
-                { id: 5, prompt: "Who is the head leader of an entire elementary school?", img: "🏫", opts: [{ l: "The principal", c: true }, { l: "The bus driver", c: false }], exp: "Principals lead schools." }
-              ],
-              [
-                { id: 1, prompt: "What container holds fresh water or juice in your backpack?", img: "🍼", opts: [{ l: "A water bottle", c: true }, { l: "A shoebox", c: false }], exp: "Water bottles hold drinks." },
-                { id: 2, prompt: "What class lets children paint, draw, and sculpt with clay?", img: "🎨", opts: [{ l: "Art class", c: true }, { l: "Math class", c: false }], exp: "Art fosters creativity." },
-                { id: 3, prompt: "What book lists all the dates, months, and school holidays?", img: "📅", opts: [{ l: "A school calendar", c: true }, { l: "A novel", c: false }], exp: "Calendars track dates." },
-                { id: 4, prompt: "What do you wear during physical education (PE) class?", img: "👟", opts: [{ l: "Comfortable sportswear and sneakers", c: true }, { l: "Formal suit", c: false }], exp: "Sportswear aids movement." },
-                { id: 5, prompt: "Where do students eat their packed lunches or cafeteria meals?", img: "🥪", opts: [{ l: "The school cafeteria", c: true }, { l: "The science lab", c: false }], exp: "Cafeterias are for dining." }
-              ],
-              [
-                { id: 1, prompt: "What tool do you use to cut construction paper cleanly?", img: "✂️", opts: [{ l: "Safety scissors", c: true }, { l: "A fork", c: false }], exp: "Scissors cut paper." },
-                { id: 2, prompt: "What class teaches running, jumping, and team sports?", img: "🏃", opts: [{ l: "Physical Education (PE)", c: true }, { l: "Spelling", c: false }], exp: "PE promotes fitness." },
-                { id: 3, prompt: "What device rings loudly to signal the start and end of classes?", img: "🔔", opts: [{ l: "The school bell", c: true }, { l: "A doorbell", c: false }], exp: "Bells signal schedules." },
-                { id: 4, prompt: "What sticky adhesive is used to attach paper cutouts together?", img: "🧴", opts: [{ l: "Glue stick", c: true }, { l: "Toothpaste", c: false }], exp: "Glue bonds paper." },
-                { id: 5, prompt: "Who drives students safely to and from school each day?", img: "🚌", opts: [{ l: "The school bus driver", c: true }, { l: "The pilot", c: false }], explanation: "Bus drivers transport kids." }
-              ],
-              [
-                { id: 1, prompt: "What notebook contains lined paper for practicing handwriting?", img: "📓", opts: [{ l: "A lined exercise book", c: true }, { l: "A sketchbook", c: false }], exp: "Exercise books hold writing." },
-                { id: 2, prompt: "What musical instrument with black and white keys is played in music class?", img: "🎹", opts: [{ l: "Piano or keyboard", c: true }, { l: "Drumsticks", c: false }], exp: "Pianos have keys." },
-                { id: 3, prompt: "What desk accessory holds loose papers together securely without glue?", img: "📎", opts: [{ l: "A paperclip", c: true }, { l: "A rubber band", c: false }], exp: "Paperclips hold sheets." },
-                { id: 4, prompt: "Where do students borrow storybooks to read at home?", img: "📚", opts: [{ l: "The school library", c: true }, { l: "The cafeteria", c: false }], exp: "Libraries lend books." },
-                { id: 5, prompt: "What protective covering keeps school textbooks clean?", img: "📖", opts: [{ l: "A plastic book cover", c: true }, { l: "A paper towel", c: false }], exp: "Covers protect books." }
-              ]
-            ];
-            poolData = pools[batchNum - 1];
-          } else if (top === "Social Media") {
-            const pools = [
-              [
-                { id: 1, prompt: "Should you share your home address or password online?", img: "🔒", opts: [{ l: "Never share private info", c: true }, { l: "Share freely", c: false }], exp: "Protect info." },
-                { id: 2, prompt: "What is cyberbullying?", img: "💻", opts: [{ l: "Being mean online", c: true }, { l: "Playing games", c: false }], exp: "Online harassment." },
-                { id: 3, prompt: "Who should you tell if someone sends unkind messages?", img: "👨‍👩‍👧", opts: [{ l: "A trusted adult or teacher", c: true }, { l: "Keep it secret", c: false }], exp: "Adults help." },
-                { id: 4, prompt: "Is it healthy to stare at screens all day?", img: "🌳", opts: [{ l: "No, balance with play", c: true }, { l: "Yes", c: false }], exp: "Balance is key." },
-                { id: 5, prompt: "What does posting respectful comments show?", img: "⭐", opts: [{ l: "Good digital citizenship", c: true }, { l: "Bad manners", c: false }], exp: "Respect is good." }
-              ],
-              [
-                { id: 1, prompt: "If an online popup game offers free prizes if you click a strange link, what should you do?", img: "⚠️", opts: [{ l: "Do not click; close the window", c: true }, { l: "Click immediately", c: false }], exp: "Scams use fake prizes." },
-                { id: 2, prompt: "Is your online screen name or avatar considered private personal data?", img: "🛡️", opts: [{ l: "Yes, protect your online identity", c: true }, { l: "No", c: false }], exp: "Identity safety matters." },
-                { id: 3, prompt: "What should you do if someone online makes you feel uncomfortable?", img: "🛑", opts: [{ l: "Block them and tell a parent", c: true }, { l: "Chat with them more", c: false }], exp: "Blocking stops creeps." },
-                { id: 4, prompt: "Why is it important to use strong passwords with numbers and symbols?", img: "🔑", opts: [{ l: "To stop hackers from breaking in", c: true }, { l: "To forget them easily", c: false }], exp: "Security stops theft." },
-                { id: 5, prompt: "Are everything you read online or see in videos 100% true?", img: "📰", opts: [{ l: "No, check facts with adults", c: true }, { l: "Yes, always", c: false }], exp: "Misinformation exists." }
-              ],
-              [
-                { id: 1, prompt: "What is a digital footprint?", img: "👣", opts: [{ l: "The permanent record of your online activity", c: true }, { l: "Footprints in sand", c: false }], exp: "Data stays online." },
-                { id: 2, prompt: "Should you post pictures of your school name badge or front door online?", img: "🏠", opts: [{ l: "No, keep locations private", c: true }, { l: "Yes", c: false }], exp: "Location safety." },
-                { id: 3, prompt: "How can you be kind in online multiplayer video game chats?", img: "🎮", opts: [{ l: "Encourage teammates and use polite words", c: true }, { l: "Insult others", c: false }], exp: "Kindness in gaming." },
-                { id: 4, prompt: "Who is responsible for keeping your tablet or computer secure?", img: "🧑‍💻", opts: [{ l: "You and your parents", c: true }, { l: "Nobody", c: false }], exp: "Shared responsibility." },
-                { id: 5, prompt: "What should you do before downloading a new game app on a phone?", img: "📱", opts: [{ l: "Ask a parent or guardian for permission", c: true }, { l: "Download right away", c: false }], exp: "Parental consent." }
-              ],
-              [
-                { id: 1, prompt: "What is netiquette?", img: "💻", opts: [{ l: "Polite and respectful manners when communicating online", c: true }, { l: "Internet cable wire", c: false }], exp: "Online manners." },
-                { id: 2, prompt: "What should you do if you receive a mean text message from a schoolmate?", img: "📵", opts: [{ l: "Save the message and show a trusted adult", c: true }, { l: "Reply with meaner insults", c: false }], exp: "Evidence and adults." },
-                { id: 3, prompt: "Why is it unsafe to meet someone in person whom you only met in an online game?", img: "⚠️", opts: [{ l: "Online strangers may not be who they pretend to be", c: true }, { l: "They might bring you a cake", c: false }], exp: "Stranger safety." },
-                { id: 4, prompt: "What does it mean to respect someone's privacy online?", img: "🔒", opts: [{ l: "Not sharing their private photos or chats without permission", c: true }, { l: "Posting their secrets", c: false }], exp: "Privacy respect." },
-                { id: 5, prompt: "How can screen time limits help your daily routine?", img: "⏰", opts: [{ l: "They leave time for homework, sleep, and outdoor play", c: true }, { l: "They make time pass slower", c: false }], explanation: "Balanced routine." }
-              ],
-              [
-                { id: 1, prompt: "What is spam in email or messaging inboxes?", img: "🗑️", opts: [{ l: "Unwanted junk messages sent to many people at once", c: true }, { l: "Important homework from teachers", c: false }], exp: "Junk messages." },
-                { id: 2, prompt: "What should you do if your tablet password is guessed by a sibling?", img: "🔐", opts: [{ l: "Change your password immediately to a new secret one", c: true }, { l: "Leave it unlocked", c: false }], explanation: "Password security." },
-                { id: 3, prompt: "Why is cyber security awareness important for kids?", img: "🛡️", opts: [{ l: "It helps you navigate the digital world safely and securely", c: true }, { l: "It is just a school subject", c: false }], explanation: "Safe navigation." },
-                { id: 4, prompt: "What is an online profile picture safety rule?", img: "🖼️", opts: [{ l: "Use avatars or illustrations instead of private family photos", c: true }, { l: "Post pictures of your house key", c: false }], explanation: "Avatar safety." },
-                { id: 5, prompt: "What should you do if an ad on a website pops up asking you to download a mystery file?", img: "❌", opts: [{ l: "Close the browser tab without downloading anything", c: true }, { l: "Click download", c: false }], explanation: "Avoid mystery files." }
-              ]
-            ];
-            poolData = pools[batchNum - 1];
-          } else {
-            const pools = [
-              [
-                { id: 1, prompt: "In a story, what do we call the main character?", img: "📖", opts: [{ l: "The protagonist", c: true }, { l: "The index", c: false }], exp: "Main hero." },
-                { id: 2, prompt: "What do plants need from the sun?", img: "🌱", opts: [{ l: "Sunlight and water", c: true }, { l: "Soda", c: false }], exp: "Photosynthesis." },
-                { id: 3, prompt: "What is a capital city?", img: "🗺️", opts: [{ l: "The governing hub", c: true }, { l: "A village", c: false }], exp: "Government center." },
-                { id: 4, prompt: "Which state of matter is ice?", img: "🧊", opts: [{ l: "Solid", c: true }, { l: "Gas", c: false }], exp: "Solid water." },
-                { id: 5, prompt: "What do animals that eat only plants called?", img: "🌿", opts: [{ l: "Herbivores", c: true }, { l: "Carnivores", c: false }], exp: "Plant eaters." }
-              ],
-              [
-                { id: 1, prompt: "What part of a plant absorbs water underground?", img: "🌱", opts: [{ l: "The roots", c: true }, { l: "The petals", c: false }], exp: "Roots absorb water." },
-                { id: 2, prompt: "What is the largest ocean on planet Earth?", img: "🌊", opts: [{ l: "The Pacific Ocean", c: true }, { l: "A swimming pool", c: false }], exp: "Pacific is largest." },
-                { id: 3, prompt: "What gas do humans breathe out that plants absorb?", img: "💨", opts: [{ l: "Carbon dioxide", c: true }, { l: "Pure gold", c: false }], exp: "CO2 exchange." },
-                { id: 4, prompt: "Which planet in our solar system is known as the Red Planet?", img: "🔴", opts: [{ l: "Mars", c: true }, { l: "Venus", c: false }], exp: "Mars is red iron oxide." },
-                { id: 5, prompt: "What natural force pulls objects down toward the ground?", img: "🍏", opts: [{ l: "Gravity", c: true }, { l: "Magnetism", c: false }], exp: "Gravity pulls down." }
-              ],
-              [
-                { id: 1, prompt: "What do we call a baby frog before it grows legs?", img: "🐸", opts: [{ l: "A tadpole", c: true }, { l: "A kitten", c: false }], exp: "Tadpoles become frogs." },
-                { id: 2, prompt: "Which direction does the sun rise every morning?", img: "🌅", opts: [{ l: "In the East", c: true }, { l: "In the West", c: false }], exp: "East sunrise." },
-                { id: 3, prompt: "What is the hardest natural substance found on Earth?", img: "💎", opts: [{ l: "Diamond", c: true }, { l: "Wood", c: false }], exp: "Diamonds are hardest." },
-                { id: 4, prompt: "How many continents are there on Earth?", img: "🌍", opts: [{ l: "Seven continents", c: true }, { l: "Three continents", c: false }], exp: "7 global continents." },
-                { id: 5, prompt: "What type of animal is a whale living in the ocean?", img: "🐋", opts: [{ l: "A marine mammal", c: true }, { l: "A fish", c: false }], exp: "Whales are mammals." }
-              ],
-              [
-                { id: 1, prompt: "What process turns liquid water into invisible vapor gas?", img: "♨️", opts: [{ l: "Evaporation", c: true }, { l: "Freezing", c: false }], exp: "Water evaporates." },
-                { id: 2, prompt: "Which bird is famous for being unable to fly but swimming well?", img: "🐧", opts: [{ l: "Penguin", c: true }, { l: "Eagle", c: false }], exp: "Penguins swim." },
-                { id: 3, prompt: "What layer of gases surrounds planet Earth?", img: "☁️", opts: [{ l: "The atmosphere", c: true }, { l: "The crust", c: false }], exp: "Atmosphere protects Earth." },
-                { id: 4, prompt: "What is the center of our solar system?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "The Moon", c: false }], exp: "Sun is center." },
-                { id: 5, prompt: "What instrument measures hot and cold temperatures?", img: "🌡️", opts: [{ l: "A thermometer", c: true }, { l: "A barometer", c: false }], exp: "Thermometers check heat." }
-              ],
-              [
-                { id: 1, prompt: "What is the main source of energy for all life on Earth?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "Electricity", c: false }], exp: "Sun powers Earth." },
-                { id: 2, prompt: "Which insect makes sweet honey and lives in hives?", img: "🐝", opts: [{ l: "Honeybee", c: true }, { l: "Housefly", c: false }], exp: "Bees make honey." },
-                { id: 3, prompt: "What is the process of a caterpillar transforming into a butterfly?", img: "🦋", opts: [{ l: "Metamorphosis", c: true }, { l: "Photosynthesis", c: false }], exp: "Metamorphosis stages." },
-                { id: 4, prompt: "Which layer of the Earth do we walk and build houses on?", img: "🌍", opts: [{ l: "The Earth's crust", c: true }, { l: "The inner core", c: false }], explanation: "Crust is surface." },
-                { id: 5, prompt: "What do we call scientists who study space and stars?", img: "🔭", opts: [{ l: "Astronomers", c: true }, { l: "Geologists", c: false }], explanation: "Astronomers study stars." }
-              ]
-            ];
-            poolData = pools[batchNum - 1];
-          }
-        } 
         // 3. JUNIOR HIGH
         else if (selectedLevel === "Junior High") {
           if (top === "Daily Life") {
@@ -446,6 +326,166 @@ export default function Home() {
                 { id: 3, prompt: "What is a group interview used for?", img: "🧑‍🤝‍🧑", opts: [{ l: "To assess teamwork and collaboration under observation", c: true }, { l: "To throw a party", c: false }], explanation: "Team assessment." },
                 { id: 4, prompt: "What is an applicant tracking system (ATS)?", img: "💻", opts: [{ l: "Software used by companies to screen resumes automatically", c: true }, { l: "A GPS map for candidates", c: false }], explanation: "Resume scanner." },
                 { id: 5, prompt: "What is constructive feedback after a rejected interview?", img: "📈", opts: [{ l: "Valuable insights to improve future interview performance", c: true }, { l: "An insult to ignore", c: false }], explanation: "Growth feedback." }
+              ]
+            ];
+            poolData = pools[batchNum - 1];
+          } else {
+            const pools = [
+              [
+                { id: 1, prompt: "Why include a bibliography?", img: "📑", opts: [{ l: "Avoid plagiarism and credit sources", c: true }, { l: "Make paper heavier", c: false }], exp: "Academic integrity." },
+                { id: 2, prompt: "What does a dictionary provide?", img: "📖", opts: [{ l: "Pronunciations and definitions", c: true }, { l: "Weather", c: false }], exp: "Lexicon." },
+                { id: 3, prompt: "First step of scientific method?", img: "🔬", opts: [{ l: "Observation and question", c: true }, { l: "Conclusion", c: false }], exp: "Inquiry." },
+                { id: 4, prompt: "What is a hypothesis?", img: "💡", opts: [{ l: "Testable proposed explanation", c: true }, { l: "Proven law", c: false }], exp: "Testable idea." },
+                { id: 5, prompt: "What does an atlas contain?", img: "🗺️", opts: [{ l: "Geopolitical and physical maps", c: true }, { l: "Recipes", c: false }], explanation: "Geography maps." }
+              ],
+              [
+                { id: 1, prompt: "What is peer review in academic publishing?", img: "👥", opts: [{ l: "Evaluation of research by independent expert scholars", c: true }, { l: "Checking grammar with spellcheck", c: false }], explanation: "Expert vetting." },
+                { id: 2, prompt: "What is a primary research source?", img: "📜", opts: [{ l: "Original firsthand data or historical documents", c: true }, { l: "A textbook summary", c: false }], explanation: "Firsthand data." },
+                { id: 3, prompt: "What is qualitative research?", img: "📊", opts: [{ l: "Focusing on descriptive data, interviews, and observations", c: true }, { l: "Counting numerical statistics only", c: false }], explanation: "Descriptive study." },
+                { id: 4, prompt: "What is quantitative research?", img: "📈", opts: [{ l: "Analyzing numerical data using statistical methods", c: true }, { l: "Writing poetry", c: false }], explanation: "Numerical data." },
+                { id: 5, prompt: "What is an abstract in a research paper?", img: "📄", opts: [{ l: "A concise summary of the entire study's findings", c: true }, { l: "The back cover", c: false }], explanation: "Summary abstract." }
+              ],
+              [
+                { id: 1, prompt: "What is plagiarism?", img: "⚠️", opts: [{ l: "Using someone else's work without proper citation", c: true }, { l: "Writing original essays", c: false }], explanation: "Academic theft." },
+                { id: 2, prompt: "What is a control group in scientific experiments?", img: "🧪", opts: [{ l: "The baseline group kept unchanged for comparison", c: true }, { l: "The group receiving experimental treatment", c: false }], explanation: "Experimental baseline." },
+                { id: 3, prompt: "What is an empirical study?", img: "🔬", opts: [{ l: "Research based on direct observation and experimentation", c: true }, { l: "Pure theoretical philosophy", c: false }], explanation: "Observational science." },
+                { id: 4, prompt: "What is a thesis statement in academic writing?", img: "🏛️", opts: [{ l: "The core central argument driving the entire paper", c: true }, { l: "A random concluding sentence", c: false }], explanation: "Central argument." },
+                { id: 5, prompt: "What is academic integrity?", img: "⭐", opts: [{ l: "Honesty and ethical standards in scholarship", c: true }, { l: "Getting 100% grades", c: false }], explanation: "Ethical scholarship." }
+              ],
+              [
+                { id: 1, prompt: "What is a literature review?", img: "📚", opts: [{ l: "A comprehensive survey of prior research on a topic", c: true }, { l: "A fictional novel", c: false }], explanation: "Research survey." },
+                { id: 2, prompt: "What is deductive reasoning?", img: "🧠", opts: [{ l: "Applying general principles to reach a specific conclusion", c: true }, { l: "Guessing randomly", c: false }], explanation: "General to specific." },
+                { id: 3, prompt: "What is inductive reasoning?", img: "💡", opts: [{ l: "Deriving general theories from specific observations", c: true }, { l: "Memorizing facts", c: false }], explanation: "Specific to general." },
+                { id: 4, prompt: "What is a methodological framework?", img: "⚙️", opts: [{ l: "The structured system of methods used in a study", c: true }, { l: "A computer hardware diagram", c: false }], explanation: "Method system." },
+                { id: 5, prompt: "What is citation formatting (APA / MLA)?", img: "📝", opts: [{ l: "Standardized rules for acknowledging reference sources", c: true }, { l: "Font styling choices", c: false }], explanation: "Reference standards." }
+              ],
+              [
+                { id: 1, prompt: "What is an independent variable in experiments?", img: "🔬", opts: [{ l: "The variable manipulated or changed by the researcher", c: true }, { l: "The measured outcome", c: false }], explanation: "Manipulated variable." },
+                { id: 2, prompt: "What is a dependent variable?", img: "📈", opts: [{ l: "The outcome measured and affected during the experiment", c: true }, { l: "The researcher", c: false }], explanation: "Measured outcome." },
+                { id: 3, prompt: "What is peer debriefing in qualitative research?", img: "👥", opts: [{ l: "Discussing findings with fellow researchers to ensure validity", c: true }, { l: "Arguing in class", c: false }], explanation: "Validity check." },
+                { id: 4, prompt: "What is scholarly citation?", img: "🔖", opts: [{ l: "Giving credit to authors within academic texts", c: true }, { l: "Writing footnotes for fun", c: false }], explanation: "Author credit." },
+                { id: 5, prompt: "What is academic publishing?", img: "📰", opts: [{ l: "Releasing peer-reviewed research in professional journals", c: true }, { l: "Posting on TikTok", c: false }], explanation: "Journal release." }
+              ]
+            ];
+            poolData = pools[batchNum - 1];
+          }
+        } 
+        // 4. SENIOR HIGH
+        else if (selectedLevel === "Senior High") {
+          if (top === "Daily Life") {
+            const pools = [
+              [
+                { id: 1, prompt: "What does the 50/30/20 budget rule allocate?", img: "📊", opts: [{ l: "50% Needs, 30% Wants, 20% Savings", c: true }, { l: "50% Savings, 50% Rent", c: false }], exp: "Budgeting rule." },
+                { id: 2, prompt: "What does APR stand for?", img: "💳", opts: [{ l: "Annual Percentage Rate", c: true }, { l: "Advanced Payment Ratio", c: false }], exp: "Loan cost." },
+                { id: 3, prompt: "Why have an emergency fund?", img: "🏠", opts: [{ l: "Cover unexpected expenses", c: true }, { l: "Vacations", c: false }], exp: "Safety net." },
+                { id: 4, prompt: "What is a refundable security deposit?", img: "🔑", opts: [{ l: "Cover property damage", c: true }, { l: "Landlord salary", c: false }], exp: "Lease protection." },
+                { id: 5, prompt: "What does compounding interest mean?", img: "📈", opts: [{ l: "Interest on principal and accumulated interest", c: true }, { l: "Fees", c: false }], exp: "Growth." }
+              ],
+              [
+                { id: 1, prompt: "What is credit score health determined by?", img: "💳", opts: [{ l: "Payment history, credit utilization, and history length", c: true }, { l: "Your shoe size", c: false }], explanation: "Credit factors." },
+                { id: 2, prompt: "What is inflation in economics?", img: "📉", opts: [{ l: "The general increase in prices over time", c: true }, { l: "Money freezing in value", c: false }], explanation: "Price rise." },
+                { id: 3, prompt: "What is renter's insurance designed to protect?", img: "🛡️", opts: [{ l: "Personal belongings and liability inside a rented apartment", c: true }, { l: "The landlord's roof", c: false }], explanation: "Tenant protection." },
+                { id: 4, prompt: "What is a fixed-rate loan versus a variable-rate loan?", img: "💰", opts: [{ l: "Fixed interest remains constant; variable can fluctuate", c: true }, { l: "Both never change", c: false }], explanation: "Interest structures." },
+                { id: 5, prompt: "What is diversification in personal investing?", img: "📊", opts: [{ l: "Spreading investments across assets to reduce risk", c: true }, { l: "Putting all money in one stock", c: false }], explanation: "Risk reduction." }
+              ],
+              [
+                { id: 1, prompt: "What is gross income versus net income?", img: "💵", opts: [{ l: "Gross is total earnings; net is take-home pay after taxes", c: true }, { l: "Net is higher than gross", c: false }], explanation: "Income types." },
+                { id: 2, prompt: "What is a student loan grace period?", img: "⏳", opts: [{ l: "Time after graduation before loan repayment begins", c: true }, { l: "Free money granted forever", c: false }], explanation: "Repayment delay." },
+                { id: 3, prompt: "What is net worth?", img: "💎", opts: [{ l: "Total assets minus total liabilities/debt", c: true }, { l: "Total debt alone", c: false }], explanation: "Financial worth." },
+                { id: 4, prompt: "What is an index fund in investing?", img: "📈", opts: [{ l: "A mutual fund tracking a broad market index", c: true }, { l: "A lottery ticket", c: false }], explanation: "Market tracking." },
+                { id: 5, prompt: "What is a debit card directly linked to?", img: "💳", opts: [{ l: "Your checking account funds", c: true }, { l: "Infinite bank credit", c: false }], explanation: "Checking funds." }
+              ],
+              [
+                { id: 1, prompt: "What is consumer credit utilization ratio?", img: "📊", opts: [{ l: "Amount of credit used compared to total credit limit", c: true }, { l: "Your weekly grocery bill", c: false }], explanation: "Credit usage." },
+                { id: 2, prompt: "What is a lease agreement for an apartment?", img: "📜", opts: [{ l: "A legally binding rental contract", c: true }, { l: "A casual friendly promise", c: false }], explanation: "Rental contract." },
+                { id: 3, prompt: "What is term life insurance?", img: "🛡️", opts: [{ l: "Coverage providing a death benefit for a specific time period", c: true }, { l: "Savings account", c: false }], explanation: "Timed insurance." },
+                { id: 4, prompt: "What is a W-2 tax form in employment?", img: "🧾", opts: [{ l: "Form reporting annual employee wages and taxes withheld", c: true }, { l: "A grocery receipt", c: false }], explanation: "Tax reporting." },
+                { id: 5, prompt: "What is asset depreciation?", img: "🚗", opts: [{ l: "The reduction in value of an asset over time", c: true }, { l: "Asset value doubling", c: false }], explanation: "Value loss." }
+              ],
+              [
+                { id: 1, prompt: "What is bankruptcy in legal finance?", img: "⚖️", opts: [{ l: "A legal proceeding for individuals unable to pay debts", c: true }, { l: "Winning the lottery", c: false }], explanation: "Debt relief." },
+                { id: 2, prompt: "What is a fiduciary financial advisor?", img: "🤝", opts: [{ l: "An advisor legally bound to act in your best financial interest", c: true }, { l: "A stock salesperson", c: false }], explanation: "Fiduciary duty." },
+                { id: 3, prompt: "What is equity in homeownership?", img: "🏡", opts: [{ l: "The market value of a home minus remaining mortgage debt", c: true }, { l: "Monthly electric bills", c: false }], explanation: "Home equity." },
+                { id: 4, prompt: "What is liquidity in finance?", img: "💧", opts: [{ l: "How quickly an asset can be converted into cash", c: true }, { l: "Water bill payments", c: false }], explanation: "Cash conversion." },
+                { id: 5, prompt: "What is a municipal bond?", img: "🏛️", opts: [{ l: "Debt security issued by local governments", c: true }, { l: "Private company stock", c: false }], explanation: "Government bond." }
+              ]
+            ];
+            poolData = pools[batchNum - 1];
+          } else if (top === "Social Media") {
+            const pools = [
+              [
+                { id: 1, prompt: "How do recruiters view public social feeds?", img: "🎓", opts: [{ l: "As professional digital footprint", c: true }, { l: "Ignore", c: false }], exp: "Footprint." },
+                { id: 2, prompt: "What is phishing?", img: "🎣", opts: [{ l: "Deceptive credential theft", c: true }, { l: "Game", c: false }], exp: "Scam." },
+                { id: 3, prompt: "What does open-source permit?", img: "💻", opts: [{ l: "Collaborative code modification", c: true }, { l: "Stealing", c: false }], exp: "Open code." },
+                { id: 4, prompt: "Why audit privacy settings?", img: "🛡️", opts: [{ l: "Control data access", c: true }, { l: "Slow phone", c: false }], exp: "Privacy." },
+                { id: 5, prompt: "Strong cryptographic password?", img: "🔑", opts: [{ l: "High entropy symbols and numbers", c: true }, { l: "Birthday", c: false }], exp: "Entropy." }
+              ],
+              [
+                { id: 1, prompt: "What is a deepfake video?", img: "🤖", opts: [{ l: "AI-generated synthetic media impersonating people", c: true }, { l: "An underwater documentary", c: false }], explanation: "AI synthetic media." },
+                { id: 2, prompt: "What is malware?", img: "🦠", opts: [{ l: "Malicious software designed to damage computer systems", c: true }, { l: "Helpful antivirus", c: false }], explanation: "Harmful software." },
+                { id: 3, prompt: "What is ransomware?", img: "🔒", opts: [{ l: "Malware encrypting files demanding payment for release", c: true }, { l: "Free backup software", c: false }], explanation: "Extortion software." },
+                { id: 4, prompt: "What is a cookie in web browsing?", img: "🍪", opts: [{ l: "Data files stored by browsers tracking user preferences", c: true }, { l: "Baked snacks", c: false }], explanation: "Browser tracking." },
+                { id: 5, prompt: "What is end-to-end encryption?", img: "🔐", opts: [{ l: "Secure communication where only communicating users read messages", c: true }, { l: "Public broadcasting", c: false }], explanation: "Secure messaging." }
+              ],
+              [
+                { id: 1, prompt: "What is intellectual property (IP)?", img: "💡", opts: [{ l: "Creations of the mind protected by copyright or patents", c: true }, { l: "Physical real estate", c: false }], explanation: "Legal creations." },
+                { id: 2, prompt: "What is copyright infringement?", img: "⚖️", opts: [{ l: "Unauthorized use of copyrighted material", c: true }, { l: "Buying official books", c: false }], explanation: "Unauthorized use." },
+                { id: 3, prompt: "What is a virtual private network (VPN)?", img: "🌐", opts: [{ l: "A service encrypting internet traffic and masking IP addresses", c: true }, { l: "A computer monitor", c: false }], explanation: "Encrypted tunnel." },
+                { id: 4, prompt: "What is cyber espionage?", img: "🕵️‍♂️", opts: [{ l: "Using cyberattacks to gain secret state or corporate intelligence", c: true }, { l: "Online gaming tournaments", c: false }], explanation: "Digital spying." },
+                { id: 5, prompt: "What is social engineering in cybersecurity?", img: "🎭", opts: [{ l: "Manipulating people into divulging confidential information", c: true }, { l: "Building social apps", c: false }], explanation: "Human manipulation." }
+              ],
+              [
+                { id: 1, prompt: "What is a zero-day vulnerability?", img: "🚨", opts: [{ l: "An unknown software flaw exploited before developers patch it", c: true }, { l: "A brand new computer", c: false }], explanation: "Unpatched flaw." },
+                { id: 2, prompt: "What is identity theft online?", img: "👤", opts: [{ l: "Stealing personal information to impersonate someone fraudulently", c: true }, { l: "Forgetting your password", c: false }], explanation: "Fraudulent impersonation." },
+                { id: 3, prompt: "What is a firewall in network security?", img: "🧱", opts: [{ l: "A security system monitoring incoming and outgoing network traffic", c: true }, { l: "A heating radiator", c: false }], explanation: "Network barrier." },
+                { id: 4, prompt: "What is botnet activity?", img: "🤖", opts: [{ l: "A network of infected computers controlled remotely by hackers", c: true }, { l: "Automated customer service", c: false }], explanation: "Hacker robot network." },
+                { id: 5, prompt: "What is digital permanence?", img: "⏳", opts: [{ l: "The reality that internet posts and data are nearly impossible to erase completely", c: true }, { l: "Temporary Snapchat stories", c: false }], explanation: "Permanent data." }
+              ],
+              [
+                { id: 1, prompt: "What is a denial-of-service (DoS) attack?", img: "🛑", opts: [{ l: "Overwhelming a server with traffic to render it offline", c: true }, { l: "Shutting down your computer at night", c: false }], explanation: "Traffic overload." },
+                { id: 2, prompt: "What is source code ownership?", img: "📝", opts: [{ l: "Copyright protection governing who can alter software code", c: true }, { l: "Public open parking", c: false }], explanation: "Code rights." },
+                { id: 3, prompt: "What is biometrics in device security?", img: "👁️", opts: [{ l: "Authentication using fingerprints or facial recognition", c: true }, { l: "Typing passwords with a keyboard", c: false }], explanation: "Biological ID." },
+                { id: 4, prompt: "What is a hardware security key?", img: "🔑", opts: [{ l: "A physical USB token required for multi-factor authentication", c: true }, { l: "A door key", c: false }], explanation: "Physical security token." },
+                { id: 5, prompt: "What is cloud storage data redundancy?", img: "☁️", opts: [{ l: "Storing data across multiple servers to prevent loss", c: true }, { l: "Deleting duplicate files", c: false }], explanation: "Backup redundancy." }
+              ]
+            ];
+            poolData = pools[batchNum - 1];
+          } else if (top === "Job Interviews") {
+            const pools = [
+              [
+                { id: 1, prompt: "Purpose of cover letter?", img: "✉️", opts: [{ l: "Tailored narrative connecting skills", c: true }, { l: "Repeat resume", c: false }], exp: "Cover letter." },
+                { id: 2, prompt: "Transferable skills?", img: "💼", opts: [{ l: "Versatile competencies like leadership", c: true }, { l: "Tickets", c: false }], exp: "Skills." },
+                { id: 3, prompt: "Elevator pitch?", img: "⏱️", opts: [{ l: "30-sec summary of value", c: true }, { l: "Song", c: false }], exp: "Pitch." },
+                { id: 4, prompt: "When to send thank-you note?", img: "📧", opts: [{ l: "Within 24 hours", c: true }, { l: "Months later", c: false }], exp: "Timing." },
+                { id: 5, prompt: "STAR method?", img: "⭐", opts: [{ l: "Situation, Task, Action, Result", c: true }, { l: "Sing, Talk, Act", c: false }], exp: "STAR." }
+              ],
+              [
+                { id: 1, prompt: "What is an executive summary in professional portfolios?", img: "📑", opts: [{ l: "A brief overview highlighting key qualifications and career goals", c: true }, { l: "A long autobiography", c: false }], explanation: "Professional summary." },
+                { id: 2, prompt: "How should you negotiate a job offer respectfully?", img: "🤝", opts: [{ l: "Express gratitude, state counter-arguments with market data", c: true }, { l: "Threaten to quit immediately", c: false }], explanation: "Respectful negotiation." },
+                { id: 3, prompt: "What is professional networking?", img: "🌐", opts: [{ l: "Building mutually beneficial relationships across industries", c: true }, { l: "Asking strangers for money", c: false }], explanation: "Professional connections." },
+                { id: 4, prompt: "What is a portfolio in creative and technical fields?", img: "📁", opts: [{ l: "A curated collection showcasing past work projects", c: true }, { l: "A wallet for cash", c: false }], explanation: "Work showcase." },
+                { id: 5, prompt: "Why do companies ask behavioral interview questions?", img: "🧠", opts: [{ l: "Past behavior predicts future performance in similar situations", c: true }, { l: "To waste time", c: false }], explanation: "Predictive behavior." }
+              ],
+              [
+                { id: 1, prompt: "What is a competency-based interview?", img: "🎯", opts: [{ l: "An interview structured around specific required skill sets", c: true }, { l: "A physical sports test", c: false }], explanation: "Skill assessment." },
+                { id: 2, prompt: "How should you handle multiple job offers?", img: "⚖️", opts: [{ l: "Evaluate compensation, culture, growth; communicate transparently", c: true }, { l: "Hide offers from everyone", c: false }], explanation: "Offer evaluation." },
+                { id: 3, prompt: "What is a career trajectory?", img: "📈", opts: [{ l: "The projected path of professional advancement over time", c: true }, { l: "Daily commute route", c: false }], explanation: "Career path." },
+                { id: 4, prompt: "What is mentorship in professional development?", img: "🌱", opts: [{ l: "Guidance provided by an experienced senior professional", c: true }, { l: "Competing against peers", c: false }], explanation: "Senior guidance." },
+                { id: 5, prompt: "What is a professional reference check?", img: "📞", opts: [{ l: "Contacting past supervisors to verify work ethic and character", c: true }, { l: "Calling random friends", c: false }], explanation: "Reference verification." }
+              ],
+              [
+                { id: 1, prompt: "What is continuous professional development (CPD)?", img: "📚", opts: [{ l: "Ongoing acquisition of new skills and knowledge throughout a career", c: true }, { l: "Stopping learning after college", c: false }], explanation: "Lifelong learning." },
+                { id: 2, prompt: "What is an informational interview?", img: "☕", opts: [{ l: "Interviewing an industry expert to learn about their career field", c: true }, { l: "A formal job hiring test", c: false }], explanation: "Career exploration." },
+                { id: 3, prompt: "What is imposter syndrome in career progression?", img: "🎭", opts: [{ l: "Persistent self-doubt regarding one's achievements and competence", c: true }, { l: "True professional incompetence", c: false }], explanation: "Self-doubt phenomenon." },
+                { id: 4, prompt: "How do you maintain work-life balance in demanding careers?", img: "⚖️", opts: [{ l: "Setting healthy boundaries, prioritizing rest, and managing time", c: true }, { l: "Working 24 hours a day", c: false }], explanation: "Healthy boundaries." },
+                { id: 5, prompt: "What is a personal brand in the job market?", img: "🌟", opts: [{ l: "How you uniquely present your professional identity and reputation", c: true }, { l: "A clothing brand logo", c: false }], explanation: "Professional identity." }
+              ],
+              [
+                { id: 1, prompt: "What is cross-functional collaboration?", img: "🤝", opts: [{ l: "Working alongside team members from different departments", c: true }, { l: "Working completely alone", c: false }], explanation: "Departmental teamwork." },
+                { id: 2, prompt: "What is leadership presence (executive presence)?", img: "👑", opts: [{ l: "The ability to project confidence, poise, and decisiveness", c: true }, { l: "Shouting loudly in meetings", c: false }], explanation: "Confident poise." },
+                { id: 3, prompt: "What is a milestone in project management?", img: "🚩", opts: [{ l: "A significant checkpoint or goal marker in a project timeline", c: true }, { l: "A traffic sign", c: false }], explanation: "Goal checkpoint." },
+                { id: 4, prompt: "What is constructive critique during performance reviews?", img: "💬", opts: [{ l: "Actionable feedback aimed at professional growth", c: true }, { l: "Personal insult", c: false }], explanation: "Growth feedback." },
+                { id: 5, prompt: "What is adaptability in modern workplaces?", img: "🔄", opts: [{ l: "The capacity to adjust smoothly to changing priorities and tools", c: true }, { l: "Refusing to change methods", c: false }], explanation: "Flexibility." }
               ]
             ];
             poolData = pools[batchNum - 1];
@@ -672,390 +712,366 @@ export default function Home() {
 
   const currentQuizModules = getCurrentLevelQuizzes();
 
-  // DYNAMIC STUDY MATERIALS WITH REAL CONTENT, VOCABULARY, ETYMOLOGY, AND GRAMMAR MECHANICS FOR ALL LEVELS AND TOPICS
+  // DYNAMIC STUDY MATERIALS WITH SHORT, FUN, LEVEL-SPECIFIC READING, VOCAB, AND GRAMMAR
   const getDynamicStudyGuide = (lvl: string, top: string): StudyMaterial => {
     const targetId = `${lvl}-${top}`.replace(/\s+/g, "");
 
     let sampleParagraphs = [
-      `Welcome to your primary textbook chapter on ${top}. At the ${lvl} proficiency tier, mastering this subject requires deep immersion into foundational concepts rather than superficial memorization. Scholars and professionals recognize that structured comprehension of this domain serves as the bedrock for long-term fluency.`,
-      `Historically, human communication, societal frameworks, and procedural methodologies surrounding ${top} have undergone massive structural transformations. In contemporary environments, individuals must skillfully balance strict adherence to canonical rules with agile, context-aware execution.`,
-      `As you read through this chapter, pay meticulous attention to terminology, stylistic register, and situational appropriateness. Each successive section provides exhaustive analytical commentary designed to elevate your cognitive mastery.`
+      `Welcome to ${top}! Learning about this is super fun and helps you speak English with confidence every single day.`,
+      `Whether you are chatting with friends or writing a story, knowing how to use the right words makes all your ideas shine bright!`
     ];
 
     let vocabList: VocabularyItem[] = [
-      { word: "Proficiency", phonetic: "/prəˈfɪʃənsi/", partOfSpeech: "Noun", definition: "A high degree of competence or skill; expertness.", example: "Her proficiency in English enabled her to negotiate contracts globally.", illustrationIcon: "🌟" },
-      { word: "Methodology", phonetic: "/ˌmɛθəˈdɒlədʒi/", partOfSpeech: "Noun", definition: "A system of methods used in a particular area of study or activity.", example: "The research team adopted a rigorous experimental methodology.", illustrationIcon: "📊" },
-      { word: "Nuance", phonetic: "/ˈnuɑːns/", partOfSpeech: "Noun", definition: "A subtle difference in shade of meaning, expression, or sound.", example: "Translators must appreciate the cultural nuances of poetry.", illustrationIcon: "🎨" }
+      { word: "Fun", phonetic: "/fʌn/", partOfSpeech: "Noun / Adj", definition: "Enjoyment, amusement, or lighthearted pleasure.", example: "Learning new words together is so much fun!", illustrationIcon: "🎉" },
+      { word: "Smart", phonetic: "/smɑːrt/", partOfSpeech: "Adjective", definition: "Clever, bright, or quick-witted.", example: "You make smart choices when you practice English.", illustrationIcon: "💡" },
+      { word: "Friend", phonetic: "/frɛnd/", partOfSpeech: "Noun", definition: "A person whom one knows and with whom one has a bond of mutual affection.", example: "Practice your new words with a friendly study partner.", illustrationIcon: "🤝" }
     ];
 
     let grammarItem: GrammarRule = {
-      ruleTitle: "Advanced Syntactical Coordination & Register Maintenance",
-      explanation: "When articulating complex ideas across formal or daily contexts, maintaining consistent tense harmony and appropriate stylistic register prevents ambiguity and strengthens persuasive impact.",
-      correctExample: "Had the committee reviewed the proposal earlier, the oversight would have been mitigated.",
-      incorrectExample: "If the committee reviews the proposal earlier, the oversight has been mitigated.",
-      tip: "Always match your modal auxiliaries and conditional markers to the temporal reality of the scenario."
+      ruleTitle: "Making Clear and Happy Sentences",
+      explanation: "Every great sentence needs a clear subject and a lively action word to tell a wonderful story.",
+      correctExample: "We practice speaking English every afternoon.",
+      incorrectExample: "We practicing English afternoon.",
+      tip: "Keep your sentences short, sweet, and punchy for easy reading!"
     };
 
-    let practicalText = `In a real-world scenario involving ${top}, begin by assessing the environmental constraints and audience expectations. Apply the core vocabulary and syntactical rules outlined above to draft your response or action plan clearly, ensuring zero ambiguity.`;
+    let practicalText = `Try using today's new vocabulary words in a fun sentence with someone next to you right now!`;
 
-    // Tailor content specifically based on Level and Topic
+    // LEVEL & TOPIC SPECIFIC SHORT, FUN CONTENT
     if (lvl === "Kindergarten") {
       if (top === "Daily Life") {
         sampleParagraphs = [
-          `Every day is a wonderful adventure! In our daily lives, we wake up in the morning, brush our shiny teeth, eat healthy breakfasts, and get dressed for school.`,
-          `We use kind words like 'please' and 'thank you' when playing with our friends and sharing toys. Learning our daily routines helps us grow strong, happy, and independent!`,
-          `Look around your room right now: what colors do you see? What toys are you playing with? Naming everyday items is the first big step to speaking wonderful English!`
+          `Every day is a joyful adventure! From brushing our teeth in the morning to hugging our teddy bears at night, our daily routine is full of happy moments.`,
+          `We use polite words like 'please' and 'thank you' when sharing toys with our best friends. Let's explore our favorite daily habits together!`
         ];
         vocabList = [
-          { word: "Morning", phonetic: "/ˈmɔːrnɪŋ/", partOfSpeech: "Noun", definition: "The early part of the day, lasting from sunrise to noon.", example: "We eat a healthy breakfast every morning.", illustrationIcon: "🌅" },
-          { word: "Smile", phonetic: "/smaɪl/", partOfSpeech: "Verb / Noun", definition: "To form one's features into a pleased or friendly expression.", example: "Give a big smile when you greet your teacher!", illustrationIcon: "😊" },
-          { word: "Share", phonetic: "/ʃɛər/", partOfSpeech: "Verb", definition: "To use or give something jointly with others.", example: "It is fun to share building blocks with friends.", illustrationIcon: "🧸" }
+          { word: "Morning", phonetic: "/ˈmɔːrnɪŋ/", partOfSpeech: "Noun", definition: "The sunny start of a brand new day.", example: "We eat a yummy breakfast every morning.", illustrationIcon: "🌅" },
+          { word: "Smile", phonetic: "/smaɪl/", partOfSpeech: "Verb", definition: "To turn your mouth up when you feel happy.", example: "Show a big happy smile to your teacher!", illustrationIcon: "😊" },
+          { word: "Play", phonetic: "/pleɪ/", partOfSpeech: "Verb", definition: "To engage in games and fun activities.", example: "Let's play blocks together after lunch.", illustrationIcon: "🧸" }
         ];
         grammarItem = {
-          ruleTitle: "Using 'This' and 'That' for Everyday Objects",
-          explanation: "Use 'this' for things close to you, and 'that' for things further away. Combine them with simple verbs to describe your daily surroundings.",
-          correctExample: "This is my red apple, and that is your yellow banana.",
-          incorrectExample: "This apple far away, that apple near me.",
-          tip: "Point your finger when you say 'this' or 'that' to make learning fun and active!"
+          ruleTitle: "Using 'This is...'",
+          explanation: "Point at things close to you to show them off!",
+          correctExample: "This is my favorite red ball.",
+          incorrectExample: "Ball is this me.",
+          tip: "Point your finger proudly when saying 'This is'!"
         };
-        practicalText = `Practice pointing at three objects in your house right now (like a door, a chair, or a book) and say aloud: 'This is a door!'`;
+        practicalText = `Point at your shoe right now and say: 'This is my shoe!'`;
       } else if (top === "Social Media") {
         sampleParagraphs = [
-          `Even when we talk online or look at pictures on a tablet, good manners are super important! Being nice to others makes the digital world a happy place.`,
-          `Always ask a mom, dad, or teacher before clicking on games or videos. Remember that real-world friends and outdoor games are just as special as screen time!`,
-          `Sharing digital smiles, sending kind emojis, and playing safe games online makes everyone feel loved and protected.`
+          `Even when looking at fun pictures on a tablet, being kind to others is super important! Online friends like reading nice messages.`,
+          `Always play digital games with a grown-up nearby to keep everything safe, happy, and cheerful.`
         ];
         vocabList = [
-          { word: "Kindness", phonetic: "/ˈkaɪndnɪs/", partOfSpeech: "Noun", definition: "The quality of being friendly, generous, and considerate.", example: "Sending kind messages online brightens someone's day.", illustrationIcon: "💖" },
-          { word: "Screen", phonetic: "/skriːn/", partOfSpeech: "Noun", definition: "The flat glass surface of a phone, tablet, or television.", example: "Turn off the screen before bedtime.", illustrationIcon: "📱" },
-          { word: "Safe", phonetic: "/seɪf/", partOfSpeech: "Adjective", definition: "Protected from danger or harm.", example: "Always stay safe by playing online with a grown-up.", illustrationIcon: "🛡️" }
+          { word: "Kind", phonetic: "/kaɪnd/", partOfSpeech: "Adjective", definition: "Being nice and caring toward others.", example: "Send kind emojis to cheer up friends.", illustrationIcon: "💖" },
+          { word: "Screen", phonetic: "/skriːn/", partOfSpeech: "Noun", definition: "The glass window on a phone or tablet.", example: "Look at the bright screen for our learning game.", illustrationIcon: "📱" },
+          { word: "Safe", phonetic: "/seɪf/", partOfSpeech: "Adjective", definition: "Protected and feeling cozy.", example: "Playing games with parents keeps us safe.", illustrationIcon: "🛡️" }
         ];
         grammarItem = {
-          ruleTitle: "Polite Request Words ('May I')",
-          explanation: "When asking to use a device or play a digital game, always use polite helper words like 'May I please...'",
-          correctExample: "May I please play the alphabet learning game now?",
-          incorrectExample: "Give me tablet right now!",
-          tip: "Starting sentences with 'May I please' shows wonderful manners!"
+          ruleTitle: "Polite Asking ('May I')",
+          explanation: "Always use polite helper words when asking to use a device.",
+          correctExample: "May I please play the animal sound game?",
+          incorrectExample: "Give me phone right now!",
+          tip: "Saying 'May I please' makes grown-ups smile!"
         };
-        practicalText = `Practice asking a grown-up for a turn on a device using your best polite voice: 'May I please look at the picture book?'`;
+        practicalText = `Ask a parent politely: 'May I please see the picture book?'`;
       } else {
-        // Academic & Debate for Kindergarten
         sampleParagraphs = [
-          `Thinking and asking questions is how little explorers learn about the big world! Why is the sky blue? Why do leaves fall down?`,
-          `When we talk together in class, we take turns speaking and listen carefully while our friends share their ideas. Every smart question counts!`,
-          `Exploring puzzles, sorting shapes by color, and counting blocks helps our brains grow stronger every single day.`
+          `Little thinkers love asking 'Why?' and 'What?' about the wonderful world around us!`,
+          `Sorting shapes, counting colorful blocks, and listening to stories helps our curious brains grow big and strong.`
         ];
         vocabList = [
-          { word: "Question", phonetic: "/ˈkwɛstʃən/", partOfSpeech: "Noun", definition: "A sentence or inquiry asked in order to find out information.", example: "She raised her hand to ask a clever question about stars.", illustrationIcon: "❓" },
-          { word: "Listen", phonetic: "/ˈlɪsən/", partOfSpeech: "Verb", definition: "To give one's attention to a sound or speaker.", example: "Listen quietly when your teacher explains the story.", illustrationIcon: "👂" },
-          { word: "Think", phonetic: "/θɪŋk/", partOfSpeech: "Verb", definition: "To have a mental thought, idea, or opinion.", example: "Take a moment to think before solving the puzzle.", illustrationIcon: "🤔" }
+          { word: "Ask", phonetic: "/æsk/", partOfSpeech: "Verb", definition: "To put a question to someone.", example: "Raise your hand to ask a smart question.", illustrationIcon: "❓" },
+          { word: "Listen", phonetic: "/ˈlɪsən/", partOfSpeech: "Verb", definition: "To pay attention with your ears.", example: "Listen closely to the fun story.", illustrationIcon: "👂" },
+          { word: "Think", phonetic: "/θɪŋk/", partOfSpeech: "Verb", definition: "To make pictures or ideas in your head.", example: "Think hard to solve the puzzle.", illustrationIcon: "🤔" }
         ];
         grammarItem = {
-          ruleTitle: "Asking 'Why' and 'What'",
-          explanation: "Use question words at the beginning of your sentences when you want to discover something new.",
-          correctExample: "What is this shape, and why is it round?",
-          incorrectExample: "Shape is what why round?",
-          tip: "Raise your voice slightly at the end of a question sentence!"
+          ruleTitle: "Starting Questions with 'What'",
+          explanation: "Use 'What' when you want to discover the name of something fun.",
+          correctExample: "What is this cute little animal?",
+          incorrectExample: "Animal is what this?",
+          tip: "Let your voice go up at the end of a question!"
         };
-        practicalText = `Ask a friend or parent a 'What' question about your favorite animal today!`;
+        practicalText = `Ask a friend: 'What is your favorite color?'`;
       }
     } else if (lvl === "Primary School") {
       if (top === "Daily Life") {
         sampleParagraphs = [
-          `Primary school life is filled with exciting classes, sports recitals, science experiments, and delicious cafeteria lunches with friends.`,
-          `Organizing your school backpack, managing homework schedules, and working collaboratively on team projects builds essential life habits.`,
-          `Every subject—from mathematics to creative writing—opens up new pathways for personal growth and discovery.`
+          `School days are packed with exciting science experiments, playground games, and reading adventures with classmates!`,
+          `Organizing your backpack and finishing homework on time gives you extra time to play outside.`
         ];
         vocabList = [
-          { word: "Schedule", phonetic: "/ˈʃɛdjuːl/", partOfSpeech: "Noun", definition: "A plan for carrying out a process or giving instructions.", example: "Check your daily class schedule before packing your bag.", illustrationIcon: "📅" },
-          { word: "Experiment", phonetic: "/ɪkˈspɛrɪmənt/", partOfSpeech: "Noun", definition: "A scientific procedure undertaken to make a discovery.", example: "We conducted a fun water-filtration experiment in science class.", illustrationIcon: "🔬" },
-          { word: "Collaborate", phonetic: "/kəˈlæbəreɪt/", partOfSpeech: "Verb", definition: "To work jointly on an activity or creative project.", example: "Classmates collaborate to build a model volcano.", illustrationIcon: "👥" }
+          { word: "Schedule", phonetic: "/ˈʃɛdjuːl/", partOfSpeech: "Noun", definition: "A fun plan for your daily classes.", example: "Check your school schedule for art class today.", illustrationIcon: "📅" },
+          { word: "Experiment", phonetic: "/ɪkˈspɛrɪmənt/", partOfSpeech: "Noun", definition: "A cool test to discover how things work.", example: "We made a fizzy volcano experiment in science.", illustrationIcon: "🔬" },
+          { word: "Team", phonetic: "/tiːm/", partOfSpeech: "Noun", definition: "A group playing or working together.", example: "Our soccer team won the recess match!", illustrationIcon: "⚽" }
         ];
         grammarItem = {
-          ruleTitle: "Present Simple Tense for Daily Routines",
-          explanation: "Use the present simple tense to describe habits, routines, and permanent facts in your daily school life.",
-          correctExample: "I walk to school every morning, and my friend rides a bicycle.",
-          incorrectExample: "I walking to school yesterday, and my friend ride bike.",
-          tip: "Add an 's' to the verb when talking about he, she, or it (e.g., 'He studies hard')."
+          ruleTitle: "Present Simple for Daily Habits",
+          explanation: "Use simple action verbs to talk about things you do every school day.",
+          correctExample: "I pack my lunchbox every morning before school.",
+          incorrectExample: "I packing lunchbox yesterday morning.",
+          tip: "Add an 's' for he/she/it (e.g., 'She loves art class')."
         };
-        practicalText = `Write down three sentences describing your morning routine using the present simple tense.`;
+        practicalText = `Tell a partner two things you do every morning before school.`;
       } else if (top === "Social Media") {
         sampleParagraphs = [
-          `The internet and social platforms allow us to connect with distant relatives, watch educational videos, and share creative artwork with the world.`,
-          `However, being a smart digital citizen means protecting your personal privacy, avoiding strangers, and recognizing cyberbullying.`,
-          `Balancing screen time with outdoor sports and reading ensures a healthy, joyful lifestyle.`
+          `Using computers and learning apps is a fantastic way to explore geography, art, and science from home.`,
+          `Being a smart digital citizen means keeping passwords secret and treating every online classmate with respect.`
         ];
         vocabList = [
-          { word: "Password", phonetic: "/ˈpæswɜːrd/", partOfSpeech: "Noun", definition: "A secret word or phrase must be used to gain admission to a computer system.", example: "Never share your secure game password with anyone.", illustrationIcon: "🔑" },
-          { word: "Bullying", phonetic: "/ˈbʊliɪŋ/", partOfSpeech: "Noun", definition: "The use of superior strength or influence to intimidate someone.", example: "Report online bullying immediately to a trusted teacher.", illustrationIcon: "🛡️" },
-          { word: "Balance", phonetic: "/ˈbæləns/", partOfSpeech: "Noun", definition: "An even distribution of weight or time enabling stability.", example: "Maintain a healthy balance between video games and homework.", illustrationIcon: "⚖️" }
+          { word: "Password", phonetic: "/ˈpæswɜːrd/", partOfSpeech: "Noun", definition: "A secret key to protect your account.", example: "Keep your gaming password safe and secret.", illustrationIcon: "🔑" },
+          { word: "Respect", phonetic: "/rɪˈspɛkt/", partOfSpeech: "Noun", definition: "Showing polite regard for others.", example: "Show respect in all online chat rooms.", illustrationIcon: "⭐" },
+          { word: "Browse", phonetic: "/braʊz/", partOfSpeech: "Verb", definition: "To look through web pages casually.", example: "Browse safe kids' encyclopedia sites for homework.", illustrationIcon: "🌐" }
         ];
         grammarItem = {
-          ruleTitle: "Imperative Sentences for Online Safety",
-          explanation: "Imperative sentences give direct instructions, warnings, or advice. They start with an action verb.",
-          correctExample: "Never accept friend requests from unknown online accounts.",
-          incorrectExample: "You should never accepting unknown requests maybe.",
-          tip: "Imperative commands are direct and essential for online safety rules!"
+          ruleTitle: "Direct Safety Commands",
+          explanation: "Use imperative verbs starting sentences to give clear safety rules.",
+          correctExample: "Never share your home address online.",
+          incorrectExample: "You shouldn't ever sharing addresses.",
+          tip: "Start right with an action verb like 'Stop', 'Ask', or 'Protect'!"
         };
-        practicalText = `Create three golden rules for online safety starting with action verbs like 'Protect', 'Check', and 'Ask'.`;
+        practicalText = `Make up one golden rule for internet safety using an action verb.`;
       } else {
-        // Academic & Debate for Primary School
         sampleParagraphs = [
-          `Academic debate teaches students how to research facts, organize logical arguments, and speak with confidence in front of an audience.`,
-          `Instead of arguing with emotions, successful speakers present clear evidence, respect opposing viewpoints, and answer questions politely.`,
-          `Mastering public speaking skills transforms nervous butterflies into powerful, persuasive communicators.`
+          `Debate club is where fun meets big ideas! Students learn to research cool facts and present winning arguments.`,
+          `Great speakers use polite words and solid facts to prove their point during school debates.`
         ];
         vocabList = [
-          { word: "Argument", phonetic: "/ˈɑːrɡjumənt/", partOfSpeech: "Noun", definition: "A reason or set of reasons given with the aim of persuading others.", example: "Her argument supporting school recycling was very convincing.", illustrationIcon: "📝" },
-          { word: "Evidence", phonetic: "/ˈɛvɪdəns/", partOfSpeech: "Noun", definition: "The available body of facts indicating whether a belief is true.", example: "Provide factual evidence to support your science claim.", illustrationIcon: "🔍" },
-          { word: "Confident", phonetic: "/ˈkɒnfɪdənt/", partOfSpeech: "Adjective", definition: "Feeling or showing certainty about one's abilities or qualities.", example: "Stand tall and speak in a confident voice during presentations.", illustrationIcon: "🎤" }
+          { word: "Evidence", phonetic: "/ˈɛvɪdəns/", partOfSpeech: "Noun", definition: "Facts that prove something is true.", example: "Bring good evidence to win the debate.", illustrationIcon: "🔍" },
+          { word: "Opinion", phonetic: "/əˈpɪnjən/", partOfSpeech: "Noun", definition: "What you think or feel about something.", example: "Everyone can share their opinion politely.", illustrationIcon: "💭" },
+          { word: "Clap", phonetic: "/klæp/", partOfSpeech: "Verb", definition: "To strike hands together in applause.", example: "Clap loudly for both debate teams!", illustrationIcon: "👏" }
         ];
         grammarItem = {
-          ruleTitle: "Using Conjunctions ('Because', 'Although', 'However')",
-          explanation: "Conjunctions connect contrasting or explanatory ideas together, making your academic arguments sound mature and reasoned.",
-          correctExample: "We should plant more trees because they clean the air we breathe.",
-          incorrectExample: "We plant trees. Clean air is happening.",
-          tip: "Use 'because' to explain your reasons, and 'however' to introduce a different perspective!"
+          ruleTitle: "Using 'Because' for Reasons",
+          explanation: "Always back up your fun ideas by explaining 'because'!",
+          correctExample: "Reading books is fun because you discover new worlds.",
+          incorrectExample: "Books are fun so new worlds.",
+          tip: "'Because' is your best friend when explaining why you think something!"
         };
-        practicalText = `Formulate a short debate statement about whether homework is beneficial using the word 'because'.`;
+        practicalText = `Complete this sentence aloud: 'Recess is the best part of the day because...'`;
       }
     } else if (lvl === "Junior High") {
       if (top === "Daily Life") {
         sampleParagraphs = [
-          `Junior high school introduces greater independence, complex transit navigation, time management, and extracurricular commitments.`,
-          `Whether reading train timetables, budgeting weekly pocket money, or balancing science labs with sports practice, practical life skills take center stage.`,
-          `Developing effective personal organization prevents stress and empowers students to excel in both academics and social life.`
+          `Junior high brings new freedom: catching city transit, managing club schedules, and organizing independent study timetables.`,
+          `Balancing academic responsibilities with hobbies builds essential life habits that set you up for future success.`
         ];
         vocabList = [
-          { word: "Independent", phonetic: "/ˌɪndɪˈpɛndənt/", partOfSpeech: "Adjective", definition: "Free from outside control; not depending on another's authority.", example: "Catching the public bus alone made him feel truly independent.", illustrationIcon: "🚌" },
-          { word: "Budget", phonetic: "/ˈbʌdʒɪt/", partOfSpeech: "Noun", definition: "An estimate of income and expenditure for a set period of time.", example: "She created a weekly budget for lunch money and school supplies.", illustrationIcon: "💳" },
-          { word: "Timetable", phonetic: "/ˈtaɪmˌteɪbəl/", partOfSpeech: "Noun", definition: "A chart showing when events, trains, or classes are scheduled to take place.", example: "Check the railway timetable carefully before arriving at the platform.", illustrationIcon: "🚆" }
+          { word: "Independent", phonetic: "/ˌɪndɪˈpɛndənt/", partOfSpeech: "Adjective", definition: "Doing things on your own without constant help.", example: "Managing my own study schedule makes me feel independent.", illustrationIcon: "🚀" },
+          { word: "Budget", phonetic: "/ˈbʌdʒɪt/", partOfSpeech: "Noun", definition: "A smart plan for spending and saving allowance money.", example: "He set a weekly budget for snacks and stationery.", illustrationIcon: "💳" },
+          { word: "Timetable", phonetic: "/ˈtaɪmˌteɪbəl/", partOfSpeech: "Noun", definition: "A schedule showing times for classes or transit.", example: "Check the bus timetable before heading out.", illustrationIcon: "🚌" }
         ];
         grammarItem = {
-          ruleTitle: "Modal Verbs of Obligation ('Must', 'Should', 'Have to')",
-          explanation: "Modal verbs express necessity, advice, or rules in daily situations. 'Must' indicates strict obligation, while 'should' offers recommendations.",
-          correctExample: "Students must submit their science projects by Friday afternoon.",
-          incorrectExample: "Students must to submitting their science projects yesterday.",
-          tip: "Never add an 's' or '-ed' to modal verbs; they remain in their base form!"
+          ruleTitle: "Modal Verbs ('Must' vs 'Should')",
+          explanation: "Use 'must' for strict rules and 'should' for great recommendations.",
+          correctExample: "Students must arrive on time; they should review notes nightly.",
+          incorrectExample: "Students must to arriving early.",
+          tip: "Modals never take an 's' in the third person!"
         };
-        practicalText = `Write three rules for your classroom or study room using 'must', 'should', and 'don't have to'.`;
+        practicalText = `Write two daily rules for your study routine using 'must' and 'should'.`;
       } else if (top === "Social Media") {
         sampleParagraphs = [
-          `In junior high, digital communication expands through messaging apps, shared video platforms, and collaborative school forums.`,
-          `Understanding algorithmic feeds, recognizing digital manipulation, and protecting one's mental health from cyber pressure is vital.`,
-          `A clean digital footprint created during these years builds a trustworthy online reputation for future academic and career milestones.`
+          `Navigating chat groups, video feeds, and digital footprints requires smart awareness of algorithms and online privacy.`,
+          `Protecting your personal data ensures a positive and secure digital reputation.`
         ];
         vocabList = [
-          { word: "Algorithm", phonetic: "/ˈælɡərɪðəm/", partOfSpeech: "Noun", definition: "A process or set of rules to be followed in calculations by computers.", example: "Social media algorithms curate content based on your watch history.", illustrationIcon: "🤖" },
-          { word: "Reputation", phonetic: "/ˌrɛpjuˈteɪʃən/", partOfSpeech: "Noun", definition: "The beliefs or opinions held about someone or something.", example: "Posting respectful comments protects your online reputation.", illustrationIcon: "⭐" },
-          { word: "Cipher", phonetic: "/ˈsaɪfər/", partOfSpeech: "Noun / Verb", definition: "A secret or disguised way of writing; a code.", example: "Encryption ciphers protect private messages from interception.", illustrationIcon: "🔐" }
+          { word: "Algorithm", phonetic: "/ˈælɡərɪðəm/", partOfSpeech: "Noun", definition: "Code that decides what posts appear in your feed.", example: "The video algorithm recommended a cool science clip.", illustrationIcon: "🤖" },
+          { word: "Reputation", phonetic: "/ˌrɛpjuˈteɪʃən/", partOfSpeech: "Noun", definition: "How others view your character online and offline.", example: "Maintain a positive digital reputation.", illustrationIcon: "⭐" },
+          { word: "Filter", phonetic: "/ˈfɪltər/", partOfSpeech: "Verb / Noun", definition: "To sort or screen out unwanted content.", example: "Filter out negative comments to protect your peace.", illustrationIcon: "🛡️" }
         ];
         grammarItem = {
-          ruleTitle: "Conditional Sentences (First and Second Conditionals)",
-          explanation: "Use conditionals to talk about possible future events or imaginary situations in the digital sphere.",
-          correctExample: "If you share your password online, your account might get hacked.",
-          incorrectExample: "If you will share your password, your account got hacked.",
-          tip: "First conditional uses Present Simple in the 'if' clause and Future Simple ('will') in the main clause."
+          ruleTitle: "First Conditional for Digital Choices",
+          explanation: "Talk about real future consequences using 'If + present, will + verb'.",
+          correctExample: "If you adjust your privacy settings, your personal data will stay secure.",
+          incorrectExample: "If you will adjust settings, data stays safe.",
+          tip: "Never put 'will' directly after the word 'if'!"
         };
-        practicalText = `Complete this conditional sentence: 'If I encounter cyberbullying online, I will...'`;
+        practicalText = `Complete: 'If I see spam online, I will...'`;
       } else if (top === "Job Interviews") {
         sampleParagraphs = [
-          `Preparing for early part-time jobs, student council elections, or scholarship interviews requires professional etiquette and clear self-presentation.`,
-          `Learning how to craft a simple student resume, maintain strong eye contact, and answer situational questions builds early career confidence.`,
-          `First impressions matter immensely in professional environments; punctuality and courtesy set successful candidates apart.`
+          `Stepping into part-time job applications or student council elections requires professional etiquette, punctuality, and a polished resume.`,
+          `Making a stellar first impression starts with firm handshakes and clear, confident communication.`
         ];
         vocabList = [
-          { word: "Punctual", phonetic: "/ˈpʌŋktʃuəl/", partOfSpeech: "Adjective", definition: "Happening or doing something at the agreed or proper time; prompt.", example: "Always arrive ten minutes early to make a punctual impression.", illustrationIcon: "⏰" },
-          { word: "Resume", phonetic: "/ˈrɛzʊmeɪ/", partOfSpeech: "Noun", definition: "A brief account of a person's education, qualifications, and past experience.", example: "He listed his volunteer work and school club roles on his student resume.", illustrationIcon: "📄" },
-          { word: "Candidate", phonetic: "/ˈkændɪdɪt/", partOfSpeech: "Noun", definition: "A person who applies for a job or is nominated for an election.", example: "The manager interviewed three qualified candidates for the bookstore assistant role.", illustrationIcon: "👔" }
+          { word: "Punctual", phonetic: "/ˈpʌŋktʃuəl/", partOfSpeech: "Adjective", definition: "Arriving exactly on time.", example: "Being punctual shows great respect for interviewers.", illustrationIcon: "⏰" },
+          { word: "Resume", phonetic: "/ˈrɛzʊmeɪ/", partOfSpeech: "Noun", definition: "A summary of your skills, awards, and school achievements.", example: "List your volunteer work on your student resume.", illustrationIcon: "📄" },
+          { word: "Candidate", phonetic: "/ˈkændɪdɪt/", partOfSpeech: "Noun", definition: "A person applying for a role.", example: "The hiring manager interviewed three eager candidates.", illustrationIcon: "👔" }
         ];
         grammarItem = {
-          ruleTitle: "Polite Inquiries and Indirect Questions",
-          explanation: "Indirect questions sound much more polite in professional interviews than direct demands.",
-          correctExample: "Could you please tell me what the core responsibilities of this role involve?",
-          incorrectExample: "Tell me what you want me to do right now.",
-          tip: "Start indirect questions with phrases like 'I would like to know...' or 'Could you explain...'"
+          ruleTitle: "Polite Indirect Questions",
+          explanation: "Sound ultra-professional in interviews by softening direct questions.",
+          correctExample: "Could you please tell me what the main duties of this role are?",
+          incorrectExample: "What do you want me to do?",
+          tip: "Start with 'Could you tell me...' for instant professional charm."
         };
-        practicalText = `Practice asking an interviewer about working hours using an indirect question format.`;
+        practicalText = `Practice asking about working hours politely using an indirect question format.`;
       } else {
-        // Academic & Debate for Junior High
         sampleParagraphs = [
-          `Junior high academic debate hones critical thinking by forcing students to research both sides of complex global topics.`,
-          `Structuring rebuttals, referencing reliable databases, and avoiding logical fallacies transforms casual disputes into rigorous intellectual discourse.`,
-          `Clear cross-examination techniques teach debaters how to listen intently and dismantle weak assertions with factual evidence.`
+          `Academic debate builds sharp critical thinking by challenging students to argue both sides of current global topics.`,
+          `Structuring clear rebuttals and citing solid factual evidence wins debates with elegance and logic.`
         ];
         vocabList = [
-          { word: "Rebuttal", phonetic: /rɪˈbʌtəl/, partOfSpeech: "Noun", definition: "An instance of answering back or refuting an opponent's argument.", example: "Her sharp rebuttal exposed a flaw in the opposing team's statistics.", illustrationIcon: "⚔️" },
-          { word: "Fallacy", phonetic: "/ˈfæləsi/", partOfSpeech: "Noun", definition: "A mistaken belief, especially one based on unsound argument.", example: "Assuming correlation equals causation is a common logical fallacy.", illustrationIcon: "⚠️" },
-          { word: "Database", phonetic: "/ˈdeɪtəˌbeɪs/", partOfSpeech: "Noun", definition: "A structured set of data held in a computer, especially one accessible in various ways.", example: "Academic databases provide peer-reviewed research papers for debate prep.", illustrationIcon: "🗄️" }
+          { word: "Rebuttal", phonetic: "/rɪˈbʌtəl/", partOfSpeech: "Noun", definition: "A smart reply dismantling an opponent's point.", example: "Her sharp rebuttal won over the judges instantly.", illustrationIcon: "⚔️" },
+          { word: "Evidence", phonetic: "/ˈɛvɪdəns/", partOfSpeech: "Noun", definition: "Data and facts supporting your claim.", example: "Always cite verified evidence in debates.", illustrationIcon: "📊" },
+          { word: "Persuade", phonetic: "/pərˈsweɪd/", partOfSpeech: "Verb", definition: "To convince someone through logic.", example: "Strong speeches persuade audiences effectively.", illustrationIcon: "🎤" }
         ];
         grammarItem = {
-          ruleTitle: "Passive Voice in Academic Research",
-          explanation: "Academic writing often utilizes the passive voice to emphasize objective facts and findings rather than personal opinions.",
-          correctExample: "Extensive research was conducted across multiple scientific databases.",
-          incorrectExample: "I did a lot of research on my computer yesterday.",
-          tip: "Use passive voice when the action is more important than who performed it!"
+          ruleTitle: "Expressing Contrast ('Whereas' vs 'Although')",
+          explanation: "Contrast two distinct ideas gracefully to show deep analytical balance.",
+          correctExample: "Although online learning offers flexibility, classroom discussion fosters live debate.",
+          incorrectExample: "Although online learning is flexible, but classroom is better.",
+          tip: "Do not use 'although' and 'but' in the same sentence!"
         };
-        practicalText = `Rewrite this sentence in academic passive voice: 'Scientists discovered new evidence.' -> 'New evidence was discovered.'`;
+        practicalText = `Compare two study methods using 'whereas'.`;
       }
     } else if (lvl === "Senior High") {
       if (top === "Daily Life") {
         sampleParagraphs = [
-          `Senior high school marks the pivotal transition toward adulthood, encompassing university entrance examinations, personal financial literacy, and career planning.`,
-          `Mastering personal budgeting (such as the 50/30/20 rule), managing collegiate applications, and balancing independent living arrangements require mature organizational frameworks.`,
-          `Developing resilience under academic pressure prepares students for the rigorous demands of higher education and professional autonomy.`
+          `Senior high bridges youth and independence, focusing on college entrance exams, financial literacy, and career planning.`,
+          `Managing personal budgets and organizing rigorous study calendars develops the resilience needed for higher education.`
         ];
         vocabList = [
-          { word: "Budgeting", phonetic: "/ˈbʌdʒɪtɪŋ/", partOfSpeech: "Noun", definition: "The process of creating a plan to spend and save your money.", example: "Effective budgeting helps college students avoid unnecessary debt.", illustrationIcon: "📊" },
-          { word: "Resilience", phonetic: "/rɪˈzɪliəns/", partOfSpeech: "Noun", definition: "The capacity to recover quickly from difficulties; toughness.", example: "Academic resilience enabled her to bounce back from difficult exam results.", illustrationIcon: "🌱" },
-          { word: "Autonomy", phonetic: "/ɔːˈtɒnəmi/", partOfSpeech: "Noun", definition: "Freedom from external control or influence; independence.", example: "College students experience newfound personal autonomy.", illustrationIcon: "🦅" }
+          { word: "Budgeting", phonetic: "/ˈbʌdʒɪtɪŋ/", partOfSpeech: "Noun", definition: "Planning income and expenses wisely.", example: "Smart budgeting helps students save for college tuition.", illustrationIcon: "💳" },
+          { word: "Resilience", phonetic: "/rɪˈzɪliəns/", partOfSpeech: "Noun", definition: "Bouncing back quickly from setbacks.", example: "Academic resilience helps students conquer tough exams.", illustrationIcon: "🌱" },
+          { word: "Autonomy", phonetic: "/ɔːˈtɒnəmi/", partOfSpeech: "Noun", definition: "Self-governance and personal independence.", example: "University bound seniors embrace newfound personal autonomy.", illustrationIcon: "🦅" }
         ];
         grammarItem = {
-          ruleTitle: "Gerunds and Infinitives in Professional Goals",
-          explanation: "Certain verbs are followed by gerunds (-ing) while others take infinitives (to + verb). Mastering these patterns is essential for advanced writing.",
-          correctExample: "She intends to pursue a degree in economics while managing her savings.",
-          incorrectExample: "She enjoys to study finance and avoids to spend impulsively.",
-          tip: "Verbs like 'enjoy', 'mind', and 'avoid' take gerunds; verbs like 'want', 'decide', and 'plan' take infinitives."
+          ruleTitle: "Gerunds vs Infinitives in Goals",
+          explanation: "Use gerunds (-ing) after preference verbs and infinitives (to + verb) after intent verbs.",
+          correctExample: "She plans to study finance while avoiding unnecessary spending.",
+          incorrectExample: "She plans studying finance and avoids to spend.",
+          tip: "Remember: 'enjoy doing' vs 'want to do'."
         };
-        practicalText = `Write a paragraph about your future career goals using at least three infinitive verb phrases ('to study', 'to lead', 'to build').`;
+        practicalText = `Write a sentence about your career goals using 'plan to' and 'enjoy'.`;
       } else if (top === "Social Media") {
         sampleParagraphs = [
-          `Senior high students must navigate advanced digital ecosystems characterized by artificial intelligence, deepfakes, sophisticated phishing scams, and cyber security threats.`,
-          `Cultivating critical media literacy ensures that young adults can evaluate online information objectively, guarding against misinformation and echo chambers.`,
-          `Digital citizenship at this stage involves curating a pristine professional profile across LinkedIn and academic portfolios.`
+          `Seniors navigate sophisticated digital landscapes involving AI algorithms, cybersecurity threats, and professional branding on LinkedIn.`,
+          `Media literacy ensures objective evaluation of online news, protecting users from echo chambers and misinformation.`
         ];
         vocabList = [
-          { word: "Phishing", phonetic: "/ˈfɪʃɪŋ/", partOfSpeech: "Noun", definition: "The fraudulent practice of sending emails purporting to be from reputable companies.", example: "Never click suspicious login links to protect yourself from phishing scams.", illustrationIcon: "🎣" },
-          { word: "Literacy", phonetic: "/ˈlɪtərəsi/", partOfSpeech: "Noun", definition: "Competence or knowledge in a specified area (e.g., digital media literacy).", example: "Media literacy empowers citizens to spot fake news stories.", illustrationIcon: "📰" },
-          { word: "Encryption", phonetic: "/ɪnˈkrɪpʃən/", partOfSpeech: "Noun", definition: "The process of converting information into code to prevent unauthorized access.", example: "End-to-end encryption secures confidential messaging platforms.", illustrationIcon: "🔐" }
+          { word: "Phishing", phonetic: "/ˈfɪʃɪŋ/", partOfSpeech: "Noun", definition: "Fraudulent scams stealing personal credentials.", example: "Recognize phishing links to safeguard your accounts.", illustrationIcon: "🎣" },
+          { word: "Literacy", phonetic: "/ˈlɪtərəsi/", partOfSpeech: "Noun", definition: "Critical competence in interpreting media.", example: "Digital literacy stops the spread of fake news.", illustrationIcon: "📰" },
+          { word: "Branding", phonetic: "/ˈbrændɪŋ/", partOfSpeech: "Noun", definition: "Managing your professional online identity.", example: "Build a positive professional branding portfolio.", illustrationIcon: "💼" }
         ];
         grammarItem = {
-          ruleTitle: "Third Conditionals and Unreal Past Hypotheses",
-          explanation: "Use third conditionals to speculate about past situations that did not happen and their imagined past consequences.",
-          correctExample: "If the user had verified the sender's domain, the phishing attack would have failed.",
-          incorrectExample: "If the user would check the domain, the attack didn't happen.",
-          tip: "Structure: If + past perfect, ... would have + past participle."
+          ruleTitle: "Third Conditional for Past Regrets",
+          explanation: "Discuss hypothetical past scenarios using 'If + past perfect, would have + participle'.",
+          correctExample: "If she had enabled two-factor authentication, her account wouldn't have been compromised.",
+          incorrectExample: "If she enabled 2FA, her account didn't get hacked.",
+          tip: "Perfect for analyzing past case studies and security blunders!"
         };
-        practicalText = `Analyze a hypothetical online security breach using a third conditional sentence.`;
+        practicalText = `State a past tech decision using a third conditional sentence.`;
       } else if (top === "Job Interviews") {
         sampleParagraphs = [
-          `Senior high graduates entering competitive job markets or scholarship panels must master behavioral interview techniques such as the STAR method.`,
-          `Articulating transferable skills, quantifying past achievements with metrics, and asking insightful executive questions demonstrates professional polish.`,
-          `Body language, vocal projection, and emotional intelligence heavily influence interview outcomes in corporate and academic sectors.`
+          `Mastering interviews requires the STAR method, metric-driven storytelling, and confident executive presence.`,
+          `Transforming standard answers into quantified achievement stories sets top candidates apart.`
         ];
         vocabList = [
-          { word: "Transferable", phonetic: "/trænsˈfɜːrəbəl/", partOfSpeech: "Adjective", definition: "Able to be transferred from one place, person, or context to another.", example: "Leadership and time management are valuable transferable skills.", illustrationIcon: "🔄" },
-          { word: "Quantify", phonetic: "/ˈkwɒntɪfaɪ/", partOfSpeech: "Verb", definition: "Express or measure the quantity of something.", example: "Quantify your achievements by citing specific percentages and metrics.", illustrationIcon: "📈" },
-          { word: "Competency", phonetic: "/ˈkɒmpɪtənsi/", partOfSpeech: "Noun", definition: "The ability to do something successfully or efficiently.", example: "The interview evaluated candidates across five core leadership competencies.", illustrationIcon: "🏅" }
+          { word: "Quantify", phonetic: "/ˈkwɒntɪfaɪ/", partOfSpeech: "Verb", definition: "Express achievements with numbers and metrics.", example: "Quantify your club presidency by citing member growth.", illustrationIcon: "📈" },
+          { word: "Competency", phonetic: "/ˈkɒmpɪtənsi/", partOfSpeech: "Noun", definition: "A proven skill set required for success.", example: "Demonstrate leadership competency during panel interviews.", illustrationIcon: "🏅" },
+          { word: "Rapport", phonetic: "/ræˈpɔːr/", partOfSpeech: "Noun", definition: "A harmonious connection with interviewers.", example: "Build quick rapport through a warm smile and active listening.", illustrationIcon: "🤝" }
         ];
         grammarItem = {
-          ruleTitle: "Past Participle Clauses for Concise Professional Descriptions",
-          explanation: "Replace lengthy relative clauses with past participle phrases to make your resume and interview responses sound sophisticated.",
-          correctExample: "Managed by a team of student leaders, the charity event raised over $5,000.",
-          incorrectExample: "Which was managed by student leaders, the event raised money.",
-          tip: "Participle phrases add professional brevity and punchiness to your career narrative."
+          ruleTitle: "Participle Clauses for Concise Resume Summaries",
+          explanation: "Start bullet points with past participle verbs for punchy professional impact.",
+          correctExample: "Spearheaded by student leaders, the fundraiser generated $2,000.",
+          incorrectExample: "Which was spearheaded by students, the fundraiser made money.",
+          tip: "Cut unnecessary words to make your professional profile pop!"
         };
-        practicalText = `Describe a past school project using an introductory past participle phrase.`;
+        practicalText = `Write a one-sentence achievement bullet starting with a past participle verb.`;
       } else {
-        // Academic & Debate for Senior High
         sampleParagraphs = [
-          `Advanced academic discourse requires rigorous thesis formulation, counter-argument refutation, and strict adherence to empirical research standards.`,
-          `Senior high scholars analyze socio-economic models, ethical dilemmas, and philosophical perspectives, constructing essays that meet university admission criteria.`,
-          `Synthesizing disparate literary and scientific sources into a unified, persuasive thesis is the hallmark of elite secondary scholarship.`
+          `Advanced academic writing demands precise thesis generation, empirical data backing, and airtight logical frameworks.`,
+          `Scholars synthesize diverse sources to construct compelling, university-ready research essays.`
         ];
         vocabList = [
-          { word: "Empirical", phonetic: "/ɪmˈpɪrɪkəl/", partOfSpeech: "Adjective", definition: "Based on, concerned with, or verifiable by observation or experience rather than theory.", example: "Scientific arguments must be backed by rigorous empirical data.", illustrationIcon: "🔬" },
-          { word: "Paradigm", phonetic: "/ˈpærəˌdaɪm/", partOfSpeech: "Noun", definition: "A typical example or pattern of something; a model or worldview.", example: "The discovery shifted the entire scientific paradigm of physics.", illustrationIcon: "🌐" },
-          { word: "Synthesize", phonetic: "/ˈsɪnθəˌsaɪz/", partOfSpeech: "Verb", definition: "Combine (a number of things) to form a coherent whole.", example: "Synthesize three different historical sources into a single thesis essay.", illustrationIcon: "🧩" }
+          { word: "Empirical", phonetic: "/ɪmˈpɪrɪkəl/", partOfSpeech: "Adjective", definition: "Verifiable by observation and concrete data.", example: "Back your arguments with empirical research evidence.", illustrationIcon: "🔬" },
+          { word: "Paradigm", phonetic: "/ˈpærəˌdaɪm/", partOfSpeech: "Noun", definition: "A standard model or conceptual framework.", example: "The study shifted our educational paradigm entirely.", illustrationIcon: "🌐" },
+          { word: "Synthesize", phonetic: "/ˈsɪnθəˌsaɪz/", partOfSpeech: "Verb", definition: "Blending multiple sources into one coherent thesis.", example: "Synthesize three authors' views into your conclusion.", illustrationIcon: "🧩" }
         ];
         grammarItem = {
-          ruleTitle: "Subjunctive Mood in Formal Academic Arguments",
-          explanation: "The subjunctive mood expresses wishes, hypothetical suggestions, or demands following verbs like 'demand', 'insist', or 'propose'.",
-          correctExample: "The professor insisted that every student submit their thesis proposal unedited.",
-          incorrectExample: "The professor insisted that every student submits their proposal.",
-          tip: "Always use the base form of the verb in subjunctive clauses (e.g., 'that he be', not 'that he is')."
+          ruleTitle: "Formal Subjunctive Mood",
+          explanation: "Use the clean base verb form after demand or recommendation verbs.",
+          correctExample: "The committee recommended that every applicant submit original research.",
+          incorrectExample: "The committee recommended that every applicant submits research.",
+          tip: "Notice there is no 's' on the subjunctive verb!"
         };
-        practicalText = `Draft an academic recommendation statement using the formal subjunctive mood.`;
+        practicalText = `Draft a formal proposal sentence using the subjunctive mood.`;
       }
     } else {
       // C1 Advanced
       if (top === "Daily Life") {
         sampleParagraphs = [
-          `At the C1 Advanced tier, navigating daily life in an international milieu involves mastering subtle socio-cultural registers, idiomatic nuances, and pragmatic agility.`,
-          `Fluent speakers effortlessly modulate their linguistic style between high-register professional discourse and colloquial rapport, recognizing culture-specific presuppositions.`,
-          `This level of mastery transcends grammatical correctness, diving deep into rhetorical impact, stylistic elegance, and absolute communicative precision.`
+          `C1 proficiency involves effortless navigation of cosmopolitan milieus through cultural fluency, stylistic dexterity, and pragmatic nuance.`,
+          `Advanced speakers seamlessly adapt registers between casual idioms and sophisticated professional discourse.`
         ];
         vocabList = [
-          { word: "Milieu", phonetic: "/ˈmiːljuː/", partOfSpeech: "Noun", definition: "A person's social environment or cultural surroundings.", example: "Navigating a fast-paced cosmopolitan milieu demands linguistic dexterity.", illustrationIcon: "🌍" },
-          { word: "Presupposition", phonetic: "/ˌpriːsʌpəˈzɪʃən/", partOfSpeech: "Noun", definition: "An implicit assumption about the world or background belief relating to an utterance.", example: "Cross-cultural communication requires uncovering hidden pragmatic presuppositions.", illustrationIcon: "💭" },
-          { word: "Dexterity", phonetic: "/dɛkˈstɛrɪti/", partOfSpeech: "Noun", definition: "Mental skill or quickness; fluency in expression.", example: "Linguistic dexterity allows C1 speakers to negotiate abstract concepts effortlessly.", illustrationIcon: "⚡" }
+          { word: "Milieu", phonetic: "/ˈmiːljuː/", partOfSpeech: "Noun", definition: "A cultural and social environment.", example: "Thriving in a multilingual milieu requires immense linguistic dexterity.", illustrationIcon: "🌍" },
+          { word: "Dexterity", phonetic: "/dɛkˈstɛrɪti/", partOfSpeech: "Noun", definition: "Mental agility and fluency in expression.", example: "Linguistic dexterity enables C1 learners to master complex registers.", illustrationIcon: "⚡" },
+          { word: "Nuance", phonetic: "/ˈnuɑːns/", partOfSpeech: "Noun", definition: "Subtle shades of meaning and connotation.", example: "Appreciate the stylistic nuances of advanced literature.", illustrationIcon: "🎨" }
         ];
         grammarItem = {
-          ruleTitle: "Advanced Syntactic Inversion for Rhetorical Emphasis",
-          explanation: "Inversion places an auxiliary verb before the subject after negative adverbials (e.g., 'Hardly', 'Rarely', 'Not only') for dramatic effect.",
-          correctExample: "Rarely had the diplomat encountered such acute socio-cultural nuance in daily discourse.",
-          incorrectExample: "Rarely the diplomat had encountered such acute nuance.",
-          tip: "Use inversion sparingly in formal essays or presentations to create maximum rhetorical impact."
+          ruleTitle: "Inversion for Rhetorical Impact",
+          explanation: "Invert subject and auxiliary after negative introductory adverbials.",
+          correctExample: "Scarcely had she articulated her thesis when the panel engaged in debate.",
+          incorrectExample: "Scarcely she had articulated her thesis.",
+          tip: "Use inversion to give your writing an eloquent academic flair!"
         };
-        practicalText = `Construct an inverted sentence starting with 'Seldom' to describe overcoming a complex linguistic challenge.`;
+        practicalText = `Write an inverted sentence starting with 'Rarely'.`;
       } else if (top === "Social Media") {
         sampleParagraphs = [
-          `The contemporary digital infosphere is governed by algorithmic governance, surveillance capitalism, decentralized networks, and synthetic media proliferation.`,
-          `C1 scholars analyze the sociopolitical ramifications of echo chambers, filter bubbles, and cognitive polarization driven by automated engagement models.`,
-          `Digital literacy at this zenith requires deconstructing manipulative disinformation campaigns and evaluating the epistemology of online truth.`
+          `Deconstruct algorithmic governance, information epistemology, and the socio-political ramifications of synthetic media.`,
+          `Critical media literacy empowers scholars to interrogate digital echo chambers and data proliferation models.`
         ];
         vocabList = [
-          { word: "Epistemology", phonetic: "/ɪˌpɪstɪˈɒlədʒi/", partOfSpeech: "Noun", definition: "The branch of philosophy concerned with knowledge, its nature, origin, and limits.", example: "Fake news challenges the modern epistemology of digital journalism.", illustrationIcon: "🏛️" },
-          { word: "Proliferation", phonetic: "/prəˌlɪfəˈreɪʃən/", partOfSpeech: "Noun", definition: "Rapid increase in the number or amount of something.", example: "The rapid proliferation of deepfake videos threatens democratic discourse.", illustrationIcon: "📈" },
-          { word: "Ramification", phonetic: "/ˌræmɪfɪˈkeɪʃən/", partOfSpeech: "Noun", definition: "A complex or unwelcome consequence of an action or event.", example: "Consider the profound socio-political ramifications of unmitigated data harvesting.", illustrationIcon: "🕸️" }
+          { word: "Epistemology", phonetic: "/ɪˌpɪstɪˈɒlədʒi/", partOfSpeech: "Noun", definition: "The philosophical study of knowledge and truth.", example: "Misinformation challenges the epistemology of digital news.", illustrationIcon: "🏛️" },
+          { word: "Proliferation", phonetic: "/prəˌlɪfəˈreɪʃən/", partOfSpeech: "Noun", definition: "Rapid spread or multiplication of content.", example: "The proliferation of deepfakes requires robust regulatory countermeasures.", illustrationIcon: "📈" },
+          { word: "Ramification", phonetic: "/ˌræmɪfɪˈkeɪʃən/", partOfSpeech: "Noun", definition: "Complex consequences of digital trends.", example: "Examine the socio-political ramifications of targeted algorithms.", illustrationIcon: "🕸️" }
         ];
         grammarItem = {
-          ruleTitle: "Cleft Sentences and Information Structuring",
-          explanation: "Cleft sentences (e.g., 'What is crucial is...', 'It was X that Y') reorganize sentence structure to highlight specific information for the reader.",
-          correctExample: "What the regulatory bodies failed to anticipate was the exponential proliferation of synthetic bots.",
-          incorrectExample: "Regulatory bodies failed to anticipate the exponential proliferation of bots what was bad.",
-          tip: "Cleft sentences guide the audience's attention precisely where you want it."
+          ruleTitle: "Cleft Sentences for Focus",
+          explanation: "Use 'What...' clefts to spotlight critical arguments instantly.",
+          correctExample: "What jeopardizes public discourse is the unmitigated spread of disinformation.",
+          incorrectExample: "Public discourse is jeopardized by disinformation what is bad.",
+          tip: "Cleft structures direct reader attention with laser focus."
         };
-        practicalText = `Reframe a standard statement about social media algorithms into an emphatic 'What...' cleft sentence.`;
+        practicalText = `Create a cleft sentence highlighting a key digital media challenge.`;
       } else if (top === "Job Interviews") {
         sampleParagraphs = [
-          `Executive and C-suite interviews demand masterclass rhetorical strategies, metrics-driven ROI storytelling, and decisive crisis leadership communication.`,
-          `Candidates must reconcile multi-stakeholder conflicts, demonstrate strategic foresight, and articulate corporate vision with absolute poise and authority.`,
-          `Navigating executive negotiations requires high-stakes diplomacy, emotional intelligence, and flawless pragmatic command.`
+          `Executive interviews require masterclass strategic framing, metrics-driven storytelling, and high-stakes diplomatic composure.`,
+          `Top candidates align multi-stakeholder priorities and project visionary leadership presence.`
         ];
         vocabList = [
-          { word: "Stakeholder", phonetic: "/ˈsteɪkˌhoʊldər/", partOfSpeech: "Noun", definition: "One who has a share or an interest in an enterprise or organization.", example: "Executive leaders must balance conflicting demands across diverse corporate stakeholders.", illustrationIcon: "🤝" },
-          { word: "Foresight", phonetic: "/ˈfɔːrˌsaɪt/", partOfSpeech: "Noun", definition: "The ability to predict or plan for what will happen in the future.", example: "Strategic foresight allows corporations to pivot proactively before market disruption.", illustrationIcon: "🔭" },
-          { word: "Diplomacy", phonetic: "/dɪˈploʊməsi/", partOfSpeech: "Noun", definition: "The art of dealing with people in a sensitive and effective way.", example: "High-stakes contract negotiations require seasoned executive diplomacy.", illustrationIcon: "🕊️" }
+          { word: "Stakeholder", phonetic: "/ˈsteɪkˌhoʊldər/", partOfSpeech: "Noun", definition: "An invested party in an enterprise.", example: "Balance competing priorities across diverse corporate stakeholders.", illustrationIcon: "🤝" },
+          { word: "Foresight", phonetic: "/ˈfɔːrˌsaɪt/", partOfSpeech: "Noun", definition: "Strategic prediction and proactive planning.", example: "Executive foresight prevents industry disruption blind spots.", illustrationIcon: "🔭" },
+          { word: "Diplomacy", phonetic: "/dɪˈploʊməsi/", partOfSpeech: "Noun", definition: "Tactful handling of high-stakes negotiations.", example: "High-level leadership demands seasoned corporate diplomacy.", illustrationIcon: "🕊️" }
         ];
         grammarItem = {
-          ruleTitle: "Advanced Subjunctive and Modal Nuance in Executive Proposals",
-          explanation: "Use advanced subjunctive structures and attenuated modals ('would', 'might', 'could') to pitch strategic initiatives with sophisticated diplomacy.",
-          correctExample: "It is imperative that the leadership team allocate sufficient resources prior to executing the transition.",
-          incorrectExample: "It is imperative that the leadership allocates resources.",
-          tip: "Attenuated modals project professional humility while maintaining strong executive authority."
+          ruleTitle: "Attenuated Modals & Subjunctive Diplomacy",
+          explanation: "Project authority with grace using softened modal verbs ('might', 'would').",
+          correctExample: "It would behoove the executive board to evaluate these ROI metrics prior to capital allocation.",
+          incorrectExample: "The board must look at these numbers now.",
+          tip: "Attenuated phrasing conveys elite executive polish."
         };
-        practicalText = `Draft a high-level strategic recommendation using the formal subjunctive mood.`;
+        practicalText = `Pitch a strategic initiative using an attenuated modal phrase.`;
       } else {
-        // Academic & Debate for C1 Advanced
         sampleParagraphs = [
-          `Advanced academic debate at the C1 level explores ontological dilemmas, epistemological frameworks, and meta-ethical propositions.`,
-          `Scholars deconstruct deeply entrenched institutional dogmas, deploying faultless formal logic, phenomenological analysis, and peerless rhetorical precision.`,
-          `Producing thesis-driven discourse at this zenith represents the ultimate convergence of linguistic mastery, intellectual rigor, and philosophical depth.`
+          `Advanced academic discourse explores ontological philosophy, phenomenological perception, and rigorous meta-ethical paradigms.`,
+          `Scholars dismantle prevailing dogmas through airtight logic and peerless rhetorical precision.`
         ];
         vocabList = [
-          { word: "Ontological", phonetic: "/ˌɒntəˈlɒdʒɪkəl/", partOfSpeech: "Adjective", definition: "Relating to the branch of metaphysics dealing with the nature of being.", example: "The debate centered on the ontological status of artificial intelligence consciousness.", illustrationIcon: "🌌" },
-          { word: "Phenomenological", phonetic: "/fɪˌnɒmɪnəˈlɒdʒɪkəl/", partOfSpeech: "Adjective", definition: "Relating to the study of structures of consciousness and subjective experience.", example: "A phenomenological approach examines how individuals perceive digital reality.", illustrationIcon: "👁️" },
-          { word: "Rigor", phonetic: "/ˈrɪɡər/", partOfSpeech: "Noun", definition: "The quality of being extremely thorough, exhaustive, or accurate.", example: "Peer-reviewed journals demand uncompromising intellectual rigor.", illustrationIcon: "💎" }
+          { word: "Ontological", phonetic: "/ˌɒntəˈlɒdʒɪkəl/", partOfSpeech: "Adjective", definition: "Relating to the fundamental nature of being.", example: "Debating the ontological status of machine consciousness.", illustrationIcon: "🌌" },
+          { word: "Phenomenological", phonetic: "/fɪˌnɒmɪnəˈlɒdʒɪkəl/", partOfSpeech: "Adjective", definition: "Examining subjective structures of human experience.", example: "A phenomenological analysis of virtual reality immersion.", illustrationIcon: "👁️" },
+          { word: "Rigor", phonetic: "/ˈrɪɡər/", partOfSpeech: "Noun", definition: "Exhaustive thoroughness and academic accuracy.", example: "Doctoral dissertations demand uncompromising intellectual rigor.", illustrationIcon: "💎" }
         ];
         grammarItem = {
-          ruleTitle: "Hypothetical Concessive Clauses ('Be that as it may', 'Admittedly')",
-          explanation: "Advanced concessive clauses acknowledge counter-arguments with academic sophistication before dismantling them with superior evidence.",
-          correctExample: "Be that as it may, empirical evidence overwhelmingly corroborates the primary hypothesis.",
-          incorrectExample: "Although this is true, but we know it's right anyway.",
-          tip: "Concessive framing demonstrates intellectual fairness and strengthens overall argumentation."
+          ruleTitle: "Concessive Framing ('Be that as it may')",
+          explanation: "Acknowledge opposing scholarly viewpoints gracefully before refuting them.",
+          correctExample: "Be that as it may, empirical meta-analyses corroborate the primary hypothesis.",
+          incorrectExample: "Although that's true, but my theory wins.",
+          tip: "Concessive transitions signal elite academic maturity."
         };
-        practicalText = `Formulate an academic counter-argument refutation beginning with 'Admittedly, while...' followed by a concessive pivot.`;
+        practicalText = `Open a counter-argument response with a concessive transition phrase.`;
       }
     }
 
@@ -1064,73 +1080,71 @@ export default function Home() {
       title: `${lvl}: Complete Textbook Chapter & Masterclass on ${top}`,
       level: lvl,
       category: top,
-      summary: `An exhaustive, professionally curated textbook module designed for ${lvl} students. This guide integrates structured reading passages, essential vocabulary breakdowns, etymology, grammar rules, visual examples, and real-world practical walkthroughs.`,
+      summary: `An engaging, concise textbook module designed for ${lvl} students. Explore targeted reading passages, bite-sized vocabulary cards with icons, clear grammar rules, and quick practical tips.`,
       illustration: top === "Daily Life" ? "🛒🌍📖" : top === "Social Media" ? "📱💬🌐" : top === "Job Interviews" ? "💼👔📈" : "⚖️🏛️🧠",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       sections: [
         {
-          heading: `Chapter 1: Theoretical Foundations and Historical Context`,
-          subheading: `Comprehensive introductory reading material and framework definitions for ${lvl}`,
+          heading: `Chapter 1: Core Reading & Context`,
+          subheading: `Quick and fun introduction to ${top} for ${lvl}`,
           paragraphs: sampleParagraphs,
           vocabulary: vocabList,
           grammar: grammarItem,
           practicalApplication: practicalText,
           keyTakeaways: [
-            `Establishing a robust conceptual framework for ${top} at the ${lvl} level.`,
-            `Mastering precise vocabulary terms with correct phonetic pronunciations and contextual examples.`,
-            `Applying formal grammar rules to eliminate common structural errors and elevate expression.`
+            `Understanding the main concepts of ${top} easily.`,
+            `Mastering essential vocabulary words with clear examples.`,
+            `Applying simple grammar rules to your daily English practice.`
           ]
         },
         {
-          heading: `Chapter 2: Structural Mechanics and Syntactical Rules`,
-          subheading: "Detailed grammatical, behavioral, and procedural mechanics",
+          heading: `Chapter 2: Grammar & Word Mastery`,
+          subheading: "Essential rules and pattern building",
           paragraphs: [
-            `To achieve true proficiency in ${top}, students must systematically dissect the individual components governing successful execution. This involves rigorous analysis of syntactical patterns, behavioral expectations, and logical progression models.`,
-            `For instance, when engaging with this subject matter in professional or academic discourse, precision of expression is paramount. Ambiguity invariably leads to miscommunication and structural failure, whereas adherence to standardized methodology guarantees clarity, reproducibility, and verified success.`,
-            `Examine closely how leading experts approach problem-solving within this domain. By isolating variables, scrutinizing underlying assumptions, and applying standard conventions methodically, learners can navigate complex scenarios with absolute confidence and intellectual poise.`
+            `Building strong sentences is like building with blocks—every piece has a special job.`,
+            `By keeping our language clear, correct, and structured, anyone can understand our message instantly.`
           ],
           vocabulary: [
-            { word: "Analysis", phonetic: "/əˈnæləsɪs/", partOfSpeech: "Noun", definition: "Detailed examination of elements or structure.", example: "Detailed analysis of market trends guided our strategy.", illustrationIcon: "🔍" },
-            { word: "Implementation", phonetic: "/ˌɪmplɪmɛnˈteɪʃən/", partOfSpeech: "Noun", definition: "The process of putting a decision or plan into effect.", example: "Successful implementation requires clear milestone planning.", illustrationIcon: "🚀" }
+            { word: "Structure", phonetic: "/ˈstrʌktʃər/", partOfSpeech: "Noun", definition: "The arrangement of parts in a sentence.", example: "Good sentence structure makes reading effortless.", illustrationIcon: "🏗️" },
+            { word: "Clarity", phonetic: "/ˈklærɪti/", partOfSpeech: "Noun", definition: "Being easy to understand and clear.", example: "Always speak with complete clarity.", illustrationIcon: "✨" }
           ],
           grammar: {
-            ruleTitle: "Conditional Harmony & Logical Flow",
-            explanation: "Ensure that dependent clauses match the hypothetical or real nature of your conditional statements without tense collisions.",
-            correctExample: "Should you require further clarification, please consult the appendix.",
-            incorrectExample: "If you will require further clarification, please consulted the appendix.",
-            tip: "Inversion ('Should you...') adds formal elegance to professional correspondence."
+            ruleTitle: "Building Clear Sentences",
+            explanation: "Focus on subject-verb agreement and punctuation to keep your ideas organized.",
+            correctExample: "Clear sentences help readers understand your thoughts instantly.",
+            incorrectExample: "Clear sentence helping reader understood thoughts.",
+            tip: "Read your sentences out loud to catch missing words!"
           },
-          practicalApplication: `When executing complex tasks in ${top}, break your workflow down into three distinct phases: Diagnosis, Formulation, and Verification. This disciplined approach eliminates oversight.`,
+          practicalApplication: `Take one sentence you wrote today and check if it has a clear subject and action verb.`,
           keyTakeaways: [
-            `Isolating structural variables to prevent logical fallacies or grammatical lapses.`,
-            `Applying systematic problem-solving frameworks to high-stakes scenarios.`,
-            `Validating outcomes through rigorous self-correction and peer review.`
+            `Keeping grammar simple and accurate.`,
+            `Using punctuation effectively.`,
+            `Checking work aloud for natural flow.`
           ]
         },
         {
-          heading: `Chapter 3: Real-World Case Studies and Practical Mastery`,
-          subheading: "Case analyses, simulated exercises, and practical implementation",
+          heading: `Chapter 3: Quick Practice & Real-World Use`,
+          subheading: "Putting knowledge into action",
           paragraphs: [
-            `Theoretical knowledge achieves true value only when tested rigorously in practice. In this closing chapter, we examine genuine, high-stakes case studies where the principles of ${top} are deployed to resolve complex, real-world challenges.`,
-            `Consider a scenario where an individual must navigate a high-pressure environment relying entirely on clear communication, critical thinking, and tactical execution. By deploying the structured methodologies outlined in this textbook chapter, they successfully overcome obstacles and achieve their intended objectives.`,
-            `Take dedicated time to reflect upon these case studies. Practice framing your own independent responses, essays, and arguments using the sophisticated vocabulary and structural frameworks established throughout this comprehensive reading material.`
+            `The best way to learn English is to use it right away in real life!`,
+            `Try out your new words and grammar patterns with friends, family, or study partners today.`
           ],
           vocabulary: [
-            { word: "Synthesis", phonetic: "/ˈsɪnθəsɪs/", partOfSpeech: "Noun", definition: "Combination of ideas to form a coherent whole.", example: "The essay represents a brilliant synthesis of economic theory and practice.", illustrationIcon: "🧩" },
-            { word: "Excellence", phonetic: "/ˈɛksələns/", partOfSpeech: "Noun", definition: "The quality of being outstanding or superior.", example: "Commitment to academic excellence defines our institutional culture.", illustrationIcon: "🏆" }
+            { word: "Practice", phonetic: "/ˈpræktɪs/", partOfSpeech: "Verb", definition: "Doing something regularly to improve.", example: "Daily practice leads to English fluency.", illustrationIcon: "🎯" },
+            { word: "Success", phonetic: "/səkˈsɛs/", partOfSpeech: "Noun", definition: "Achieving your learning goals.", example: "Every new word you learn is a step toward success.", illustrationIcon: "🏆" }
           ],
           grammar: {
-            ruleTitle: "Professional Register and Tone Consistency",
-            explanation: "Maintain an objective, articulate, and confident tone throughout your communication, avoiding excessive colloquialisms in formal settings.",
-            correctExample: "The data indicates a significant upward trend in user engagement.",
-            incorrectExample: "The numbers look super awesome and went way up high.",
-            tip: "Choose precise lexical verbs over vague adjectives for stronger impact."
+            ruleTitle: "Tone and Confidence",
+            explanation: "Speak and write with an encouraging, confident tone.",
+            correctExample: "I am excited to practice my English skills every day.",
+            incorrectExample: "Me no like talking English much.",
+            tip: "Confidence is your superpower when learning languages!"
           },
-          practicalApplication: `Review your final deliverables against international academic and professional standards. Ensure every sentence fulfills a distinct communicative purpose.`,
+          practicalApplication: `Share one cool thing you learned in this chapter with someone nearby!`,
           keyTakeaways: [
-            `Resolving real-world operational challenges through structured, clear communication.`,
-            `Drafting professional, highly polished deliverables based on established benchmarks.`,
-            `Synthesizing theory and practice to ensure lifelong retention and mastery.`
+            `Using new words in everyday conversations.`,
+            `Building lasting language habits.`,
+            `Celebrating small learning victories.`
           ]
         }
       ]
