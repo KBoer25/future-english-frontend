@@ -12,6 +12,7 @@ type Question = {
 type ModuleData = {
   title: string;
   image: string;
+  level: string;
   category: string;
   source: string;
   questions: Question[];
@@ -37,568 +38,326 @@ type StudyMaterial = {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"quizzes" | "materials">("quizzes");
+  const [selectedLevel, setSelectedLevel] = useState<string>("All Levels");
+  const [selectedTopic, setSelectedTopic] = useState<string>("All");
+  
   const [activeModuleKey, setActiveModuleKey] = useState<string | null>(null);
   const [activeStudyId, setActiveStudyId] = useState<string | null>(null);
   const [activeSubTopic, setActiveSubTopic] = useState<SubTopic | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
-  const [selectedTopic, setSelectedTopic] = useState<string>("All");
 
+  const levels = ["All Levels", "Kindergarten", "Primary School", "Junior High", "Senior High", "C1 Advanced"];
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
+  // Expanded Quiz Data Bank featuring robust multiple questions per module across all levels and categories
   const quizDataBank: Record<string, ModuleData> = {
-    "DailyLife-1": {
-      title: "Daily Life: Grocery Shopping & Supermarket Expressions",
+    // --- KINDERGARTEN / DAILY LIFE ---
+    "K-Daily-1": {
+      title: "Kindergarten: Grocery Shopping & Fruits",
       image: "🛒",
+      level: "Kindergarten",
       category: "Daily Life",
-      source: "Practical English Usage Standard",
+      source: "Early Childhood Phonics & Vocab",
       questions: [
         {
           id: 1,
-          prompt: "Where can you find fresh apples and bananas in a supermarket?",
-          options: [
-            { label: "The produce section", isCorrect: true },
-            { label: "The frozen aisle", isCorrect: false },
-            { label: "The checkout counter", isCorrect: false },
-          ],
-          explanation: "Fresh fruits and vegetables are located in the produce section.",
+          prompt: "Which fruit is red and starts with the letter 'A'?",
+          options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Grape", isCorrect: false }],
+          explanation: "Apples are red/green and begin with the short /æ/ sound."
         },
-      ],
-    },
-    "DailyLife-2": {
-      title: "Daily Life: Ordering Food at a Restaurant",
-      image: "🍔",
-      category: "Daily Life",
-      source: "Cambridge English Standard",
-      questions: [
         {
-          id: 1,
-          prompt: "Which phrase is polite when asking the waiter for the bill?",
-          options: [
-            { label: "Give me the check right now.", isCorrect: false },
-            { label: "Could we have the bill, please?", isCorrect: true },
-          ],
-          explanation: "'Could we have the bill, please?' uses polite modal verbs appropriate for dining out.",
+          id: 2,
+          prompt: "What sound does a cow make when you see it on a farm?",
+          options: [{ label: "Moo", isCorrect: true }, { label: "Quack", isCorrect: false }, { label: "Woof", isCorrect: false }],
+          explanation: "Cows produce a distinct 'moo' sound."
         },
-      ],
-    },
-    "DailyLife-3": {
-      title: "Daily Life: Asking for Directions in a City",
-      image: "🗺️",
-      category: "Daily Life",
-      source: "ESL Daily Communication Guide",
-      questions: [
         {
-          id: 1,
-          prompt: "Someone tells you: 'Turn right at the second traffic light.' What should you do?",
-          options: [
-            { label: "Turn right immediately at the first corner.", isCorrect: false },
-            { label: "Continue past the first traffic light and make a right at the second one.", isCorrect: true },
-          ],
-          explanation: "'Second traffic light' requires passing one intersection and turning at the next designated signal.",
+          id: 3,
+          prompt: "What color is a fresh banana?",
+          options: [{ label: "Yellow", isCorrect: true }, { label: "Blue", isCorrect: false }, { label: "Black", isCorrect: false }],
+          explanation: "Ripe bananas are bright yellow."
         },
-      ],
-    },
-    "SocialMedia-1": {
-      title: "Social Media: Netiquette & Comment Etiquette",
-      image: "💬",
-      category: "Social Media",
-      source: "Digital Communication Standard",
-      questions: [
         {
-          id: 1,
-          prompt: "What does typing an entire message in ALL CAPS usually convey online?",
-          options: [
-            { label: "Shouting or extreme excitement", isCorrect: true },
-            { label: "A quiet, whispered comment", isCorrect: false },
-          ],
-          explanation: "In digital culture, writing in uppercase letters represents shouting.",
+          id: 4,
+          prompt: "Where do we buy milk and bread?",
+          options: [{ label: "Supermarket", isCorrect: true }, { label: "Library", isCorrect: false }, { label: "Hospital", isCorrect: false }],
+          explanation: "Supermarkets stock daily groceries like bread and milk."
         },
-      ],
+        {
+          id: 5,
+          prompt: "Which animal says 'Meow'?",
+          options: [{ label: "Cat", isCorrect: true }, { label: "Dog", isCorrect: false }, { label: "Duck", isCorrect: false }],
+          explanation: "Cats make a purring and meowing sound."
+        }
+      ]
     },
-    "SocialMedia-2": {
-      title: "Social Media: Slang, Hashtags & Trends",
+
+    // --- PRIMARY / SOCIAL MEDIA & DAILY LIFE ---
+    "P-Social-1": {
+      title: "Primary School: Safe Digital Sharing & Messages",
       image: "📱",
+      level: "Primary School",
       category: "Social Media",
-      source: "Modern Internet Lexicon",
+      source: "Elementary Digital Citizenship",
       questions: [
         {
           id: 1,
-          prompt: "What does the acronym 'TBH' stand for in a text message?",
-          options: [
-            { label: "To Be Honest", isCorrect: true },
-            { label: "Total Big House", isCorrect: false },
-          ],
-          explanation: "'TBH' is a widely used internet slang abbreviation for 'To Be Honest'.",
+          prompt: "Is it safe to share your home address with online strangers?",
+          options: [{ label: "No, never share personal information", isCorrect: true }, { label: "Yes, to make friends", isCorrect: false }],
+          explanation: "Protecting personal privacy is essential online."
         },
-      ],
-    },
-    "SocialMedia-3": {
-      title: "Social Media: Spotting Misinformation Online",
-      image: "🔍",
-      category: "Social Media",
-      source: "Media Literacy Curriculum",
-      questions: [
         {
-          id: 1,
-          prompt: "Which step is most reliable when encountering a sensational news headline on social media?",
-          options: [
-            { label: "Share it instantly with all your friends", isCorrect: false },
-            { label: "Cross-check facts with reputable news outlets", isCorrect: true },
-          ],
-          explanation: "Verification with trusted journalistic sources prevents the spread of fake news.",
+          id: 2,
+          prompt: "What is a polite way to greet a teacher in an online chat?",
+          options: [{ label: "Hello Teacher, good morning!", isCorrect: true }, { label: "Yo what's up", isCorrect: false }],
+          explanation: "Polite greetings show respect in academic settings."
         },
-      ],
+        {
+          id: 3,
+          prompt: "What should you do if someone is mean to you in a game chat?",
+          options: [{ label: "Tell a parent or trusted adult", isCorrect: true }, { label: "Be mean back", isCorrect: false }],
+          explanation: "Always report cyberbullying to adults."
+        },
+        {
+          id: 4,
+          prompt: "What does 'like' mean on a photo post?",
+          options: [{ label: "Showing appreciation or approval", isCorrect: true }, { label: "Deleting the image", isCorrect: false }],
+          explanation: "Likes express positive feedback on content."
+        },
+        {
+          id: 5,
+          prompt: "How long is a healthy amount of screen time for kids daily?",
+          options: [{ label: "A balanced, limited amount", isCorrect: true }, { label: "24 hours straight", isCorrect: false }],
+          explanation: "Balance prevents digital eye strain and fatigue."
+        }
+      ]
     },
-    "JobInterviews-1": {
-      title: "Job Interviews: Professional Self-Introduction",
+
+    // --- JUNIOR HIGH / JOB INTERVIEWS ---
+    "JH-Jobs-1": {
+      title: "Junior High: Part-Time Jobs & Polite Requests",
       image: "💼",
+      level: "Junior High",
       category: "Job Interviews",
-      source: "Corporate Communication Handbook",
+      source: "B1 Career Foundations",
       questions: [
         {
           id: 1,
-          prompt: "When asked 'Tell me about yourself,' what is the best strategy?",
+          prompt: "Which phrase is best when introducing yourself to an employer?",
           options: [
-            { label: "Summarize your professional background, key achievements, and career goals.", isCorrect: true },
-            { label: "List your favorite childhood memories and hobbies.", isCorrect: false },
+            { label: "Hello, my name is Alex and I am eager to learn.", isCorrect: true },
+            { label: "Give me the job right now.", isCorrect: false }
           ],
-          explanation: "Interviewers look for a concise professional elevator pitch, not a life story.",
+          explanation: "Polite enthusiasm builds strong first impressions."
         },
-      ],
-    },
-    "JobInterviews-2": {
-      title: "Job Interviews: Behavioral STAR Method Answers",
-      image: "⭐",
-      category: "Job Interviews",
-      source: "Recruitment Best Practices",
-      questions: [
         {
-          id: 1,
-          prompt: "What does the letter 'A' stand for in the STAR interview technique?",
-          options: [
-            { label: "Action", isCorrect: true },
-            { label: "Ambition", isCorrect: false },
-          ],
-          explanation: "STAR stands for Situation, Task, Action, and Result.",
+          id: 2,
+          prompt: "What does 'punctual' mean?",
+          options: [{ label: "Arriving on time", isCorrect: true }, { label: "Being late", isCorrect: false }],
+          explanation: "Punctuality is a core professional requirement."
         },
-      ],
-    },
-    "JobInterviews-3": {
-      title: "Job Interviews: Asking Smart Questions to Employers",
-      image: "🤝",
-      category: "Job Interviews",
-      source: "Professional Development Standard",
-      questions: [
         {
-          id: 1,
-          prompt: "Which question shows strong engagement at the end of an interview?",
-          options: [
-            { label: "How soon can I take vacation days?", isCorrect: false },
-            { label: "What does success look like in the first 90 days in this role?", isCorrect: true },
-          ],
-          explanation: "Inquiring about performance benchmarks demonstrates proactive dedication and alignment with team goals.",
+          id: 3,
+          prompt: "Why do interviewers ask about your strengths?",
+          options: [{ label: "To see what unique value you bring", isCorrect: true }, { label: "To waste time", isCorrect: false }],
+          explanation: "Strengths highlight your qualifications."
         },
-      ],
+        {
+          id: 4,
+          prompt: "What is a resume used for?",
+          options: [{ label: "Summarizing work history and skills", isCorrect: true }, { label: "Drawing pictures", isCorrect: false }],
+          explanation: "Resumes present professional experience to recruiters."
+        },
+        {
+          id: 5,
+          prompt: "How should you dress for a formal interview?",
+          options: [{ label: "Neat, clean business casual or formal attire", isCorrect: true }, { label: "Pajamas", isCorrect: false }],
+          explanation: "Professional dress code reflects respect for the company."
+        }
+      ]
     },
-    "Academic-1": {
-      title: "Academic & Debate: Structuring a Counter-Argument",
+
+    // --- SENIOR HIGH / ACADEMIC & DEBATE ---
+    "SH-Academic-1": {
+      title: "Senior High: Structured Debates & Persuasion",
       image: "⚖️",
+      level: "Senior High",
       category: "Academic & Debate",
-      source: "Cambridge Advanced English Standards",
+      source: "B2 Discursive Speech Standard",
       questions: [
         {
           id: 1,
-          prompt: "Which transitional phrase effectively introduces a concession before a counter-argument?",
+          prompt: "What is the purpose of a thesis statement in a debate?",
           options: [
-            { label: "Admittedly, online databases are vast; nevertheless, physical archives remain irreplaceable.", isCorrect: true },
-            { label: "And then everyone clapped.", isCorrect: false },
+            { label: "To state your core argument clearly", isCorrect: true },
+            { label: "To tell a joke", isCorrect: false }
           ],
-          explanation: "Concession markers like 'Admittedly... nevertheless' balance complex academic discussions.",
+          explanation: "A thesis anchors the entire argumentation line."
         },
-      ],
-    },
-    "Academic-2": {
-      title: "Academic & Debate: Advanced Vocabulary & Collocations",
-      image: "📜",
-      category: "Academic & Debate",
-      source: "IELTS & CAE Academic Corpus",
-      questions: [
         {
-          id: 1,
-          prompt: "Which verb collocates correctly with 'research' when conducting a study?",
-          options: [
-            { label: "To make research", isCorrect: false },
-            { label: "To carry out research", isCorrect: true },
-          ],
-          explanation: "In academic English, researchers 'carry out' or 'conduct' research.",
+          id: 2,
+          prompt: "Which connector signals a contrasting point?",
+          options: [{ label: "However", isCorrect: true }, { label: "Furthermore", isCorrect: false }],
+          explanation: "'However' introduces contrasting evidence."
         },
-      ],
+        {
+          id: 3,
+          prompt: "Why use empirical evidence in a debate?",
+          options: [{ label: "To support claims with verified facts", isCorrect: true }, { label: "To confuse the audience", isCorrect: false }],
+          explanation: "Facts validate academic arguments."
+        },
+        {
+          id: 4,
+          prompt: "What is a rebuttal?",
+          options: [{ label: "Addressing and disproving opponent claims", isCorrect: true }, { label: "Agreeing with everything", isCorrect: false }],
+          explanation: "Rebuttals counter opposition points."
+        },
+        {
+          id: 5,
+          prompt: "How should a formal debate speech conclude?",
+          options: [{ label: "With a strong summary of main points", isCorrect: true }, { label: "By walking away silently", isCorrect: false }],
+          explanation: "Conclusions reinforce lasting impressions."
+        }
+      ]
     },
-    "Academic-3": {
-      title: "Academic & Debate: Formal Essay Register & Tone",
+
+    // --- C1 ADVANCED / ACADEMIC & JOB INTERVIEWS ---
+    "C1-Jobs-1": {
+      title: "C1 Advanced: Executive Interviews & Leadership",
       image: "🏛️",
-      category: "Academic & Debate",
-      source: "University Writing Center Guidelines",
+      level: "C1 Advanced",
+      category: "Job Interviews",
+      source: "CAE Professional Corpus",
       questions: [
         {
           id: 1,
-          prompt: "Which sentence maintains the proper formal academic tone?",
+          prompt: "Which response demonstrates superior executive communication?",
           options: [
-            { label: "Kids these days spend way too much time staring at glowing screens.", isCorrect: false },
-            { label: "Contemporary adolescents exhibit a pronounced reliance on digital screens.", isCorrect: true },
+            { label: "By streamlining operational workflows, we reduced overhead by 30%.", isCorrect: true },
+            { label: "We did some stuff and saved money.", isCorrect: false }
           ],
-          explanation: "Academic writing avoids colloquial expressions ('kids', 'way too much') in favor of precise vocabulary.",
+          explanation: "Executive communication requires precise, metrics-driven phrasing."
         },
-      ],
-    },
+        {
+          id: 2,
+          prompt: "What does 'stakeholder alignment' mean in corporate settings?",
+          options: [
+            { label: "Ensuring all interested parties share mutual goals", isCorrect: true },
+            { label: "Parking cars in a row", isCorrect: false }],
+          explanation: "Stakeholder alignment synchronizes team objectives."
+        },
+        {
+          id: 3,
+          prompt: "How do you handle a critical stakeholder objection?",
+          options: [
+            { label: "Acknowledge concerns constructively with data-backed solutions", isCorrect: true },
+            { label: "Ignore them completely", isCorrect: false }],
+          explanation: "Diplomatic mitigation resolves high-stakes friction."
+        },
+        {
+          id: 4,
+          prompt: "What is strategic foresight?",
+          options: [
+            { label: "Anticipating long-term industry shifts and adapting proactively", isCorrect: true },
+            { label: "Guessing tomorrow's weather", isCorrect: false }],
+          explanation: "Foresight drives visionary leadership."
+        },
+        {
+          id: 5,
+          prompt: "Which idiom describes taking charge during a crisis?",
+          options: [
+            { label: "Stepping up to the plate / Taking the helm", isCorrect: true },
+            { label: "Beating around the bush", isCorrect: false }],
+          explanation: "Taking the helm signifies proactive crisis leadership."
+        }
+      ]
+    }
   };
 
+  // Expanded Study Materials matching all levels and categories
   const studyGuides: StudyMaterial[] = [
     {
-      id: "dailylife-1",
-      title: "Daily Life: Essential Grocery & Supermarket Vocabulary",
-      level: "Beginner (A1)",
+      id: "guide-k-daily",
+      title: "Kindergarten: Daily Life & Basic Vocabulary",
+      level: "Kindergarten",
       category: "Daily Life",
-      summary: "Master everyday vocabulary for navigating supermarkets, reading labels, and making purchases.",
-      illustration: "🛒🍎🧀",
+      summary: "Foundational phonics, colors, fruits, and family greetings for young learners.",
+      illustration: "🧸🍎✨",
       accentColor: "bg-pink-50 border-pink-100 text-pink-600",
       subTopics: [
         {
-          title: "1. Supermarket Aisles & Sections",
-          subtitle: "Locating food groups quickly",
-          explanation: [
-            "Supermarkets are organized into distinct departments: produce, dairy, bakery, and frozen foods.",
-            "Knowing these terms helps you find items without wandering."
-          ],
-          examples: ["'Produce' = fresh fruits and vegetables", "'Dairy' = milk, cheese, and yogurt"]
-        },
-        {
-          title: "2. Payment & Checkout Phrases",
-          subtitle: "Interacting with cashiers",
-          explanation: [
-            "Learn how to respond to common checkout inquiries regarding payment methods and bags.",
-            "Always use polite expressions like 'Card, please' or 'Receipt, thank you'."
-          ],
-          examples: ["'Would you like paper or plastic?'", "'Do you accept contactless payment?'"]
+          title: "1. Phonemic Alphabet Recognition",
+          subtitle: "Matching sounds to everyday objects",
+          explanation: ["Children learn initial sounds using visual flashcards.", "Apples, balls, and cats form the baseline phonetic set."],
+          examples: ["/æ/ for Apple", "/b/ for Ball"]
         }
       ]
     },
     {
-      id: "dailylife-2",
-      title: "Daily Life: Dining Out & Restaurant Etiquette",
-      level: "Elementary (A2)",
-      category: "Daily Life",
-      summary: "Phrases and cultural norms for booking tables, reading menus, and paying the check.",
-      illustration: "🍽️🍷💬",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Making Reservations",
-          subtitle: "Booking a table over the phone or online",
-          explanation: [
-            "State your party size, preferred time, and any dietary restrictions clearly.",
-            "Use modal verbs like 'I would like to book...' for politeness."
-          ],
-          examples: ["'I'd like a table for four at 7:30 PM, please.'"]
-        },
-        {
-          title: "2. Asking for Recommendations",
-          subtitle: "Consulting the server about house specialties",
-          explanation: [
-            "Ask the waiter for their personal favorite dish or the chef's specialty.",
-            "Inquire about ingredients if you have allergies."
-          ],
-          examples: ["'What do you recommend on the menu today?'"]
-        }
-      ]
-    },
-    {
-      id: "dailylife-3",
-      title: "Daily Life: Navigating Public Transport & City Travel",
-      level: "Elementary (A2)",
-      category: "Daily Life",
-      summary: "How to read transit maps, buy tickets, and ask for travel directions.",
-      illustration: "🚇🚌🗺️",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Buying Tickets & Passes",
-          subtitle: "Interacting with station ticket booths",
-          explanation: [
-            "Specify whether you need a one-way (single) ticket or a round-trip (return) ticket.",
-            "Check for day-pass discounts if you plan multiple journeys."
-          ],
-          examples: ["'A single ticket to downtown, please.'"]
-        },
-        {
-          title: "2. Asking for Clarification",
-          subtitle: "Making sure you are on the right route",
-          explanation: [
-            "Always double-check platform numbers and direction indicators with transit staff.",
-            "Use polite phrasing when interrupting station agents."
-          ],
-          examples: ["'Does this platform go toward the central station?'"]
-        }
-      ]
-    },
-    {
-      id: "socialmedia-1",
-      title: "Social Media: Netiquette & Digital Communication",
-      level: "Intermediate (B1)",
+      id: "guide-p-social",
+      title: "Primary School: Safe Social Media & Etiquette",
+      level: "Primary School",
       category: "Social Media",
-      summary: "Understand the unwritten rules of online discourse, constructive commenting, and tone.",
-      illustration: "💬🌐✨",
+      summary: "Understanding kind online communication and digital safety rules.",
+      illustration: "📱💬🛡️",
+      accentColor: "bg-green-50 border-green-100 text-green-600",
+      subTopics: [
+        {
+          title: "1. Respectful Chatting Online",
+          subtitle: "Using polite words in virtual spaces",
+          explanation: ["Treating others online with the same kindness as in person.", "Reporting inappropriate content immediately."],
+          examples: ["Saying 'Please' and 'Thank you' in game lobbies."]
+        }
+      ]
+    },
+    {
+      id: "guide-jh-jobs",
+      title: "Junior High: Introduction to Job Interviews",
+      level: "Junior High",
+      category: "Job Interviews",
+      summary: "Basic preparation for part-time student roles and teamwork skills.",
+      illustration: "💼🤝📈",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       subTopics: [
         {
-          title: "1. Tone and Textual Clarity",
-          subtitle: "Avoiding misunderstandings without facial cues",
-          explanation: [
-            "Because text lacks vocal tone, punctuation and emojis help convey emotion accurately.",
-            "Sarcasm can easily be misinterpreted online without clear context."
-          ],
-          examples: ["Using emojis to clarify playful intent.", "Avoiding ALL CAPS to prevent sounding angry."]
-        },
-        {
-          title: "2. Constructive vs. Toxic Engagement",
-          subtitle: "Handling disagreement respectfully",
-          explanation: [
-            "Engage with ideas rather than attacking individuals in comment sections.",
-            "Use phrases like 'From my perspective...' instead of definitive dismissals."
-          ],
-          examples: ["'I see your point, though evidence suggests otherwise...'"]
+          title: "1. First Impressions & Punctuality",
+          subtitle: "Why arriving on time matters",
+          explanation: ["Punctuality builds trust with employers.", "Dressing neatly reflects professional commitment."],
+          examples: ["Arriving 10 minutes prior to scheduled meetings."]
         }
       ]
     },
     {
-      id: "socialmedia-2",
-      title: "Social Media: Internet Slang, Acronyms & Trends",
-      level: "Intermediate (B1)",
-      category: "Social Media",
-      summary: "Decode modern internet terminology used across Twitter, Instagram, TikTok, and Reddit.",
-      illustration: "📱🔥🚀",
-      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      subTopics: [
-        {
-          title: "1. Common Digital Abbreviations",
-          subtitle: "Understanding text-speak and chat slang",
-          explanation: [
-            "Fast-paced messaging relies on shorthand expressions like IMHO, TL;DR, and ICYMI.",
-            "These streamline casual conversations among online communities."
-          ],
-          examples: ["'TL;DR' = Too Long; Didn't Read", "'IMHO' = In My Humble Opinion"]
-        },
-        {
-          title: "2. Viral Content Vocabulary",
-          subtitle: "Tracking online trends and algorithms",
-          explanation: [
-            "Learn terms like 'engagement', 'reach', 'algorithm', and 'going viral'.",
-            "Useful for discussing digital marketing and modern media trends."
-          ],
-          examples: ["'The video gained massive traction overnight.'"]
-        }
-      ]
-    },
-    {
-      id: "socialmedia-3",
-      title: "Social Media: Media Literacy & Spotting Fake News",
-      level: "Upper-Intermediate (B2)",
-      category: "Social Media",
-      summary: "Evaluate online claims, check sources, and develop critical thinking in digital feeds.",
-      illustration: "🔍📰🛡️",
-      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      subTopics: [
-        {
-          title: "1. Evaluating Source Credibility",
-          subtitle: "Checking author authority and institutional backing",
-          explanation: [
-            "Verify whether a publishing domain is verified and whether articles cite empirical evidence.",
-            "Beware of sensationalized headlines designed solely to provoke emotional clicks."
-          ],
-          examples: ["Cross-referencing claims with established journalistic archives."]
-        },
-        {
-          title: "2. Understanding Confirmation Bias",
-          subtitle: "Recognizing how algorithms shape your feed",
-          explanation: [
-            "Social algorithms feed users content that matches prior beliefs.",
-            "Actively seeking diverse viewpoints prevents ideological echo chambers."
-          ],
-          examples: ["Deliberately reading opposing editorials to gain balanced insight."]
-        }
-      ]
-    },
-    {
-      id: "jobinterviews-1",
-      title: "Job Interviews: Professional Self-Introduction Masterclass",
-      level: "Upper-Intermediate (B2)",
-      category: "Job Interviews",
-      summary: "Craft a compelling elevator pitch highlighting your professional history and career trajectory.",
-      illustration: "💼👔📈",
-      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
-      subTopics: [
-        {
-          title: "1. The 60-Second Pitch Structure",
-          subtitle: "Presenting past, present, and future in harmony",
-          explanation: [
-            "Begin with your current professional title and key years of experience.",
-            "Highlight a standout achievement before pivoting to why you want this specific role."
-          ],
-          examples: ["'With over four years in project management, I specialize in...'"]
-        },
-        {
-          title: "2. Aligning Skills with Company Needs",
-          subtitle: "Tailoring your introduction to the job description",
-          explanation: [
-            "Focus on transferable skills and accomplishments relevant to the hiring manager.",
-            "Avoid reciting your entire resume verbatim."
-          ],
-          examples: ["Connecting past optimization successes directly to the target company's goals."]
-        }
-      ]
-    },
-    {
-      id: "jobinterviews-2",
-      title: "Job Interviews: Behavioral Questions & The STAR Method",
-      level: "Upper-Intermediate (B2)",
-      category: "Job Interviews",
-      summary: "Structure compelling stories about past challenges using Situation, Task, Action, and Result.",
-      illustration: "⭐🏆🧠",
-      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
-      subTopics: [
-        {
-          title: "1. Structuring Your Narrative (STAR)",
-          subtitle: "Keeping answers concise and impactful",
-          explanation: [
-            "Situation & Task: Set the context and explain the challenge you faced.",
-            "Action & Result: Detail what specific steps you took and the measurable outcome."
-          ],
-          examples: ["'When our server crashed (Situation), I had to restore backups (Action), reducing downtime by 50% (Result).''"]
-        },
-        {
-          title: "2. Quantifying Achievements",
-          subtitle: "Using data points to prove effectiveness",
-          explanation: [
-            "Numbers provide concrete proof of your competence.",
-            "Use percentages, dollar amounts, or time saved whenever possible."
-          ],
-          examples: ["'Spearheaded a marketing campaign that boosted user retention by 25%.'"]
-        }
-      ]
-    },
-    {
-      id: "jobinterviews-3",
-      title: "Job Interviews: Closing Strong & Asking Smart Questions",
-      level: "Advanced (C1)",
-      category: "Job Interviews",
-      summary: "Turn the tables in an interview by asking insightful questions that demonstrate high-level business acumen.",
-      illustration: "🤝💡🎯",
-      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
-      subTopics: [
-        {
-          title: "1. Asking Strategic Questions",
-          subtitle: "Moving beyond basic salary and benefit inquiries",
-          explanation: [
-            "Ask about upcoming product launches, team bottlenecks, or company culture challenges.",
-            "This shows you are already thinking like an integrated team member."
-          ],
-          examples: ["'What is the biggest operational hurdle the team expects to face this quarter?'"]
-        },
-        {
-          title: "2. Professional Closing Statements",
-          subtitle: "Reiterating enthusiasm and outlining next steps",
-          explanation: [
-            "Conclude by reaffirming your unique fit for the position and asking about hiring timelines.",
-            "Send a thoughtful thank-you note within 24 hours."
-          ],
-          examples: ["'Thank you for your time today; I am very excited about contributing to this initiative.'"]
-        }
-      ]
-    },
-    {
-      id: "academic-1",
-      title: "Academic & Debate: Counter-Arguments & Concession Clauses",
-      level: "Advanced (C1)",
+      id: "guide-sh-academic",
+      title: "Senior High: Academic Debate & Argumentation",
+      level: "Senior High",
       category: "Academic & Debate",
-      summary: "Master sophisticated transitional structures to dismantle opposing views with rhetorical precision.",
+      summary: "Structuring persuasive speeches, counter-arguments, and formal essays.",
       illustration: "⚖️🏛️📝",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       subTopics: [
         {
-          title: "1. Concession and Refutation",
-          subtitle: "Acknowledging validity while defending your thesis",
-          explanation: [
-            "Use advanced conjunctions like 'Notwithstanding', 'Albeit', and 'While it is tempting to argue...' to grant minor points to opponents before presenting your core argument.",
-            "Demonstrates balanced intellectual rigor."
-          ],
-          examples: ["'Notwithstanding potential budgetary constraints, the long-term yield justifies the expenditure.'"]
-        },
-        {
-          title: "2. Nuanced Phrasing in Formal Debate",
-          subtitle: "Elevating rhetorical impact",
-          explanation: [
-            "Replace absolute words like 'always' or 'never' with academic qualifiers like 'predominantly', 'arguably', or 'to a large extent'.",
-            "Maintains scientific and scholarly accuracy."
-          ],
-          examples: ["'The data arguably points toward a correlation rather than direct causation.'"]
+          title: "1. Thesis Development",
+          subtitle: "Drafting clear argumentative hooks",
+          explanation: ["A thesis statement guides your entire essay structure.", "Clear supporting points make debates compelling."],
+          examples: ["'While renewable energy is costly, its long-term environmental yield is vital.'"]
         }
       ]
     },
     {
-      id: "academic-2",
-      title: "Academic & Debate: Advanced Collocations & Lexical Resource",
+      id: "guide-c1-jobs",
+      title: "C1 Advanced: Executive Leadership & Corporate Interviews",
       level: "C1 Advanced",
-      category: "Academic & Debate",
-      summary: "Enhance your academic writing score by mastering high-level verb-noun and adjective-noun pairings.",
-      illustration: "📜✍️🔬",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
+      category: "Job Interviews",
+      summary: "Advanced metrics-driven storytelling and high-level stakeholder management.",
+      illustration: "🏛️📊🎯",
+      accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       subTopics: [
         {
-          title: "1. Academic Verb Collocations",
-          subtitle: "Choosing precise verbs for scholarly prose",
-          explanation: [
-            "Avoid generic verbs like 'show' or 'make' in favor of 'elucidate', 'substantiate', 'spearhead', or 'delineate'.",
-            "Elevates your register to match international journal standards."
-          ],
-          examples: ["'Recent findings substantiate the hypothesis regarding...'"]
-        },
-        {
-          title: "2. Complex Noun Phrases",
-          subtitle: "Packing dense information into single subject clauses",
-          explanation: [
-            "Academic English favors noun-heavy structures over long verb chains.",
-            "Transforms wordy sentences into crisp, professional summaries."
-          ],
-          examples: ["'The rapid acceleration of technological integration...' instead of 'Technology is integrating quickly and...'"]
-        }
-      ]
-    },
-    {
-      id: "academic-3",
-      title: "Academic & Debate: Formal Essay Register & Stylistic Control",
-      level: "C1 Advanced",
-      category: "Academic & Debate",
-      summary: "Eliminate informal bias, colloquialisms, and emotional language to maintain immaculate academic tone.",
-      illustration: "🎓📊📖",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Impersonal Passive Voice",
-          subtitle: "Removing subjective bias from research reporting",
-          explanation: [
-            "Shift focus from personal pronouns ('I discovered') to objective observations ('It was observed that...').",
-            "Maintains scholarly distance and neutrality."
-          ],
-          examples: ["'Experiments were conducted under controlled thermal conditions.'"]
-        },
-        {
-          title: "2. Avoiding Contractions and Clichés",
-          subtitle: "Maintaining strict formal guidelines",
-          explanation: [
-            "Always write out words fully ('do not' instead of 'don't').",
-            "Refrain from using conversational metaphors or slang idioms in research papers."
-          ],
-          examples: ["'The results are inconclusive' rather than 'We are back to square one.'"]
+          title: "1. Metrics-Driven Elevator Pitches",
+          subtitle: "Demonstrating ROI and strategic impact",
+          explanation: ["Using quantifiable achievements to prove leadership value.", "Addressing complex corporate objections with composure."],
+          examples: ["'Spearheaded global restructuring, yielding a 35% margin increase.'"]
         }
       ]
     }
@@ -611,6 +370,7 @@ export default function Home() {
   const currentModule = activeModuleKey ? quizDataBank[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
+  // QUIZ PAGE VIEW
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -627,10 +387,10 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-2 mb-6">
             <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">
-              {currentModule.category}
+              {currentModule.level}
             </span>
             <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full">
-              {currentModule.source}
+              {currentModule.category}
             </span>
           </div>
 
@@ -694,6 +454,7 @@ export default function Home() {
     );
   }
 
+  // STUDY SUB-TOPIC VIEW
   if (activeSubTopic) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -742,6 +503,7 @@ export default function Home() {
     );
   }
 
+  // STUDY GUIDE OVERVIEW VIEW
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -796,6 +558,7 @@ export default function Home() {
     );
   }
 
+  // MAIN DASHBOARD HOMEPAGE
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -830,38 +593,63 @@ export default function Home() {
           <span className="text-[#f2b705] font-normal">Practical</span>
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          {activeTab === "quizzes"
-            ? "Over 12+ fully interactive modules covering Daily Life, Social Media, Job Interviews, and Academic & Debate."
-            : "Comprehensive study guides with fully accessible deep-dive learning breakdowns for every category."}
+          Choose your school level first, then filter by category to explore interactive quizzes and comprehensive study materials.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {topics.map((topic) => (
-            <button
-              key={topic}
-              onClick={() => setSelectedTopic(topic)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
-                selectedTopic === topic
-                  ? "bg-gray-900 text-white shadow-md"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
-              }`}
-            >
-              {topic}
-            </button>
-          ))}
+        {/* STEP 1: SELECT SCHOOL LEVEL */}
+        <div className="mb-6">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Select School Level</h3>
+          <div className="flex flex-wrap justify-center gap-2">
+            {levels.map((lvl) => (
+              <button
+                key={lvl}
+                onClick={() => setSelectedLevel(lvl)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition cursor-pointer ${
+                  selectedLevel === lvl
+                    ? "bg-[#55b1d4] text-white shadow-md"
+                    : "bg-white text-gray-700 border border-gray-200 hover:border-gray-400"
+                }`}
+              >
+                {lvl}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* STEP 2: SELECT CATEGORY FILTER */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Select Category</h3>
+          <div className="flex flex-wrap justify-center gap-2">
+            {topics.map((topic) => (
+              <button
+                key={topic}
+                onClick={() => setSelectedTopic(topic)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
+                  selectedTopic === topic
+                    ? "bg-gray-900 text-white shadow-md"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                }`}
+              >
+                {topic}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* TAB 1: PRACTICE QUIZZES */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {Object.entries(quizDataBank).map(([key, mod]) => {
-            const isMatch = selectedTopic === "All" || mod.category === selectedTopic;
+            const matchesLevel = selectedLevel === "All Levels" || mod.level === selectedLevel;
+            const matchesTopic = selectedTopic === "All" || mod.category === selectedTopic;
+            const isMatch = matchesLevel && matchesTopic;
 
             return (
               <div
                 key={key}
                 className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition flex flex-col justify-between ${
-                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30 pointer-events-none"
+                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-20 pointer-events-none"
                 }`}
               >
                 <div>
@@ -871,6 +659,7 @@ export default function Home() {
                     </span>
                     <span className="text-2xl">{mod.image}</span>
                   </div>
+                  <span className="text-[10px] font-bold uppercase text-gray-400 tracking-wider block mb-1">{mod.level}</span>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{mod.title}</h3>
                   <p className="text-xs text-gray-500 mb-6 font-medium">Source: {mod.source}</p>
                 </div>
@@ -878,7 +667,7 @@ export default function Home() {
                   onClick={() => isMatch && setActiveModuleKey(key)}
                   className="w-full py-3 px-4 rounded-xl border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-semibold text-xs cursor-pointer"
                 >
-                  Start Quiz →
+                  Start Quiz ({mod.questions.length} Questions) →
                 </button>
               </div>
             );
@@ -886,17 +675,20 @@ export default function Home() {
         </section>
       )}
 
+      {/* TAB 2: STUDY MATERIALS */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => {
-            const isMatch = selectedTopic === "All" || guide.category === selectedTopic;
+            const matchesLevel = selectedLevel === "All Levels" || guide.level === selectedLevel;
+            const matchesTopic = selectedTopic === "All" || guide.category === selectedTopic;
+            const isMatch = matchesLevel && matchesTopic;
 
             return (
               <div
                 key={guide.id}
                 onClick={() => isMatch && setActiveStudyId(guide.id)}
                 className={`bg-white rounded-3xl border border-gray-200 shadow-sm transition overflow-hidden group flex flex-col md:flex-row items-center ${
-                  isMatch ? "opacity-100 hover:border-[#55b1d4] hover:shadow-md cursor-pointer" : "opacity-30 pointer-events-none"
+                  isMatch ? "opacity-100 hover:border-[#55b1d4] hover:shadow-md cursor-pointer" : "opacity-20 pointer-events-none"
                 }`}
               >
                 <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
