@@ -59,7 +59,7 @@ export default function Home() {
 
   const topics = getTopicsForLevel(selectedLevel);
 
-  // EXACT LEVEL-SPECIFIC QUIZ DATA GENERATOR (NO FALLBACK PLACEHOLDERS)
+  // Fully robust quiz generator supporting all levels and topics
   const getModulesForSelection = () => {
     const list: Record<string, ModuleData> = {};
     const icons = ["🍎", "📱", "ABC", "🔢", "🎒", "🔬", "🗺️", "💼", "🏛️", "📊"];
@@ -69,13 +69,12 @@ export default function Home() {
       lvlTopics.forEach((top, topIdx) => {
         for (let i = 1; i <= 5; i++) {
           const key = `${lvl}-${top}-Quiz${i}`.replace(/\s+/g, "");
-          
           let questions: Question[] = [];
 
           if (lvl === "Kindergarten") {
             if (top === "Daily Life") {
               questions = [
-                { id: 1, prompt: "Which fruit is sweet, red, and starts with 'A'?", imageIllustration: "🍎", options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Carrot", isCorrect: false }], explanation: "Apples start with A and are sweet red fruits." },
+                { id: 1, prompt: "Which fruit is sweet, red, and starts with the letter 'A'?", imageIllustration: "🍎", options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Carrot", isCorrect: false }], explanation: "Apples start with A and are sweet red fruits." },
                 { id: 2, prompt: "What color is a ripe banana?", imageIllustration: "🍌", options: [{ label: "Yellow", isCorrect: true }, { label: "Blue", isCorrect: false }, { label: "Pink", isCorrect: false }], explanation: "Ripe bananas have bright yellow peels." },
                 { id: 3, prompt: "What animal says 'Moo' on a farm?", imageIllustration: "🐮", options: [{ label: "Cow", isCorrect: true }, { label: "Duck", isCorrect: false }, { label: "Cat", isCorrect: false }], explanation: "Cows make a low mooing sound." },
                 { id: 4, prompt: "What do you wear on your feet when it rains outside?", imageIllustration: "👢", options: [{ label: "Rain boots", isCorrect: true }, { label: "Sunglasses", isCorrect: false }, { label: "Slippers", isCorrect: false }], explanation: "Rain boots keep feet dry in puddles." },
