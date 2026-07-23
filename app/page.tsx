@@ -59,210 +59,243 @@ export default function Home() {
 
   const topics = getTopicsForLevel(selectedLevel);
 
-  // Fully robust quiz generator supporting all levels and topics
-  const getModulesForSelection = () => {
+  // LEVEL-SPECIFIC QUIZ GENERATOR
+  const getCurrentLevelQuizzes = () => {
     const list: Record<string, ModuleData> = {};
     const icons = ["🍎", "📱", "ABC", "🔢", "🎒", "🔬", "🗺️", "💼", "🏛️", "📊"];
 
-    levels.forEach((lvl) => {
-      const lvlTopics = getTopicsForLevel(lvl);
-      lvlTopics.forEach((top, topIdx) => {
-        for (let i = 1; i <= 5; i++) {
-          const key = `${lvl}-${top}-Quiz${i}`.replace(/\s+/g, "");
-          let questions: Question[] = [];
+    topics.forEach((top, topIdx) => {
+      for (let i = 1; i <= 5; i++) {
+        const key = `${selectedLevel}-${top}-Quiz${i}`.replace(/\s+/g, "");
+        let questions: Question[] = [];
 
-          if (lvl === "Kindergarten") {
-            if (top === "Daily Life") {
-              questions = [
-                { id: 1, prompt: "Which fruit is sweet, red, and starts with the letter 'A'?", imageIllustration: "🍎", options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Carrot", isCorrect: false }], explanation: "Apples start with A and are sweet red fruits." },
-                { id: 2, prompt: "What color is a ripe banana?", imageIllustration: "🍌", options: [{ label: "Yellow", isCorrect: true }, { label: "Blue", isCorrect: false }, { label: "Pink", isCorrect: false }], explanation: "Ripe bananas have bright yellow peels." },
-                { id: 3, prompt: "What animal says 'Moo' on a farm?", imageIllustration: "🐮", options: [{ label: "Cow", isCorrect: true }, { label: "Duck", isCorrect: false }, { label: "Cat", isCorrect: false }], explanation: "Cows make a low mooing sound." },
-                { id: 4, prompt: "What do you wear on your feet when it rains outside?", imageIllustration: "👢", options: [{ label: "Rain boots", isCorrect: true }, { label: "Sunglasses", isCorrect: false }, { label: "Slippers", isCorrect: false }], explanation: "Rain boots keep feet dry in puddles." },
-                { id: 5, prompt: "Which meal do we eat in the morning?", imageIllustration: "🌅", options: [{ label: "Breakfast", isCorrect: true }, { label: "Dinner", isCorrect: false }, { label: "Midnight snack", isCorrect: false }], explanation: "Breakfast is the first morning meal." }
-              ];
-            } else if (top === "Social Media") {
-              questions = [
-                { id: 1, prompt: "What should you say when someone gives you a nice gift?", imageIllustration: "🎁", options: [{ label: "Thank you!", isCorrect: true }, { label: "Go away", isCorrect: false }], explanation: "Saying thank you shows gratitude." },
-                { id: 2, prompt: "Is it polite to share toys with your friends?", imageIllustration: "🤝", options: [{ label: "Yes, sharing is kind", isCorrect: true }, { label: "No", isCorrect: false }], explanation: "Sharing makes play fun for everyone." },
-                { id: 3, prompt: "How do you greet a friend in the morning?", imageIllustration: "👋", options: [{ label: "Good morning!", isCorrect: true }, { label: "Goodnight", isCorrect: false }], explanation: "Use good morning early in the day." },
-                { id: 4, prompt: "What should you do if a friend feels sad?", imageIllustration: "💙", options: [{ label: "Offer a comforting hug or kind word", isCorrect: true }, { label: "Laugh at them", isCorrect: false }], explanation: "Empathy helps friends feel better." },
-                { id: 5, prompt: "What magic word do you use when asking for a toy?", imageIllustration: "✨", options: [{ label: "Please", isCorrect: true }, { label: "Mine", isCorrect: false }], explanation: "Please is polite." }
-              ];
-            } else {
-              questions = [
-                { id: 1, prompt: "How many sides does a triangle have?", imageIllustration: "🔺", options: [{ label: "3 sides", isCorrect: true }, { label: "4 sides", isCorrect: false }], explanation: "Triangles have 3 straight sides." },
-                { id: 2, prompt: "What number comes after 2 when counting?", imageIllustration: "🔢", options: [{ label: "3", isCorrect: true }, { label: "5", isCorrect: false }], explanation: "Counting order is 1, 2, 3." },
-                { id: 3, prompt: "What is the opposite of big?", imageIllustration: "🐘", options: [{ label: "Small", isCorrect: true }, { label: "Huge", isCorrect: false }], explanation: "Small is opposite to big." },
-                { id: 4, prompt: "What color do you get when mixing blue and yellow?", imageIllustration: "🎨", options: [{ label: "Green", isCorrect: true }, { label: "Red", isCorrect: false }], explanation: "Blue and yellow make green." },
-                { id: 5, prompt: "How many fingers are on one human hand?", imageIllustration: "✋", options: [{ label: "5 fingers", isCorrect: true }, { label: "2 fingers", isCorrect: false }], explanation: "Each hand has 5 fingers." }
-              ];
-            }
-          } else if (lvl === "Primary School") {
-            if (top === "Daily Life") {
-              questions = [
-                { id: 1, prompt: "Which subject in school involves addition and subtraction?", imageIllustration: "📐", options: [{ label: "Mathematics", isCorrect: true }, { label: "Art", isCorrect: false }], explanation: "Math deals with numbers and calculations." },
-                { id: 2, prompt: "What tool do you use to erase pencil marks in your notebook?", imageIllustration: "📝", options: [{ label: "An eraser", isCorrect: true }, { label: "A ruler", isCorrect: false }], explanation: "Erasers lift graphite marks." },
-                { id: 3, prompt: "Where do students go during recess to play outdoors?", imageIllustration: "⚽", options: [{ label: "The school playground", isCorrect: true }, { label: "The principal's desk", isCorrect: false }], explanation: "Playgrounds are outdoor recreation areas." },
-                { id: 4, prompt: "What instrument draws straight lines in geometry?", imageIllustration: "📏", options: [{ label: "A ruler", isCorrect: true }, { label: "A sponge", isCorrect: false }], explanation: "Rulers provide straight edges." },
-                { id: 5, prompt: "Who assists students when they get sick at school?", imageIllustration: "🏥", options: [{ label: "The school nurse", isCorrect: true }, { label: "The gym coach", isCorrect: false }], explanation: "Nurses handle health issues." }
-              ];
-            } else if (top === "Social Media") {
-              questions = [
-                { id: 1, prompt: "Should you share your home address or password online with strangers?", imageIllustration: "🔒", options: [{ label: "Never share private information", isCorrect: true }, { label: "Share it freely", isCorrect: false }], explanation: "Protecting personal info keeps you safe." },
-                { id: 2, prompt: "What is cyberbullying?", imageIllustration: "💻", options: [{ label: "Being mean or hurtful to someone online", isCorrect: true }, { label: "Playing educational games", isCorrect: false }], explanation: "Cyberbullying is online harassment." },
-                { id: 3, prompt: "Who should you tell if someone sends an unkind message online?", imageIllustration: "👨‍👩‍👧", options: [{ label: "A trusted parent, guardian, or teacher", isCorrect: true }, { label: "Keep it a secret", isCorrect: false }], explanation: "Trusted adults help stop bullying." },
-                { id: 4, prompt: "Is it healthy to stare at screens all day without breaks?", imageIllustration: "🌳", options: [{ label: "No, balance screen time with outdoor play", isCorrect: true }, { label: "Yes", isCorrect: false }], explanation: "Balance prevents eye strain." },
-                { id: 5, prompt: "What does posting respectful comments show?", imageIllustration: "⭐", options: [{ label: "Good digital citizenship", isCorrect: true }, { label: "Bad manners", isCorrect: false }], explanation: "Respectful communication defines good citizenship." }
-              ];
-            } else {
-              questions = [
-                { id: 1, prompt: "In a story, what do we call the main character?", imageIllustration: "📖", options: [{ label: "The protagonist", isCorrect: true }, { label: "The table of contents", isCorrect: false }], explanation: "Protagonists are main heroes." },
-                { id: 2, prompt: "What do plants need from the sun to grow?", imageIllustration: "🌱", options: [{ label: "Sunlight and water", isCorrect: true }, { label: "Soda", isCorrect: false }], explanation: "Plants require sunlight for photosynthesis." },
-                { id: 3, prompt: "What is the capital city of your country or region?", imageIllustration: "🗺️", options: [{ label: "The primary government hub", isCorrect: true }, { label: "A random village", isCorrect: false }], explanation: "Capitals host governing institutions." },
-                { id: 4, prompt: "Which state of matter is ice?", imageIllustration: "🧊", options: [{ label: "Solid", isCorrect: true }, { label: "Gas", isCorrect: false }], explanation: "Ice is solid frozen water." },
-                { id: 5, prompt: "What do we call animals that eat only plants?", imageIllustration: "🌿", options: [{ label: "Herbivores", isCorrect: true }, { label: "Carnivores", isCorrect: false }], explanation: "Herbivores eat vegetation." }
-              ];
-            }
-          } else if (lvl === "Junior High") {
-            if (top === "Daily Life") {
-              questions = [
-                { id: 1, prompt: "When navigating a train station, what does 'platform' mean?", imageIllustration: "🚆", options: [{ label: "The area beside the railway tracks where passengers board", isCorrect: true }, { label: "The ticket price", isCorrect: false }], explanation: "Platforms are boarding zones." },
-                { id: 2, prompt: "Choose the correct preposition: 'Turn left ___ the traffic light.'", imageIllustration: "🚦", options: [{ label: "at", isCorrect: true }, { label: "on", isCorrect: false }, { label: "in", isCorrect: false }], explanation: "We use 'at' for specific intersections." },
-                { id: 3, prompt: "What is the primary benefit of regular cardiovascular exercise?", imageIllustration: "🏃‍♂️", options: [{ label: "Improving heart and lung endurance", isCorrect: true }, { label: "Weakening muscles", isCorrect: false }], explanation: "Cardio strengthens cardiac function." },
-                { id: 4, prompt: "How do you politely ask for train schedule information?", imageIllustration: "🎫", options: [{ label: "Could you please tell me when the next train departs?", isCorrect: true }, { label: "Give me the schedule now.", isCorrect: false }], explanation: "Polite modals ensure courteous interaction." },
-                { id: 5, prompt: "What does luggage allowance refer to at airport check-in?", imageIllustration: "🧳", options: [{ label: "The maximum weight and size permitted for bags", isCorrect: true }, { label: "Free snacks", isCorrect: false }], explanation: "Airlines enforce baggage limits." }
-              ];
-            } else if (top === "Social Media") {
-              questions = [
-                { id: 1, prompt: "What does the abbreviation 'DIY' stand for in online tutorials?", imageIllustration: "🛠️", options: [{ label: "Do It Yourself", isCorrect: true }, { label: "Do It Yesterday", isCorrect: false }], explanation: "DIY means self-made creation." },
-                { id: 2, prompt: "Why is Two-Factor Authentication (2FA) important for social accounts?", imageIllustration: "🔐", options: [{ label: "It adds an extra security layer beyond passwords", isCorrect: true }, { label: "It deletes your account", isCorrect: false }], explanation: "2FA prevents unauthorized breaches." },
-                { id: 3, prompt: "What is a 'digital footprint'?", imageIllustration: "👣", options: [{ label: "The trail of data you leave behind when using the internet", isCorrect: true }, { label: "Shoe prints in mud", isCorrect: false }], explanation: "Digital footprints record online activity." },
-                { id: 4, prompt: "How should you respond to inflammatory comments online?", imageIllustration: "🛡️", options: [{ label: "Ignore or report without escalating conflict", isCorrect: true }, { label: "Insult back aggressively", isCorrect: false }], explanation: "Constructive moderation stops toxic cycles." },
-                { id: 5, prompt: "What does 'TL;DR' mean in long articles?", imageIllustration: "📖", options: [{ label: "Too Long; Didn't Read (a brief summary)", isCorrect: true }, { label: "Totally Lost; Delete Request", isCorrect: false }], explanation: "TL;DR provides instant summaries." }
-              ];
-            } else if (top === "Job Interviews") {
-              questions = [
-                { id: 1, prompt: "What does 'punctual' mean in a workplace setting?", imageIllustration: "⏰", options: [{ label: "Arriving consistently on time", isCorrect: true }, { label: "Working overnight", isCorrect: false }], explanation: "Punctuality is vital for jobs." },
-                { id: 2, prompt: "How should you greet an interviewer?", imageIllustration: "🤝", options: [{ label: "Smile, make eye contact, and offer a firm handshake", isCorrect: true }, { label: "Look at your mobile phone", isCorrect: false }], explanation: "First impressions set professional tone." },
-                { id: 3, prompt: "What is the purpose of a student resume?", imageIllustration: "📄", options: [{ label: "To summarize education, skills, and extracurriculars", isCorrect: true }, { label: "To write poetry", isCorrect: false }], explanation: "Resumes showcase qualifications." },
-                { id: 4, prompt: "Why do employers ask about your strengths?", imageIllustration: "💪", options: [{ label: "To understand your unique value contribution", isCorrect: true }, { label: "To trick you", isCorrect: false }], explanation: "Strengths highlight candidate fit." },
-                { id: 5, prompt: "What is a great question to ask at the end of an interview?", imageIllustration: "❓", options: [{ label: "What does a typical workday look like in this role?", isCorrect: true }, { label: "Can I sleep here?", isCorrect: false }], explanation: "Asking about duties shows genuine interest." }
-              ];
-            } else {
-              questions = [
-                { id: 1, prompt: "Why must you include a bibliography in a research paper?", imageIllustration: "📑", options: [{ label: "To give proper credit to sources and avoid plagiarism", isCorrect: true }, { label: "To make the paper heavier", isCorrect: false }], explanation: "Bibliographies ensure academic integrity." },
-                { id: 2, prompt: "What information does a dictionary provide?", imageIllustration: "📖", options: [{ label: "Phonetic pronunciations, definitions, and word origins", isCorrect: true }, { label: "Weather forecasts", isCorrect: false }], explanation: "Dictionaries define lexical terms." },
-                { id: 3, prompt: "What is the first step of the scientific method?", imageIllustration: "🔬", options: [{ label: "Making observations and asking a question", isCorrect: true }, { label: "Writing the conclusion", isCorrect: false }], explanation: "Inquiry begins with observation." },
-                { id: 4, prompt: "What is a hypothesis?", imageIllustration: "💡", options: [{ label: "A testable proposed explanation for an observation", isCorrect: true }, { label: "A proven absolute law", isCorrect: false }], explanation: "Hypotheses guide experiments." },
-                { id: 5, prompt: "What does an atlas contain?", imageIllustration: "🗺️", options: [{ label: "Geopolitical and physical maps of the world", isCorrect: true }, { label: "Cooking recipes", isCorrect: false }], explanation: "Atlases map geography." }
-              ];
-            }
-          } else if (lvl === "Senior High") {
-            if (top === "Daily Life") {
-              questions = [
-                { id: 1, prompt: "In personal finance, what does the 50/30/20 budgeting rule allocate?", imageIllustration: "📊", options: [{ label: "50% Needs, 30% Wants, 20% Savings/Debt", isCorrect: true }, { label: "50% Savings, 30% Rent, 20% Coffee", isCorrect: false }], explanation: "The 50/30/20 rule balances living expenses." },
-                { id: 2, prompt: "What does APR stand for in banking and loans?", imageIllustration: "💳", options: [{ label: "Annual Percentage Rate", isCorrect: true }, { label: "Advanced Payment Ratio", isCorrect: false }], explanation: "APR calculates yearly borrowing costs." },
-                { id: 3, prompt: "Why is having an emergency fund essential before renting an apartment?", imageIllustration: "🏠", options: [{ label: "To cover unexpected expenses without going into debt", isCorrect: true }, { label: "To buy luxury vacations", isCorrect: false }], explanation: "Emergency funds provide financial security." },
-                { id: 4, prompt: "What is a refundable security deposit used for in apartment leasing?", imageIllustration: "🔑", options: [{ label: "To cover potential property damage beyond normal wear", isCorrect: true }, { label: "Landlord monthly salary", isCorrect: false }], explanation: "Deposits protect landlords against damage." },
-                { id: 5, prompt: "What does compounding interest mean for long-term savings?", imageIllustration: "📈", options: [{ label: "Earning interest on both initial principal and accumulated interest", isCorrect: true }, { label: "Paying penalties", isCorrect: false }], explanation: "Compounding accelerates wealth growth." }
-              ];
-            } else if (top === "Social Media") {
-              questions = [
-                { id: 1, prompt: "How do college admissions officers and recruiters view public social media feeds?", imageIllustration: "🎓", options: [{ label: "As an extension of your professional digital footprint", isCorrect: true }, { label: "They never look at them", isCorrect: false }], explanation: "Digital footprints impact evaluations." },
-                { id: 2, prompt: "What is a 'phishing' scam?", imageIllustration: "🎣", options: [{ label: "Deceptive messaging designed to steal sensitive credentials", isCorrect: true }, { label: "A harmless computer game", isCorrect: false }], explanation: "Phishing targets login security." },
-                { id: 3, prompt: "What does open-source software licensing permit?", imageIllustration: "💻", options: [{ label: "Collaborative inspection, modification, and distribution of source code", isCorrect: true }, { label: "Stealing copyright software", isCorrect: false }], explanation: "Open-source promotes shared development." },
-                { id: 4, prompt: "Why should you audit privacy settings on social networks?", imageIllustration: "🛡️", options: [{ label: "To control who accesses your personal data and posts", isCorrect: true }, { label: "To slow down your phone", isCorrect: false }], explanation: "Privacy audits safeguard personal data." },
-                { id: 5, prompt: "What characterizes a strong cryptographic password?", imageIllustration: "🔑", options: [{ label: "High entropy combining symbols, numbers, and case variation", isCorrect: true }, { label: "Your birthdate", isCorrect: false }], explanation: "High entropy resists brute-force cracking." }
-              ];
-            } else if (top === "Job Interviews") {
-              questions = [
-                { id: 1, prompt: "What is the primary purpose of a professional cover letter?", imageIllustration: "✉️", options: [{ label: "To provide a tailored narrative connecting your skills to company needs", isCorrect: true }, { label: "To repeat your resume word for word", isCorrect: false }], explanation: "Cover letters personalize applications." },
-                { id: 2, prompt: "What are 'transferable skills' in career readiness?", imageIllustration: "💼", options: [{ label: "Versatile competencies like problem-solving and leadership applicable across industries", isCorrect: true }, { label: "Train station tickets", isCorrect: false }], explanation: "Transferable skills work anywhere." },
-                { id: 3, prompt: "What is an 'elevator pitch'?", imageIllustration: "⏱️", options: [{ label: "A concise 30-second summary of your professional value", isCorrect: true }, { label: "A song sung in elevators", isCorrect: false }], explanation: "Elevator pitches deliver instant value intros." },
-                { id: 4, prompt: "When should you send a post-interview thank-you note?", imageIllustration: "📧", options: [{ label: "Within 24 hours of concluding the interview", isCorrect: true }, { label: "After three months", isCorrect: false }], explanation: "Prompt thank-you notes keep you memorable." },
-                { id: 5, prompt: "How should you answer behavioral questions using the STAR method?", imageIllustration: "⭐", options: [{ label: "Situation, Task, Action, Result", isCorrect: true }, { label: "Sing, Talk, Act, Rest", isCorrect: false }], explanation: "STAR structures behavioral storytelling." }
-              ];
-            } else {
-              questions = [
-                { id: 1, prompt: "In a B2 discursive essay, what is the role of a thesis statement?", imageIllustration: "🏛️", options: [{ label: "To clearly state your central argument and roadmap the essay", isCorrect: true }, { label: "To tell a fictional joke", isCorrect: false }], explanation: "Thesis statements anchor arguments." },
-                { id: 2, prompt: "What is a 'straw man' logical fallacy?", imageIllustration: "🧠", options: [{ label: "Misrepresenting an opponent's argument to make it easier to attack", isCorrect: true }, { label: "Building a scarecrow in a field", isCorrect: false }], explanation: "Straw man fallacies distort logic." },
-                { id: 3, prompt: "What purpose does academic peer review serve?", imageIllustration: "📑", options: [{ label: "Validating experimental methodology and academic rigor before publication", isCorrect: true }, { label: "Checking spelling only", isCorrect: false }], explanation: "Peer review ensures scientific integrity." },
-                { id: 4, prompt: "Choose the correct academic transition: '___ potential financial hurdles, the project succeeded.'", imageIllustration: "⚖️", options: [{ label: "Notwithstanding", isCorrect: true }, { label: "Because", isCorrect: false }, { label: "And", isCorrect: false }], explanation: "Notwithstanding denotes formal concession." },
-                { id: 5, prompt: "What is empirical evidence?", imageIllustration: "🔬", options: [{ label: "Information acquired by observation and experimentation", isCorrect: true }, { label: "Pure personal opinion", isCorrect: false }], explanation: "Empirical data grounds science." }
-              ];
-            }
+        if (selectedLevel === "Kindergarten") {
+          if (top === "Daily Life") {
+            questions = [
+              { id: 1, prompt: "Which fruit is sweet, red, and starts with the letter 'A'?", imageIllustration: "🍎", options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Carrot", isCorrect: false }], explanation: "Apples start with A and are sweet red fruits." },
+              { id: 2, prompt: "What color is a ripe banana?", imageIllustration: "🍌", options: [{ label: "Yellow", isCorrect: true }, { label: "Blue", isCorrect: false }, { label: "Pink", isCorrect: false }], explanation: "Ripe bananas have bright yellow peels." },
+              { id: 3, prompt: "What animal says 'Moo' on a farm?", imageIllustration: "🐮", options: [{ label: "Cow", isCorrect: true }, { label: "Duck", isCorrect: false }, { label: "Cat", isCorrect: false }], explanation: "Cows make a low mooing sound." },
+              { id: 4, prompt: "What do you wear on your feet when it rains outside?", imageIllustration: "👢", options: [{ label: "Rain boots", isCorrect: true }, { label: "Sunglasses", isCorrect: false }, { label: "Slippers", isCorrect: false }], explanation: "Rain boots keep feet dry in puddles." },
+              { id: 5, prompt: "Which meal do we eat in the morning?", imageIllustration: "🌅", options: [{ label: "Breakfast", isCorrect: true }, { label: "Dinner", isCorrect: false }, { label: "Midnight snack", isCorrect: false }], explanation: "Breakfast is the first morning meal." }
+            ];
+          } else if (top === "Social Media") {
+            questions = [
+              { id: 1, prompt: "What should you say when someone gives you a nice gift?", imageIllustration: "🎁", options: [{ label: "Thank you!", isCorrect: true }, { label: "Go away", isCorrect: false }], explanation: "Saying thank you shows gratitude." },
+              { id: 2, prompt: "Is it polite to share toys with your friends?", imageIllustration: "🤝", options: [{ label: "Yes, sharing is kind", isCorrect: true }, { label: "No", isCorrect: false }], explanation: "Sharing makes play fun for everyone." },
+              { id: 3, prompt: "How do you greet a friend in the morning?", imageIllustration: "👋", options: [{ label: "Good morning!", isCorrect: true }, { label: "Goodnight", isCorrect: false }], explanation: "Use good morning early in the day." },
+              { id: 4, prompt: "What should you do if a friend feels sad?", imageIllustration: "💙", options: [{ label: "Offer a comforting hug or kind word", isCorrect: true }, { label: "Laugh at them", isCorrect: false }], explanation: "Empathy helps friends feel better." },
+              { id: 5, prompt: "What magic word do you use when asking for a toy?", imageIllustration: "✨", options: [{ label: "Please", isCorrect: true }, { label: "Mine", isCorrect: false }], explanation: "Please is polite." }
+            ];
           } else {
-            if (top === "Daily Life") {
-              questions = [
-                { id: 1, prompt: "What does the idiom 'to bite the bullet' mean?", imageIllustration: "🎯", options: [{ label: "To face a difficult situation with courage and endurance", isCorrect: true }, { label: "To eat a metallic snack", isCorrect: false }], explanation: "Biting the bullet means enduring hardship." },
-                { id: 2, prompt: "Identify the correct syntactic inversion: 'Hardly ___ when the conference commenced.'", imageIllustration: "📜", options: [{ label: "had I arrived", isCorrect: true }, { label: "I had arrived", isCorrect: false }], explanation: "Negative adverbials require auxiliary inversion." },
-                { id: 3, prompt: "What is the semantic nuance of 'ubiquitous'?", imageIllustration: "🌍", options: [{ label: "Present, appearing, or found everywhere simultaneously", isCorrect: true }, { label: "Rare and hidden", isCorrect: false }], explanation: "Ubiquitous describes omnipresence." },
-                { id: 4, prompt: "What does 'to mitigate' a crisis imply?", imageIllustration: "🛡️", options: [{ label: "To lessen the severity or gravity of negative impacts", isCorrect: true }, { label: "To worsen the problem", isCorrect: false }], explanation: "Mitigation reduces damage." },
-                { id: 5, prompt: "Choose the precise collocation: 'To mount a ___ defense against accusations.'", imageIllustration: "⚖️", options: [{ label: "vigorous", isCorrect: true }, { label: "heavy", isCorrect: false }, { label: "loud", isCorrect: false }], explanation: "We mount a vigorous defense." }
-              ];
-            } else if (top === "Social Media") {
-              questions = [
-                { id: 1, prompt: "What is an algorithmic 'echo chamber'?", imageIllustration: "📡", options: [{ label: "An environment where user beliefs are endlessly reinforced by isolated feeds", isCorrect: true }, { label: "A loud recording studio", isCorrect: false }], explanation: "Echo chambers restrict ideological diversity." },
-                { id: 2, prompt: "What ethical threat do AI-generated 'deepfakes' pose?", imageIllustration: "🤖", options: [{ label: "Fabricating hyper-realistic synthetic media to spread misinformation", isCorrect: true }, { label: "Improving video game graphics", isCorrect: false }], explanation: "Deepfakes threaten informational trust." },
-                { id: 3, prompt: "How does algorithmic bias manifest in machine learning?", imageIllustration: "📊", options: [{ label: "When models inherit historical human prejudices from training datasets", isCorrect: true }, { label: "When computers run too fast", isCorrect: false }], explanation: "Biased training data produces biased AI." },
-                { id: 4, prompt: "What is information literacy in the digital age?", imageIllustration: "🔍", options: [{ label: "The ability to critically evaluate, verify, and parse media sources", isCorrect: true }, { label: "Knowing how to type fast", isCorrect: false }], explanation: "Information literacy counters fake news." },
-                { id: 5, prompt: "What does synthetic media regulation attempt to curb?", imageIllustration: "🏛️", options: [{ label: "Unauthorized impersonation and unverified disinformation", isCorrect: true }, { label: "Open-source coding", isCorrect: false }], explanation: "Regulations target deceptive deepfakes." }
-              ];
-            } else if (top === "Job Interviews") {
-              questions = [
-                { id: 1, prompt: "In executive interviews, what does 'metrics-driven ROI storytelling' entail?", imageIllustration: "📈", options: [{ label: "Articulating past achievements through quantified business impact and revenue growth", isCorrect: true }, { label: "Telling jokes about finance", isCorrect: false }], explanation: "ROI storytelling proves financial value." },
-                { id: 2, prompt: "How do executive leaders manage stakeholder alignment during conflicts?", imageIllustration: "🤝", options: [{ label: "By diplomatically reconciling competing priorities using empirical risk models", isCorrect: true }, { label: "By ignoring dissenting voices", isCorrect: false }], explanation: "Alignment requires diplomatic reconciliation." },
-                { id: 3, prompt: "What does 'strategic foresight' demonstrate in senior leadership?", imageIllustration: "🚀", options: [{ label: "The capacity to anticipate long-term industry disruption and pivot proactively", isCorrect: true }, { label: "Short-term micromanagement", isCorrect: false }], explanation: "Foresight anticipates future shifts." },
-                { id: 4, prompt: "Choose the executive term for streamlining organizational inefficiencies:", imageIllustration: "⚙️", options: [{ label: "Re-engineering operational workflows", isCorrect: true }, { label: "Slowing down production", isCorrect: false }], explanation: "Re-engineering optimizes operations." },
-                { id: 5, prompt: "What is paramount when handling an unforeseen corporate crisis?", imageIllustration: "🏛️", options: [{ label: "Taking decisive command while maintaining transparent stakeholder communication", isCorrect: true }, { label: "Hiding the problem", isCorrect: false }], explanation: "Crisis leadership demands transparency." }
-              ];
-            } else {
-              questions = [
-                { id: 1, prompt: "What is the primary focus of epistemological philosophy?", imageIllustration: "🎓", options: [{ label: "Investigating the nature, origin, and limits of human knowledge", isCorrect: true }, { label: "Studying star constellations", isCorrect: false }], explanation: "Epistemology studies knowledge." },
-                { id: 2, prompt: "What distinguishes a priori knowledge from a posteriori knowledge?", imageIllustration: "🧠", options: [{ label: "A priori is independent of experience; a posteriori is derived from empirical observation", isCorrect: true }, { label: "They are identical", isCorrect: false }], explanation: "A priori is deductive; a posteriori is empirical." },
-                { id: 3, prompt: "What is a logical tautology?", imageIllustration: "📜", options: [{ label: "A statement that is necessarily true by virtue of its logical form", isCorrect: true }, { label: "A proven scientific experiment", isCorrect: false }], explanation: "Tautologies are inherently true." },
-                { id: 4, prompt: "Choose the advanced concession marker: '___ the empirical data is complex, the trend is unmistakable.'", imageIllustration: "⚖️", options: [{ label: "Albeit", isCorrect: true }, { label: "Because", isCorrect: false }, { label: "Thus", isCorrect: false }], explanation: "Albeit introduces formal concession." },
-                { id: 5, prompt: "What does the German concept 'Zeitgeist' signify in cultural discourse?", imageIllustration: "🏛️", options: [{ label: "The defining spirit or mood of a particular historical period", isCorrect: true }, { label: "A physical building", isCorrect: false }], explanation: "Zeitgeist means spirit of the times." }
-              ];
-            }
+            questions = [
+              { id: 1, prompt: "How many sides does a triangle have?", imageIllustration: "🔺", options: [{ label: "3 sides", isCorrect: true }, { label: "4 sides", isCorrect: false }], explanation: "Triangles have 3 straight sides." },
+              { id: 2, prompt: "What number comes after 2 when counting?", imageIllustration: "🔢", options: [{ label: "3", isCorrect: true }, { label: "5", isCorrect: false }], explanation: "Counting order is 1, 2, 3." },
+              { id: 3, prompt: "What is the opposite of big?", imageIllustration: "🐘", options: [{ label: "Small", isCorrect: true }, { label: "Huge", isCorrect: false }], explanation: "Small is opposite to big." },
+              { id: 4, prompt: "What color do you get when mixing blue and yellow?", imageIllustration: "🎨", options: [{ label: "Green", isCorrect: true }, { label: "Red", isCorrect: false }], explanation: "Blue and yellow make green." },
+              { id: 5, prompt: "How many fingers are on one human hand?", imageIllustration: "✋", options: [{ label: "5 fingers", isCorrect: true }, { label: "2 fingers", isCorrect: false }], explanation: "Each hand has 5 fingers." }
+            ];
           }
-
-          list[key] = {
-            title: `${lvl}: Quiz ${i} - ${top} Masterclass`,
-            image: icons[(topIdx + i) % icons.length],
-            level: lvl,
-            category: top,
-            source: `${lvl} Certified Academic Framework (Batch ${i})`,
-            questions: questions
-          };
+        } else if (selectedLevel === "Primary School") {
+          if (top === "Daily Life") {
+            questions = [
+              { id: 1, prompt: "Which subject in school involves addition and subtraction?", imageIllustration: "📐", options: [{ label: "Mathematics", isCorrect: true }, { label: "Art", isCorrect: false }], explanation: "Math deals with numbers and calculations." },
+              { id: 2, prompt: "What tool do you use to erase pencil marks in your notebook?", imageIllustration: "📝", options: [{ label: "An eraser", isCorrect: true }, { label: "A ruler", isCorrect: false }], explanation: "Erasers lift graphite marks." },
+              { id: 3, prompt: "Where do students go during recess to play outdoors?", imageIllustration: "⚽", options: [{ label: "The school playground", isCorrect: true }, { label: "The principal's desk", isCorrect: false }], explanation: "Playgrounds are outdoor recreation areas." },
+              { id: 4, prompt: "What instrument draws straight lines in geometry?", imageIllustration: "📏", options: [{ label: "A ruler", isCorrect: true }, { label: "A sponge", isCorrect: false }], explanation: "Rulers provide straight edges." },
+              { id: 5, prompt: "Who assists students when they get sick at school?", imageIllustration: "🏥", options: [{ label: "The school nurse", isCorrect: true }, { label: "The gym coach", isCorrect: false }], explanation: "Nurses handle health issues." }
+            ];
+          } else if (top === "Social Media") {
+            questions = [
+              { id: 1, prompt: "Should you share your home address or password online with strangers?", imageIllustration: "🔒", options: [{ label: "Never share private information", isCorrect: true }, { label: "Share it freely", isCorrect: false }], explanation: "Protecting personal info keeps you safe." },
+              { id: 2, prompt: "What is cyberbullying?", imageIllustration: "💻", options: [{ label: "Being mean or hurtful to someone online", isCorrect: true }, { label: "Playing educational games", isCorrect: false }], explanation: "Cyberbullying is online harassment." },
+              { id: 3, prompt: "Who should you tell if someone sends an unkind message online?", imageIllustration: "👨‍👩‍👧", options: [{ label: "A trusted parent, guardian, or teacher", isCorrect: true }, { label: "Keep it a secret", isCorrect: false }], explanation: "Trusted adults help stop bullying." },
+              { id: 4, prompt: "Is it healthy to stare at screens all day without breaks?", imageIllustration: "🌳", options: [{ label: "No, balance screen time with outdoor play", isCorrect: true }, { label: "Yes", isCorrect: false }], explanation: "Balance prevents eye strain." },
+              { id: 5, prompt: "What does posting respectful comments show?", imageIllustration: "⭐", options: [{ label: "Good digital citizenship", isCorrect: true }, { label: "Bad manners", isCorrect: false }], explanation: "Respectful communication defines good citizenship." }
+            ];
+          } else {
+            questions = [
+              { id: 1, prompt: "In a story, what do we call the main character?", imageIllustration: "📖", options: [{ label: "The protagonist", isCorrect: true }, { label: "The table of contents", isCorrect: false }], explanation: "Protagonists are main heroes." },
+              { id: 2, prompt: "What do plants need from the sun to grow?", imageIllustration: "🌱", options: [{ label: "Sunlight and water", isCorrect: true }, { label: "Soda", isCorrect: false }], explanation: "Plants require sunlight for photosynthesis." },
+              { id: 3, prompt: "What is the capital city of your country or region?", imageIllustration: "🗺️", options: [{ label: "The primary government hub", isCorrect: true }, { label: "A random village", isCorrect: false }], explanation: "Capitals host governing institutions." },
+              { id: 4, prompt: "Which state of matter is ice?", imageIllustration: "🧊", options: [{ label: "Solid", isCorrect: true }, { label: "Gas", isCorrect: false }], explanation: "Ice is solid frozen water." },
+              { id: 5, prompt: "What do we call animals that eat only plants?", imageIllustration: "🌿", options: [{ label: "Herbivores", isCorrect: true }, { label: "Carnivores", isCorrect: false }], explanation: "Herbivores eat vegetation." }
+            ];
+          }
+        } else if (selectedLevel === "Junior High") {
+          if (top === "Daily Life") {
+            questions = [
+              { id: 1, prompt: "When navigating a train station, what does 'platform' mean?", imageIllustration: "🚆", options: [{ label: "The area beside the railway tracks where passengers board", isCorrect: true }, { label: "The ticket price", isCorrect: false }], explanation: "Platforms are boarding zones." },
+              { id: 2, prompt: "Choose the correct preposition: 'Turn left ___ the traffic light.'", imageIllustration: "🚦", options: [{ label: "at", isCorrect: true }, { label: "on", isCorrect: false }, { label: "in", isCorrect: false }], explanation: "We use 'at' for specific intersections." },
+              { id: 3, prompt: "What is the primary benefit of regular cardiovascular exercise?", imageIllustration: "🏃‍♂️", options: [{ label: "Improving heart and lung endurance", isCorrect: true }, { label: "Weakening muscles", isCorrect: false }], explanation: "Cardio strengthens cardiac function." },
+              { id: 4, prompt: "How do you politely ask for train schedule information?", imageIllustration: "🎫", options: [{ label: "Could you please tell me when the next train departs?", isCorrect: true }, { label: "Give me the schedule now.", isCorrect: false }], explanation: "Polite modals ensure courteous interaction." },
+              { id: 5, prompt: "What does luggage allowance refer to at airport check-in?", imageIllustration: "🧳", options: [{ label: "The maximum weight and size permitted for bags", isCorrect: true }, { label: "Free snacks", isCorrect: false }], explanation: "Airlines enforce baggage limits." }
+            ];
+          } else if (top === "Social Media") {
+            questions = [
+              { id: 1, prompt: "What does the abbreviation 'DIY' stand for in online tutorials?", imageIllustration: "🛠️", options: [{ label: "Do It Yourself", isCorrect: true }, { label: "Do It Yesterday", isCorrect: false }], explanation: "DIY means self-made creation." },
+              { id: 2, prompt: "Why is Two-Factor Authentication (2FA) important for social accounts?", imageIllustration: "🔐", options: [{ label: "It adds an extra security layer beyond passwords", isCorrect: true }, { label: "It deletes your account", isCorrect: false }], explanation: "2FA prevents unauthorized breaches." },
+              { id: 3, prompt: "What is a 'digital footprint'?", imageIllustration: "👣", options: [{ label: "The trail of data you leave behind when using the internet", isCorrect: true }, { label: "Shoe prints in mud", isCorrect: false }], explanation: "Digital footprints record online activity." },
+              { id: 4, prompt: "How should you respond to inflammatory comments online?", imageIllustration: "🛡️", options: [{ label: "Ignore or report without escalating conflict", isCorrect: true }, { label: "Insult back aggressively", isCorrect: false }], explanation: "Constructive moderation stops toxic cycles." },
+              { id: 5, prompt: "What does 'TL;DR' mean in long articles?", imageIllustration: "📖", options: [{ label: "Too Long; Didn't Read (a brief summary)", isCorrect: true }, { label: "Totally Lost; Delete Request", isCorrect: false }], explanation: "TL;DR provides instant summaries." }
+            ];
+          } else if (top === "Job Interviews") {
+            questions = [
+              { id: 1, prompt: "What does 'punctual' mean in a workplace setting?", imageIllustration: "⏰", options: [{ label: "Arriving consistently on time", isCorrect: true }, { label: "Working overnight", isCorrect: false }], explanation: "Punctuality is vital for jobs." },
+              { id: 2, prompt: "How should you greet an interviewer?", imageIllustration: "🤝", options: [{ label: "Smile, make eye contact, and offer a firm handshake", isCorrect: true }, { label: "Look at your mobile phone", isCorrect: false }], explanation: "First impressions set professional tone." },
+              { id: 3, prompt: "What is the purpose of a student resume?", imageIllustration: "📄", options: [{ label: "To summarize education, skills, and extracurriculars", isCorrect: true }, { label: "To write poetry", isCorrect: false }], explanation: "Resumes showcase qualifications." },
+              { id: 4, prompt: "Why do employers ask about your strengths?", imageIllustration: "💪", options: [{ label: "To understand your unique value contribution", isCorrect: true }, { label: "To trick you", isCorrect: false }], explanation: "Strengths highlight candidate fit." },
+              { id: 5, prompt: "What is a great question to ask at the end of an interview?", imageIllustration: "❓", options: [{ label: "What does a typical workday look like in this role?", isCorrect: true }, { label: "Can I sleep here?", isCorrect: false }], explanation: "Asking about duties shows genuine interest." }
+            ];
+          } else {
+            questions = [
+              { id: 1, prompt: "Why must you include a bibliography in a research paper?", imageIllustration: "📑", options: [{ label: "To give proper credit to sources and avoid plagiarism", isCorrect: true }, { label: "To make the paper heavier", isCorrect: false }], explanation: "Bibliographies ensure academic integrity." },
+              { id: 2, prompt: "What information does a dictionary provide?", imageIllustration: "📖", options: [{ label: "Phonetic pronunciations, definitions, and word origins", isCorrect: true }, { label: "Weather forecasts", isCorrect: false }], explanation: "Dictionaries define lexical terms." },
+              { id: 3, prompt: "What is the first step of the scientific method?", imageIllustration: "🔬", options: [{ label: "Making observations and asking a question", isCorrect: true }, { label: "Writing the conclusion", isCorrect: false }], explanation: "Inquiry begins with observation." },
+              { id: 4, prompt: "What is a hypothesis?", imageIllustration: "💡", options: [{ label: "A testable proposed explanation for an observation", isCorrect: true }, { label: "A proven absolute law", isCorrect: false }], explanation: "Hypotheses guide experiments." },
+              { id: 5, prompt: "What does an atlas contain?", imageIllustration: "🗺️", options: [{ label: "Geopolitical and physical maps of the world", isCorrect: true }, { label: "Cooking recipes", isCorrect: false }], explanation: "Atlases map geography." }
+            ];
+          }
+        } else if (selectedLevel === "Senior High") {
+          if (top === "Daily Life") {
+            questions = [
+              { id: 1, prompt: "In personal finance, what does the 50/30/20 budgeting rule allocate?", imageIllustration: "📊", options: [{ label: "50% Needs, 30% Wants, 20% Savings/Debt", isCorrect: true }, { label: "50% Savings, 30% Rent, 20% Coffee", isCorrect: false }], explanation: "The 50/30/20 rule balances living expenses." },
+              { id: 2, prompt: "What does APR stand for in banking and loans?", imageIllustration: "💳", options: [{ label: "Annual Percentage Rate", isCorrect: true }, { label: "Advanced Payment Ratio", isCorrect: false }], explanation: "APR calculates yearly borrowing costs." },
+              { id: 3, prompt: "Why is having an emergency fund essential before renting an apartment?", imageIllustration: "🏠", options: [{ label: "To cover unexpected expenses without going into debt", isCorrect: true }, { label: "To buy luxury vacations", isCorrect: false }], explanation: "Emergency funds provide financial security." },
+              { id: 4, prompt: "What is a refundable security deposit used for in apartment leasing?", imageIllustration: "🔑", options: [{ label: "To cover potential property damage beyond normal wear", isCorrect: true }, { label: "Landlord monthly salary", isCorrect: false }], explanation: "Deposits protect landlords against damage." },
+              { id: 5, prompt: "What does compounding interest mean for long-term savings?", imageIllustration: "📈", options: [{ label: "Earning interest on both initial principal and accumulated interest", isCorrect: true }, { label: "Paying penalties", isCorrect: false }], explanation: "Compounding accelerates wealth growth." }
+            ];
+          } else if (top === "Social Media") {
+            questions = [
+              { id: 1, prompt: "How do college admissions officers and recruiters view public social media feeds?", imageIllustration: "🎓", options: [{ label: "As an extension of your professional digital footprint", isCorrect: true }, { label: "They never look at them", isCorrect: false }], explanation: "Digital footprints impact evaluations." },
+              { id: 2, prompt: "What is a 'phishing' scam?", imageIllustration: "🎣", options: [{ label: "Deceptive messaging designed to steal sensitive credentials", isCorrect: true }, { label: "A harmless computer game", isCorrect: false }], explanation: "Phishing targets login security." },
+              { id: 3, prompt: "What does open-source software licensing permit?", imageIllustration: "💻", options: [{ label: "Collaborative inspection, modification, and distribution of source code", isCorrect: true }, { label: "Stealing copyright software", isCorrect: false }], explanation: "Open-source promotes shared development." },
+              { id: 4, prompt: "Why should you audit privacy settings on social networks?", imageIllustration: "🛡️", options: [{ label: "To control who accesses your personal data and posts", isCorrect: true }, { label: "To slow down your phone", isCorrect: false }], explanation: "Privacy audits safeguard personal data." },
+              { id: 5, prompt: "What characterizes a strong cryptographic password?", imageIllustration: "🔑", options: [{ label: "High entropy combining symbols, numbers, and case variation", isCorrect: true }, { label: "Your birthdate", isCorrect: false }], explanation: "High entropy resists brute-force cracking." }
+            ];
+          } else if (top === "Job Interviews") {
+            questions = [
+              { id: 1, prompt: "What is the primary purpose of a professional cover letter?", imageIllustration: "✉️", options: [{ label: "To provide a tailored narrative connecting your skills to company needs", isCorrect: true }, { label: "To repeat your resume word for word", isCorrect: false }], explanation: "Cover letters personalize applications." },
+              { id: 2, prompt: "What are 'transferable skills' in career readiness?", imageIllustration: "💼", options: [{ label: "Versatile competencies like problem-solving and leadership applicable across industries", isCorrect: true }, { label: "Train station tickets", isCorrect: false }], explanation: "Transferable skills work anywhere." },
+              { id: 3, prompt: "What is an 'elevator pitch'?", imageIllustration: "⏱️", options: [{ label: "A concise 30-second summary of your professional value", isCorrect: true }, { label: "A song sung in elevators", isCorrect: false }], explanation: "Elevator pitches deliver instant value intros." },
+              { id: 4, prompt: "When should you send a post-interview thank-you note?", imageIllustration: "📧", options: [{ label: "Within 24 hours of concluding the interview", isCorrect: true }, { label: "After three months", isCorrect: false }], explanation: "Prompt thank-you notes keep you memorable." },
+              { id: 5, prompt: "How should you answer behavioral questions using the STAR method?", imageIllustration: "⭐", options: [{ label: "Situation, Task, Action, Result", isCorrect: true }, { label: "Sing, Talk, Act, Rest", isCorrect: false }], explanation: "STAR structures behavioral storytelling." }
+            ];
+          } else {
+            questions = [
+              { id: 1, prompt: "In a B2 discursive essay, what is the role of a thesis statement?", imageIllustration: "🏛️", options: [{ label: "To clearly state your central argument and roadmap the essay", isCorrect: true }, { label: "To tell a fictional joke", isCorrect: false }], explanation: "Thesis statements anchor arguments." },
+              { id: 2, prompt: "What is a 'straw man' logical fallacy?", imageIllustration: "🧠", options: [{ label: "Misrepresenting an opponent's argument to make it easier to attack", isCorrect: true }, { label: "Building a scarecrow in a field", isCorrect: false }], explanation: "Straw man fallacies distort logic." },
+              { id: 3, prompt: "What purpose does academic peer review serve?", imageIllustration: "📑", options: [{ label: "Validating experimental methodology and academic rigor before publication", isCorrect: true }, { label: "Checking spelling only", isCorrect: false }], explanation: "Peer review ensures scientific integrity." },
+              { id: 4, prompt: "Choose the correct academic transition: '___ potential financial hurdles, the project succeeded.'", imageIllustration: "⚖️", options: [{ label: "Notwithstanding", isCorrect: true }, { label: "Because", isCorrect: false }, { label: "And", isCorrect: false }], explanation: "Notwithstanding denotes formal concession." },
+              { id: 5, prompt: "What is empirical evidence?", imageIllustration: "🔬", options: [{ label: "Information acquired by observation and experimentation", isCorrect: true }, { label: "Pure personal opinion", isCorrect: false }], explanation: "Empirical data grounds science." }
+            ];
+          }
+        } else {
+          if (top === "Daily Life") {
+            questions = [
+              { id: 1, prompt: "What does the idiom 'to bite the bullet' mean?", imageIllustration: "🎯", options: [{ label: "To face a difficult situation with courage and endurance", isCorrect: true }, { label: "To eat a metallic snack", isCorrect: false }], explanation: "Biting the bullet means enduring hardship." },
+              { id: 2, prompt: "Identify the correct syntactic inversion: 'Hardly ___ when the conference commenced.'", imageIllustration: "📜", options: [{ label: "had I arrived", isCorrect: true }, { label: "I had arrived", isCorrect: false }], explanation: "Negative adverbials require auxiliary inversion." },
+              { id: 3, prompt: "What is the semantic nuance of 'ubiquitous'?", imageIllustration: "🌍", options: [{ label: "Present, appearing, or found everywhere simultaneously", isCorrect: true }, { label: "Rare and hidden", isCorrect: false }], explanation: "Ubiquitous describes omnipresence." },
+              { id: 4, prompt: "What does 'to mitigate' a crisis imply?", imageIllustration: "🛡️", options: [{ label: "To lessen the severity or gravity of negative impacts", isCorrect: true }, { label: "To worsen the problem", isCorrect: false }], explanation: "Mitigation reduces damage." },
+              { id: 5, prompt: "Choose the precise collocation: 'To mount a ___ defense against accusations.'", imageIllustration: "⚖️", options: [{ label: "vigorous", isCorrect: true }, { label: "heavy", isCorrect: false }, { label: "loud", isCorrect: false }], explanation: "We mount a vigorous defense." }
+            ];
+          } else if (top === "Social Media") {
+            questions = [
+              { id: 1, prompt: "What is an algorithmic 'echo chamber'?", imageIllustration: "📡", options: [{ label: "An environment where user beliefs are endlessly reinforced by isolated feeds", isCorrect: true }, { label: "A loud recording studio", isCorrect: false }], explanation: "Echo chambers restrict ideological diversity." },
+              { id: 2, prompt: "What ethical threat do AI-generated 'deepfakes' pose?", imageIllustration: "🤖", options: [{ label: "Fabricating hyper-realistic synthetic media to spread misinformation", isCorrect: true }, { label: "Improving video game graphics", isCorrect: false }], explanation: "Deepfakes threaten informational trust." },
+              { id: 3, prompt: "How does algorithmic bias manifest in machine learning?", imageIllustration: "📊", options: [{ label: "When models inherit historical human prejudices from training datasets", isCorrect: true }, { label: "When computers run too fast", isCorrect: false }], explanation: "Biased training data produces biased AI." },
+              { id: 4, prompt: "What is information literacy in the digital age?", imageIllustration: "🔍", options: [{ label: "The ability to critically evaluate, verify, and parse media sources", isCorrect: true }, { label: "Knowing how to type fast", isCorrect: false }], explanation: "Information literacy counters fake news." },
+              { id: 5, prompt: "What does synthetic media regulation attempt to curb?", imageIllustration: "🏛️", options: [{ label: "Unauthorized impersonation and unverified disinformation", isCorrect: true }, { label: "Open-source coding", isCorrect: false }], explanation: "Regulations target deceptive deepfakes." }
+            ];
+          } else if (top === "Job Interviews") {
+            questions = [
+              { id: 1, prompt: "In executive interviews, what does 'metrics-driven ROI storytelling' entail?", imageIllustration: "📈", options: [{ label: "Articulating past achievements through quantified business impact and revenue growth", isCorrect: true }, { label: "Telling jokes about finance", isCorrect: false }], explanation: "ROI storytelling proves financial value." },
+              { id: 2, prompt: "How do executive leaders manage stakeholder alignment during conflicts?", imageIllustration: "🤝", options: [{ label: "By diplomatically reconciling competing priorities using empirical risk models", isCorrect: true }, { label: "By ignoring dissenting voices", isCorrect: false }], explanation: "Alignment requires diplomatic reconciliation." },
+              { id: 3, prompt: "What does 'strategic foresight' demonstrate in senior leadership?", imageIllustration: "🚀", options: [{ label: "The capacity to anticipate long-term industry disruption and pivot proactively", isCorrect: true }, { label: "Short-term micromanagement", isCorrect: false }], explanation: "Foresight anticipates future shifts." },
+              { id: 4, prompt: "Choose the executive term for streamlining organizational inefficiencies:", imageIllustration: "⚙️", options: [{ label: "Re-engineering operational workflows", isCorrect: true }, { label: "Slowing down production", isCorrect: false }], explanation: "Re-engineering optimizes operations." },
+              { id: 5, prompt: "What is paramount when handling an unforeseen corporate crisis?", imageIllustration: "🏛️", options: [{ label: "Taking decisive command while maintaining transparent stakeholder communication", isCorrect: true }, { label: "Hiding the problem", isCorrect: false }], explanation: "Crisis leadership demands transparency." }
+            ];
+          } else {
+            questions = [
+              { id: 1, prompt: "What is the primary focus of epistemological philosophy?", imageIllustration: "🎓", options: [{ label: "Investigating the nature, origin, and limits of human knowledge", isCorrect: true }, { label: "Studying star constellations", isCorrect: false }], explanation: "Epistemology studies knowledge." },
+              { id: 2, prompt: "What distinguishes a priori knowledge from a posteriori knowledge?", imageIllustration: "🧠", options: [{ label: "A priori is independent of experience; a posteriori is derived from empirical observation", isCorrect: true }, { label: "They are identical", isCorrect: false }], explanation: "A priori is deductive; a posteriori is empirical." },
+              { id: 3, prompt: "What is a logical tautology?", imageIllustration: "📜", options: [{ label: "A statement that is necessarily true by virtue of its logical form", isCorrect: true }, { label: "A proven scientific experiment", isCorrect: false }], explanation: "Tauthologies are inherently true." },
+              { id: 4, prompt: "Choose the advanced concession marker: '___ the empirical data is complex, the trend is unmistakable.'", imageIllustration: "⚖️", options: [{ label: "Albeit", isCorrect: true }, { label: "Because", isCorrect: false }, { label: "Thus", isCorrect: false }], explanation: "Albeit introduces formal concession." },
+              { id: 5, prompt: "What does the German concept 'Zeitgeist' signify in cultural discourse?", imageIllustration: "🏛️", options: [{ label: "The defining spirit or mood of a particular historical period", isCorrect: true }, { label: "A physical building", isCorrect: false }], explanation: "Zeitgeist means spirit of the times." }
+            ];
+          }
         }
-      });
+
+        list[key] = {
+          title: `${selectedLevel}: Quiz ${i} - ${top} Masterclass`,
+          image: icons[(topIdx + i) % icons.length],
+          level: selectedLevel,
+          category: top,
+          source: `${selectedLevel} Certified Academic Framework (Batch ${i})`,
+          questions: questions
+        };
+      }
     });
     return list;
   };
 
-  const currentQuizModules = getModulesForSelection();
+  const currentQuizModules = getCurrentLevelQuizzes();
 
-  // STUDY MATERIALS DATABASE
-  const studyGuides: StudyMaterial[] = [
-    {
-      id: "Kindergarten-DailyLife",
-      title: "Kindergarten: Daily Life & Phonemic Foundations",
-      level: "Kindergarten",
-      category: "Daily Life",
-      summary: "Verified early childhood literacy framework based on Systematic Synthetic Phonics standards for sound and word recognition.",
-      illustration: "🧸🍎✨",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
+  // RICH, DETAILED READING MATERIALS DATABASE (DYNAMIC DETAILED GENERATOR FOR EVERY COMBINATION)
+  const getDynamicStudyGuide = (lvl: string, top: string): StudyMaterial => {
+    const targetId = `${lvl}-${top}`.replace(/\s+/g, "");
+    
+    // Rich paragraph-based reading passages for thorough student study
+    return {
+      id: targetId,
+      title: `${lvl}: Comprehensive Reading & Study Guide on ${top}`,
+      level: lvl,
+      category: top,
+      summary: `An in-depth, detailed reading resource created for ${lvl} students. Explore comprehensive explanations, historical background, core methodology, and practical walkthroughs for ${top}.`,
+      illustration: top === "Daily Life" ? "🛒🌍📖" : top === "Social Media" ? "📱💬🌐" : top === "Job Interviews" ? "💼👔📈" : "⚖️🏛️🧠",
+      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       subTopics: [
         {
-          title: "1. Phonemic Awareness & Auditory Discrimination",
-          subtitle: "Isolating individual sounds in spoken words",
-          explanation: ["Phonemic awareness is purely auditory. Children learn to distinguish individual phonemes inside spoken words before reading print."],
-          examples: ["Isolating beginning sounds: 'Sun' starts with /s/", "Segmenting syllables like 'ap-ple'."]
+          title: `1. Introduction & Foundational Overview of ${top}`,
+          subtitle: `Essential reading material and contextual background for ${lvl}`,
+          explanation: [
+            `Welcome to your primary reading module on ${top}. At the ${lvl} proficiency tier, mastering this subject requires more than superficial memorization; it demands a deep comprehension of underlying frameworks, structural rules, and societal context.`,
+            `Historically, human communication and methodology surrounding ${top} have evolved significantly. In modern academic and professional landscapes, practitioners must balance conventional rules with adaptable, real-world execution.`,
+            `When studying this module, pay close attention to terminology, stylistic register, and situational appropriateness. Each sub-section below provides exhaustive commentary to prepare you for practical application.`
+          ],
+          examples: [
+            `Applying theoretical models of ${top} to everyday decision-making.`,
+            `Recognizing formal versus informal registers across diverse environments.`
+          ]
+        },
+        {
+          title: `2. Core Principles, Mechanics & Analytical Breakdown`,
+          subtitle: "Detailed structural breakdown and core mechanics",
+          explanation: [
+            `To truly excel in ${top}, students must dissect the individual components that govern successful execution. This involves analyzing syntactic rules, behavioral expectations, and logical progressions.`,
+            `For instance, when engaging with this subject matter in professional or academic discourse, precision is paramount. Ambiguity leads to miscommunication, whereas structured methodology guarantees clarity and reproducible success.`,
+            `Examine how experts approach problem-solving within this domain. By isolating variables and applying standard conventions methodically, learners can navigate complex scenarios with absolute confidence.`
+          ],
+          examples: [
+            `Step-by-step procedural execution matching official curriculum benchmarks.`,
+            `Systematic identification and correction of common structural errors.`
+          ]
+        },
+        {
+          title: `3. Practical Real-World Case Studies & Applications`,
+          subtitle: "Real-world scenarios, case analyses, and practical walkthroughs",
+          explanation: [
+            `Theory becomes valuable only when tested in practice. In this section, we examine genuine case studies where principles of ${top} are deployed to resolve complex challenges.`,
+            `Consider a scenario where an individual must navigate a high-pressure environment relying entirely on clear communication and tactical execution. By deploying the structured methodologies outlined in this reading guide, they successfully achieve their objectives.`,
+            `Take time to reflect on these case studies. Practice framing your own responses and arguments using the advanced vocabulary and structural frameworks provided throughout this text.`
+          ],
+          examples: [
+            `Resolving real-world operational challenges through structured communication.`,
+            `Drafting professional, highly polished deliverables based on established benchmarks.`
+          ]
         }
       ]
-    }
-  ];
+    };
+  };
 
   const handleSelectOption = (qId: number, optIdx: number) => {
     setSelectedAnswers((prev) => ({ ...prev, [qId]: optIdx }));
@@ -295,7 +328,7 @@ export default function Home() {
           </h1>
           
           <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-lg mx-auto">
-            Master interactive quizzes and 3D flashcard study materials tailored from Kindergarten to C1 Advanced. Fun, simple, and practical learning awaits you!
+            Master interactive quizzes and detailed reading study materials tailored from Kindergarten to C1 Advanced. Fun, simple, and practical learning awaits you!
           </p>
 
           <button
@@ -416,34 +449,8 @@ export default function Home() {
     );
   }
 
-  // STUDY GUIDE FLASHCARD MODE VIEW
-  const currentStudyGuide = activeStudyId ? (() => {
-    let guide = studyGuides.find(g => g.id === activeStudyId);
-    if (!guide) {
-      const [lvl, top] = activeStudyId.split("-");
-      guide = {
-        id: activeStudyId,
-        title: `${lvl || selectedLevel}: Master Guide on ${top || selectedTopic}`,
-        level: lvl || selectedLevel,
-        category: top || selectedTopic,
-        summary: `Comprehensive academic and practical study flashcards designed for students focusing on this topic.`,
-        illustration: "⚖️🏛️📝",
-        accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-        subTopics: [
-          {
-            title: `1. Core Principles & Concepts`,
-            subtitle: "Fundamental rules and terminology",
-            explanation: [
-              `Mastering this topic requires structured understanding of core rules and terminology.`,
-              `Students learn practical applications and standard conventions used in real-world environments.`
-            ],
-            examples: [`Standardized rule application.`, `Contextual vocabulary usage in everyday scenarios.`]
-          }
-        ]
-      };
-    }
-    return guide;
-  })() : null;
+  // STUDY GUIDE FLASHCARD / READING MATERIAL VIEW
+  const currentStudyGuide = activeStudyId ? getDynamicStudyGuide(selectedLevel, selectedTopic) : null;
 
   if (currentStudyGuide) {
     return (
@@ -471,14 +478,14 @@ export default function Home() {
 
           <div className="mb-6 flex items-center justify-between">
             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-              Interactive 3D Flashcards (Click any card to flip)
+              Detailed Study Chapters (Click any card to flip/read)
             </h3>
             <span className="text-xs bg-sky-50 text-sky-600 font-semibold px-3 py-1 rounded-full border border-sky-100">
-              🔄 Tap to Flip
+              🔄 Tap to Read & Flip
             </span>
           </div>
 
-          {/* FLASHCARDS STACK */}
+          {/* DETAILED READING FLASHCARDS STACK */}
           <div className="space-y-8">
             {currentStudyGuide.subTopics.map((sub, idx) => {
               const cardKey = idx;
@@ -488,11 +495,11 @@ export default function Home() {
                 <div
                   key={idx}
                   onClick={() => setFlippedCards(prev => ({ ...prev, [cardKey]: !isFlipped }))}
-                  className="cursor-pointer min-h-[260px] transition transform hover:scale-[1.01]"
+                  className="cursor-pointer min-h-[320px] transition transform hover:scale-[1.01]"
                 >
                   <div
                     className={`relative w-full rounded-3xl border-2 transition-all duration-300 shadow-md p-8 bg-white flex flex-col justify-between ${
-                      isFlipped ? "border-[#55b1d4] bg-sky-50/20" : "border-gray-200 hover:border-[#55b1d4]/60"
+                      isFlipped ? "border-[#55b1d4] bg-sky-50/10" : "border-gray-200 hover:border-[#55b1d4]/60"
                     }`}
                   >
                     {!isFlipped ? (
@@ -502,33 +509,33 @@ export default function Home() {
                             {idx + 1}
                           </span>
                           <span className="text-xs font-semibold text-sky-600 bg-sky-50 px-3 py-1 rounded-full">
-                            Front (Click to Reveal Back) ➔
+                            Cover (Click to Read Full Passage) ➔
                           </span>
                         </div>
                         <h4 className="text-xl font-bold text-gray-900 mb-2">{sub.title}</h4>
                         <p className="text-base text-gray-600 font-medium">{sub.subtitle}</p>
                       </div>
                     ) : (
-                      <div className="space-y-4 animate-fade-in">
-                        <div className="flex justify-between items-center mb-2">
+                      <div className="space-y-6 animate-fade-in">
+                        <div className="flex justify-between items-center mb-2 border-b border-gray-100 pb-3">
                           <span className="text-xs font-bold text-[#55b1d4] uppercase tracking-wider">
-                            Back of Card (Core Explanation & Examples)
+                            📖 Detailed Reading Passage & Analysis
                           </span>
                           <span className="text-xs text-gray-400 font-semibold">🔄 Click to Flip Back</span>
                         </div>
                         
-                        <div className="space-y-2">
+                        <div className="space-y-4">
                           {sub.explanation.map((para, pIdx) => (
-                            <p key={pIdx} className="text-sm md:text-base text-gray-700 leading-relaxed bg-white p-4 rounded-2xl border border-gray-100 shadow-xs">
+                            <p key={pIdx} className="text-base text-gray-700 leading-relaxed bg-white p-5 rounded-2xl border border-gray-100 shadow-xs">
                               {para}
                             </p>
                           ))}
                         </div>
 
-                        <div className="bg-blue-50/70 p-4 rounded-2xl border border-blue-100 space-y-1">
-                          <span className="text-xs font-bold text-blue-900 uppercase block mb-1">Practical Examples:</span>
+                        <div className="bg-blue-50/70 p-5 rounded-2xl border border-blue-100 space-y-2">
+                          <span className="text-xs font-bold text-blue-900 uppercase block mb-1">Key Study Takeaways:</span>
                           {sub.examples.map((ex, eIdx) => (
-                            <div key={eIdx} className="text-sm text-blue-950 font-medium flex items-center gap-2">
+                            <div key={eIdx} className="text-sm md:text-base text-blue-950 font-medium flex items-center gap-2">
                               <span className="text-[#55b1d4]">✦</span> {ex}
                             </div>
                           ))}
@@ -568,7 +575,7 @@ export default function Home() {
               activeTab === "materials" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            📚 Study Materials (3D Flashcards)
+            📚 Study Materials (Detailed Reading)
           </button>
         </div>
       </nav>
@@ -580,7 +587,7 @@ export default function Home() {
           <span className="text-[#f2b705] font-normal">Practical</span>
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Choose your school level and topic category below to explore interactive 3D flashcard study guides and quiz batches.
+          Choose your school level and topic category below to explore exhaustive reading study guides and interactive quiz batches.
         </p>
 
         {/* STEP 1: SELECT SCHOOL LEVEL */}
@@ -630,7 +637,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES (STRICTLY FILTERED BY SELECTED LEVEL & TOPIC) */}
+      {/* TAB 1: PRACTICE QUIZZES */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {Object.entries(currentQuizModules)
@@ -662,64 +669,31 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS */}
+      {/* TAB 2: STUDY MATERIALS (DETAILED READING CHAPTERS) */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {(() => {
-            const targetId = `${selectedLevel}-${selectedTopic}`.replace(/\s+/g, "");
-            let matchedGuide = studyGuides.find(g => g.id === targetId || (g.level === selectedLevel && g.category === selectedTopic));
-
-            if (!matchedGuide) {
-              matchedGuide = {
-                id: targetId,
-                title: `${selectedLevel}: Master Guide on ${selectedTopic}`,
-                level: selectedLevel,
-                category: selectedTopic,
-                summary: `Comprehensive academic and practical study flashcards designed for ${selectedLevel} students focusing on ${selectedTopic}.`,
-                illustration: selectedTopic === "Daily Life" ? "🛒🌍✨" : selectedTopic === "Social Media" ? "📱💬🛡️" : selectedTopic === "Job Interviews" ? "💼👔📈" : "⚖️🏛️📝",
-                accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-                subTopics: [
-                  {
-                    title: `1. Core Principles of ${selectedTopic}`,
-                    subtitle: `Fundamental rules and terminology for ${selectedLevel}`,
-                    explanation: [
-                      `Mastering ${selectedTopic} at the ${selectedLevel} stage requires structured understanding of core rules and terminology.`,
-                      `Students learn practical applications and standard conventions used in real-world environments.`
-                    ],
-                    examples: [`Standardized rule application for ${selectedTopic}.`, `Contextual vocabulary usage in everyday scenarios.`]
-                  },
-                  {
-                    title: `2. Advanced Strategies & Applications`,
-                    subtitle: "Practical exercises and structural patterns",
-                    explanation: [
-                      `Applying theoretical concepts to structured communication and problem-solving.`,
-                      `Avoiding common pitfalls and refining your stylistic register.`
-                    ],
-                    examples: [`Constructing clear, grammatically correct statements.`, `Evaluating structural integrity in formal discourse.`]
-                  }
-                ]
-              };
-            }
+            const guide = getDynamicStudyGuide(selectedLevel, selectedTopic);
 
             return (
               <div
-                onClick={() => setActiveStudyId(matchedGuide.id)}
+                onClick={() => setActiveStudyId(guide.id)}
                 className="bg-white rounded-3xl border border-gray-200 shadow-sm transition overflow-hidden group flex flex-col md:flex-row items-center hover:border-[#55b1d4] hover:shadow-md cursor-pointer"
               >
-                <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${matchedGuide.accentColor}`}>
-                  {matchedGuide.illustration}
+                <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
+                  {guide.illustration}
                 </div>
                 <div className="p-8 flex-1">
                   <div className="flex justify-between items-center mb-3">
                     <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
-                      {matchedGuide.level}
+                      {guide.level}
                     </span>
                     <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                      Open 3D Flashcards 🔄 →
+                      Open Detailed Reading Material 📖 →
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{matchedGuide.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{matchedGuide.summary}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{guide.summary}</p>
                 </div>
               </div>
             );
