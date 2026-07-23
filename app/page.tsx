@@ -76,35 +76,35 @@ export default function Home() {
               [
                 { id: 1, prompt: "Which fruit is sweet, red, and starts with 'A'?", img: "🍎", opts: [{ l: "Apple", c: true }, { l: "Banana", c: false }, { l: "Carrot", c: false }], exp: "Apples start with A and are red." },
                 { id: 2, prompt: "What color is a ripe banana peel?", img: "🍌", opts: [{ l: "Yellow", c: true }, { l: "Blue", c: false }, { l: "Pink", c: false }], exp: "Ripe bananas are yellow." },
-                { id: 3, prompt: "What farm animal says 'Moo'?", img: "🐮", opts: [{ l: "Cow", c: true }, { l: "Duck", c: false }, { l: "Cat", c: false }], explanation: "Cows make a mooing sound." },
-                { id: 4, prompt: "What do you wear on your feet in rain?", img: "👢", opts: [{ l: "Rain boots", c: true }, { l: "Sunglasses", c: false }, { l: "Slippers", c: false }], explanation: "Boots keep feet dry." },
-                { id: 5, prompt: "Which meal is eaten in the morning?", img: "🌅", opts: [{ l: "Breakfast", c: true }, { l: "Dinner", c: false }, { l: "Supper", c: false }], explanation: "Breakfast is morning food." }
+                { id: 3, prompt: "What farm animal says 'Moo'?", img: "🐮", opts: [{ l: "Cow", c: true }, { l: "Duck", c: false }, { l: "Cat", c: false }], exp: "Cows make a mooing sound." },
+                { id: 4, prompt: "What do you wear on your feet in rain?", img: "👢", opts: [{ l: "Rain boots", c: true }, { l: "Sunglasses", c: false }, { l: "Slippers", c: false }], exp: "Boots keep feet dry." },
+                { id: 5, prompt: "Which meal is eaten in the morning?", img: "🌅", opts: [{ l: "Breakfast", c: true }, { l: "Dinner", c: false }, { l: "Supper", c: false }], exp: "Breakfast is morning food." }
               ],
               [
-                { id: 1, prompt: "Which animal has a very long neck and eats tree leaves?", img: "🦒", opts: [{ l: "Giraffe", c: true }, { l: "Mouse", c: false }, { l: "Fish", c: false }], explanation: "Giraffes have long necks." },
-                { id: 2, prompt: "What shape is a standard soccer ball?", img: "⚽", opts: [{ l: "Round (Sphere)", c: true }, { l: "Square", c: false }, { l: "Triangle", c: false }], explanation: "Balls are spherical." },
-                { id: 3, prompt: "Which vehicle flies in the sky with wings?", img: "✈️", opts: [{ l: "Airplane", c: true }, { l: "Submarine", c: false }, { l: "Bicycle", c: false }], explanation: "Airplanes fly through clouds." },
-                { id: 4, prompt: "What season brings cold snow and winter coats?", img: "❄️", opts: [{ l: "Winter", c: true }, { l: "Summer", c: false }, { l: "Spring", c: false }], explanation: "Winter brings snow." },
-                { id: 5, prompt: "What color is clear drinking water?", img: "💧", opts: [{ l: "Colorless/Transparent", c: true }, { l: "Purple", c: false }, { l: "Green", c: false }], explanation: "Pure water has no color." }
+                { id: 1, prompt: "Which animal has a very long neck and eats tree leaves?", img: "🦒", opts: [{ l: "Giraffe", c: true }, { l: "Mouse", c: false }, { l: "Fish", c: false }], exp: "Giraffes have long necks." },
+                { id: 2, prompt: "What shape is a standard soccer ball?", img: "⚽", opts: [{ l: "Round (Sphere)", c: true }, { l: "Square", c: false }, { l: "Triangle", c: false }], exp: "Balls are spherical." },
+                { id: 3, prompt: "Which vehicle flies in the sky with wings?", img: "✈️", opts: [{ l: "Airplane", c: true }, { l: "Submarine", c: false }, { l: "Bicycle", c: false }], exp: "Airplanes fly through clouds." },
+                { id: 4, prompt: "What season brings cold snow and winter coats?", img: "❄️", opts: [{ l: "Winter", c: true }, { l: "Summer", c: false }, { l: "Spring", c: false }], exp: "Winter brings snow." },
+                { id: 5, prompt: "What color is clear drinking water?", img: "💧", opts: [{ l: "Colorless/Transparent", c: true }, { l: "Purple", c: false }, { l: "Green", c: false }], exp: "Pure water has no color." }
               ],
               [
-                { id: 1, prompt: "What tool do we use to brush our teeth?", img: "🦷", opts: [{ l: "Toothbrush", c: true }, { l: "Hairbrush", c: false }, { l: "Broom", c: false }], explanation: "Toothbrushes clean teeth." },
-                { id: 2, prompt: "How many legs does a happy dog have?", img: "🐕", opts: [{ l: "Four", c: true }, { l: "Two", c: false }, { l: "Six", c: false }], explanation: "Dogs walk on four legs." },
-                { id: 3, prompt: "What celestial body lights up the sky during the dark night?", img: "🌙", opts: [{ l: "The Moon and Stars", c: true }, { l: "The daytime Sun", c: false }, { l: "A flashlight", c: false }], explanation: "Moons shine at night." },
-                { id: 4, prompt: "What sound does a cute little kitten make?", img: "🐱", opts: [{ l: "Meow", c: true }, { l: "Woof", c: false }, { l: "Roar", c: false }], explanation: "Kittens meow." },
-                { id: 5, prompt: "Which clothing item keeps your head warm in winter?", img: "🧢", opts: [{ l: "Winter beanie or hat", c: true }, { l: "Socks", c: false }, { l: "Gloves", c: false }], explanation: "Hats keep heads warm." }
+                { id: 1, prompt: "What tool do we use to brush our teeth?", img: "🦷", opts: [{ l: "Toothbrush", c: true }, { l: "Hairbrush", c: false }, { l: "Broom", c: false }], exp: "Toothbrushes clean teeth." },
+                { id: 2, prompt: "How many legs does a happy dog have?", img: "🐕", opts: [{ l: "Four", c: true }, { l: "Two", c: false }, { l: "Six", c: false }], exp: "Dogs walk on four legs." },
+                { id: 3, prompt: "What celestial body lights up the sky during the dark night?", img: "🌙", opts: [{ l: "The Moon and Stars", c: true }, { l: "The daytime Sun", c: false }, { l: "A flashlight", c: false }], exp: "Moons shine at night." },
+                { id: 4, prompt: "What sound does a cute little kitten make?", img: "🐱", opts: [{ l: "Meow", c: true }, { l: "Woof", c: false }, { l: "Roar", c: false }], exp: "Kittens meow." },
+                { id: 5, prompt: "Which clothing item keeps your head warm in winter?", img: "🧢", opts: [{ l: "Winter beanie or hat", c: true }, { l: "Socks", c: false }, { l: "Gloves", c: false }], exp: "Hats keep heads warm." }
               ],
               [
-                { id: 1, prompt: "What yellow citrus fruit is famously very sour?", img: "🍋", opts: [{ l: "Lemon", c: true }, { l: "Strawberry", c: false }, { l: "Watermelon", c: false }], explanation: "Lemons are sour." },
-                { id: 2, prompt: "What do birds use to fly across the sky?", img: "🐦", opts: [{ l: "Feathered wings", c: true }, { l: "Wheels", c: false }, { l: "Fins", c: false }], explanation: "Wings allow flight." },
-                { id: 3, prompt: "Where do flowers grow planted in rich dirt?", img: "🌷", opts: [{ l: "In a garden bed or pot", c: true }, { l: "On a concrete highway", c: false }, { l: "In the kitchen sink", c: false }], explanation: "Flowers need soil." },
-                { id: 4, prompt: "What tool cuts paper in art class safely?", img: "✂️", opts: [{ l: "Safety scissors", c: true }, { l: "A hammer", c: false }, { l: "A saw", c: false }], explanation: "Scissors cut paper." },
-                { id: 5, prompt: "What bright yellow shape shines in the daytime sky?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "A cloud", c: false }, { l: "A star", c: false }], explanation: "The sun shines by day." }
+                { id: 1, prompt: "What yellow citrus fruit is famously very sour?", img: "🍋", opts: [{ l: "Lemon", c: true }, { l: "Strawberry", c: false }, { l: "Watermelon", c: false }], exp: "Lemons are sour." },
+                { id: 2, prompt: "What do birds use to fly across the sky?", img: "🐦", opts: [{ l: "Feathered wings", c: true }, { l: "Wheels", c: false }, { l: "Fins", c: false }], exp: "Wings allow flight." },
+                { id: 3, prompt: "Where do flowers grow planted in rich dirt?", img: "🌷", opts: [{ l: "In a garden bed or pot", c: true }, { l: "On a concrete highway", c: false }, { l: "In the kitchen sink", c: false }], exp: "Flowers need soil." },
+                { id: 4, prompt: "What tool cuts paper in art class safely?", img: "✂️", opts: [{ l: "Safety scissors", c: true }, { l: "A hammer", c: false }, { l: "A saw", c: false }], exp: "Scissors cut paper." },
+                { id: 5, prompt: "What bright yellow shape shines in the daytime sky?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "A cloud", c: false }, { l: "A star", c: false }], exp: "The sun shines by day." }
               ],
               [
-                { id: 1, prompt: "What sweet treat is made from frozen cream or milk?", img: "🍦", opts: [{ l: "Ice cream", c: true }, { l: "Soup", c: false }, { l: "Salad", c: false }], explanation: "Ice cream is frozen sweet food." },
-                { id: 2, prompt: "How many eyes do humans have on their face?", img: "👀", opts: [{ l: "Two", c: true }, { l: "One", c: false }, { l: "Four", c: false }], explanation: "We have two eyes." },
-                { id: 3, prompt: "What color are most healthy tree leaves in summer?", img: "🍃", opts: [{ l: "Green", c: true }, { l: "Pink", c: false }, { l: "Black", c: false }], explanation: "Summer leaves are green." },
+                { id: 1, prompt: "What sweet treat is made from frozen cream or milk?", img: "🍦", opts: [{ l: "Ice cream", c: true }, { l: "Soup", c: false }, { l: "Salad", c: false }], exp: "Ice cream is frozen sweet food." },
+                { id: 2, prompt: "How many eyes do humans have on their face?", img: "👀", opts: [{ l: "Two", c: true }, { l: "One", c: false }, { l: "Four", c: false }], exp: "We have two eyes." },
+                { id: 3, prompt: "What color are most healthy tree leaves in summer?", img: "🍃", opts: [{ l: "Green", c: true }, { l: "Pink", c: false }, { l: "Black", c: false }], exp: "Summer leaves are green." },
                 { id: 4, prompt: "What toy blocks are stacked to build towers?", img: "🧱", opts: [{ l: "Building blocks", c: true }, { l: "Pillows", c: false }, { l: "Paper plates", c: false }], explanation: "Blocks build towers." },
                 { id: 5, prompt: "What drink comes from cows and helps build strong bones?", img: "🥛", opts: [{ l: "Milk", c: true }, { l: "Soda", c: false }, { l: "Paint", c: false }], explanation: "Milk provides calcium." }
               ]
@@ -112,7 +112,7 @@ export default function Home() {
             questions = pools[batchNum - 1].map(q => ({
               id: q.id, prompt: q.prompt, imageIllustration: q.img,
               options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
-              explanation: q.exp
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
             }));
           } else if (top === "Social Media") {
             const pools = [
@@ -124,38 +124,38 @@ export default function Home() {
                 { id: 5, prompt: "What magic word do you use when asking for a toy?", img: "✨", opts: [{ l: "Please", c: true }, { l: "Mine", c: false }], exp: "Please is polite." }
               ],
               [
-                { id: 1, prompt: "When playing a game, is it good to wait your turn?", img: "⏳", opts: [{ l: "Yes, taking turns is fair", c: true }, { l: "No, grab everything", c: false }], explanation: "Turns ensure fairness." },
-                { id: 2, prompt: "If you accidentally bump into someone, what should you say?", img: "🙇", opts: [{ l: "I am sorry / Excuse me", c: true }, { l: "Nothing", c: false }], explanation: "Apologizing is courteous." },
-                { id: 3, prompt: "How can you show a friend you are listening when they talk?", img: "👂", opts: [{ l: "Look at them and nod quietly", c: true }, { l: "Cover your ears", c: false }], explanation: "Active listening builds trust." },
-                { id: 4, prompt: "Is it kind to include new classmates in your games?", img: "🌟", opts: [{ l: "Yes, welcoming others is wonderful", c: true }, { l: "No, exclude them", c: false }], explanation: "Inclusivity makes friends." },
-                { id: 5, prompt: "What should you do with a broken classroom crayon?", img: "🖍️", opts: [{ l: "Tell the teacher calmly", c: true }, { l: "Hide it", c: false }], explanation: "Communication solves mishaps." }
+                { id: 1, prompt: "When playing a game, is it good to wait your turn?", img: "⏳", opts: [{ l: "Yes, taking turns is fair", c: true }, { l: "No, grab everything", c: false }], exp: "Turns ensure fairness." },
+                { id: 2, prompt: "If you accidentally bump into someone, what should you say?", img: "🙇", opts: [{ l: "I am sorry / Excuse me", c: true }, { l: "Nothing", c: false }], exp: "Apologizing is courteous." },
+                { id: 3, prompt: "How can you show a friend you are listening when they talk?", img: "👂", opts: [{ l: "Look at them and nod quietly", c: true }, { l: "Cover your ears", c: false }], exp: "Active listening builds trust." },
+                { id: 4, prompt: "Is it kind to include new classmates in your games?", img: "🌟", opts: [{ l: "Yes, welcoming others is wonderful", c: true }, { l: "No, exclude them", c: false }], exp: "Inclusivity makes friends." },
+                { id: 5, prompt: "What should you do with a broken classroom crayon?", img: "🖍️", opts: [{ l: "Tell the teacher calmly", c: true }, { l: "Hide it", c: false }], exp: "Communication solves mishaps." }
               ],
               [
-                { id: 1, prompt: "How should you talk inside a quiet library?", img: "📚", opts: [{ l: "Use a soft quiet whisper", c: true }, { l: "Shout loudly", c: false }], explanation: "Quiet voices respect spaces." },
-                { id: 2, prompt: "What should you do when a teacher is speaking to the class?", img: "👩‍🏫", opts: [{ l: "Listen attentively and stay quiet", c: true }, { l: "Talk over them", c: false }], explanation: "Listening shows respect." },
-                { id: 3, prompt: "Is it good to smile and wave at neighbors?", img: "👋", opts: [{ l: "Yes, it spreads friendliness", c: true }, { l: "No", c: false }], explanation: "Smiling creates warmth." },
-                { id: 4, prompt: "What should you do if a friend shares their snack with you?", img: "🍎", opts: [{ l: "Say thank you gratefully", c: true }, { l: "Take it without words", c: false }], explanation: "Gratitude is essential." },
-                { id: 5, prompt: "How do you act when you win a friendly game?", img: "🏆", opts: [{ l: "Be humble and kind to others", c: true }, { l: "Brag loudly", c: false }], explanation: "Humility makes a good winner." }
+                { id: 1, prompt: "How should you talk inside a quiet library?", img: "📚", opts: [{ l: "Use a soft quiet whisper", c: true }, { l: "Shout loudly", c: false }], exp: "Quiet voices respect spaces." },
+                { id: 2, prompt: "What should you do when a teacher is speaking to the class?", img: "👩‍🏫", opts: [{ l: "Listen attentively and stay quiet", c: true }, { l: "Talk over them", c: false }], exp: "Listening shows respect." },
+                { id: 3, prompt: "Is it good to smile and wave at neighbors?", img: "👋", opts: [{ l: "Yes, it spreads friendliness", c: true }, { l: "No", c: false }], exp: "Smiling creates warmth." },
+                { id: 4, prompt: "What should you do if a friend shares their snack with you?", img: "🍎", opts: [{ l: "Say thank you gratefully", c: true }, { l: "Take it without words", c: false }], exp: "Gratitude is essential." },
+                { id: 5, prompt: "How do you act when you win a friendly game?", img: "🏆", opts: [{ l: "Be humble and kind to others", c: true }, { l: "Brag loudly", c: false }], exp: "Humility makes a good winner." }
               ],
               [
-                { id: 1, prompt: "What is a great way to make a new friend at school?", img: "🤝", opts: [{ l: "Introduce yourself with a friendly smile", c: true }, { l: "Frown and look away", c: false }], explanation: "Introductions start friendships." },
-                { id: 2, prompt: "If two friends are arguing over a toy, what can you suggest?", img: "🧩", opts: [{ l: "Take turns playing with it together", c: true }, { l: "Throw the toy away", c: false }], explanation: "Compromise resolves fights." },
-                { id: 3, prompt: "How do you show appreciation when someone helps you tie your shoes?", img: "👟", opts: [{ l: "Say thank you for your help", c: true }, { l: "Walk away", c: false }], explanation: "Acknowledging help is polite." },
-                { id: 4, prompt: "Is it polite to interrupt someone while they are speaking?", img: "🗣️", opts: [{ l: "No, wait until they finish", c: true }, { l: "Yes, speak over them", c: false }], explanation: "Patience matters in dialogue." },
-                { id: 5, prompt: "What emotion does a warm hug convey?", img: "🫂", opts: [{ l: "Love, care, and comfort", c: true }, { l: "Anger", c: false }], explanation: "Hugs express affection." }
+                { id: 1, prompt: "What is a great way to make a new friend at school?", img: "🤝", opts: [{ l: "Introduce yourself with a friendly smile", c: true }, { l: "Frown and look away", c: false }], exp: "Introductions start friendships." },
+                { id: 2, prompt: "If two friends are arguing over a toy, what can you suggest?", img: "🧩", opts: [{ l: "Take turns playing with it together", c: true }, { l: "Throw the toy away", c: false }], exp: "Compromise resolves fights." },
+                { id: 3, prompt: "How do you show appreciation when someone helps you tie your shoes?", img: "👟", opts: [{ l: "Say thank you for your help", c: true }, { l: "Walk away", c: false }], exp: "Acknowledging help is polite." },
+                { id: 4, prompt: "Is it polite to interrupt someone while they are speaking?", img: "🗣️", opts: [{ l: "No, wait until they finish", c: true }, { l: "Yes, speak over them", c: false }], exp: "Patience matters in dialogue." },
+                { id: 5, prompt: "What emotion does a warm hug convey?", img: "🫂", opts: [{ l: "Love, care, and comfort", c: true }, { l: "Anger", c: false }], exp: "Hugs express affection." }
               ],
               [
-                { id: 1, prompt: "What should you do after playing with your building blocks?", img: "📦", opts: [{ l: "Clean up and put them back in the box", c: true }, { l: "Leave them on the floor", c: false }], explanation: "Cleaning up shows responsibility." },
-                { id: 2, prompt: "How do you ask someone if you can join their game?", img: "🎮", opts: [{ l: "May I please play with you?", c: true }, { l: "Give me your game", c: false }], explanation: "Polite asking builds rapport." },
-                { id: 3, prompt: "What should you say when someone says 'Good morning' to you?", img: "☀️", opts: [{ l: "Good morning to you too!", c: true }, { l: "Silence", c: false }], explanation: "Returning greetings is polite." },
-                { id: 4, prompt: "Is it important to cheer for your classmates during sports day?", img: "🏅", opts: [{ l: "Yes, encouragement builds team spirit", c: true }, { l: "No", c: false }], explanation: "Cheering supports peers." },
-                { id: 5, prompt: "What does it mean to be a good helper at home?", img: "🧹", opts: [{ l: "Assisting family members with small tasks", c: true }, { l: "Making more messes", c: false }], explanation: "Helping builds teamwork." }
+                { id: 1, prompt: "What should you do after playing with your building blocks?", img: "📦", opts: [{ l: "Clean up and put them back in the box", c: true }, { l: "Leave them on the floor", c: false }], exp: "Cleaning up shows responsibility." },
+                { id: 2, prompt: "How do you ask someone if you can join their game?", img: "🎮", opts: [{ l: "May I please play with you?", c: true }, { l: "Give me your game", c: false }], exp: "Polite asking builds rapport." },
+                { id: 3, prompt: "What should you say when someone says 'Good morning' to you?", img: "☀️", opts: [{ l: "Good morning to you too!", c: true }, { l: "Silence", c: false }], exp: "Returning greetings is polite." },
+                { id: 4, prompt: "Is it important to cheer for your classmates during sports day?", img: "🏅", opts: [{ l: "Yes, encouragement builds team spirit", c: true }, { l: "No", c: false }], exp: "Cheering supports peers." },
+                { id: 5, prompt: "What does it mean to be a good helper at home?", img: "🧹", opts: [{ l: "Assisting family members with small tasks", c: true }, { l: "Making more messes", c: false }], exp: "Helping builds teamwork." }
               ]
             ];
             questions = pools[batchNum - 1].map(q => ({
               id: q.id, prompt: q.prompt, imageIllustration: q.img,
               options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
-              explanation: q.exp
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
             }));
           } else {
             const pools = [
@@ -167,168 +167,344 @@ export default function Home() {
                 { id: 5, prompt: "How many fingers are on one human hand?", img: "✋", opts: [{ l: "5 fingers", c: true }, { l: "2 fingers", c: false }], exp: "Each hand has 5." }
               ],
               [
-                { id: 1, prompt: "What shape has four equal straight sides and square corners?", img: "⬛", opts: [{ l: "Square", c: true }, { l: "Circle", c: false }], explanation: "Squares have 4 equal sides." },
-                { id: 2, prompt: "What number comes right before the number 10?", img: "🔢", opts: [{ l: "9", c: true }, { l: "8", c: false }], explanation: "Counting: 8, 9, 10." },
-                { id: 3, prompt: "What is the opposite of hot soup?", img: "🧊", opts: [{ l: "Cold / Freezing", c: true }, { l: "Boiling", c: false }], explanation: "Cold is opposite to hot." },
-                { id: 4, prompt: "How many days are in a single full week?", img: "📅", opts: [{ l: "7 days", c: true }, { l: "5 days", c: false }], explanation: "There are 7 days in a week." },
-                { id: 5, prompt: "What shape looks like a curved ring with no corners?", img: "⭕", opts: [{ l: "Circle", c: true }, { l: "Triangle", c: false }], explanation: "Circles are round." }
+                { id: 1, prompt: "What shape has four equal straight sides and square corners?", img: "⬛", opts: [{ l: "Square", c: true }, { l: "Circle", c: false }], exp: "Squares have 4 equal sides." },
+                { id: 2, prompt: "What number comes right before the number 10?", img: "🔢", opts: [{ l: "9", c: true }, { l: "8", c: false }], exp: "Counting: 8, 9, 10." },
+                { id: 3, prompt: "What is the opposite of hot soup?", img: "🧊", opts: [{ l: "Cold / Freezing", c: true }, { l: "Boiling", c: false }], exp: "Cold is opposite to hot." },
+                { id: 4, prompt: "How many days are in a single full week?", img: "📅", opts: [{ l: "7 days", c: true }, { l: "5 days", c: false }], exp: "There are 7 days in a week." },
+                { id: 5, prompt: "What shape looks like a curved ring with no corners?", img: "⭕", opts: [{ l: "Circle", c: true }, { l: "Triangle", c: false }], exp: "Circles are round." }
               ],
               [
-                { id: 1, prompt: "If you have 2 apples and get 1 more, how many do you have?", img: "🍎", opts: [{ l: "3 apples", c: true }, { l: "1 apple", c: false }], explanation: "2 plus 1 equals 3." },
-                { id: 2, prompt: "What geometric shape has 4 sides where opposite sides are equal?", img: "▭", opts: [{ l: "Rectangle", c: true }, { l: "Circle", c: false }], explanation: "Rectangles have paired sides." },
-                { id: 3, prompt: "What is the opposite of fast running?", img: "🐢", opts: [{ l: "Slow", c: true }, { l: "Quick", c: false }], explanation: "Slow is opposite to fast." },
-                { id: 4, prompt: "Which number is larger: 8 or 3?", img: "🔢", opts: [{ l: "8", c: true }, { l: "3", c: false }], explanation: "8 is greater than 3." },
-                { id: 5, prompt: "What color do you get when mixing red and white?", img: "🎨", opts: [{ l: "Pink", c: true }, { l: "Black", c: false }], explanation: "Red and white make pink." }
+                { id: 1, prompt: "If you have 2 apples and get 1 more, how many do you have?", img: "🍎", opts: [{ l: "3 apples", c: true }, { l: "1 apple", c: false }], exp: "2 plus 1 equals 3." },
+                { id: 2, prompt: "What geometric shape has 4 sides where opposite sides are equal?", img: "▭", opts: [{ l: "Rectangle", c: true }, { l: "Circle", c: false }], exp: "Rectangles have paired sides." },
+                { id: 3, prompt: "What is the opposite of fast running?", img: "🐢", opts: [{ l: "Slow", c: true }, { l: "Quick", c: false }], exp: "Slow is opposite to fast." },
+                { id: 4, prompt: "Which number is larger: 8 or 3?", img: "🔢", opts: [{ l: "8", c: true }, { l: "3", c: false }], exp: "8 is greater than 3." },
+                { id: 5, prompt: "What color do you get when mixing red and white?", img: "🎨", opts: [{ l: "Pink", c: true }, { l: "Black", c: false }], exp: "Red and white make pink." }
               ],
               [
-                { id: 1, prompt: "How many months are in a standard calendar year?", img: "📅", opts: [{ l: "12 months", c: true }, { l: "10 months", c: false }], explanation: "A year has 12 months." },
-                { id: 2, prompt: "What shape has five pointy star-like corners?", img: "⭐", opts: [{ l: "Star", c: true }, { l: "Square", c: false }], explanation: "Stars have points." },
-                { id: 3, prompt: "What is the opposite of heavy rocks?", img: "🪶", opts: [{ l: "Light (like a feather)", c: true }, { l: "Massive", c: false }], explanation: "Light is opposite to heavy." },
-                { id: 4, prompt: "If you count backwards from 3, what comes after 3 and 2?", img: "🔢", opts: [{ l: "1", c: true }, { l: "5", c: false }], explanation: "Countdown: 3, 2, 1." },
-                { id: 5, prompt: "What shape resembles a stretched circle like an egg?", img: "🥚", opts: [{ l: "Oval", c: true }, { l: "Square", c: false }], explanation: "Eggs are oval-shaped." }
+                { id: 1, prompt: "How many months are in a standard calendar year?", img: "📅", opts: [{ l: "12 months", c: true }, { l: "10 months", c: false }], exp: "A year has 12 months." },
+                { id: 2, prompt: "What shape has five pointy star-like corners?", img: "⭐", opts: [{ l: "Star", c: true }, { l: "Square", c: false }], exp: "Stars have points." },
+                { id: 3, prompt: "What is the opposite of heavy rocks?", img: "🪶", opts: [{ l: "Light (like a feather)", c: true }, { l: "Massive", c: false }], exp: "Light is opposite to heavy." },
+                { id: 4, prompt: "If you count backwards from 3, what comes after 3 and 2?", img: "🔢", opts: [{ l: "1", c: true }, { l: "5", c: false }], exp: "Countdown: 3, 2, 1." },
+                { id: 5, prompt: "What shape resembles a stretched circle like an egg?", img: "🥚", opts: [{ l: "Oval", c: true }, { l: "Square", c: false }], exp: "Eggs are oval-shaped." }
               ],
               [
-                { id: 1, prompt: "If you have 5 balloons and 2 fly away, how many are left?", img: "🎈", opts: [{ l: "3 balloons", c: true }, { l: "5 balloons", c: false }], explanation: "5 minus 2 equals 3." },
-                { id: 2, prompt: "What do we call a 3D shape like a basketball or globe?", img: "🌍", opts: [{ l: "Sphere", c: true }, { l: "Square", c: false }], explanation: "Globes are spheres." },
-                { id: 3, prompt: "What is the opposite of day time?", img: "🌙", opts: [{ l: "Night time", c: true }, { l: "Afternoon", c: false }], explanation: "Night is opposite to day." },
-                { id: 4, prompt: "Which number is smaller: 2 or 9?", img: "🔢", opts: [{ l: "2", c: true }, { l: "9", c: false }], explanation: "2 is smaller than 9." },
-                { id: 5, prompt: "What color results from mixing blue and red?", img: "🎨", opts: [{ l: "Purple", c: true }, { l: "Orange", c: false }], explanation: "Blue and red make purple." }
+                { id: 1, prompt: "If you have 5 balloons and 2 fly away, how many are left?", img: "🎈", opts: [{ l: "3 balloons", c: true }, { l: "5 balloons", c: false }], exp: "5 minus 2 equals 3." },
+                { id: 2, prompt: "What do we call a 3D shape like a basketball or globe?", img: "🌍", opts: [{ l: "Sphere", c: true }, { l: "Square", c: false }], exp: "Globes are spheres." },
+                { id: 3, prompt: "What is the opposite of day time?", img: "🌙", opts: [{ l: "Night time", c: true }, { l: "Afternoon", c: false }], exp: "Night is opposite to day." },
+                { id: 4, prompt: "Which number is smaller: 2 or 9?", img: "🔢", opts: [{ l: "2", c: true }, { l: "9", c: false }], exp: "2 is smaller than 9." },
+                { id: 5, prompt: "What color results from mixing blue and red?", img: "🎨", opts: [{ l: "Purple", c: true }, { l: "Orange", c: false }], exp: "Blue and red make purple." }
               ]
             ];
             questions = pools[batchNum - 1].map(q => ({
               id: q.id, prompt: q.prompt, imageIllustration: q.img,
               options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
-              explanation: q.exp
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
             }));
           }
         } else if (selectedLevel === "Primary School") {
           if (top === "Daily Life") {
-            questions = [
-              { id: 1, prompt: `[Primary School - Batch ${batchNum}] Which math operation combines numbers?`, imageIllustration: "➕", options: [{ label: "Addition", isCorrect: true }, { label: "Substraction deletion", isCorrect: false }], explanation: "Addition combines sets." },
-              { id: 2, prompt: `[Primary School - Batch ${batchNum}] What tool erases pencil marks?`, imageIllustration: "📝", options: [{ label: "Eraser", isCorrect: true }, { label: "Spoon", isCorrect: false }], explanation: "Erasers clean lead." },
-              { id: 3, prompt: `[Primary School - Batch ${batchNum}] Where do children play during recess?`, imageIllustration: "⚽", options: [{ label: "Playground", isCorrect: true }, { label: "Roof", isCorrect: false }], explanation: "Playgrounds are for recreation." },
-              { id: 4, prompt: `[Primary School - Batch ${batchNum}] What instrument draws straight lines?`, imageIllustration: "📏", options: [{ label: "Ruler", isCorrect: true }, { label: "Sponge", isCorrect: false }], explanation: "Rulers provide straight edges." },
-              { id: 5, prompt: `[Primary School - Batch ${batchNum}] Who assists students when sick?`, imageIllustration: "🏥", options: [{ label: "School nurse", isCorrect: true }, { label: "Gym coach", isCorrect: false }], explanation: "Nurses manage health." }
+            const pools = [
+              [
+                { id: 1, prompt: "Which school subject involves addition and subtraction?", img: "📐", opts: [{ l: "Mathematics", c: true }, { l: "Art", c: false }], exp: "Math deals with numbers." },
+                { id: 2, prompt: "What tool erases graphite pencil marks?", img: "📝", opts: [{ l: "An eraser", c: true }, { l: "A ruler", c: false }], exp: "Erasers clean pencil." },
+                { id: 3, prompt: "Where do kids play outside during recess?", img: "⚽", opts: [{ l: "The school playground", c: true }, { l: "The principal's desk", c: false }], exp: "Playgrounds are outdoor." },
+                { id: 4, prompt: "What instrument draws straight lines?", img: "📏", opts: [{ l: "A ruler", c: true }, { l: "A sponge", c: false }], exp: "Rulers give straight lines." },
+                { id: 5, prompt: "Who helps students when they feel sick?", img: "🏥", opts: [{ l: "The school nurse", c: true }, { l: "The music teacher", c: false }], exp: "Nurses handle health." }
+              ],
+              [
+                { id: 1, prompt: "What writing tool uses liquid blue or black ink inside a casing?", img: "✒️", opts: [{ l: "A ballpoint pen", c: true }, { l: "A wooden block", c: false }], exp: "Pens use liquid ink." },
+                { id: 2, prompt: "What book gives definitions and meanings of English words?", img: "📖", opts: [{ l: "A dictionary", c: true }, { l: "A comic book", c: false }], exp: "Dictionaries define words." },
+                { id: 3, prompt: "Where do you store your textbooks, pencils, and lunchbox at school?", img: "🎒", opts: [{ l: "In a school backpack", c: true }, { l: "In your pocket", c: false }], exp: "Backpacks carry supplies." },
+                { id: 4, prompt: "What school room is filled with computers and keyboards?", img: "💻", opts: [{ l: "Computer lab", c: true }, { l: "Gymnasium", c: false }], exp: "Computer labs hold PCs." },
+                { id: 5, prompt: "Who is the head leader of an entire elementary school?", img: "🏫", opts: [{ l: "The principal", c: true }, { l: "The bus driver", c: false }], exp: "Principals lead schools." }
+              ],
+              [
+                { id: 1, prompt: "What container holds fresh water or juice in your backpack?", img: "🍼", opts: [{ l: "A water bottle", c: true }, { l: "A shoebox", c: false }], exp: "Water bottles hold drinks." },
+                { id: 2, prompt: "What class lets children paint, draw, and sculpt with clay?", img: "🎨", opts: [{ l: "Art class", c: true }, { l: "Math class", c: false }], exp: "Art fosters creativity." },
+                { id: 3, prompt: "What book lists all the dates, months, and school holidays?", img: "📅", opts: [{ l: "A school calendar", c: true }, { l: "A novel", c: false }], exp: "Calendars track dates." },
+                { id: 4, prompt: "What do you wear during physical education (PE) class?", img: "👟", opts: [{ l: "Comfortable sportswear and sneakers", c: true }, { l: "Formal suit", c: false }], exp: "Sportswear aids movement." },
+                { id: 5, prompt: "Where do students eat their packed lunches or cafeteria meals?", img: "🥪", opts: [{ l: "The school cafeteria", c: true }, { l: "The science lab", c: false }], exp: "Cafeterias are for dining." }
+              ],
+              [
+                { id: 1, prompt: "What tool do you use to cut construction paper cleanly?", img: "✂️", opts: [{ l: "Safety scissors", c: true }, { l: "A fork", c: false }], exp: "Scissors cut paper." },
+                { id: 2, prompt: "What class teaches running, jumping, and team sports?", img: "🏃", opts: [{ l: "Physical Education (PE)", c: true }, { l: "Spelling", c: false }], exp: "PE promotes fitness." },
+                { id: 3, prompt: "What device rings loudly to signal the start and end of classes?", img: "🔔", opts: [{ l: "The school bell", c: true }, { l: "A doorbell", c: false }], exp: "Bells signal schedules." },
+                { id: 4, prompt: "What sticky adhesive is used to attach paper cutouts together?", img: "🧴", opts: [{ l: "Glue stick", c: true }, { l: "Toothpaste", c: false }], exp: "Glue bonds paper." },
+                { id: 5, prompt: "Who drives students safely to and from school each day?", img: "🚌", opts: [{ l: "The school bus driver", c: true }, { l: "The pilot", c: false }], explanation: "Bus drivers transport kids." }
+              ],
+              [
+                { id: 1, prompt: "What notebook contains lined paper for practicing handwriting?", img: "📓", opts: [{ l: "A lined exercise book", c: true }, { l: "A sketchbook", c: false }], exp: "Exercise books hold writing." },
+                { id: 2, prompt: "What musical instrument with black and white keys is played in music class?", img: "🎹", opts: [{ l: "Piano or keyboard", c: true }, { l: "Drumsticks", c: false }], exp: "Pianos have keys." },
+                { id: 3, prompt: "What desk accessory holds loose papers together securely without glue?", img: "📎", opts: [{ l: "A paperclip", c: true }, { l: "A rubber band", c: false }], exp: "Paperclips hold sheets." },
+                { id: 4, prompt: "Where do students borrow storybooks to read at home?", img: "📚", opts: [{ l: "The school library", c: true }, { l: "The cafeteria", c: false }], exp: "Libraries lend books." },
+                { id: 5, prompt: "What protective covering keeps school textbooks clean?", img: "📖", opts: [{ l: "A plastic book cover", c: true }, { l: "A paper towel", c: false }], exp: "Covers protect books." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           } else if (top === "Social Media") {
-            questions = [
-              { id: 1, prompt: `[Primary School - Batch ${batchNum}] Should you share your passwords online?`, imageIllustration: "🔒", options: [{ label: "Never share passwords", isCorrect: true }, { label: "Share with everyone", isCorrect: false }], explanation: "Keep passwords private." },
-              { id: 2, prompt: `[Primary School - Batch ${batchNum}] What is cyberbullying?`, imageIllustration: "💻", options: [{ label: "Being hurtful online", isCorrect: true }, { label: "Playing math games", isCorrect: false }], explanation: "Cyberbullying is online harassment." },
-              { id: 3, prompt: `[Primary School - Batch ${batchNum}] Who should you tell if someone sends unkind messages?`, imageIllustration: "👨‍👩‍👧", options: [{ label: "Trusted adult or teacher", isCorrect: true }, { label: "Keep it secret", isCorrect: false }], explanation: "Trusted adults help." },
-              { id: 4, prompt: `[Primary School - Batch ${batchNum}] Is it healthy to stare at screens all day?`, imageIllustration: "🌳", options: [{ label: "No, balance with outdoor play", isCorrect: true }, { label: "Yes", isCorrect: false }], explanation: "Balance prevents eye strain." },
-              { id: 5, prompt: `[Primary School - Batch ${batchNum}] What does posting kind comments show?`, imageIllustration: "⭐", options: [{ label: "Good digital citizenship", isCorrect: true }, { label: "Bad manners", isCorrect: false }], explanation: "Kindness defines good citizenship." }
+            const pools = [
+              [
+                { id: 1, prompt: "Should you share your home address or password online?", img: "🔒", opts: [{ l: "Never share private info", c: true }, { l: "Share freely", c: false }], exp: "Protect info." },
+                { id: 2, prompt: "What is cyberbullying?", img: "💻", opts: [{ l: "Being mean online", c: true }, { l: "Playing games", c: false }], exp: "Online harassment." },
+                { id: 3, prompt: "Who should you tell if someone sends unkind messages?", img: "👨‍👩‍👧", opts: [{ l: "A trusted adult or teacher", c: true }, { l: "Keep it secret", c: false }], exp: "Adults help." },
+                { id: 4, prompt: "Is it healthy to stare at screens all day?", img: "🌳", opts: [{ l: "No, balance with play", c: true }, { l: "Yes", c: false }], exp: "Balance is key." },
+                { id: 5, prompt: "What does posting respectful comments show?", img: "⭐", opts: [{ l: "Good digital citizenship", c: true }, { l: "Bad manners", c: false }], exp: "Respect is good." }
+              ],
+              [
+                { id: 1, prompt: "If an online popup game offers free prizes if you click a strange link, what should you do?", img: "⚠️", opts: [{ l: "Do not click; close the window", c: true }, { l: "Click immediately", c: false }], exp: "Scams use fake prizes." },
+                { id: 2, prompt: "Is your online screen name or avatar considered private personal data?", img: "🛡️", opts: [{ l: "Yes, protect your online identity", c: true }, { l: "No", c: false }], exp: "Identity safety matters." },
+                { id: 3, prompt: "What should you do if someone online makes you feel uncomfortable?", img: "🛑", opts: [{ l: "Block them and tell a parent", c: true }, { l: "Chat with them more", c: false }], exp: "Blocking stops creeps." },
+                { id: 4, prompt: "Why is it important to use strong passwords with numbers and symbols?", img: "🔑", opts: [{ l: "To stop hackers from breaking in", c: true }, { l: "To forget them easily", c: false }], exp: "Security stops theft." },
+                { id: 5, prompt: "Are everything you read online or see in videos 100% true?", img: "📰", opts: [{ l: "No, check facts with adults", c: true }, { l: "Yes, always", c: false }], exp: "Misinformation exists." }
+              ],
+              [
+                { id: 1, prompt: "What is a digital footprint?", img: "👣", opts: [{ l: "The permanent record of your online activity", c: true }, { l: "Footprints in sand", c: false }], exp: "Data stays online." },
+                { id: 2, prompt: "Should you post pictures of your school name badge or front door online?", img: "🏠", opts: [{ l: "No, keep locations private", c: true }, { l: "Yes", c: false }], exp: "Location safety." },
+                { id: 3, prompt: "How can you be kind in online multiplayer video game chats?", img: "🎮", opts: [{ l: "Encourage teammates and use polite words", c: true }, { l: "Insult others", c: false }], exp: "Kindness in gaming." },
+                { id: 4, prompt: "Who is responsible for keeping your tablet or computer secure?", img: "🧑‍💻", opts: [{ l: "You and your parents", c: true }, { l: "Nobody", c: false }], exp: "Shared responsibility." },
+                { id: 5, prompt: "What should you do before downloading a new game app on a phone?", img: "📱", opts: [{ l: "Ask a parent or guardian for permission", c: true }, { l: "Download right away", c: false }], exp: "Parental consent." }
+              ],
+              [
+                { id: 1, prompt: "What is netiquette?", img: "💻", opts: [{ l: "Polite and respectful manners when communicating online", c: true }, { l: "Internet cable wire", c: false }], exp: "Online manners." },
+                { id: 2, prompt: "What should you do if you receive a mean text message from a schoolmate?", img: "📵", opts: [{ l: "Save the message and show a trusted adult", c: true }, { l: "Reply with meaner insults", c: false }], exp: "Evidence and adults." },
+                { id: 3, prompt: "Why is it unsafe to meet someone in person whom you only met in an online game?", img: "⚠️", opts: [{ l: "Online strangers may not be who they pretend to be", c: true }, { l: "They might bring you a cake", c: false }], exp: "Stranger safety." },
+                { id: 4, prompt: "What does it mean to respect someone's privacy online?", img: "🔒", opts: [{ l: "Not sharing their private photos or chats without permission", c: true }, { l: "Posting their secrets", c: false }], exp: "Privacy respect." },
+                { id: 5, prompt: "How can screen time limits help your daily routine?", img: "⏰", opts: [{ l: "They leave time for homework, sleep, and outdoor play", c: true }, { l: "They make time pass slower", c: false }], explanation: "Balanced routine." }
+              ],
+              [
+                { id: 1, prompt: "What is spam in email or messaging inboxes?", img: "🗑️", opts: [{ l: "Unwanted junk messages sent to many people at once", c: true }, { l: "Important homework from teachers", c: false }], exp: "Junk messages." },
+                { id: 2, prompt: "What should you do if your tablet password is guessed by a sibling?", img: "🔐", opts: [{ l: "Change your password immediately to a new secret one", c: true }, { l: "Leave it unlocked", c: false }], explanation: "Password security." },
+                { id: 3, prompt: "Why is cyber security awareness important for kids?", img: "🛡️", opts: [{ l: "It helps you navigate the digital world safely and securely", c: true }, { l: "It is just a school subject", c: false }], explanation: "Safe navigation." },
+                { id: 4, prompt: "What is an online profile picture safety rule?", img: "🖼️", opts: [{ l: "Use avatars or illustrations instead of private family photos", c: true }, { l: "Post pictures of your house key", c: false }], explanation: "Avatar safety." },
+                { id: 5, prompt: "What should you do if an ad on a website pops up asking you to download a mystery file?", img: "❌", opts: [{ l: "Close the browser tab without downloading anything", c: true }, { l: "Click download", c: false }], explanation: "Avoid mystery files." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           } else {
-            questions = [
-              { id: 1, prompt: `[Primary School - Batch ${batchNum}] What do we call the main character in a story?`, imageIllustration: "📖", options: [{ label: "Protagonist", isCorrect: true }, { label: "Table of contents", isCorrect: false }], explanation: "Protagonists are main heroes." },
-              { id: 2, prompt: `[Primary School - Batch ${batchNum}] What do plants need from sunlight to grow?`, imageIllustration: "🌱", options: [{ label: "Sunlight and water", isCorrect: true }, { label: "Soda", isCorrect: false }], explanation: "Photosynthesis requires light." },
-              { id: 3, prompt: `[Primary School - Batch ${batchNum}] What state of matter is ice?`, imageIllustration: "🧊", options: [{ label: "Solid", isCorrect: true }, { label: "Gas", isCorrect: false }], explanation: "Ice is frozen solid water." },
-              { id: 4, prompt: `[Primary School - Batch ${batchNum}] What do animals that eat only plants called?`, imageIllustration: "🌿", options: [{ label: "Herbivores", isCorrect: true }, { label: "Carnivores", isCorrect: false }], explanation: "Herbivores eat vegetation." },
-              { id: 5, prompt: `[Primary School - Batch ${batchNum}] What planet do we live on?`, imageIllustration: "🌍", options: [{ label: "Earth", isCorrect: true }, { label: "Mars", isCorrect: false }], explanation: "Earth is our home." }
+            const pools = [
+              [
+                { id: 1, prompt: "In a story, what do we call the main character?", img: "📖", opts: [{ l: "The protagonist", c: true }, { l: "The index", c: false }], exp: "Main hero." },
+                { id: 2, prompt: "What do plants need from the sun?", img: "🌱", opts: [{ l: "Sunlight and water", c: true }, { l: "Soda", c: false }], exp: "Photosynthesis." },
+                { id: 3, prompt: "What is a capital city?", img: "🗺️", opts: [{ l: "The governing hub", c: true }, { l: "A village", c: false }], exp: "Government center." },
+                { id: 4, prompt: "Which state of matter is ice?", img: "🧊", opts: [{ l: "Solid", c: true }, { l: "Gas", c: false }], exp: "Solid water." },
+                { id: 5, prompt: "What do animals that eat only plants called?", img: "🌿", opts: [{ l: "Herbivores", c: true }, { l: "Carnivores", c: false }], exp: "Plant eaters." }
+              ],
+              [
+                { id: 1, prompt: "What part of a plant absorbs water underground?", img: "🌱", opts: [{ l: "The roots", c: true }, { l: "The petals", c: false }], exp: "Roots absorb water." },
+                { id: 2, prompt: "What is the largest ocean on planet Earth?", img: "🌊", opts: [{ l: "The Pacific Ocean", c: true }, { l: "A swimming pool", c: false }], exp: "Pacific is largest." },
+                { id: 3, prompt: "What gas do humans breathe out that plants absorb?", img: "💨", opts: [{ l: "Carbon dioxide", c: true }, { l: "Pure gold", c: false }], exp: "CO2 exchange." },
+                { id: 4, prompt: "Which planet in our solar system is known as the Red Planet?", img: "🔴", opts: [{ l: "Mars", c: true }, { l: "Venus", c: false }], exp: "Mars is red iron oxide." },
+                { id: 5, prompt: "What natural force pulls objects down toward the ground?", img: "🍏", opts: [{ l: "Gravity", c: true }, { l: "Magnetism", c: false }], exp: "Gravity pulls down." }
+              ],
+              [
+                { id: 1, prompt: "What do we call a baby frog before it grows legs?", img: "🐸", opts: [{ l: "A tadpole", c: true }, { l: "A kitten", c: false }], exp: "Tadpoles become frogs." },
+                { id: 2, prompt: "Which direction does the sun rise every morning?", img: "🌅", opts: [{ l: "In the East", c: true }, { l: "In the West", c: false }], exp: "East sunrise." },
+                { id: 3, prompt: "What is the hardest natural substance found on Earth?", img: "💎", opts: [{ l: "Diamond", c: true }, { l: "Wood", c: false }], exp: "Diamonds are hardest." },
+                { id: 4, prompt: "How many continents are there on Earth?", img: "🌍", opts: [{ l: "Seven continents", c: true }, { l: "Three continents", c: false }], exp: "7 global continents." },
+                { id: 5, prompt: "What type of animal is a whale living in the ocean?", img: "🐋", opts: [{ l: "A marine mammal", c: true }, { l: "A fish", c: false }], exp: "Whales are mammals." }
+              ],
+              [
+                { id: 1, prompt: "What process turns liquid water into invisible vapor gas?", img: "♨️", opts: [{ l: "Evaporation", c: true }, { l: "Freezing", c: false }], exp: "Water evaporates." },
+                { id: 2, prompt: "Which bird is famous for being unable to fly but swimming well?", img: "🐧", opts: [{ l: "Penguin", c: true }, { l: "Eagle", c: false }], exp: "Penguins swim." },
+                { id: 3, prompt: "What layer of gases surrounds planet Earth?", img: "☁️", opts: [{ l: "The atmosphere", c: true }, { l: "The crust", c: false }], exp: "Atmosphere protects Earth." },
+                { id: 4, prompt: "What is the center of our solar system?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "The Moon", c: false }], exp: "Sun is center." },
+                { id: 5, prompt: "What instrument measures hot and cold temperatures?", img: "🌡️", opts: [{ l: "A thermometer", c: true }, { l: "A barometer", c: false }], exp: "Thermometers check heat." }
+              ],
+              [
+                { id: 1, prompt: "What is the main source of energy for all life on Earth?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "Electricity", c: false }], exp: "Sun powers Earth." },
+                { id: 2, prompt: "Which insect makes sweet honey and lives in hives?", img: "🐝", opts: [{ l: "Honeybee", c: true }, { l: "Housefly", c: false }], exp: "Bees make honey." },
+                { id: 3, prompt: "What is the process of a caterpillar transforming into a butterfly?", img: "🦋", opts: [{ l: "Metamorphosis", c: true }, { l: "Photosynthesis", c: false }], exp: "Metamorphosis stages." },
+                { id: 4, prompt: "Which layer of the Earth do we walk and build houses on?", img: "🌍", opts: [{ l: "The Earth's crust", c: true }, { l: "The inner core", c: false }], explanation: "Crust is surface." },
+                { id: 5, prompt: "What do we call scientists who study space and stars?", img: "🔭", opts: [{ l: "Astronomers", c: true }, { l: "Geologists", c: false }], explanation: "Astronomers study stars." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           }
         } else if (selectedLevel === "Junior High") {
           if (top === "Daily Life") {
-            questions = [
-              { id: 1, prompt: `[Junior High - Batch ${batchNum}] What does 'platform' mean at a station?`, imageIllustration: "🚆", options: [{ label: "Boarding area beside tracks", isCorrect: true }, { label: "Ticket price", isCorrect: false }], explanation: "Platforms are boarding zones." },
-              { id: 2, prompt: `[Junior High - Batch ${batchNum}] Choose correct preposition: 'Turn left ___ the light.'`, imageIllustration: "🚦", options: [{ label: "at", isCorrect: true }, { label: "on", isCorrect: false }], explanation: "Use 'at' for intersections." },
-              { id: 3, prompt: `[Junior High - Batch ${batchNum}] What is the benefit of cardio exercise?`, imageIllustration: "🏃‍♂️", options: [{ label: "Improving heart endurance", isCorrect: true }, { label: "Weakening", isCorrect: false }], explanation: "Cardio strengthens heart function." },
-              { id: 4, prompt: `[Junior High - Batch ${batchNum}] How to ask for schedule times politely?`, imageIllustration: "🎫", options: [{ label: "Could you please tell me when it departs?", isCorrect: true }, { label: "Give me time now.", isCorrect: false }], explanation: "Polite modals ensure courtesy." },
-              { id: 5, prompt: `[Junior High - Batch ${batchNum}] What is luggage allowance?`, imageIllustration: "🧳", options: [{ label: "Maximum bag weight/size limit", isCorrect: true }, { label: "Free snacks", isCorrect: false }], explanation: "Airlines enforce baggage limits." }
+            const pools = [
+              [
+                { id: 1, prompt: "What does 'platform' mean at a train station?", img: "🚆", opts: [{ l: "The boarding area beside tracks", c: true }, { l: "Ticket price", c: false }], exp: "Platform area." },
+                { id: 2, prompt: "Choose correct preposition: 'Turn left ___ the traffic light.'", img: "🚦", opts: [{ l: "at", c: true }, { l: "on", c: false }], exp: "Use 'at'." },
+                { id: 3, prompt: "Benefit of regular cardio exercise?", img: "🏃‍♂️", opts: [{ l: "Improving heart endurance", c: true }, { l: "Weakening", c: false }], exp: "Cardio heart." },
+                { id: 4, prompt: "How to politely ask for train departure time?", img: "🎫", opts: [{ l: "Could you please tell me when it departs?", c: true }, { l: "Give me time.", c: false }], exp: "Polite modals." },
+                { id: 5, prompt: "What is luggage allowance?", img: "🧳", opts: [{ l: "Max weight/size for bags", c: true }, { l: "Free snacks", c: false }], exp: "Baggage limits." }
+              ],
+              [
+                { id: 1, prompt: "When booking a hotel room, what does 'half-board' usually include?", img: "🏨", opts: [{ l: "Breakfast and dinner", c: true }, { l: "Only room key", c: false }], explanation: "Half board meals." },
+                { id: 2, prompt: "What document is legally required when traveling internationally across borders?", img: "🛂", opts: [{ l: "A valid passport", c: true }, { l: "A library card", c: false }], explanation: "Passports verify citizenship." },
+                { id: 3, prompt: "What currency is officially used across most countries in the European Union?", img: "💶", opts: [{ l: "The Euro (€)", c: true }, { l: "The Dollar ($)", c: false }], explanation: "Euro is EU currency." },
+                { id: 4, prompt: "What is jet lag experienced after long-haul flights?", img: "✈️", opts: [{ l: "Fatigue from crossing multiple time zones", c: true }, { l: "Fear of heights", c: false }], explanation: "Time zone disruption." },
+                { id: 5, prompt: "What term describes a vacation where all food and drinks are included?", img: "🍹", opts: [{ l: "All-inclusive resort package", c: true }, { l: "Backpacking hostel", c: false }], explanation: "All-inclusive deals." }
+              ],
+              [
+                { id: 1, prompt: "What public transit vehicle runs on metal tracks embedded in city streets?", img: "🚊", opts: [{ l: "A tram or streetcar", c: true }, { l: "A helicopter", c: false }], explanation: "Trams run on streets." },
+                { id: 2, prompt: "What should you check first when reading a city transit map?", img: "🗺️", opts: [{ l: "The legend and color-coded subway lines", c: true }, { l: "The publisher name", c: false }], explanation: "Legends explain maps." },
+                { id: 3, prompt: "What is currency exchange when traveling abroad?", img: "💱", opts: [{ l: "Trading your home money for local foreign cash", c: true }, { l: "Buying souvenirs", c: false }], explanation: "Currency swapping." },
+                { id: 4, prompt: "What traveler accommodation is typically budget-friendly with shared dorms?", img: "🛏️", opts: [{ l: "A youth hostel", c: true }, { l: "A luxury penthouse", c: false }], explanation: "Hostels save money." },
+                { id: 5, prompt: "What phrase means 'to check in' at an airline desk?", img: "🛄", opts: [{ l: "To register your flight and drop off luggage", c: true }, { l: "To board the plane", c: false }], explanation: "Check-in procedure." }
+              ],
+              [
+                { id: 1, prompt: "What is a window seat preference on an airplane?", img: "🪟", opts: [{ l: "Sitting next to the cabin window", c: true }, { l: "Sitting in the aisle", c: false }], explanation: "Window view seat." },
+                { id: 2, prompt: "What official card do you swipe to ride public city subways?", img: "💳", opts: [{ l: "A transit smart card / pass", c: true }, { l: "A credit card for groceries", c: false }], explanation: "Transit passes." },
+                { id: 3, prompt: "What is carry-on luggage?", img: "🧳", opts: [{ l: "Bags you bring inside the plane cabin with you", c: true }, { l: "Checked large suitcases", c: false }], explanation: "Cabin luggage." },
+                { id: 4, prompt: "What does 'boarding pass' mean?", img: "🎫", opts: [{ l: "The ticket allowing you to enter the aircraft", c: true }, { l: "Hotel key card", c: false }], explanation: "Boarding ticket." },
+                { id: 5, prompt: "What emergency equipment is reviewed before flight takeoff?", img: "🦺", opts: [{ l: "Life vests and oxygen masks", c: true }, { l: "Movie projector", c: false }], explanation: "Safety briefing." }
+              ],
+              [
+                { id: 1, prompt: "What is an itinerary when planning a vacation?", img: "🗓️", opts: [{ l: "A detailed schedule of planned travel activities", c: true }, { l: "A hotel bill", c: false }], explanation: "Travel schedule." },
+                { id: 2, prompt: "What does customs inspection at an airport check for?", img: "🛃", opts: [{ l: "Regulated goods, food, and declaration items", c: true }, { l: "Your clothing style", c: false }], explanation: "Customs rules." },
+                { id: 3, prompt: "What is a round-trip flight ticket?", img: "🔄", opts: [{ l: "A ticket for going to a destination and returning back", c: true }, { l: "One-way ticket", c: false }], explanation: "Round trip return." },
+                { id: 4, prompt: "What is tourism?", img: "📸", opts: [{ l: "Traveling for recreation, leisure, and sightseeing", c: true }, { l: "Moving house", c: false }], explanation: "Leisure travel." },
+                { id: 5, prompt: "What is a travel guidebook used for?", img: "📖", opts: [{ l: "Finding tourist attractions, restaurants, and tips", c: true }, { l: "Cooking dinner", c: false }], explanation: "Guidebook tips." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           } else if (top === "Social Media") {
-            questions = [
-              { id: 1, prompt: `[Junior High - Batch ${batchNum}] What does 'DIY' stand for?`, imageIllustration: "🛠️", options: [{ label: "Do It Yourself", isCorrect: true }, { label: "Do It Yesterday", isCorrect: false }], explanation: "DIY means self-made." },
-              { id: 2, prompt: `[Junior High - Batch ${batchNum}] Why is 2FA important for accounts?`, imageIllustration: "🔐", options: [{ label: "Extra security layer beyond passwords", isCorrect: true }, { label: "Deletes account", isCorrect: false }], explanation: "2FA prevents unauthorized breaches." },
-              { id: 3, prompt: `[Junior High - Batch ${batchNum}] What is a digital footprint?`, imageIllustration: "👣", options: [{ label: "Trail of data left online", isCorrect: true }, { label: "Mud tracks", isCorrect: false }], explanation: "Digital footprints record activity." },
-              { id: 4, prompt: `[Junior High - Batch ${batchNum}] How to respond to toxic comments?`, imageIllustration: "🛡️", options: [{ label: "Ignore or report safely", isCorrect: true }, { label: "Insult back aggressively", isCorrect: false }], explanation: "Moderation stops toxicity." },
-              { id: 5, prompt: `[Junior High - Batch ${batchNum}] What does 'TL;DR' mean?`, imageIllustration: "📖", options: [{ label: "Too Long; Didn't Read summary", isCorrect: true }, { label: "Delete", isCorrect: false }], explanation: "TL;DR provides summaries." }
+            const pools = [
+              [
+                { id: 1, prompt: "What does 'DIY' stand for?", img: "🛠️", opts: [{ l: "Do It Yourself", c: true }, { l: "Do It Yesterday", c: false }], exp: "DIY means self-made." },
+                { id: 2, prompt: "Why is 2FA important?", img: "🔐", opts: [{ l: "Extra security layer", c: true }, { l: "Deletes account", c: false }], exp: "Security." },
+                { id: 3, prompt: "What is a digital footprint?", img: "👣", opts: [{ l: "Data trail left online", c: true }, { l: "Mud prints", c: false }], exp: "Data record." },
+                { id: 4, prompt: "How to respond to inflammatory comments?", img: "🛡️", opts: [{ l: "Ignore or report", c: true }, { l: "Insult back", c: false }], exp: "Moderation." },
+                { id: 5, prompt: "What does 'TL;DR' mean?", img: "📖", opts: [{ l: "Too Long; Didn't Read", c: true }, { l: "Delete", c: false }], exp: "Summary." }
+              ],
+              [
+                { id: 1, prompt: "What is phishing?", img: "🎣", opts: [{ l: "Fraudulent emails stealing credentials", c: true }, { l: "Catching fish", c: false }], explanation: "Scam tactic." },
+                { id: 2, prompt: "What is an influencer on social media?", img: "⭐", opts: [{ l: "A user with a large following who promotes brands", c: true }, { l: "A computer virus", c: false }], explanation: "Brand promoter." },
+                { id: 3, prompt: "What does a hashtag (#) do on posts?", img: "#️⃣", opts: [{ l: "Categorizes content for discoverability", c: true }, { l: "Deletes the post", c: false }], explanation: "Tagging system." },
+                { id: 4, prompt: "What is viral content?", img: "📈", opts: [{ l: "Media that spreads rapidly across the internet", c: true }, { l: "Computer sickness", c: false }], explanation: "Rapid sharing." },
+                { id: 5, prompt: "Why should you check source credibility before sharing news?", img: "📰", opts: [{ l: "To prevent spreading fake misinformation", c: true }, { l: "To look cool", c: false }], explanation: "Truth check." }
+              ],
+              [
+                { id: 1, prompt: "What is a meme?", img: "🖼️", opts: [{ l: "Humorous image or video copied and spread online", c: true }, { l: "A legal document", c: false }], explanation: "Viral humor." },
+                { id: 2, prompt: "What does 'blocking' a user accomplish?", img: "🚫", opts: [{ l: "Prevents them from viewing your profile or contacting you", c: true }, { l: "Deletes their account", c: false }], explanation: "User restriction." },
+                { id: 3, prompt: "What is livestreaming?", img: "🔴", opts: [{ l: "Broadcasting video footage in real time", c: true }, { l: "Mailing letters", c: false }], explanation: "Real-time broadcast." },
+                { id: 4, prompt: "What are algorithmic feeds?", img: "🤖", opts: [{ l: "Content automatically curated based on user behavior", c: true }, { l: "Random text", c: false }], explanation: "Curated feeds." },
+                { id: 5, prompt: "What is catfishing?", img: "🎭", opts: [{ l: "Creating a fake online identity to deceive others", c: true }, { l: "Fishing in lakes", c: false }], explanation: "Deceptive identity." }
+              ],
+              [
+                { id: 1, prompt: "What is an algorithm in social media platforms?", img: "⚙️", opts: [{ l: "Code determining what posts appear on your feed", c: true }, { l: "A physical machine", c: false }], explanation: "Ranking code." },
+                { id: 2, prompt: "What does 'trending' mean?", img: "🔥", opts: [{ l: "Topics currently generating the highest engagement", c: true }, { l: "Weather forecasts", c: false }], explanation: "High popularity." },
+                { id: 3, prompt: "What is netiquette?", img: "💻", opts: [{ l: "Proper polite manners when communicating online", c: true }, { l: "Internet cables", c: false }], explanation: "Online etiquette." },
+                { id: 4, prompt: "What is clickbait?", img: "🎣", opts: [{ l: "Sensationalized headlines designed to entice clicks", c: true }, { l: "A fishing lure", c: false }], explanation: "Deceptive titles." },
+                { id: 5, prompt: "What is geotagging?", img: "📍", opts: [{ l: "Adding geographical metadata to media posts", c: true }, { l: "Mapping stars", c: false }], explanation: "Location tags." }
+              ],
+              [
+                { id: 1, prompt: "What is user-generated content (UGC)?", img: "🤳", opts: [{ l: "Content created and published by everyday users", c: true }, { l: "Hollywood movies", c: false }], explanation: "User created." },
+                { id: 2, prompt: "What is a troll in online comment sections?", img: "🧌", opts: [{ l: "Someone who intentionally provokes anger or disruption", c: true }, { l: "A fantasy character", c: false }], explanation: "Provocateur." },
+                { id: 3, prompt: "What is account verification (blue checkmark)?", img: "✔️", opts: [{ l: "Confirmation of a prominent user's authentic identity", c: true }, { l: "A paid coupon", c: false }], explanation: "Identity badge." },
+                { id: 4, prompt: "What is social media detox?", img: "🌿", opts: [{ l: "Temporarily abstaining from social platforms", c: true }, { l: "Cleaning a phone screen", c: false }], explanation: "Digital break." },
+                { id: 5, prompt: "What is a direct message (DM)?", img: "💬", opts: [{ l: "Private communication between two users", c: true }, { l: "A public billboard", c: false }], explanation: "Private chat." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           } else if (top === "Job Interviews") {
-            questions = [
-              { id: 1, prompt: `[Junior High - Batch ${batchNum}] What does 'punctual' mean?`, imageIllustration: "⏰", options: [{ label: "Arriving consistently on time", isCorrect: true }, { label: "Late", isCorrect: false }], explanation: "Punctuality is vital." },
-              { id: 2, prompt: `[Junior High - Batch ${batchNum}] How to greet an interviewer?`, imageIllustration: "🤝", options: [{ label: "Eye contact and firm handshake", isCorrect: true }, { label: "Look at phone", isCorrect: false }], explanation: "First impressions matter." },
-              { id: 3, prompt: `[Junior High - Batch ${batchNum}] Purpose of a student resume?`, imageIllustration: "📄", options: [{ label: "Summarize education and skills", isCorrect: true }, { label: "Write poetry", isCorrect: false }], explanation: "Resumes showcase qualifications." },
-              { id: 4, prompt: `[Junior High - Batch ${batchNum}] Why ask about strengths?`, imageIllustration: "💪", options: [{ label: "Understand value contribution", isCorrect: true }, { label: "Trick you", isCorrect: false }], explanation: "Strengths highlight fit." },
-              { id: 5, prompt: `[Junior High - Batch ${batchNum}] Great question at interview end?`, imageIllustration: "❓", options: [{ label: "What does a typical workday look like?", isCorrect: true }, { label: "Can I sleep here?", isCorrect: false }], explanation: "Shows genuine interest." }
+            const pools = [
+              [
+                { id: 1, prompt: "What does 'punctual' mean?", img: "⏰", opts: [{ l: "Arriving on time", c: true }, { l: "Late", c: false }], exp: "On time." },
+                { id: 2, prompt: "How should you greet an interviewer?", img: "🤝", opts: [{ l: "Eye contact and firm handshake", c: true }, { l: "Ignore", c: false }], exp: "First impression." },
+                { id: 3, prompt: "Purpose of student resume?", img: "📄", opts: [{ l: "Summarize skills and education", c: true }, { l: "Poetry", c: false }], exp: "Qualifications." },
+                { id: 4, prompt: "Why ask about strengths?", img: "💪", opts: [{ l: "Understand value contribution", c: true }, { l: "Trick", c: false }], exp: "Candidate fit." },
+                { id: 5, prompt: "Great question to ask at the end?", img: "❓", opts: [{ l: "What does a typical workday look like?", c: true }, { l: "Can I sleep here?", c: false }], exp: "Curiosity." }
+              ],
+              [
+                { id: 1, prompt: "What is a STAR method response in behavioral interviews?", img: "⭐", opts: [{ l: "Situation, Task, Action, Result framework", c: true }, { l: "Singing a song", c: false }], explanation: "Behavioral framework." },
+                { id: 2, prompt: "How should you research a company before an interview?", img: "🔍", opts: [{ l: "Review their website, mission, and recent news", c: true }, { l: "Guess what they do", c: false }], explanation: "Company research." },
+                { id: 3, prompt: "What is business professional dress code?", img: "👔", opts: [{ l: "Suits, tailored blazers, and formal wear", c: true }, { l: "Pajamas and slippers", c: false }], explanation: "Formal attire." },
+                { id: 4, prompt: "How should you answer 'What is your greatest weakness?'", img: "💡", opts: [{ l: "Mention a real flaw and how you actively improve it", c: true }, { l: "Claim you have zero flaws", c: false }], explanation: "Self-improvement." },
+                { id: 5, prompt: "What is the purpose of a follow-up email after an interview?", img: "📧", opts: [{ l: "Express gratitude and reiterate interest", c: true }, { l: "Demand an immediate hiring decision", c: false }], explanation: "Polite follow-up." }
+              ],
+              [
+                { id: 1, prompt: "What are soft skills?", img: "🤝", opts: [{ l: "Interpersonal communication and teamwork abilities", c: true }, { l: "Coding syntax knowledge", c: false }], explanation: "Interpersonal skills." },
+                { id: 2, prompt: "What are hard skills?", img: "💻", opts: [{ l: "Technical proficiencies and specialized training", c: true }, { l: "Being polite", c: false }], explanation: "Technical skills." },
+                { id: 3, prompt: "How early should you arrive for an in-person interview?", img: "⏰", opts: [{ l: "10 to 15 minutes early", c: true }, { l: "2 hours late", c: false }], explanation: "Arrival timing." },
+                { id: 4, prompt: "What should you bring to an interview?", img: "📁", opts: [{ l: "Multiple printed copies of your resume and a pen", c: true }, { l: "Nothing at all", c: false }], explanation: "Preparedness." },
+                { id: 5, prompt: "How should you handle an interview question you do not know?", img: "🤔", opts: [{ l: "Stay calm, admit it gracefully, and show willingness to learn", c: true }, { l: "Panic and walk out", c: false }], explanation: "Graceful honesty." }
+              ],
+              [
+                { id: 1, prompt: "What is a panel interview?", img: "👥", opts: [{ l: "An interview with multiple hiring managers simultaneously", c: true }, { l: "An online computer test", c: false }], explanation: "Multiple interviewers." },
+                { id: 2, prompt: "Why do interviewers ask 'Tell me about yourself'?", img: "🗣️", opts: [{ l: "To hear a professional summary of your career journey", c: true }, { l: "To hear your life story from birth", c: false }], explanation: "Professional pitch." },
+                { id: 3, prompt: "What is body language importance in interviews?", img: "🧍", opts: [{ l: "Posture, eye contact, and nodding convey confidence", c: true }, { l: "Slumping conveys energy", c: false }], explanation: "Confident posture." },
+                { id: 4, prompt: "What is a probation period in a new job?", img: "⏳", opts: [{ l: "An initial trial evaluation period", c: true }, { l: "Permanent paid vacation", c: false }], explanation: "Trial period." },
+                { id: 5, prompt: "How should you speak about past employers or managers?", img: "💬", opts: [{ l: "Professionally and respectfully, avoiding negativity", c: true }, { l: "Insulting them harshly", c: false }], explanation: "Professional tact." }
+              ],
+              [
+                { id: 1, prompt: "What is a salary negotiation?", img: "💰", opts: [{ l: "Discussing compensation and benefits professionally", c: true }, { l: "Demanding double money rudely", c: false }], explanation: "Compensation talk." },
+                { id: 2, prompt: "What does 'cultural fit' mean in hiring?", img: "🌐", opts: [{ l: "Alignment with company values and team ethos", c: true }, { l: "Wearing the same shoes", c: false }], explanation: "Value alignment." },
+                { id: 3, prompt: "What is a group interview used for?", img: "🧑‍🤝‍🧑", opts: [{ l: "To assess teamwork and collaboration under observation", c: true }, { l: "To throw a party", c: false }], explanation: "Team assessment." },
+                { id: 4, prompt: "What is an applicant tracking system (ATS)?", img: "💻", opts: [{ l: "Software used by companies to screen resumes automatically", c: true }, { l: "A GPS map for candidates", c: false }], explanation: "Resume scanner." },
+                { id: 5, prompt: "What is constructive feedback after a rejected interview?", img: "📈", opts: [{ l: "Valuable insights to improve future interview performance", c: true }, { l: "An insult to ignore", c: false }], explanation: "Growth feedback." }
+              ]
             ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           } else {
-            questions = [
-              { id: 1, prompt: `[Junior High - Batch ${batchNum}] Why include a bibliography?`, imageIllustration: "📑", options: [{ label: "Avoid plagiarism and credit sources", isCorrect: true }, { label: "Make paper heavier", isCorrect: false }], explanation: "Bibliographies ensure integrity." },
-              { id: 2, prompt: `[Junior High - Batch ${batchNum}] What does a dictionary provide?`, imageIllustration: "📖", options: [{ label: "Definitions and word origins", isCorrect: true }, { label: "Weather reports", isCorrect: false }], explanation: "Dictionaries define terms." },
-              { id: 3, prompt: `[Junior High - Batch ${batchNum}] First step of scientific method?`, imageIllustration: "🔬", options: [{ label: "Observation and question", isCorrect: true }, { label: "Conclusion", isCorrect: false }], explanation: "Inquiry begins with observation." },
-              { id: 4, prompt: `[Junior High - Batch ${batchNum}] What is a hypothesis?`, imageIllustration: "💡", options: [{ label: "Testable proposed explanation", isCorrect: true }, { label: "Proven law", isCorrect: false }], explanation: "Hypotheses guide experiments." },
-              { id: 5, prompt: `[Junior High - Batch ${batchNum}] What does an atlas contain?`, imageIllustration: "🗺️", options: [{ label: "Geopolitical and physical maps", isCorrect: true }, { label: "Cooking recipes", isCorrect: false }], explanation: "Atlases map geography." }
+            const pools = [
+              [
+                { id: 1, prompt: "Why include a bibliography?", img: "📑", opts: [{ l: "Avoid plagiarism and credit sources", c: true }, { l: "Make paper heavier", c: false }], exp: "Academic integrity." },
+                { id: 2, prompt: "What does a dictionary provide?", img: "📖", opts: [{ l: "Pronunciations and definitions", c: true }, { l: "Weather", c: false }], exp: "Lexicon." },
+                { id: 3, prompt: "First step of scientific method?", img: "🔬", opts: [{ l: "Observation and question", c: true }, { l: "Conclusion", c: false }], exp: "Inquiry." },
+                { id: 4, prompt: "What is a hypothesis?", img: "💡", opts: [{ l: "Testable proposed explanation", c: true }, { l: "Proven law", c: false }], exp: "Testable idea." },
+                { id: 5, prompt: "What does an atlas contain?", img: "🗺️", opts: [{ l: "Geopolitical and physical maps", c: true }, { l: "Recipes", c: false }], explanation: "Geography maps." }
+              ],
+              [
+                { id: 1, prompt: "What is peer review in academic publishing?", img: "👥", opts: [{ l: "Evaluation of research by independent expert scholars", c: true }, { l: "Checking grammar with spellcheck", c: false }], explanation: "Expert vetting." },
+                { id: 2, prompt: "What is a primary research source?", img: "📜", opts: [{ l: "Original firsthand data or historical documents", c: true }, { l: "A textbook summary", c: false }], explanation: "Firsthand data." },
+                { id: 3, prompt: "What is qualitative research?", img: "📊", opts: [{ l: "Focusing on descriptive data, interviews, and observations", c: true }, { l: "Counting numerical statistics only", c: false }], explanation: "Descriptive study." },
+                { id: 4, prompt: "What is quantitative research?", img: "📈", opts: [{ l: "Analyzing numerical data using statistical methods", c: true }, { l: "Writing poetry", c: false }], explanation: "Numerical data." },
+                { id: 5, prompt: "What is an abstract in a research paper?", img: "📄", opts: [{ l: "A concise summary of the entire study's findings", c: true }, { l: "The back cover", c: false }], explanation: "Summary abstract." }
+              ],
+              [
+                { id: 1, prompt: "What is plagiarism?", img: "⚠️", opts: [{ l: "Using someone else's work without proper citation", c: true }, { l: "Writing original essays", c: false }], explanation: "Academic theft." },
+                { id: 2, prompt: "What is a control group in scientific experiments?", img: "🧪", opts: [{ l: "The baseline group kept unchanged for comparison", c: true }, { l: "The group receiving experimental treatment", c: false }], explanation: "Experimental baseline." },
+                { id: 3, prompt: "What is an empirical study?", img: "🔬", opts: [{ l: "Research based on direct observation and experimentation", c: true }, { l: "Pure theoretical philosophy", c: false }], explanation: "Observational science." },
+                { id: 4, prompt: "What is a thesis statement in academic writing?", img: "🏛️", opts: [{ l: "The core central argument driving the entire paper", c: true }, { l: "A random concluding sentence", c: false }], explanation: "Central argument." },
+                { id: 5, prompt: "What is academic integrity?", img: "⭐", opts: [{ l: "Honesty and ethical standards in scholarship", c: true }, { l: "Getting 100% grades", c: false }], explanation: "Ethical scholarship." }
+              ],
+              [
+                { id: 1, prompt: "What is a literature review?", img: "📚", opts: [{ l: "A comprehensive survey of prior research on a topic", c: true }, { l: "A fictional novel", c: false }], explanation: "Research survey." },
+                { id: 2, prompt: "What is deductive reasoning?", img: "🧠", opts: [{ l: "Applying general principles to reach a specific conclusion", c: true }, { l: "Guessing randomly", c: false }], explanation: "General to specific." },
+                { id: 3, prompt: "What is inductive reasoning?", img: "💡", opts: [{ l: "Deriving general theories from specific observations", c: true }, { l: "Memorizing facts", c: false }], explanation: "Specific to general." },
+                { id: 4, prompt: "What is a methodological framework?", img: "⚙️", opts: [{ l: "The structured system of methods used in a study", c: true }, { l: "A computer hardware diagram", c: false }], explanation: "Method system." },
+                { id: 5, prompt: "What is citation formatting (APA / MLA)?", img: "📝", opts: [{ l: "Standardized rules for acknowledging reference sources", c: true }, { l: "Font styling choices", c: false }], explanation: "Reference standards." }
+              ],
+              [
+                { id: 1, prompt: "What is an independent variable in experiments?", img: "🔬", opts: [{ l: "The variable manipulated or changed by the researcher", c: true }, { l: "The measured outcome", c: false }], explanation: "Manipulated variable." },
+                { id: 2, prompt: "What is a dependent variable?", img: "📈", opts: [{ l: "The outcome measured and affected during the experiment", c: true }, { l: "The researcher", c: false }], explanation: "Measured outcome." },
+                { id: 3, prompt: "What is peer debriefing in qualitative research?", img: "👥", opts: [{ l: "Discussing findings with fellow researchers to ensure validity", c: true }, { l: "Arguing in class", c: false }], explanation: "Validity check." },
+                { id: 4, prompt: "What is scholarly citation?", img: "🔖", opts: [{ l: "Giving credit to authors within academic texts", c: true }, { l: "Writing footnotes for fun", c: false }], explanation: "Author credit." },
+                { id: 5, prompt: "What is academic publishing?", img: "📰", opts: [{ l: "Releasing peer-reviewed research in professional journals", c: true }, { l: "Posting on TikTok", c: false }], explanation: "Journal release." }
+              ]
             ];
-          }
-        } else if (selectedLevel === "Senior High") {
-          if (top === "Daily Life") {
-            questions = [
-              { id: 1, prompt: `[Senior High - Batch ${batchNum}] What does 50/30/20 budget allocate?`, imageIllustration: "📊", options: [{ label: "50% Needs, 30% Wants, 20% Savings", isCorrect: true }, { label: "50% Coffee, 50% Rent", isCorrect: false }], explanation: "The 50/30/20 rule balances expenses." },
-              { id: 2, prompt: `[Senior High - Batch ${batchNum}] What does APR stand for in loans?`, imageIllustration: "💳", options: [{ label: "Annual Percentage Rate", isCorrect: true }, { label: "Advanced Payment Ratio", isCorrect: false }], explanation: "APR calculates yearly borrowing costs." },
-              { id: 3, prompt: `[Senior High - Batch ${batchNum}] Why have an emergency fund?`, imageIllustration: "🏠", options: [{ label: "Cover unexpected expenses safely", isCorrect: true }, { label: "Buy luxury vacations", isCorrect: false }], explanation: "Emergency funds provide security." },
-              { id: 4, prompt: `[Senior High - Batch ${batchNum}] What is a refundable deposit?`, imageIllustration: "🔑", options: [{ label: "Cover potential property damage", isCorrect: true }, { label: "Landlord salary", isCorrect: false }], explanation: "Deposits protect landlords." },
-              { id: 5, prompt: `[Senior High - Batch ${batchNum}] What is compounding interest?`, imageIllustration: "📈", options: [{ label: "Interest on principal and past interest", isCorrect: true }, { label: "Paying penalties", isCorrect: false }], explanation: "Compounding accelerates growth." }
-            ];
-          } else if (top === "Social Media") {
-            questions = [
-              { id: 1, prompt: `[Senior High - Batch ${batchNum}] How do recruiters view public social feeds?`, imageIllustration: "🎓", options: [{ label: "As professional digital footprint", isCorrect: true }, { label: "Ignore them", isCorrect: false }], explanation: "Digital footprints impact evaluation." },
-              { id: 2, prompt: `[Senior High - Batch ${batchNum}] What is a phishing scam?`, imageIllustration: "🎣", options: [{ label: "Deceptive credential theft messaging", isCorrect: true }, { label: "Computer game", isCorrect: false }], explanation: "Phishing targets security." },
-              { id: 3, prompt: `[Senior High - Batch ${batchNum}] What does open-source software permit?`, imageIllustration: "💻", options: [{ label: "Collaborative inspection and modification", isCorrect: true }, { label: "Stealing software", isCorrect: false }], explanation: "Open-source shares code." },
-              { id: 4, prompt: `[Senior High - Batch ${batchNum}] Why audit privacy settings?`, imageIllustration: "🛡️", options: [{ label: "Control personal data access", isCorrect: true }, { label: "Slow down phone", isCorrect: false }], explanation: "Privacy audits safeguard data." },
-              { id: 5, prompt: `[Senior High - Batch ${batchNum}] What is a strong password?`, imageIllustration: "🔑", options: [{ label: "High entropy combining symbols and numbers", isCorrect: true }, { label: "Your birthdate", isCorrect: false }], explanation: "High entropy resists cracking." }
-            ];
-          } else if (top === "Job Interviews") {
-            questions = [
-              { id: 1, prompt: `[Senior High - Batch ${batchNum}] Purpose of cover letter?`, imageIllustration: "✉️", options: [{ label: "Tailored narrative matching company needs", isCorrect: true }, { label: "Repeat resume", isCorrect: false }], explanation: "Cover letters personalize apps." },
-              { id: 2, prompt: `[Senior High - Batch ${batchNum}] What are transferable skills?`, imageIllustration: "💼", options: [{ label: "Versatile competencies applicable anywhere", isCorrect: true }, { label: "Train tickets", isCorrect: false }], explanation: "Transferable skills work universally." },
-              { id: 3, prompt: `[Senior High - Batch ${batchNum}] What is an elevator pitch?`, imageIllustration: "⏱️", options: [{ label: "30-second professional value summary", isCorrect: true }, { label: "Elevator song", isCorrect: false }], explanation: "Elevator pitches deliver instant intros." },
-              { id: 4, prompt: `[Senior High - Batch ${batchNum}] When to send thank-you notes?`, imageIllustration: "📧", options: [{ label: "Within 24 hours", isCorrect: true }, { label: "After 3 months", isCorrect: false }], explanation: "Prompt notes keep you memorable." },
-              { id: 5, prompt: `[Senior High - Batch ${batchNum}] STAR method structure?`, imageIllustration: "⭐", options: [{ label: "Situation, Task, Action, Result", isCorrect: true }, { label: "Sing, Talk, Act, Rest", isCorrect: false }], explanation: "STAR structures behavioral stories." }
-            ];
-          } else {
-            questions = [
-              { id: 1, prompt: `[Senior High - Batch ${batchNum}] Role of a thesis statement in an essay?`, imageIllustration: "🏛️", options: [{ label: "State central argument and roadmap", isCorrect: true }, { label: "Tell a joke", isCorrect: false }], explanation: "Thesis statements anchor arguments." },
-              { id: 2, prompt: `[Senior High - Batch ${batchNum}] What is a 'straw man' fallacy?`, imageIllustration: "🧠", options: [{ label: "Misrepresenting an opponent's argument", isCorrect: true }, { label: "Building a scarecrow", isCorrect: false }], explanation: "Straw man distorts logic." },
-              { id: 3, prompt: `[Senior High - Batch ${batchNum}] Purpose of academic peer review?`, imageIllustration: "📑", options: [{ label: "Validate methodology before publication", isCorrect: true }, { label: "Check spelling only", isCorrect: false }], explanation: "Peer review ensures rigor." },
-              { id: 4, prompt: `[Senior High - Batch ${batchNum}] Choose academic transition: '___ hurdles, it succeeded.'`, imageIllustration: "⚖️", options: [{ label: "Notwithstanding", isCorrect: true }, { label: "Because", isCorrect: false }], explanation: "Notwithstanding denotes concession." },
-              { id: 5, prompt: `[Senior High - Batch ${batchNum}] What is empirical evidence?`, imageIllustration: "🔬", options: [{ label: "Data acquired by observation and experiment", isCorrect: true }, { label: "Pure opinion", isCorrect: false }], explanation: "Empirical data grounds science." }
-            ];
-          }
-        } else {
-          // C1 Advanced
-          if (top === "Daily Life") {
-            questions = [
-              { id: 1, prompt: `[C1 Advanced - Batch ${batchNum}] Meaning of idiom 'to bite the bullet'?`, imageIllustration: "🎯", options: [{ label: "Face difficulty with courage and endurance", isCorrect: true }, { label: "Eat metal", isCorrect: false }], explanation: "Biting the bullet means enduring hardship." },
-              { id: 2, prompt: `[C1 Advanced - Batch ${batchNum}] Syntactic inversion: 'Hardly ___ when it commenced.'`, imageIllustration: "📜", options: [{ label: "had I arrived", isCorrect: true }, { label: "I had arrived", isCorrect: false }], explanation: "Negative adverbials require inversion." },
-              { id: 3, prompt: `[C1 Advanced - Batch ${batchNum}] Semantic nuance of 'ubiquitous'?`, imageIllustration: "🌍", options: [{ label: "Present everywhere simultaneously", isCorrect: true }, { label: "Rare", isCorrect: false }], explanation: "Ubiquitous describes omnipresence." },
-              { id: 4, prompt: `[C1 Advanced - Batch ${batchNum}] To 'mitigate' a crisis implies?`, imageIllustration: "🛡️", options: [{ label: "Lessen severity or negative impact", isCorrect: true }, { label: "Worsen", isCorrect: false }], explanation: "Mitigation reduces damage." },
-              { id: 5, prompt: `[C1 Advanced - Batch ${batchNum}] Collocation: 'To mount a ___ defense.'`, imageIllustration: "⚖️", options: [{ label: "vigorous", isCorrect: true }, { label: "heavy", isCorrect: false }], explanation: "We mount a vigorous defense." }
-            ];
-          } else if (top === "Social Media") {
-            questions = [
-              { id: 1, prompt: `[C1 Advanced - Batch ${batchNum}] What is an algorithmic echo chamber?`, imageIllustration: "📡", options: [{ label: "Environment reinforcing beliefs via isolated feeds", isCorrect: true }, { label: "Studio", isCorrect: false }], explanation: "Echo chambers restrict diverse views." },
-              { id: 2, prompt: `[C1 Advanced - Batch ${batchNum}] AI deepfakes ethical threat?`, imageIllustration: "🤖", options: [{ label: "Synthetic media spreading misinformation", isCorrect: true }, { label: "Graphics", isCorrect: false }], explanation: "Deepfakes threaten informational trust." },
-              { id: 3, prompt: `[C1 Advanced - Batch ${batchNum}] Algorithmic bias in machine learning?`, imageIllustration: "📊", options: [{ label: "Inheriting historical human prejudices", isCorrect: true }, { label: "Speed", isCorrect: false }], explanation: "Biased training data produces biased AI." },
-              { id: 4, prompt: `[C1 Advanced - Batch ${batchNum}] Information literacy in digital age?`, imageIllustration: "🔍", options: [{ label: "Evaluating and verifying media sources critically", isCorrect: true }, { label: "Typing fast", isCorrect: false }], explanation: "Information literacy counters fake news." },
-              { id: 5, prompt: `[C1 Advanced - Batch ${batchNum}] Synthetic media regulation curb?`, imageIllustration: "🏛️", options: [{ label: "Unauthorized impersonation and disinformation", isCorrect: true }, { label: "Coding", isCorrect: false }], explanation: "Regulations target deceptive deepfakes." }
-            ];
-          } else if (top === "Job Interviews") {
-            questions = [
-              { id: 1, prompt: `[C1 Advanced - Batch ${batchNum}] Metrics-driven ROI storytelling entail?`, imageIllustration: "📈", options: [{ label: "Quantified business impact and revenue growth", isCorrect: true }, { label: "Jokes", isCorrect: false }], explanation: "ROI storytelling proves financial value." },
-              { id: 2, prompt: `[C1 Advanced - Batch ${batchNum}] Executive stakeholder alignment during conflicts?`, imageIllustration: "🤝", options: [{ label: "Reconciling priorities using empirical risk models", isCorrect: true }, { label: "Ignore", isCorrect: false }], explanation: "Alignment requires reconciliation." },
-              { id: 3, prompt: `[C1 Advanced - Batch ${batchNum}] Strategic foresight demonstrate in leadership?`, imageIllustration: "🚀", options: [{ label: "Anticipating industry disruption and pivoting proactively", isCorrect: true }, { label: "Micro", isCorrect: false }], explanation: "Foresight anticipates future shifts." },
-              { id: 4, prompt: `[C1 Advanced - Batch ${batchNum}] Streamlining organizational inefficiencies term:`, imageIllustration: "⚙️", options: [{ label: "Re-engineering operational workflows", isCorrect: true }, { label: "Slowing", isCorrect: false }], explanation: "Re-engineering optimizes operations." },
-              { id: 5, prompt: `[C1 Advanced - Batch ${batchNum}] Paramount when handling corporate crisis?`, imageIllustration: "🏛️", options: [{ label: "Decisive command with transparent communication", isCorrect: true }, { label: "Hide", isCorrect: false }], explanation: "Crisis leadership demands transparency." }
-            ];
-          } else {
-            questions = [
-              { id: 1, prompt: `[C1 Advanced - Batch ${batchNum}] Epistemological philosophy primary focus?`, imageIllustration: "🎓", options: [{ label: "Nature, origin, and limits of human knowledge", isCorrect: true }, { label: "Stars", isCorrect: false }], explanation: "Epistemology studies knowledge." },
-              { id: 2, prompt: `[C1 Advanced - Batch ${batchNum}] A priori vs a posteriori knowledge?`, imageIllustration: "🧠", options: [{ label: "Independent of experience vs empirical observation", isCorrect: true }, { label: "Identical", isCorrect: false }], explanation: "A priori is deductive; a posteriori is empirical." },
-              { id: 3, prompt: `[C1 Advanced - Batch ${batchNum}] What is a logical tautology?`, imageIllustration: "📜", options: [{ label: "Necessarily true by logical form", isCorrect: true }, { label: "Experiment", isCorrect: false }], explanation: "Tautologies are inherently true." },
-              { id: 4, prompt: `[C1 Advanced - Batch ${batchNum}] Advanced concession marker: '___ data is complex...'`, imageIllustration: "⚖️", options: [{ label: "Albeit", isCorrect: true }, { label: "Because", isCorrect: false }], explanation: "Albeit introduces formal concession." },
-              { id: 5, prompt: `[C1 Advanced - Batch ${batchNum}] German concept 'Zeitgeist' signify?`, imageIllustration: "🏛️", options: [{ label: "Defining spirit or mood of a historical period", isCorrect: true }, { label: "Building", isCorrect: false }], explanation: "Zeitgeist means spirit of the times." }
-            ];
+            questions = pools[batchNum - 1].map(q => ({
+              id: q.id, prompt: q.prompt, imageIllustration: q.img,
+              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
+              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
+            }));
           }
         }
 
