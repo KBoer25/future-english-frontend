@@ -19,10 +19,30 @@ type ModuleData = {
   questions: Question[];
 };
 
+type VocabularyItem = {
+  word: string;
+  phonetic: string;
+  partOfSpeech: string;
+  definition: string;
+  example: string;
+  illustrationIcon: string;
+};
+
+type GrammarRule = {
+  ruleTitle: string;
+  explanation: string;
+  correctExample: string;
+  incorrectExample: string;
+  tip: string;
+};
+
 type ReadingSection = {
   heading: string;
   subheading: string;
   paragraphs: string[];
+  vocabulary: VocabularyItem[];
+  grammar: GrammarRule;
+  practicalApplication: string;
   keyTakeaways: string[];
 };
 
@@ -120,32 +140,32 @@ export default function Home() {
                 { id: 5, prompt: "What magic word do you use when asking for a toy?", img: "✨", opts: [{ l: "Please", c: true }, { l: "Mine", c: false }], exp: "Please is polite." }
               ],
               [
-                { id: 1, prompt: "When playing a game, is it good to wait your turn?", img: "⏳", opts: [{ l: "Yes, taking turns is fair", c: true }, { l: "No, grab everything", c: false }], exp: "Turns ensure fairness." },
-                { id: 2, prompt: "If you accidentally bump into someone, what should you say?", img: "🙇", opts: [{ l: "I am sorry / Excuse me", c: true }, { l: "Nothing", c: false }], exp: "Apologizing is courteous." },
-                { id: 3, prompt: "How can you show a friend you are listening when they talk?", img: "👂", opts: [{ l: "Look at them and nod quietly", c: true }, { l: "Cover your ears", c: false }], exp: "Active listening builds trust." },
-                { id: 4, prompt: "Is it kind to include new classmates in your games?", img: "🌟", opts: [{ l: "Yes, welcoming others is wonderful", c: true }, { l: "No, exclude them", c: false }], exp: "Inclusivity makes friends." },
-                { id: 5, prompt: "What should you do with a broken classroom crayon?", img: "🖍️", opts: [{ l: "Tell the teacher calmly", c: true }, { l: "Hide it", c: false }], exp: "Communication solves mishaps." }
+                { id: 1, prompt: "When playing a game, is it good to wait your turn?", img: "⏳", opts: [{ l: "Yes, taking turns is fair", c: true }, { l: "No, grab everything", c: false }], explanation: "Turns ensure fairness." },
+                { id: 2, prompt: "If you accidentally bump into someone, what should you say?", img: "🙇", opts: [{ l: "I am sorry / Excuse me", c: true }, { l: "Nothing", c: false }], explanation: "Apologizing is courteous." },
+                { id: 3, prompt: "How can you show a friend you are listening when they talk?", img: "👂", opts: [{ l: "Look at them and nod quietly", c: true }, { l: "Cover your ears", c: false }], explanation: "Active listening builds trust." },
+                { id: 4, prompt: "Is it kind to include new classmates in your games?", img: "🌟", opts: [{ l: "Yes, welcoming others is wonderful", c: true }, { l: "No, exclude them", c: false }], explanation: "Inclusivity makes friends." },
+                { id: 5, prompt: "What should you do with a broken classroom crayon?", img: "🖍️", opts: [{ l: "Tell the teacher calmly", c: true }, { l: "Hide it", c: false }], explanation: "Communication solves mishaps." }
               ],
               [
-                { id: 1, prompt: "How should you talk inside a quiet library?", img: "📚", opts: [{ l: "Use a soft quiet whisper", c: true }, { l: "Shout loudly", c: false }], exp: "Quiet voices respect spaces." },
-                { id: 2, prompt: "What should you do when a teacher is speaking to the class?", img: "👩‍🏫", opts: [{ l: "Listen attentively and stay quiet", c: true }, { l: "Talk over them", c: false }], exp: "Listening shows respect." },
-                { id: 3, prompt: "Is it good to smile and wave at neighbors?", img: "👋", opts: [{ l: "Yes, it spreads friendliness", c: true }, { l: "No", c: false }], exp: "Smiling creates warmth." },
-                { id: 4, prompt: "What should you do if a friend shares their snack with you?", img: "🍎", opts: [{ l: "Say thank you gratefully", c: true }, { l: "Take it without words", c: false }], exp: "Gratitude is essential." },
-                { id: 5, prompt: "How do you act when you win a friendly game?", img: "🏆", opts: [{ l: "Be humble and kind to others", c: true }, { l: "Brag loudly", c: false }], exp: "Humility makes a good winner." }
+                { id: 1, prompt: "How should you talk inside a quiet library?", img: "📚", opts: [{ l: "Use a soft quiet whisper", c: true }, { l: "Shout loudly", c: false }], explanation: "Quiet voices respect spaces." },
+                { id: 2, prompt: "What should you do when a teacher is speaking to the class?", img: "👩‍🏫", opts: [{ l: "Listen attentively and stay quiet", c: true }, { l: "Talk over them", c: false }], explanation: "Listening shows respect." },
+                { id: 3, prompt: "Is it good to smile and wave at neighbors?", img: "👋", opts: [{ l: "Yes, it spreads friendliness", c: true }, { l: "No", c: false }], explanation: "Smiling creates warmth." },
+                { id: 4, prompt: "What should you do if a friend shares their snack with you?", img: "🍎", opts: [{ l: "Say thank you gratefully", c: true }, { l: "Take it without words", c: false }], explanation: "Gratitude is essential." },
+                { id: 5, prompt: "How do you act when you win a friendly game?", img: "🏆", opts: [{ l: "Be humble and kind to others", c: true }, { l: "Brag loudly", c: false }], explanation: "Humility makes a good winner." }
               ],
               [
-                { id: 1, prompt: "What is a great way to make a new friend at school?", img: "🤝", opts: [{ l: "Introduce yourself with a friendly smile", c: true }, { l: "Frown and look away", c: false }], exp: "Introductions start friendships." },
-                { id: 2, prompt: "If two friends are arguing over a toy, what can you suggest?", img: "🧩", opts: [{ l: "Take turns playing with it together", c: true }, { l: "Throw the toy away", c: false }], exp: "Compromise resolves fights." },
-                { id: 3, prompt: "How do you show appreciation when someone helps you tie your shoes?", img: "👟", opts: [{ l: "Say thank you for your help", c: true }, { l: "Walk away", c: false }], exp: "Acknowledging help is polite." },
-                { id: 4, prompt: "Is it polite to interrupt someone while they are speaking?", img: "🗣️", opts: [{ l: "No, wait until they finish", c: true }, { l: "Yes, speak over them", c: false }], exp: "Patience matters in dialogue." },
-                { id: 5, prompt: "What emotion does a warm hug convey?", img: "🫂", opts: [{ l: "Love, care, and comfort", c: true }, { l: "Anger", c: false }], exp: "Hugs express affection." }
+                { id: 1, prompt: "What is a great way to make a new friend at school?", img: "🤝", opts: [{ l: "Introduce yourself with a friendly smile", c: true }, { l: "Frown and look away", c: false }], explanation: "Introductions start friendships." },
+                { id: 2, prompt: "If two friends are arguing over a toy, what can you suggest?", img: "🧩", opts: [{ l: "Take turns playing with it together", c: true }, { l: "Throw the toy away", c: false }], explanation: "Compromise resolves fights." },
+                { id: 3, prompt: "How do you show appreciation when someone helps you tie your shoes?", img: "👟", opts: [{ l: "Say thank you for your help", c: true }, { l: "Walk away", c: false }], explanation: "Acknowledging help is polite." },
+                { id: 4, prompt: "Is it polite to interrupt someone while they are speaking?", img: "🗣️", opts: [{ l: "No, wait until they finish", c: true }, { l: "Yes, speak over them", c: false }], explanation: "Patience matters in dialogue." },
+                { id: 5, prompt: "What emotion does a warm hug convey?", img: "🫂", opts: [{ l: "Love, care, and comfort", c: true }, { l: "Anger", c: false }], explanation: "Hugs express affection." }
               ],
               [
-                { id: 1, prompt: "What should you do after playing with your building blocks?", img: "📦", opts: [{ l: "Clean up and put them back in the box", c: true }, { l: "Leave them on the floor", c: false }], exp: "Cleaning up shows responsibility." },
-                { id: 2, prompt: "How do you ask someone if you can join their game?", img: "🎮", opts: [{ l: "May I please play with you?", c: true }, { l: "Give me your game", c: false }], exp: "Polite asking builds rapport." },
-                { id: 3, prompt: "What should you say when someone says 'Good morning' to you?", img: "☀️", opts: [{ l: "Good morning to you too!", c: true }, { l: "Silence", c: false }], exp: "Returning greetings is polite." },
-                { id: 4, prompt: "Is it important to cheer for your classmates during sports day?", img: "🏅", opts: [{ l: "Yes, encouragement builds team spirit", c: true }, { l: "No", c: false }], exp: "Cheering supports peers." },
-                { id: 5, prompt: "What does it mean to be a good helper at home?", img: "🧹", opts: [{ l: "Assisting family members with small tasks", c: true }, { l: "Making more messes", c: false }], exp: "Helping builds teamwork." }
+                { id: 1, prompt: "What should you do after playing with your building blocks?", img: "📦", opts: [{ l: "Clean up and put them back in the box", c: true }, { l: "Leave them on the floor", c: false }], explanation: "Cleaning up shows responsibility." },
+                { id: 2, prompt: "How do you ask someone if you can join their game?", img: "🎮", opts: [{ l: "May I please play with you?", c: true }, { l: "Give me your game", c: false }], explanation: "Polite asking builds rapport." },
+                { id: 3, prompt: "What should you say when someone says 'Good morning' to you?", img: "☀️", opts: [{ l: "Good morning to you too!", c: true }, { l: "Silence", c: false }], explanation: "Returning greetings is polite." },
+                { id: 4, prompt: "Is it important to cheer for your classmates during sports day?", img: "🏅", opts: [{ l: "Yes, encouragement builds team spirit", c: true }, { l: "No", c: false }], explanation: "Cheering supports peers." },
+                { id: 5, prompt: "What does it mean to be a good helper at home?", img: "🧹", opts: [{ l: "Assisting family members with small tasks", c: true }, { l: "Making more messes", c: false }], explanation: "Helping builds teamwork." }
               ]
             ];
             poolData = pools[batchNum - 1];
@@ -159,32 +179,32 @@ export default function Home() {
                 { id: 5, prompt: "How many fingers are on one human hand?", img: "✋", opts: [{ l: "5 fingers", c: true }, { l: "2 fingers", c: false }], exp: "Each hand has 5." }
               ],
               [
-                { id: 1, prompt: "What shape has four equal straight sides and square corners?", img: "⬛", opts: [{ l: "Square", c: true }, { l: "Circle", c: false }], exp: "Squares have 4 equal sides." },
-                { id: 2, prompt: "What number comes right before the number 10?", img: "🔢", opts: [{ l: "9", c: true }, { l: "8", c: false }], exp: "Counting: 8, 9, 10." },
-                { id: 3, prompt: "What is the opposite of hot soup?", img: "🧊", opts: [{ l: "Cold / Freezing", c: true }, { l: "Boiling", c: false }], exp: "Cold is opposite to hot." },
-                { id: 4, prompt: "How many days are in a single full week?", img: "📅", opts: [{ l: "7 days", c: true }, { l: "5 days", c: false }], exp: "There are 7 days in a week." },
-                { id: 5, prompt: "What shape looks like a curved ring with no corners?", img: "⭕", opts: [{ l: "Circle", c: true }, { l: "Triangle", c: false }], exp: "Circles are round." }
+                { id: 1, prompt: "What shape has four equal straight sides and square corners?", img: "⬛", opts: [{ l: "Square", c: true }, { l: "Circle", c: false }], explanation: "Squares have 4 equal sides." },
+                { id: 2, prompt: "What number comes right before the number 10?", img: "🔢", opts: [{ l: "9", c: true }, { l: "8", c: false }], explanation: "Counting: 8, 9, 10." },
+                { id: 3, prompt: "What is the opposite of hot soup?", img: "🧊", opts: [{ l: "Cold / Freezing", c: true }, { l: "Boiling", c: false }], explanation: "Cold is opposite to hot." },
+                { id: 4, prompt: "How many days are in a single full week?", img: "📅", opts: [{ l: "7 days", c: true }, { l: "5 days", c: false }], explanation: "There are 7 days in a week." },
+                { id: 5, prompt: "What shape looks like a curved ring with no corners?", img: "⭕", opts: [{ l: "Circle", c: true }, { l: "Triangle", c: false }], explanation: "Circles are round." }
               ],
               [
-                { id: 1, prompt: "If you have 2 apples and get 1 more, how many do you have?", img: "🍎", opts: [{ l: "3 apples", c: true }, { l: "1 apple", c: false }], exp: "2 plus 1 equals 3." },
-                { id: 2, prompt: "What geometric shape has 4 sides where opposite sides are equal?", img: "▭", opts: [{ l: "Rectangle", c: true }, { l: "Circle", c: false }], exp: "Rectangles have paired sides." },
-                { id: 3, prompt: "What is the opposite of fast running?", img: "🐢", opts: [{ l: "Slow", c: true }, { l: "Quick", c: false }], exp: "Slow is opposite to fast." },
-                { id: 4, prompt: "Which number is larger: 8 or 3?", img: "🔢", opts: [{ l: "8", c: true }, { l: "3", c: false }], exp: "8 is greater than 3." },
-                { id: 5, prompt: "What color do you get when mixing red and white?", img: "🎨", opts: [{ l: "Pink", c: true }, { l: "Black", c: false }], exp: "Red and white make pink." }
+                { id: 1, prompt: "If you have 2 apples and get 1 more, how many do you have?", img: "🍎", opts: [{ l: "3 apples", c: true }, { l: "1 apple", c: false }], explanation: "2 plus 1 equals 3." },
+                { id: 2, prompt: "What geometric shape has 4 sides where opposite sides are equal?", img: "▭", opts: [{ l: "Rectangle", c: true }, { l: "Circle", c: false }], explanation: "Rectangles have paired sides." },
+                { id: 3, prompt: "What is the opposite of fast running?", img: "🐢", opts: [{ l: "Slow", c: true }, { l: "Quick", c: false }], explanation: "Slow is opposite to fast." },
+                { id: 4, prompt: "Which number is larger: 8 or 3?", img: "🔢", opts: [{ l: "8", c: true }, { l: "3", c: false }], explanation: "8 is greater than 3." },
+                { id: 5, prompt: "What color do you get when mixing red and white?", img: "🎨", opts: [{ l: "Pink", c: true }, { l: "Black", c: false }], explanation: "Red and white make pink." }
               ],
               [
-                { id: 1, prompt: "How many months are in a standard calendar year?", img: "📅", opts: [{ l: "12 months", c: true }, { l: "10 months", c: false }], exp: "A year has 12 months." },
-                { id: 2, prompt: "What shape has five pointy star-like corners?", img: "⭐", opts: [{ l: "Star", c: true }, { l: "Square", c: false }], exp: "Stars have points." },
-                { id: 3, prompt: "What is the opposite of heavy rocks?", img: "🪶", opts: [{ l: "Light (like a feather)", c: true }, { l: "Massive", c: false }], exp: "Light is opposite to heavy." },
-                { id: 4, prompt: "If you count backwards from 3, what comes after 3 and 2?", img: "🔢", opts: [{ l: "1", c: true }, { l: "5", c: false }], exp: "Countdown: 3, 2, 1." },
-                { id: 5, prompt: "What shape resembles a stretched circle like an egg?", img: "🥚", opts: [{ l: "Oval", c: true }, { l: "Square", c: false }], exp: "Eggs are oval-shaped." }
+                { id: 1, prompt: "How many months are in a standard calendar year?", img: "📅", opts: [{ l: "12 months", c: true }, { l: "10 months", c: false }], explanation: "A year has 12 months." },
+                { id: 2, prompt: "What shape has five pointy star-like corners?", img: "⭐", opts: [{ l: "Star", c: true }, { l: "Square", c: false }], explanation: "Stars have points." },
+                { id: 3, prompt: "What is the opposite of heavy rocks?", img: "🪶", opts: [{ l: "Light (like a feather)", c: true }, { l: "Massive", c: false }], explanation: "Light is opposite to heavy." },
+                { id: 4, prompt: "If you count backwards from 3, what comes after 3 and 2?", img: "🔢", opts: [{ l: "1", c: true }, { l: "5", c: false }], explanation: "Countdown: 3, 2, 1." },
+                { id: 5, prompt: "What shape resembles a stretched circle like an egg?", img: "🥚", opts: [{ l: "Oval", c: true }, { l: "Square", c: false }], explanation: "Eggs are oval-shaped." }
               ],
               [
-                { id: 1, prompt: "If you have 5 balloons and 2 fly away, how many are left?", img: "🎈", opts: [{ l: "3 balloons", c: true }, { l: "5 balloons", c: false }], exp: "5 minus 2 equals 3." },
-                { id: 2, prompt: "What do we call a 3D shape like a basketball or globe?", img: "🌍", opts: [{ l: "Sphere", c: true }, { l: "Square", c: false }], exp: "Globes are spheres." },
-                { id: 3, prompt: "What is the opposite of day time?", img: "🌙", opts: [{ l: "Night time", c: true }, { l: "Afternoon", c: false }], exp: "Night is opposite to day." },
-                { id: 4, prompt: "Which number is smaller: 2 or 9?", img: "🔢", opts: [{ l: "2", c: true }, { l: "9", c: false }], exp: "2 is smaller than 9." },
-                { id: 5, prompt: "What color results from mixing blue and red?", img: "🎨", opts: [{ l: "Purple", c: true }, { l: "Orange", c: false }], exp: "Blue and red make purple." }
+                { id: 1, prompt: "If you have 5 balloons and 2 fly away, how many are left?", img: "🎈", opts: [{ l: "3 balloons", c: true }, { l: "5 balloons", c: false }], explanation: "5 minus 2 equals 3." },
+                { id: 2, prompt: "What do we call a 3D shape like a basketball or globe?", img: "🌍", opts: [{ l: "Sphere", c: true }, { l: "Square", c: false }], explanation: "Globes are spheres." },
+                { id: 3, prompt: "What is the opposite of day time?", img: "🌙", opts: [{ l: "Night time", c: true }, { l: "Afternoon", c: false }], explanation: "Night is opposite to day." },
+                { id: 4, prompt: "Which number is smaller: 2 or 9?", img: "🔢", opts: [{ l: "2", c: true }, { l: "9", c: false }], explanation: "2 is smaller than 9." },
+                { id: 5, prompt: "What color results from mixing blue and red?", img: "🎨", opts: [{ l: "Purple", c: true }, { l: "Orange", c: false }], explanation: "Blue and red make purple." }
               ]
             ];
             poolData = pools[batchNum - 1];
@@ -258,12 +278,12 @@ export default function Home() {
                 { id: 2, prompt: "What should you do if you receive a mean text message from a schoolmate?", img: "📵", opts: [{ l: "Save the message and show a trusted adult", c: true }, { l: "Reply with meaner insults", c: false }], exp: "Evidence and adults." },
                 { id: 3, prompt: "Why is it unsafe to meet someone in person whom you only met in an online game?", img: "⚠️", opts: [{ l: "Online strangers may not be who they pretend to be", c: true }, { l: "They might bring you a cake", c: false }], exp: "Stranger safety." },
                 { id: 4, prompt: "What does it mean to respect someone's privacy online?", img: "🔒", opts: [{ l: "Not sharing their private photos or chats without permission", c: true }, { l: "Posting their secrets", c: false }], exp: "Privacy respect." },
-                { id: 5, prompt: "How can screen time limits help your daily routine?", img: "⏰", opts: [{ l: "They leave time for homework, sleep, and outdoor play", c: true }, { l: "They make time pass slower", c: false }], exp: "Balanced routine." }
+                { id: 5, prompt: "How can screen time limits help your daily routine?", img: "⏰", opts: [{ l: "They leave time for homework, sleep, and outdoor play", c: true }, { l: "They make time pass slower", c: false }], explanation: "Balanced routine." }
               ],
               [
                 { id: 1, prompt: "What is spam in email or messaging inboxes?", img: "🗑️", opts: [{ l: "Unwanted junk messages sent to many people at once", c: true }, { l: "Important homework from teachers", c: false }], exp: "Junk messages." },
-                { id: 2, prompt: "What should you do if your tablet password is guessed by a sibling?", img: "🔐", opts: [{ l: "Change your password immediately to a new secret one", c: true }, { l: "Leave it unlocked", c: false }], exp: "Password security." },
-                { id: 3, prompt: "Why is cyber security awareness important for kids?", img: "🛡️", opts: [{ l: "It helps you navigate the digital world safely and securely", c: true }, { l: "It is just a school subject", c: false }], exp: "Safe navigation." },
+                { id: 2, prompt: "What should you do if your tablet password is guessed by a sibling?", img: "🔐", opts: [{ l: "Change your password immediately to a new secret one", c: true }, { l: "Leave it unlocked", c: false }], explanation: "Password security." },
+                { id: 3, prompt: "Why is cyber security awareness important for kids?", img: "🛡️", opts: [{ l: "It helps you navigate the digital world safely and securely", c: true }, { l: "It is just a school subject", c: false }], explanation: "Safe navigation." },
                 { id: 4, prompt: "What is an online profile picture safety rule?", img: "🖼️", opts: [{ l: "Use avatars or illustrations instead of private family photos", c: true }, { l: "Post pictures of your house key", c: false }], explanation: "Avatar safety." },
                 { id: 5, prompt: "What should you do if an ad on a website pops up asking you to download a mystery file?", img: "❌", opts: [{ l: "Close the browser tab without downloading anything", c: true }, { l: "Click download", c: false }], explanation: "Avoid mystery files." }
               ]
@@ -812,59 +832,129 @@ export default function Home() {
 
   const currentQuizModules = getCurrentLevelQuizzes();
 
-  // STUDY MATERIALS DATABASE
+  // DETAILED STUDY MATERIALS WITH SPECIFIC VOCABULARY, ETYMOLOGY, GRAMMAR MECHANICS, AND EXAMPLES
   const getDynamicStudyGuide = (lvl: string, top: string): StudyMaterial => {
     const targetId = `${lvl}-${top}`.replace(/\s+/g, "");
     
+    // Tailored deep content based on level and topic
+    let vocabList: VocabularyItem[] = [
+      { word: "Proficiency", phonetic: "/prəˈfɪʃənsi/", partOfSpeech: "Noun", definition: "A high degree of competence or skill; expertness.", example: "Her proficiency in English enabled her to negotiate contracts globally.", illustrationIcon: "🌟" },
+      { word: "Methodology", phonetic: "/ˌmɛθəˈdɒlədʒi/", partOfSpeech: "Noun", definition: "A system of methods used in a particular area of study or activity.", example: "The research team adopted a rigorous experimental methodology.", illustrationIcon: "📊" },
+      { word: "Nuance", phonetic: "/ˈnuɑːns/", partOfSpeech: "Noun", definition: "A subtle difference in shade of meaning, expression, or sound.", example: "Translators must appreciate the cultural nuances of poetry.", illustrationIcon: "🎨" }
+    ];
+
+    let grammarItem: GrammarRule = {
+      ruleTitle: "Advanced Syntactical Coordination & Register Maintenance",
+      explanation: "When articulating complex ideas across formal or daily contexts, maintaining consistent tense harmony and appropriate stylistic register prevents ambiguity and strengthens persuasive impact.",
+      correctExample: "Had the committee reviewed the proposal earlier, the oversight would have been mitigated.",
+      incorrectExample: "If the committee reviews the proposal earlier, the oversight has been mitigated.",
+      tip: "Always match your modal auxiliaries and conditional markers to the temporal reality of the scenario."
+    };
+
+    if (lvl === "Kindergarten" || lvl === "Primary School") {
+      vocabList = [
+        { word: "Curious", phonetic: "/ˈkjʊəriəs/", partOfSpeech: "Adjective", definition: "Eager to know or learn something new.", example: "The curious puppy sniffed the bright red flower.", illustrationIcon: "🐱" },
+        { word: "Brilliant", phonetic: "/ˈbrɪljənt/", partOfSpeech: "Adjective", definition: "Very bright or exceptionally clever.", example: "She came up with a brilliant idea for our art project.", illustrationIcon: "⭐" },
+        { word: "Cooperate", phonetic: "/koʊˈɒpəreɪt/", partOfSpeech: "Verb", definition: "To work together toward a common goal.", example: "Good friends cooperate during playground games and group tasks.", illustrationIcon: "🤝" }
+      ];
+      grammarItem = {
+        ruleTitle: "Basic Sentence Building & Polite Expressions",
+        explanation: "Sentences always begin with a capital letter and end with a punctuation mark (. ! ?). Use polite words like 'please' and 'thank you' when asking for items.",
+        correctExample: "May I please borrow your blue crayon?",
+        incorrectExample: "give me crayon now",
+        tip: "Polite words make everyone feel happy, respected, and eager to share!"
+      };
+    } else if (lvl === "Junior High" || lvl === "Senior High") {
+      vocabList = [
+        { word: "Pragmatic", phonetic: "/præɡˈmætɪk/", partOfSpeech: "Adjective", definition: "Dealing with things sensibly and realistically based on practical experience.", example: "We need a pragmatic solution to manage our weekly study hours.", illustrationIcon: "💡" },
+        { word: "Credibility", phonetic: "/ˌkrɛdəˈbɪlɪti/", partOfSpeech: "Noun", definition: "The quality of being trusted and believed in.", example: "Checking multiple news sources establishes online credibility.", illustrationIcon: "🛡️" },
+        { word: "Articulate", phonetic: "/ɑːrˈtɪkjuleɪt/", partOfSpeech: "Verb / Adj", definition: "Expressing ideas fluently and coherently.", example: "He was able to articulate his arguments clearly during the school debate.", illustrationIcon: "🗣️" }
+      ];
+      grammarItem = {
+        ruleTitle: "Complex Clause Embedding & Active Voice",
+        explanation: "Elevate your writing by replacing passive phrasing with active verbs. Combine independent and dependent clauses using precise conjunctions (furthermore, consequently, whereas).",
+        correctExample: "Although social media broadens connectivity, users must safeguard private data.",
+        incorrectExample: "Private data is safeguarded by users, because social media is broadening connectivity.",
+        tip: "Vary your sentence lengths between short impactful statements and longer explanatory clauses."
+      };
+    }
+
     return {
       id: targetId,
-      title: `${lvl}: Complete Textbook Chapter & Reading Guide on ${top}`,
+      title: `${lvl}: Complete Textbook Chapter & Masterclass on ${top}`,
       level: lvl,
       category: top,
-      summary: `A thorough, professional educational reading resource tailored for ${lvl} students. Dive into exhaustive explanations, historical context, core methodologies, and practical academic walkthroughs for ${top}.`,
+      summary: `An exhaustive, professionally curated textbook module designed for ${lvl} students. This guide integrates structured reading passages, essential vocabulary breakdowns, etymology, grammar rules, visual examples, and real-world practical walkthroughs.`,
       illustration: top === "Daily Life" ? "🛒🌍📖" : top === "Social Media" ? "📱💬🌐" : top === "Job Interviews" ? "💼👔📈" : "⚖️🏛️🧠",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       sections: [
         {
-          heading: `Chapter 1: Foundational Theory and Historical Context of ${top}`,
+          heading: `Chapter 1: Theoretical Foundations and Historical Context`,
           subheading: `Comprehensive introductory reading material and framework definitions for ${lvl}`,
           paragraphs: [
-            `Welcome to your primary reading module on ${top}. At the ${lvl} proficiency tier, mastering this subject requires deep immersion into foundational principles rather than superficial rote memorization. Scholars and practitioners alike recognize that structured comprehension of this domain serves as the bedrock for advanced academic and real-world fluency.`,
-            `Historically, human communication, societal frameworks, and procedural methodologies surrounding ${top} have undergone massive structural evolutions. In contemporary professional environments, individuals must skillfully balance strict adherence to canonical rules with agile, context-aware execution.`,
-            `As you read through this comprehensive textbook chapter, pay meticulous attention to specific terminology, stylistic register, and situational appropriateness. Each successive section provides exhaustive analytical commentary designed to elevate your cognitive mastery and practical application.`
+            `Welcome to your primary textbook chapter on ${top}. At the ${lvl} proficiency tier, mastering this subject requires deep immersion into foundational concepts rather than superficial memorization. Scholars and professionals recognize that structured comprehension of this domain serves as the bedrock for long-term fluency.`,
+            `Historically, human communication, societal frameworks, and procedural methodologies surrounding ${top} have undergone massive structural transformations. In contemporary environments, individuals must skillfully balance strict adherence to canonical rules with agile, context-aware execution.`,
+            `As you read through this chapter, pay meticulous attention to terminology, stylistic register, and situational appropriateness. Each successive section provides exhaustive analytical commentary designed to elevate your cognitive mastery.`
           ],
+          vocabulary: vocabList,
+          grammar: grammarItem,
+          practicalApplication: `In a real-world scenario involving ${top}, begin by assessing the environmental constraints and audience expectations. Apply the core vocabulary and syntactical rules outlined above to draft your response or action plan clearly, ensuring zero ambiguity.`,
           keyTakeaways: [
             `Establishing a robust conceptual framework for ${top} at the ${lvl} level.`,
-            `Differentiating formal versus informal registers across diverse social and professional environments.`,
-            `Recognizing the historical trajectory and modern evolution of ${top} standards.`
+            `Mastering precise vocabulary terms with correct phonetic pronunciations and contextual examples.`,
+            `Applying formal grammar rules to eliminate common structural errors and elevate expression.`
           ]
         },
         {
-          heading: `Chapter 2: Structural Mechanics, Core Rules, and Analytical Breakdown`,
+          heading: `Chapter 2: Structural Mechanics and Syntactical Rules`,
           subheading: "Detailed grammatical, behavioral, and procedural mechanics",
           paragraphs: [
             `To achieve true proficiency in ${top}, students must systematically dissect the individual components governing successful execution. This involves rigorous analysis of syntactical patterns, behavioral expectations, and logical progression models.`,
             `For instance, when engaging with this subject matter in professional or academic discourse, precision of expression is paramount. Ambiguity invariably leads to miscommunication and structural failure, whereas adherence to standardized methodology guarantees clarity, reproducibility, and verified success.`,
             `Examine closely how leading experts approach problem-solving within this domain. By isolating variables, scrutinizing underlying assumptions, and applying standard conventions methodically, learners can navigate complex scenarios with absolute confidence and intellectual poise.`
           ],
+          vocabulary: [
+            { word: "Analysis", phonetic: "/əˈnæləsɪs/", partOfSpeech: "Noun", definition: "Detailed examination of elements or structure.", example: "Detailed analysis of market trends guided our strategy.", illustrationIcon: "🔍" },
+            { word: "Implementation", phonetic: "/ˌɪmplɪmɛnˈteɪʃən/", partOfSpeech: "Noun", definition: "The process of putting a decision or plan into effect.", example: "Successful implementation requires clear milestone planning.", illustrationIcon: "🚀" }
+          ],
+          grammar: {
+            ruleTitle: "Conditional Harmony & Logical Flow",
+            explanation: "Ensure that dependent clauses match the hypothetical or real nature of your conditional statements without tense collisions.",
+            correctExample: "Should you require further clarification, please consult the appendix.",
+            incorrectExample: "If you will require further clarification, please consulted the appendix.",
+            tip: "Inversion ('Should you...') adds formal elegance to professional correspondence."
+          },
+          practicalApplication: `When executing complex tasks in ${top}, break your workflow down into three distinct phases: Diagnosis, Formulation, and Verification. This disciplined approach eliminates oversight.`,
           keyTakeaways: [
-            `Mastering precise syntactical and procedural steps matching official curriculum benchmarks.`,
-            `Systematic identification, isolation, and correction of common structural errors.`,
-            `Deploying advanced analytical tools to evaluate complex case scenarios.`
+            `Isolating structural variables to prevent logical fallacies or grammatical lapses.`,
+            `Applying systematic problem-solving frameworks to high-stakes scenarios.`,
+            `Validating outcomes through rigorous self-correction and peer review.`
           ]
         },
         {
-          heading: `Chapter 3: Real-World Case Studies, Practical Walkthroughs, and Mastery`,
+          heading: `Chapter 3: Real-World Case Studies and Practical Mastery`,
           subheading: "Case analyses, simulated exercises, and practical implementation",
           paragraphs: [
             `Theoretical knowledge achieves true value only when tested rigorously in practice. In this closing chapter, we examine genuine, high-stakes case studies where the principles of ${top} are deployed to resolve complex, real-world challenges.`,
             `Consider a scenario where an individual must navigate a high-pressure environment relying entirely on clear communication, critical thinking, and tactical execution. By deploying the structured methodologies outlined in this textbook chapter, they successfully overcome obstacles and achieve their intended objectives.`,
             `Take dedicated time to reflect upon these case studies. Practice framing your own independent responses, essays, and arguments using the sophisticated vocabulary and structural frameworks established throughout this comprehensive reading material.`
           ],
+          vocabulary: [
+            { word: "Synthesis", phonetic: "/ˈsɪnθəsɪs/", partOfSpeech: "Noun", definition: "Combination of ideas to form a coherent whole.", example: "The essay represents a brilliant synthesis of economic theory and practice.", illustrationIcon: "🧩" },
+            { word: "Excellence", phonetic: "/ˈɛksələns/", partOfSpeech: "Noun", definition: "The quality of being outstanding or superior.", example: "Commitment to academic excellence defines our institutional culture.", illustrationIcon: "🏆" }
+          ],
+          grammar: {
+            ruleTitle: "Professional Register and Tone Consistency",
+            explanation: "Maintain an objective, articulate, and confident tone throughout your communication, avoiding excessive colloquialisms in formal settings.",
+            correctExample: "The data indicates a significant upward trend in user engagement.",
+            incorrectExample: "The numbers look super awesome and went way up high.",
+            tip: "Choose precise lexical verbs over vague adjectives for stronger impact."
+          },
+          practicalApplication: `Review your final deliverables against international academic and professional standards. Ensure every sentence fulfills a distinct communicative purpose.`,
           keyTakeaways: [
             `Resolving real-world operational challenges through structured, clear communication.`,
-            `Drafting professional, highly polished deliverables based on established academic benchmarks.`,
-            `Synthesizing theory and practice to ensure lifelong retention and mastery of ${top}.`
+            `Drafting professional, highly polished deliverables based on established benchmarks.`,
+            `Synthesizing theory and practice to ensure lifelong retention and mastery.`
           ]
         }
       ]
@@ -1023,7 +1113,7 @@ export default function Home() {
     );
   }
 
-  // STUDY MATERIAL READER VIEW (FULL TEXTBOOK CHAPTERS)
+  // STUDY MATERIAL READER VIEW (FULL TEXTBOOK CHAPTERS WITH DETAILED VOCABULARY & GRAMMAR)
   const currentStudyGuide = activeStudyId ? getDynamicStudyGuide(selectedLevel, selectedTopic) : null;
 
   if (currentStudyGuide) {
@@ -1088,8 +1178,12 @@ export default function Home() {
                   </div>
 
                   {isExpanded && (
-                    <div className="p-6 md:p-10 space-y-6 bg-white border-t border-gray-100 animate-fade-in">
+                    <div className="p-6 md:p-10 space-y-8 bg-white border-t border-gray-100 animate-fade-in">
+                      {/* Reading Passages */}
                       <div className="space-y-5">
+                        <h5 className="text-xs font-bold uppercase tracking-wider text-[#55b1d4]">
+                          📖 Reading Passage & Context
+                        </h5>
                         {sec.paragraphs.map((para, pIdx) => (
                           <p key={pIdx} className="text-base md:text-lg text-gray-700 leading-relaxed">
                             {para}
@@ -1097,9 +1191,63 @@ export default function Home() {
                         ))}
                       </div>
 
-                      <div className="bg-sky-50/60 p-6 rounded-2xl border border-sky-100 space-y-3 mt-6">
+                      {/* Vocabulary Breakdown Section with Pictures/Icons */}
+                      <div className="bg-pink-50/40 p-6 rounded-2xl border border-pink-100 space-y-4">
+                        <h5 className="text-xs font-bold text-[#E95599] uppercase tracking-wider block">
+                          ✦ Vocabulary & Word Etymology:
+                        </h5>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {sec.vocabulary.map((vocab, vIdx) => (
+                            <div key={vIdx} className="bg-white p-4 rounded-xl border border-pink-100 shadow-xs space-y-1.5">
+                              <div className="flex items-center justify-between">
+                                <span className="font-bold text-gray-900 flex items-center gap-2">
+                                  <span className="text-2xl">{vocab.illustrationIcon}</span> {vocab.word}
+                                </span>
+                                <span className="text-xs bg-pink-100 text-[#E95599] font-semibold px-2 py-0.5 rounded">
+                                  {vocab.partOfSpeech}
+                                </span>
+                              </div>
+                              <p className="text-xs text-gray-400 font-mono">{vocab.phonetic}</p>
+                              <p className="text-xs text-gray-700 mt-1"><strong>Definition:</strong> {vocab.definition}</p>
+                              <p className="text-xs text-gray-600 italic mt-1 bg-gray-50 p-2 rounded">"{vocab.example}"</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Grammar Mechanics Section */}
+                      <div className="bg-amber-50/50 p-6 rounded-2xl border border-amber-200 space-y-3">
+                        <h5 className="text-xs font-bold text-amber-900 uppercase tracking-wider block">
+                          ✦ Grammar Mechanics & Rules: {sec.grammar.ruleTitle}
+                        </h5>
+                        <p className="text-sm text-amber-950 leading-relaxed">{sec.grammar.explanation}</p>
+                        <div className="grid md:grid-cols-2 gap-3 pt-2">
+                          <div className="bg-green-50 p-3 rounded-xl border border-green-200 text-xs text-green-900">
+                            <strong className="block text-green-950 mb-1">✓ Correct Usage:</strong>
+                            {sec.grammar.correctExample}
+                          </div>
+                          <div className="bg-red-50 p-3 rounded-xl border border-red-200 text-xs text-red-900">
+                            <strong className="block text-red-950 mb-1">✗ Incorrect Usage:</strong>
+                            {sec.grammar.incorrectExample}
+                          </div>
+                        </div>
+                        <p className="text-xs bg-amber-100/70 p-3 rounded-lg text-amber-900 font-medium mt-2">
+                          💡 <strong>Rule Tip:</strong> {sec.grammar.tip}
+                        </p>
+                      </div>
+
+                      {/* Practical Application Walkthrough */}
+                      <div className="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100 space-y-2">
+                        <h5 className="text-xs font-bold text-indigo-900 uppercase tracking-wider block">
+                          ✦ Practical Real-World Application:
+                        </h5>
+                        <p className="text-sm text-indigo-950 leading-relaxed">{sec.practicalApplication}</p>
+                      </div>
+
+                      {/* Key Takeaways */}
+                      <div className="bg-sky-50/60 p-6 rounded-2xl border border-sky-100 space-y-3">
                         <h5 className="text-xs font-bold text-sky-900 uppercase tracking-wider block">
-                          ✦ Key Study Takeaways:
+                          ✦ Chapter Key Takeaways:
                         </h5>
                         <ul className="space-y-2">
                           {sec.keyTakeaways.map((takeaway, tIdx) => (
@@ -1237,7 +1385,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS (ACTUAL DETAILED TEXTBOOK CHAPTERS) */}
+      {/* TAB 2: STUDY MATERIALS (DETAILED TEXTBOOK CHAPTERS WITH VOCABULARY & GRAMMAR) */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {(() => {
@@ -1257,7 +1405,7 @@ export default function Home() {
                       {guide.level}
                     </span>
                     <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                      Open Full Textbook Chapter 📖 →
+                      Open Detailed Textbook Chapter 📖 →
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2 mt-3">{guide.title}</h3>
