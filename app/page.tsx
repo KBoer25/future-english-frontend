@@ -45,6 +45,49 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
+  const quizCards = [
+    {
+      key: "Kindergarten-Phonics",
+      badge: "KINDERGARTEN",
+      title: "Phonics & Sounds",
+      description: "Focus on phonics, letter sounds, and early phonological awareness.",
+      buttonText: "Phonics",
+      accent: "bg-[#E95599]/10 text-[#E95599]",
+    },
+    {
+      key: "Primary-Reading",
+      badge: "PRIMARY SCHOOL",
+      title: "Elementary Foundations",
+      description: "Simple sentences, basic reading comprehension, and vocabulary.",
+      buttonText: "Reading",
+      accent: "bg-[#22c55e]/10 text-[#22c55e]",
+    },
+    {
+      key: "Junior High-Reading",
+      badge: "JUNIOR HIGH (B1)",
+      title: "Cambridge B1 PET",
+      description: "Intermediate grammar, messaging texts, and key-word transformations.",
+      buttonText: "Reading",
+      accent: "bg-[#55b1d4]/10 text-[#55b1d4]",
+    },
+    {
+      key: "Senior High-Reading",
+      badge: "SENIOR HIGH (B2)",
+      title: "Cambridge B2 First",
+      description: "Discursive reading articles, essay transitions, and formal cohesion.",
+      buttonText: "Reading",
+      accent: "bg-[#a855f7]/10 text-[#a855f7]",
+    },
+    {
+      key: "Advanced-Reading",
+      badge: "C1 ADVANCED (CAE)",
+      title: "Cambridge C1 CAE",
+      description: "Advanced multiple choice cloze, word formation, and listening analysis.",
+      buttonText: "Reading",
+      accent: "bg-[#f2b705]/10 text-[#f2b705]",
+    },
+  ];
+
   const quizDataBank: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
@@ -552,75 +595,36 @@ export default function Home() {
 
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#E95599]/10 text-[#E95599] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              KINDERGARTEN
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Phonics & Sounds</h3>
-            <p className="text-sm text-gray-500 mb-6">Focus on phonics, letter sounds, and early phonological awareness.</p>
-            <button
-              onClick={() => setActiveModuleKey("Kindergarten-Phonics")}
-              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#E95599] hover:text-white transition font-medium text-xs cursor-pointer"
-            >
-              Phonics ({quizDataBank["Kindergarten-Phonics"].questions.length})
-            </button>
-          </div>
+          {quizCards.map((card) => {
+            const moduleData = quizDataBank[card.key];
+            const isMatch = selectedTopic === "All" || moduleData.category === selectedTopic;
 
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              PRIMARY SCHOOL
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Elementary Foundations</h3>
-            <p className="text-sm text-gray-500 mb-6">Simple sentences, basic reading comprehension, and vocabulary.</p>
-            <button
-              onClick={() => setActiveModuleKey("Primary-Reading")}
-              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#22c55e] hover:text-white transition font-medium text-xs cursor-pointer"
-            >
-              Reading ({quizDataBank["Primary-Reading"].questions.length})
-            </button>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              JUNIOR HIGH (B1)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 PET</h3>
-            <p className="text-sm text-gray-500 mb-6">Intermediate grammar, messaging texts, and key-word transformations.</p>
-            <button
-              onClick={() => setActiveModuleKey("Junior High-Reading")}
-              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-medium text-xs cursor-pointer"
-            >
-              Reading ({quizDataBank["Junior High-Reading"].questions.length})
-            </button>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#a855f7]/10 text-[#a855f7] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              SENIOR HIGH (B2)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B2 First</h3>
-            <p className="text-sm text-gray-500 mb-6">Discursive reading articles, essay transitions, and formal cohesion.</p>
-            <button
-              onClick={() => setActiveModuleKey("Senior High-Reading")}
-              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#a855f7] hover:text-white transition font-medium text-xs cursor-pointer"
-            >
-              Reading ({quizDataBank["Senior High-Reading"].questions.length})
-            </button>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              C1 ADVANCED (CAE)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
-            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis.</p>
-            <button
-              onClick={() => setActiveModuleKey("Advanced-Reading")}
-              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#f2b705] hover:text-white transition font-medium text-xs cursor-pointer"
-            >
-              Reading ({quizDataBank["Advanced-Reading"].questions.length})
-            </button>
-          </div>
+            return (
+              <div
+                key={card.key}
+                className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition ${
+                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30"
+                }`}
+              >
+                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4 ${card.accent}`}>
+                  {card.badge}
+                </span>
+                <h3 className="text-xl font-medium text-gray-800 mb-2">{card.title}</h3>
+                <p className="text-sm text-gray-500 mb-6">{card.description}</p>
+                <button
+                  onClick={() => isMatch && setActiveModuleKey(card.key)}
+                  disabled={!isMatch}
+                  className={`w-full p-2 rounded-lg border border-gray-200 bg-gray-50 transition font-medium text-xs ${
+                    isMatch
+                      ? "hover:bg-[#55b1d4] hover:text-white cursor-pointer"
+                      : "cursor-not-allowed"
+                  }`}
+                >
+                  {card.buttonText} ({moduleData.questions.length})
+                </button>
+              </div>
+            );
+          })}
         </section>
       )}
 
