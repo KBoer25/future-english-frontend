@@ -5,6 +5,7 @@ import { useState } from "react";
 type Question = {
   id: number;
   prompt: string;
+  imageIllustration?: string;
   options: { label: string; isCorrect: boolean }[];
   explanation: string;
 };
@@ -49,7 +50,7 @@ export default function Home() {
   const levels = ["All Levels", "Kindergarten", "Primary School", "Junior High", "Senior High", "C1 Advanced"];
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Expanded Quiz Data Bank featuring robust multiple questions per module across all levels and categories
+  // Enhanced Quiz Bank featuring rich visual image cards per question across all categories
   const quizDataBank: Record<string, ModuleData> = {
     // --- KINDERGARTEN / DAILY LIFE ---
     "K-Daily-1": {
@@ -62,37 +63,42 @@ export default function Home() {
         {
           id: 1,
           prompt: "Which fruit is red and starts with the letter 'A'?",
+          imageIllustration: "🍎🛒✨",
           options: [{ label: "Apple", isCorrect: true }, { label: "Banana", isCorrect: false }, { label: "Grape", isCorrect: false }],
           explanation: "Apples are red/green and begin with the short /æ/ sound."
         },
         {
           id: 2,
           prompt: "What sound does a cow make when you see it on a farm?",
+          imageIllustration: "🐮🌾🐄",
           options: [{ label: "Moo", isCorrect: true }, { label: "Quack", isCorrect: false }, { label: "Woof", isCorrect: false }],
           explanation: "Cows produce a distinct 'moo' sound."
         },
         {
           id: 3,
           prompt: "What color is a fresh banana?",
+          imageIllustration: "🍌💛🌞",
           options: [{ label: "Yellow", isCorrect: true }, { label: "Blue", isCorrect: false }, { label: "Black", isCorrect: false }],
           explanation: "Ripe bananas are bright yellow."
         },
         {
           id: 4,
           prompt: "Where do we buy milk and bread?",
+          imageIllustration: "🏬🥖🥛",
           options: [{ label: "Supermarket", isCorrect: true }, { label: "Library", isCorrect: false }, { label: "Hospital", isCorrect: false }],
           explanation: "Supermarkets stock daily groceries like bread and milk."
         },
         {
           id: 5,
           prompt: "Which animal says 'Meow'?",
+          imageIllustration: "🐱🧶🐾",
           options: [{ label: "Cat", isCorrect: true }, { label: "Dog", isCorrect: false }, { label: "Duck", isCorrect: false }],
           explanation: "Cats make a purring and meowing sound."
         }
       ]
     },
 
-    // --- PRIMARY / SOCIAL MEDIA & DAILY LIFE ---
+    // --- PRIMARY / SOCIAL MEDIA ---
     "P-Social-1": {
       title: "Primary School: Safe Digital Sharing & Messages",
       image: "📱",
@@ -103,30 +109,35 @@ export default function Home() {
         {
           id: 1,
           prompt: "Is it safe to share your home address with online strangers?",
+          imageIllustration: "🛡️🔒🚫",
           options: [{ label: "No, never share personal information", isCorrect: true }, { label: "Yes, to make friends", isCorrect: false }],
           explanation: "Protecting personal privacy is essential online."
         },
         {
           id: 2,
           prompt: "What is a polite way to greet a teacher in an online chat?",
+          imageIllustration: "💻📚👋",
           options: [{ label: "Hello Teacher, good morning!", isCorrect: true }, { label: "Yo what's up", isCorrect: false }],
           explanation: "Polite greetings show respect in academic settings."
         },
         {
           id: 3,
           prompt: "What should you do if someone is mean to you in a game chat?",
+          imageIllustration: "👥⚠️🛑",
           options: [{ label: "Tell a parent or trusted adult", isCorrect: true }, { label: "Be mean back", isCorrect: false }],
           explanation: "Always report cyberbullying to adults."
         },
         {
           id: 4,
           prompt: "What does 'like' mean on a photo post?",
+          imageIllustration: "❤️👍✨",
           options: [{ label: "Showing appreciation or approval", isCorrect: true }, { label: "Deleting the image", isCorrect: false }],
           explanation: "Likes express positive feedback on content."
         },
         {
           id: 5,
           prompt: "How long is a healthy amount of screen time for kids daily?",
+          imageIllustration: "⏱️🌳⚽",
           options: [{ label: "A balanced, limited amount", isCorrect: true }, { label: "24 hours straight", isCorrect: false }],
           explanation: "Balance prevents digital eye strain and fatigue."
         }
@@ -144,6 +155,7 @@ export default function Home() {
         {
           id: 1,
           prompt: "Which phrase is best when introducing yourself to an employer?",
+          imageIllustration: "🤝👔🌟",
           options: [
             { label: "Hello, my name is Alex and I am eager to learn.", isCorrect: true },
             { label: "Give me the job right now.", isCorrect: false }
@@ -153,24 +165,28 @@ export default function Home() {
         {
           id: 2,
           prompt: "What does 'punctual' mean?",
+          imageIllustration: "⏰🏃‍♂️💨",
           options: [{ label: "Arriving on time", isCorrect: true }, { label: "Being late", isCorrect: false }],
           explanation: "Punctuality is a core professional requirement."
         },
         {
           id: 3,
           prompt: "Why do interviewers ask about your strengths?",
+          imageIllustration: "💡🎯💪",
           options: [{ label: "To see what unique value you bring", isCorrect: true }, { label: "To waste time", isCorrect: false }],
           explanation: "Strengths highlight your qualifications."
         },
         {
           id: 4,
           prompt: "What is a resume used for?",
+          imageIllustration: "📄✍️📋",
           options: [{ label: "Summarizing work history and skills", isCorrect: true }, { label: "Drawing pictures", isCorrect: false }],
           explanation: "Resumes present professional experience to recruiters."
         },
         {
           id: 5,
           prompt: "How should you dress for a formal interview?",
+          imageIllustration: "👔👞✨",
           options: [{ label: "Neat, clean business casual or formal attire", isCorrect: true }, { label: "Pajamas", isCorrect: false }],
           explanation: "Professional dress code reflects respect for the company."
         }
@@ -188,6 +204,7 @@ export default function Home() {
         {
           id: 1,
           prompt: "What is the purpose of a thesis statement in a debate?",
+          imageIllustration: "📜🎯💡",
           options: [
             { label: "To state your core argument clearly", isCorrect: true },
             { label: "To tell a joke", isCorrect: false }
@@ -197,31 +214,35 @@ export default function Home() {
         {
           id: 2,
           prompt: "Which connector signals a contrasting point?",
+          imageIllustration: "🔄🔀📌",
           options: [{ label: "However", isCorrect: true }, { label: "Furthermore", isCorrect: false }],
           explanation: "'However' introduces contrasting evidence."
         },
         {
           id: 3,
           prompt: "Why use empirical evidence in a debate?",
+          imageIllustration: "📊🔬📈",
           options: [{ label: "To support claims with verified facts", isCorrect: true }, { label: "To confuse the audience", isCorrect: false }],
           explanation: "Facts validate academic arguments."
         },
         {
           id: 4,
           prompt: "What is a rebuttal?",
+          imageIllustration: "🛡️⚔️💬",
           options: [{ label: "Addressing and disproving opponent claims", isCorrect: true }, { label: "Agreeing with everything", isCorrect: false }],
           explanation: "Rebuttals counter opposition points."
         },
         {
           id: 5,
           prompt: "How should a formal debate speech conclude?",
+          imageIllustration: "🎤🏆👏",
           options: [{ label: "With a strong summary of main points", isCorrect: true }, { label: "By walking away silently", isCorrect: false }],
           explanation: "Conclusions reinforce lasting impressions."
         }
       ]
     },
 
-    // --- C1 ADVANCED / ACADEMIC & JOB INTERVIEWS ---
+    // --- C1 ADVANCED / JOB INTERVIEWS ---
     "C1-Jobs-1": {
       title: "C1 Advanced: Executive Interviews & Leadership",
       image: "🏛️",
@@ -232,6 +253,7 @@ export default function Home() {
         {
           id: 1,
           prompt: "Which response demonstrates superior executive communication?",
+          imageIllustration: "📈💼🚀",
           options: [
             { label: "By streamlining operational workflows, we reduced overhead by 30%.", isCorrect: true },
             { label: "We did some stuff and saved money.", isCorrect: false }
@@ -241,6 +263,7 @@ export default function Home() {
         {
           id: 2,
           prompt: "What does 'stakeholder alignment' mean in corporate settings?",
+          imageIllustration: "🌐🤝⚙️",
           options: [
             { label: "Ensuring all interested parties share mutual goals", isCorrect: true },
             { label: "Parking cars in a row", isCorrect: false }],
@@ -249,6 +272,7 @@ export default function Home() {
         {
           id: 3,
           prompt: "How do you handle a critical stakeholder objection?",
+          imageIllustration: "🧩💬💡",
           options: [
             { label: "Acknowledge concerns constructively with data-backed solutions", isCorrect: true },
             { label: "Ignore them completely", isCorrect: false }],
@@ -257,6 +281,7 @@ export default function Home() {
         {
           id: 4,
           prompt: "What is strategic foresight?",
+          imageIllustration: "🔭🔮📈",
           options: [
             { label: "Anticipating long-term industry shifts and adapting proactively", isCorrect: true },
             { label: "Guessing tomorrow's weather", isCorrect: false }],
@@ -265,6 +290,7 @@ export default function Home() {
         {
           id: 5,
           prompt: "Which idiom describes taking charge during a crisis?",
+          imageIllustration: "⛵⚓👑",
           options: [
             { label: "Stepping up to the plate / Taking the helm", isCorrect: true },
             { label: "Beating around the bush", isCorrect: false }],
@@ -398,15 +424,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">{currentModule.title}</h2>
           <p className="text-sm text-gray-500 mb-8">Total Questions: {currentModule.questions.length}</p>
 
-          <div className="space-y-10">
+          <div className="space-y-12">
             {currentModule.questions.map((q, qIndex) => {
               const selectedOptIdx = selectedAnswers[q.id];
 
               return (
                 <div key={q.id} className="border-t border-gray-100 pt-8">
-                  <span className="text-xs font-bold text-[#55b1d4] uppercase tracking-wider block mb-2">
-                    Question {qIndex + 1} of {currentModule.questions.length}
-                  </span>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-bold text-[#55b1d4] uppercase tracking-wider block">
+                      Question {qIndex + 1} of {currentModule.questions.length}
+                    </span>
+                    {q.imageIllustration && (
+                      <span className="text-3xl bg-gray-50 px-4 py-2 rounded-2xl border border-gray-100 shadow-xs">
+                        {q.imageIllustration}
+                      </span>
+                    )}
+                  </div>
                   
                   <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-gray-800 font-medium mb-6 whitespace-pre-line leading-relaxed">
                     {q.prompt}
