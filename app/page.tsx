@@ -59,7 +59,7 @@ export default function Home() {
 
   const topics = getTopicsForLevel(selectedLevel);
 
-  // COMPLETELY EXPLICIT, TYPE-SAFE QUIZ GENERATOR ACROSS 5 DISTINCT BATCHES
+  // COMPLETELY CLEAN, FLAT, VERCEL-COMPLIANT QUIZ GENERATOR
   const getCurrentLevelQuizzes = () => {
     const list: Record<string, ModuleData> = {};
     const icons = ["🍎", "📱", "ABC", "🔢", "🎒", "🔬", "🗺️", "💼", "🏛️", "📊"];
@@ -67,7 +67,8 @@ export default function Home() {
     topics.forEach((top, topIdx) => {
       for (let batchNum = 1; batchNum <= 5; batchNum++) {
         const key = `${selectedLevel}-${top}-Quiz${batchNum}`.replace(/\s+/g, "");
-        let rawQuestions: any[] = [];
+        
+        let poolData: any[] = [];
 
         if (selectedLevel === "Kindergarten") {
           if (top === "Daily Life") {
@@ -108,7 +109,7 @@ export default function Home() {
                 { id: 5, prompt: "What drink comes from cows and helps build strong bones?", img: "🥛", opts: [{ l: "Milk", c: true }, { l: "Soda", c: false }, { l: "Paint", c: false }], exp: "Milk provides calcium." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -147,7 +148,7 @@ export default function Home() {
                 { id: 5, prompt: "What does it mean to be a good helper at home?", img: "🧹", opts: [{ l: "Assisting family members with small tasks", c: true }, { l: "Making more messes", c: false }], exp: "Helping builds teamwork." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else {
             const pools = [
               [
@@ -186,7 +187,7 @@ export default function Home() {
                 { id: 5, prompt: "What color results from mixing blue and red?", img: "🎨", opts: [{ l: "Purple", c: true }, { l: "Orange", c: false }], exp: "Blue and red make purple." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           }
         } 
         else if (selectedLevel === "Primary School") {
@@ -228,7 +229,7 @@ export default function Home() {
                 { id: 5, prompt: "What protective covering keeps school textbooks clean?", img: "📖", opts: [{ l: "A plastic book cover", c: true }, { l: "A paper towel", c: false }], exp: "Covers protect books." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -263,11 +264,11 @@ export default function Home() {
                 { id: 1, prompt: "What is spam in email or messaging inboxes?", img: "🗑️", opts: [{ l: "Unwanted junk messages sent to many people at once", c: true }, { l: "Important homework from teachers", c: false }], exp: "Junk messages." },
                 { id: 2, prompt: "What should you do if your tablet password is guessed by a sibling?", img: "🔐", opts: [{ l: "Change your password immediately to a new secret one", c: true }, { l: "Leave it unlocked", c: false }], exp: "Password security." },
                 { id: 3, prompt: "Why is cyber security awareness important for kids?", img: "🛡️", opts: [{ l: "It helps you navigate the digital world safely and securely", c: true }, { l: "It is just a school subject", c: false }], exp: "Safe navigation." },
-                { id: 4, prompt: "What is an online profile picture safety rule?", img: "🖼️", opts: [{ l: "Use avatars or illustrations instead of private family photos", c: true }, { l: "Post pictures of your house key", c: false }], exp: "Avatar safety." },
-                { id: 5, prompt: "What should you do if an ad on a website pops up asking you to download a mystery file?", img: "❌", opts: [{ l: "Close the browser tab without downloading anything", c: true }, { l: "Click download", c: false }], exp: "Avoid mystery files." }
+                { id: 4, prompt: "What is an online profile picture safety rule?", img: "🖼️", opts: [{ l: "Use avatars or illustrations instead of private family photos", c: true }, { l: "Post pictures of your house key", c: false }], explanation: "Avatar safety." },
+                { id: 5, prompt: "What should you do if an ad on a website pops up asking you to download a mystery file?", img: "❌", opts: [{ l: "Close the browser tab without downloading anything", c: true }, { l: "Click download", c: false }], explanation: "Avoid mystery files." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else {
             const pools = [
               [
@@ -302,11 +303,11 @@ export default function Home() {
                 { id: 1, prompt: "What is the main source of energy for all life on Earth?", img: "☀️", opts: [{ l: "The Sun", c: true }, { l: "Electricity", c: false }], exp: "Sun powers Earth." },
                 { id: 2, prompt: "Which insect makes sweet honey and lives in hives?", img: "🐝", opts: [{ l: "Honeybee", c: true }, { l: "Housefly", c: false }], exp: "Bees make honey." },
                 { id: 3, prompt: "What is the process of a caterpillar transforming into a butterfly?", img: "🦋", opts: [{ l: "Metamorphosis", c: true }, { l: "Photosynthesis", c: false }], exp: "Metamorphosis stages." },
-                { id: 4, prompt: "Which layer of the Earth do we walk and build houses on?", img: "🌍", opts: [{ l: "The Earth's crust", c: true }, { l: "The inner core", c: false }], exp: "Crust is surface." },
-                { id: 5, prompt: "What do we call scientists who study space and stars?", img: "🔭", opts: [{ l: "Astronomers", c: true }, { l: "Geologists", c: false }], exp: "Astronomers study stars." }
+                { id: 4, prompt: "Which layer of the Earth do we walk and build houses on?", img: "🌍", opts: [{ l: "The Earth's crust", c: true }, { l: "The inner core", c: false }], explanation: "Crust is surface." },
+                { id: 5, prompt: "What do we call scientists who study space and stars?", img: "🔭", opts: [{ l: "Astronomers", c: true }, { l: "Geologists", c: false }], explanation: "Astronomers study stars." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           }
         } 
         // 3. JUNIOR HIGH
@@ -321,35 +322,35 @@ export default function Home() {
                 { id: 5, prompt: "What is luggage allowance?", img: "🧳", opts: [{ l: "Max weight/size for bags", c: true }, { l: "Free snacks", c: false }], exp: "Baggage limits." }
               ],
               [
-                { id: 1, prompt: "When booking a hotel room, what does 'half-board' usually include?", img: "🏨", opts: [{ l: "Breakfast and dinner", c: true }, { l: "Only room key", c: false }], exp: "Half board meals." },
-                { id: 2, prompt: "What document is legally required when traveling internationally across borders?", img: "🛂", opts: [{ l: "A valid passport", c: true }, { l: "A library card", c: false }], exp: "Passports verify citizenship." },
-                { id: 3, prompt: "What currency is officially used across most countries in the European Union?", img: "💶", opts: [{ l: "The Euro (€)", c: true }, { l: "The Dollar ($)", c: false }], exp: "Euro is EU currency." },
-                { id: 4, prompt: "What is jet lag experienced after long-haul flights?", img: "✈️", opts: [{ l: "Fatigue from crossing multiple time zones", c: true }, { l: "Fear of heights", c: false }], exp: "Time zone disruption." },
-                { id: 5, prompt: "What term describes a vacation where all food and drinks are included?", img: "🍹", opts: [{ l: "All-inclusive resort package", c: true }, { l: "Backpacking hostel", c: false }], exp: "All-inclusive deals." }
+                { id: 1, prompt: "When booking a hotel room, what does 'half-board' usually include?", img: "🏨", opts: [{ l: "Breakfast and dinner", c: true }, { l: "Only room key", c: false }], explanation: "Half board meals." },
+                { id: 2, prompt: "What document is legally required when traveling internationally across borders?", img: "🛂", opts: [{ l: "A valid passport", c: true }, { l: "A library card", c: false }], explanation: "Passports verify citizenship." },
+                { id: 3, prompt: "What currency is officially used across most countries in the European Union?", img: "💶", opts: [{ l: "The Euro (€)", c: true }, { l: "The Dollar ($)", c: false }], explanation: "Euro is EU currency." },
+                { id: 4, prompt: "What is jet lag experienced after long-haul flights?", img: "✈️", opts: [{ l: "Fatigue from crossing multiple time zones", c: true }, { l: "Fear of heights", c: false }], explanation: "Time zone disruption." },
+                { id: 5, prompt: "What term describes a vacation where all food and drinks are included?", img: "🍹", opts: [{ l: "All-inclusive resort package", c: true }, { l: "Backpacking hostel", c: false }], explanation: "All-inclusive deals." }
               ],
               [
-                { id: 1, prompt: "What public transit vehicle runs on metal tracks embedded in city streets?", img: "🚊", opts: [{ l: "A tram or streetcar", c: true }, { l: "A helicopter", c: false }], exp: "Trams run on streets." },
-                { id: 2, prompt: "What should you check first when reading a city transit map?", img: "🗺️", opts: [{ l: "The legend and color-coded subway lines", c: true }, { l: "The publisher name", c: false }], exp: "Legends explain maps." },
-                { id: 3, prompt: "What is currency exchange when traveling abroad?", img: "💱", opts: [{ l: "Trading your home money for local foreign cash", c: true }, { l: "Buying souvenirs", c: false }], exp: "Currency swapping." },
-                { id: 4, prompt: "What traveler accommodation is typically budget-friendly with shared dorms?", img: "🛏️", opts: [{ l: "A youth hostel", c: true }, { l: "A luxury penthouse", c: false }], exp: "Hostels save money." },
-                { id: 5, prompt: "What phrase means 'to check in' at an airline desk?", img: "🛄", opts: [{ l: "To register your flight and drop off luggage", c: true }, { l: "To board the plane", c: false }], exp: "Check-in procedure." }
+                { id: 1, prompt: "What public transit vehicle runs on metal tracks embedded in city streets?", img: "🚊", opts: [{ l: "A tram or streetcar", c: true }, { l: "A helicopter", c: false }], explanation: "Trams run on streets." },
+                { id: 2, prompt: "What should you check first when reading a city transit map?", img: "🗺️", opts: [{ l: "The legend and color-coded subway lines", c: true }, { l: "The publisher name", c: false }], explanation: "Legends explain maps." },
+                { id: 3, prompt: "What is currency exchange when traveling abroad?", img: "💱", opts: [{ l: "Trading your home money for local foreign cash", c: true }, { l: "Buying souvenirs", c: false }], explanation: "Currency swapping." },
+                { id: 4, prompt: "What traveler accommodation is typically budget-friendly with shared dorms?", img: "🛏️", opts: [{ l: "A youth hostel", c: true }, { l: "A luxury penthouse", c: false }], explanation: "Hostels save money." },
+                { id: 5, prompt: "What phrase means 'to check in' at an airline desk?", img: "🛄", opts: [{ l: "To register your flight and drop off luggage", c: true }, { l: "To board the plane", c: false }], explanation: "Check-in procedure." }
               ],
               [
-                { id: 1, prompt: "What is a window seat preference on an airplane?", img: "🪟", opts: [{ l: "Sitting next to the cabin window", c: true }, { l: "Sitting in the aisle", c: false }], exp: "Window view seat." },
-                { id: 2, prompt: "What official card do you swipe to ride public city subways?", img: "💳", opts: [{ l: "A transit smart card / pass", c: true }, { l: "A credit card for groceries", c: false }], exp: "Transit passes." },
-                { id: 3, prompt: "What is carry-on luggage?", img: "🧳", opts: [{ l: "Bags you bring inside the plane cabin with you", c: true }, { l: "Checked large suitcases", c: false }], exp: "Cabin luggage." },
-                { id: 4, prompt: "What does 'boarding pass' mean?", img: "🎫", opts: [{ l: "The ticket allowing you to enter the aircraft", c: true }, { l: "Hotel key card", c: false }], exp: "Boarding ticket." },
-                { id: 5, prompt: "What emergency equipment is reviewed before flight takeoff?", img: "🦺", opts: [{ l: "Life vests and oxygen masks", c: true }, { l: "Movie projector", c: false }], exp: "Safety briefing." }
+                { id: 1, prompt: "What is a window seat preference on an airplane?", img: "🪟", opts: [{ l: "Sitting next to the cabin window", c: true }, { l: "Sitting in the aisle", c: false }], explanation: "Window view seat." },
+                { id: 2, prompt: "What official card do you swipe to ride public city subways?", img: "💳", opts: [{ l: "A transit smart card / pass", c: true }, { l: "A credit card for groceries", c: false }], explanation: "Transit passes." },
+                { id: 3, prompt: "What is carry-on luggage?", img: "🧳", opts: [{ l: "Bags you bring inside the plane cabin with you", c: true }, { l: "Checked large suitcases", c: false }], explanation: "Cabin luggage." },
+                { id: 4, prompt: "What does 'boarding pass' mean?", img: "🎫", opts: [{ l: "The ticket allowing you to enter the aircraft", c: true }, { l: "Hotel key card", c: false }], explanation: "Boarding ticket." },
+                { id: 5, prompt: "What emergency equipment is reviewed before flight takeoff?", img: "🦺", opts: [{ l: "Life vests and oxygen masks", c: true }, { l: "Movie projector", c: false }], explanation: "Safety briefing." }
               ],
               [
-                { id: 1, prompt: "What is an itinerary when planning a vacation?", img: "🗓️", opts: [{ l: "A detailed schedule of planned travel activities", c: true }, { l: "A hotel bill", c: false }], exp: "Travel schedule." },
-                { id: 2, prompt: "What does customs inspection at an airport check for?", img: "🛃", opts: [{ l: "Regulated goods, food, and declaration items", c: true }, { l: "Your clothing style", c: false }], exp: "Customs rules." },
-                { id: 3, prompt: "What is a round-trip flight ticket?", img: "🔄", opts: [{ l: "A ticket for going to a destination and returning back", c: true }, { l: "One-way ticket", c: false }], exp: "Round trip return." },
-                { id: 4, prompt: "What is tourism?", img: "📸", opts: [{ l: "Traveling for recreation, leisure, and sightseeing", c: true }, { l: "Moving house", c: false }], exp: "Leisure travel." },
-                { id: 5, prompt: "What is a travel guidebook used for?", img: "📖", opts: [{ l: "Finding tourist attractions, restaurants, and tips", c: true }, { l: "Cooking dinner", c: false }], exp: "Guidebook tips." }
+                { id: 1, prompt: "What is an itinerary when planning a vacation?", img: "🗓️", opts: [{ l: "A detailed schedule of planned travel activities", c: true }, { l: "A hotel bill", c: false }], explanation: "Travel schedule." },
+                { id: 2, prompt: "What does customs inspection at an airport check for?", img: "🛃", opts: [{ l: "Regulated goods, food, and declaration items", c: true }, { l: "Your clothing style", c: false }], explanation: "Customs rules." },
+                { id: 3, prompt: "What is a round-trip flight ticket?", img: "🔄", opts: [{ l: "A ticket for going to a destination and returning back", c: true }, { l: "One-way ticket", c: false }], explanation: "Round trip return." },
+                { id: 4, prompt: "What is tourism?", img: "📸", opts: [{ l: "Traveling for recreation, leisure, and sightseeing", c: true }, { l: "Moving house", c: false }], explanation: "Leisure travel." },
+                { id: 5, prompt: "What is a travel guidebook used for?", img: "📖", opts: [{ l: "Finding tourist attractions, restaurants, and tips", c: true }, { l: "Cooking dinner", c: false }], explanation: "Guidebook tips." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -360,35 +361,35 @@ export default function Home() {
                 { id: 5, prompt: "What does 'TL;DR' mean?", img: "📖", opts: [{ l: "Too Long; Didn't Read", c: true }, { l: "Delete", c: false }], exp: "Summary." }
               ],
               [
-                { id: 1, prompt: "What is phishing?", img: "🎣", opts: [{ l: "Fraudulent emails stealing credentials", c: true }, { l: "Catching fish", c: false }], exp: "Scam tactic." },
-                { id: 2, prompt: "What is an influencer on social media?", img: "⭐", opts: [{ l: "A user with a large following who promotes brands", c: true }, { l: "A computer virus", c: false }], exp: "Brand promoter." },
-                { id: 3, prompt: "What does a hashtag (#) do on posts?", img: "#️⃣", opts: [{ l: "Categorizes content for discoverability", c: true }, { l: "Deletes the post", c: false }], exp: "Tagging system." },
-                { id: 4, prompt: "What is viral content?", img: "📈", opts: [{ l: "Media that spreads rapidly across the internet", c: true }, { l: "Computer sickness", c: false }], exp: "Rapid sharing." },
-                { id: 5, prompt: "Why should you check source credibility before sharing news?", img: "📰", opts: [{ l: "To prevent spreading fake misinformation", c: true }, { l: "To look cool", c: false }], exp: "Truth check." }
+                { id: 1, prompt: "What is phishing?", img: "🎣", opts: [{ l: "Fraudulent emails stealing credentials", c: true }, { l: "Catching fish", c: false }], explanation: "Scam tactic." },
+                { id: 2, prompt: "What is an influencer on social media?", img: "⭐", opts: [{ l: "A user with a large following who promotes brands", c: true }, { l: "A computer virus", c: false }], explanation: "Brand promoter." },
+                { id: 3, prompt: "What does a hashtag (#) do on posts?", img: "#️⃣", opts: [{ l: "Categorizes content for discoverability", c: true }, { l: "Deletes the post", c: false }], explanation: "Tagging system." },
+                { id: 4, prompt: "What is viral content?", img: "📈", opts: [{ l: "Media that spreads rapidly across the internet", c: true }, { l: "Computer sickness", c: false }], explanation: "Rapid sharing." },
+                { id: 5, prompt: "Why should you check source credibility before sharing news?", img: "📰", opts: [{ l: "To prevent spreading fake misinformation", c: true }, { l: "To look cool", c: false }], explanation: "Truth check." }
               ],
               [
-                { id: 1, prompt: "What is a meme?", img: "🖼️", opts: [{ l: "Humorous image or video copied and spread online", c: true }, { l: "A legal document", c: false }], exp: "Viral humor." },
-                { id: 2, prompt: "What does 'blocking' a user accomplish?", img: "🚫", opts: [{ l: "Prevents them from viewing your profile or contacting you", c: true }, { l: "Deletes their account", c: false }], exp: "User restriction." },
-                { id: 3, prompt: "What is livestreaming?", img: "🔴", opts: [{ l: "Broadcasting video footage in real time", c: true }, { l: "Mailing letters", c: false }], exp: "Real-time broadcast." },
-                { id: 4, prompt: "What are algorithmic feeds?", img: "🤖", opts: [{ l: "Content automatically curated based on user behavior", c: true }, { l: "Random text", c: false }], exp: "Curated feeds." },
-                { id: 5, prompt: "What is catfishing?", img: "🎭", opts: [{ l: "Creating a fake online identity to deceive others", c: true }, { l: "Fishing in lakes", c: false }], exp: "Deceptive identity." }
+                { id: 1, prompt: "What is a meme?", img: "🖼️", opts: [{ l: "Humorous image or video copied and spread online", c: true }, { l: "A legal document", c: false }], explanation: "Viral humor." },
+                { id: 2, prompt: "What does 'blocking' a user accomplish?", img: "🚫", opts: [{ l: "Prevents them from viewing your profile or contacting you", c: true }, { l: "Deletes their account", c: false }], explanation: "User restriction." },
+                { id: 3, prompt: "What is livestreaming?", img: "🔴", opts: [{ l: "Broadcasting video footage in real time", c: true }, { l: "Mailing letters", c: false }], explanation: "Real-time broadcast." },
+                { id: 4, prompt: "What are algorithmic feeds?", img: "🤖", opts: [{ l: "Content automatically curated based on user behavior", c: true }, { l: "Random text", c: false }], explanation: "Curated feeds." },
+                { id: 5, prompt: "What is catfishing?", img: "🎭", opts: [{ l: "Creating a fake online identity to deceive others", c: true }, { l: "Fishing in lakes", c: false }], explanation: "Deceptive identity." }
               ],
               [
-                { id: 1, prompt: "What is an algorithm in social media platforms?", img: "⚙️", opts: [{ l: "Code determining what posts appear on your feed", c: true }, { l: "A physical machine", c: false }], exp: "Ranking code." },
-                { id: 2, prompt: "What does 'trending' mean?", img: "🔥", opts: [{ l: "Topics currently generating the highest engagement", c: true }, { l: "Weather forecasts", c: false }], exp: "High popularity." },
-                { id: 3, prompt: "What is netiquette?", img: "💻", opts: [{ l: "Proper polite manners when communicating online", c: true }, { l: "Internet cables", c: false }], exp: "Online etiquette." },
-                { id: 4, prompt: "What is clickbait?", img: "🎣", opts: [{ l: "Sensationalized headlines designed to entice clicks", c: true }, { l: "A fishing lure", c: false }], exp: "Deceptive titles." },
-                { id: 5, prompt: "What is geotagging?", img: "📍", opts: [{ l: "Adding geographical metadata to media posts", c: true }, { l: "Mapping stars", c: false }], exp: "Location tags." }
+                { id: 1, prompt: "What is an algorithm in social media platforms?", img: "⚙️", opts: [{ l: "Code determining what posts appear on your feed", c: true }, { l: "A physical machine", c: false }], explanation: "Ranking code." },
+                { id: 2, prompt: "What does 'trending' mean?", img: "🔥", opts: [{ l: "Topics currently generating the highest engagement", c: true }, { l: "Weather forecasts", c: false }], explanation: "High popularity." },
+                { id: 3, prompt: "What is netiquette?", img: "💻", opts: [{ l: "Proper polite manners when communicating online", c: true }, { l: "Internet cables", c: false }], explanation: "Online etiquette." },
+                { id: 4, prompt: "What is clickbait?", img: "🎣", opts: [{ l: "Sensationalized headlines designed to entice clicks", c: true }, { l: "A fishing lure", c: false }], explanation: "Deceptive titles." },
+                { id: 5, prompt: "What is geotagging?", img: "📍", opts: [{ l: "Adding geographical metadata to media posts", c: true }, { l: "Mapping stars", c: false }], explanation: "Location tags." }
               ],
               [
-                { id: 1, prompt: "What is user-generated content (UGC)?", img: "🤳", opts: [{ l: "Content created and published by everyday users", c: true }, { l: "Hollywood movies", c: false }], exp: "User created." },
-                { id: 2, prompt: "What is a troll in online comment sections?", img: "🧌", opts: [{ l: "Someone who intentionally provokes anger or disruption", c: true }, { l: "A fantasy character", c: false }], exp: "Provocateur." },
-                { id: 3, prompt: "What is account verification (blue checkmark)?", img: "✔️", opts: [{ l: "Confirmation of a prominent user's authentic identity", c: true }, { l: "A paid coupon", c: false }], exp: "Identity badge." },
-                { id: 4, prompt: "What is social media detox?", img: "🌿", opts: [{ l: "Temporarily abstaining from social platforms", c: true }, { l: "Cleaning a phone screen", c: false }], exp: "Digital break." },
-                { id: 5, prompt: "What is a direct message (DM)?", img: "💬", opts: [{ l: "Private communication between two users", c: true }, { l: "A public billboard", c: false }], exp: "Private chat." }
+                { id: 1, prompt: "What is user-generated content (UGC)?", img: "🤳", opts: [{ l: "Content created and published by everyday users", c: true }, { l: "Hollywood movies", c: false }], explanation: "User created." },
+                { id: 2, prompt: "What is a troll in online comment sections?", img: "🧌", opts: [{ l: "Someone who intentionally provokes anger or disruption", c: true }, { l: "A fantasy character", c: false }], explanation: "Provocateur." },
+                { id: 3, prompt: "What is account verification (blue checkmark)?", img: "✔️", opts: [{ l: "Confirmation of a prominent user's authentic identity", c: true }, { l: "A paid coupon", c: false }], explanation: "Identity badge." },
+                { id: 4, prompt: "What is social media detox?", img: "🌿", opts: [{ l: "Temporarily abstaining from social platforms", c: true }, { l: "Cleaning a phone screen", c: false }], explanation: "Digital break." },
+                { id: 5, prompt: "What is a direct message (DM)?", img: "💬", opts: [{ l: "Private communication between two users", c: true }, { l: "A public billboard", c: false }], explanation: "Private chat." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Job Interviews") {
             const pools = [
               [
@@ -399,35 +400,35 @@ export default function Home() {
                 { id: 5, prompt: "Great question to ask at the end?", img: "❓", opts: [{ l: "What does a typical workday look like?", c: true }, { l: "Can I sleep here?", c: false }], exp: "Curiosity." }
               ],
               [
-                { id: 1, prompt: "What is a STAR method response in behavioral interviews?", img: "⭐", opts: [{ l: "Situation, Task, Action, Result framework", c: true }, { l: "Singing a song", c: false }], exp: "Behavioral framework." },
-                { id: 2, prompt: "How should you research a company before an interview?", img: "🔍", opts: [{ l: "Review their website, mission, and recent news", c: true }, { l: "Guess what they do", c: false }], exp: "Company research." },
-                { id: 3, prompt: "What is business professional dress code?", img: "👔", opts: [{ l: "Suits, tailored blazers, and formal wear", c: true }, { l: "Pajamas and slippers", c: false }], exp: "Formal attire." },
-                { id: 4, prompt: "How should you answer 'What is your greatest weakness?'", img: "💡", opts: [{ l: "Mention a real flaw and how you actively improve it", c: true }, { l: "Claim you have zero flaws", c: false }], exp: "Self-improvement." },
-                { id: 5, prompt: "What is the purpose of a follow-up email after an interview?", img: "📧", opts: [{ l: "Express gratitude and reiterate interest", c: true }, { l: "Demand an immediate hiring decision", c: false }], exp: "Polite follow-up." }
+                { id: 1, prompt: "What is a STAR method response in behavioral interviews?", img: "⭐", opts: [{ l: "Situation, Task, Action, Result framework", c: true }, { l: "Singing a song", c: false }], explanation: "Behavioral framework." },
+                { id: 2, prompt: "How should you research a company before an interview?", img: "🔍", opts: [{ l: "Review their website, mission, and recent news", c: true }, { l: "Guess what they do", c: false }], explanation: "Company research." },
+                { id: 3, prompt: "What is business professional dress code?", img: "👔", opts: [{ l: "Suits, tailored blazers, and formal wear", c: true }, { l: "Pajamas and slippers", c: false }], explanation: "Formal attire." },
+                { id: 4, prompt: "How should you answer 'What is your greatest weakness?'", img: "💡", opts: [{ l: "Mention a real flaw and how you actively improve it", c: true }, { l: "Claim you have zero flaws", c: false }], explanation: "Self-improvement." },
+                { id: 5, prompt: "What is the purpose of a follow-up email after an interview?", img: "📧", opts: [{ l: "Express gratitude and reiterate interest", c: true }, { l: "Demand an immediate hiring decision", c: false }], explanation: "Polite follow-up." }
               ],
               [
-                { id: 1, prompt: "What are soft skills?", img: "🤝", opts: [{ l: "Interpersonal communication and teamwork abilities", c: true }, { l: "Coding syntax knowledge", c: false }], exp: "Interpersonal skills." },
-                { id: 2, prompt: "What are hard skills?", img: "💻", opts: [{ l: "Technical proficiencies and specialized training", c: true }, { l: "Being polite", c: false }], exp: "Technical skills." },
-                { id: 3, prompt: "How early should you arrive for an in-person interview?", img: "⏰", opts: [{ l: "10 to 15 minutes early", c: true }, { l: "2 hours late", c: false }], exp: "Arrival timing." },
-                { id: 4, prompt: "What should you bring to an interview?", img: "📁", opts: [{ l: "Multiple printed copies of your resume and a pen", c: true }, { l: "Nothing at all", c: false }], exp: "Preparedness." },
-                { id: 5, prompt: "How should you handle an interview question you do not know?", img: "🤔", opts: [{ l: "Stay calm, admit it gracefully, and show willingness to learn", c: true }, { l: "Panic and walk out", c: false }], exp: "Graceful honesty." }
+                { id: 1, prompt: "What are soft skills?", img: "🤝", opts: [{ l: "Interpersonal communication and teamwork abilities", c: true }, { l: "Coding syntax knowledge", c: false }], explanation: "Interpersonal skills." },
+                { id: 2, prompt: "What are hard skills?", img: "💻", opts: [{ l: "Technical proficiencies and specialized training", c: true }, { l: "Being polite", c: false }], explanation: "Technical skills." },
+                { id: 3, prompt: "How early should you arrive for an in-person interview?", img: "⏰", opts: [{ l: "10 to 15 minutes early", c: true }, { l: "2 hours late", c: false }], explanation: "Arrival timing." },
+                { id: 4, prompt: "What should you bring to an interview?", img: "📁", opts: [{ l: "Multiple printed copies of your resume and a pen", c: true }, { l: "Nothing at all", c: false }], explanation: "Preparedness." },
+                { id: 5, prompt: "How should you handle an interview question you do not know?", img: "🤔", opts: [{ l: "Stay calm, admit it gracefully, and show willingness to learn", c: true }, { l: "Panic and walk out", c: false }], explanation: "Graceful honesty." }
               ],
               [
-                { id: 1, prompt: "What is a panel interview?", img: "👥", opts: [{ l: "An interview with multiple hiring managers simultaneously", c: true }, { l: "An online computer test", c: false }], exp: "Multiple interviewers." },
-                { id: 2, prompt: "Why do interviewers ask 'Tell me about yourself'?", img: "🗣️", opts: [{ l: "To hear a professional summary of your career journey", c: true }, { l: "To hear your life story from birth", c: false }], exp: "Professional pitch." },
-                { id: 3, prompt: "What is body language importance in interviews?", img: "🧍", opts: [{ l: "Posture, eye contact, and nodding convey confidence", c: true }, { l: "Slumping conveys energy", c: false }], exp: "Confident posture." },
-                { id: 4, prompt: "What is a probation period in a new job?", img: "⏳", opts: [{ l: "An initial trial evaluation period", c: true }, { l: "Permanent paid vacation", c: false }], exp: "Trial period." },
-                { id: 5, prompt: "How should you speak about past employers or managers?", img: "💬", opts: [{ l: "Professionally and respectfully, avoiding negativity", c: true }, { l: "Insulting them harshly", c: false }], exp: "Professional tact." }
+                { id: 1, prompt: "What is a panel interview?", img: "👥", opts: [{ l: "An interview with multiple hiring managers simultaneously", c: true }, { l: "An online computer test", c: false }], explanation: "Multiple interviewers." },
+                { id: 2, prompt: "Why do interviewers ask 'Tell me about yourself'?", img: "🗣️", opts: [{ l: "To hear a professional summary of your career journey", c: true }, { l: "To hear your life story from birth", c: false }], explanation: "Professional pitch." },
+                { id: 3, prompt: "What is body language importance in interviews?", img: "🧍", opts: [{ l: "Posture, eye contact, and nodding convey confidence", c: true }, { l: "Slumping conveys energy", c: false }], explanation: "Confident posture." },
+                { id: 4, prompt: "What is a probation period in a new job?", img: "⏳", opts: [{ l: "An initial trial evaluation period", c: true }, { l: "Permanent paid vacation", c: false }], explanation: "Trial period." },
+                { id: 5, prompt: "How should you speak about past employers or managers?", img: "💬", opts: [{ l: "Professionally and respectfully, avoiding negativity", c: true }, { l: "Insulting them harshly", c: false }], explanation: "Professional tact." }
               ],
               [
-                { id: 1, prompt: "What is a salary negotiation?", img: "💰", opts: [{ l: "Discussing compensation and benefits professionally", c: true }, { l: "Demanding double money rudely", c: false }], exp: "Compensation talk." },
-                { id: 2, prompt: "What does 'cultural fit' mean in hiring?", img: "🌐", opts: [{ l: "Alignment with company values and team ethos", c: true }, { l: "Wearing the same shoes", c: false }], exp: "Value alignment." },
-                { id: 3, prompt: "What is a group interview used for?", img: "🧑‍🤝‍🧑", opts: [{ l: "To assess teamwork and collaboration under observation", c: true }, { l: "To throw a party", c: false }], exp: "Team assessment." },
-                { id: 4, prompt: "What is an applicant tracking system (ATS)?", img: "💻", opts: [{ l: "Software used by companies to screen resumes automatically", c: true }, { l: "A GPS map for candidates", c: false }], exp: "Resume scanner." },
-                { id: 5, prompt: "What is constructive feedback after a rejected interview?", img: "📈", opts: [{ l: "Valuable insights to improve future interview performance", c: true }, { l: "An insult to ignore", c: false }], exp: "Growth feedback." }
+                { id: 1, prompt: "What is a salary negotiation?", img: "💰", opts: [{ l: "Discussing compensation and benefits professionally", c: true }, { l: "Demanding double money rudely", c: false }], explanation: "Compensation talk." },
+                { id: 2, prompt: "What does 'cultural fit' mean in hiring?", img: "🌐", opts: [{ l: "Alignment with company values and team ethos", c: true }, { l: "Wearing the same shoes", c: false }], explanation: "Value alignment." },
+                { id: 3, prompt: "What is a group interview used for?", img: "🧑‍🤝‍🧑", opts: [{ l: "To assess teamwork and collaboration under observation", c: true }, { l: "To throw a party", c: false }], explanation: "Team assessment." },
+                { id: 4, prompt: "What is an applicant tracking system (ATS)?", img: "💻", opts: [{ l: "Software used by companies to screen resumes automatically", c: true }, { l: "A GPS map for candidates", c: false }], explanation: "Resume scanner." },
+                { id: 5, prompt: "What is constructive feedback after a rejected interview?", img: "📈", opts: [{ l: "Valuable insights to improve future interview performance", c: true }, { l: "An insult to ignore", c: false }], explanation: "Growth feedback." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else {
             const pools = [
               [
@@ -435,38 +436,38 @@ export default function Home() {
                 { id: 2, prompt: "What does a dictionary provide?", img: "📖", opts: [{ l: "Pronunciations and definitions", c: true }, { l: "Weather", c: false }], exp: "Lexicon." },
                 { id: 3, prompt: "First step of scientific method?", img: "🔬", opts: [{ l: "Observation and question", c: true }, { l: "Conclusion", c: false }], exp: "Inquiry." },
                 { id: 4, prompt: "What is a hypothesis?", img: "💡", opts: [{ l: "Testable proposed explanation", c: true }, { l: "Proven law", c: false }], exp: "Testable idea." },
-                { id: 5, prompt: "What does an atlas contain?", img: "🗺️", opts: [{ l: "Geopolitical and physical maps", c: true }, { l: "Recipes", c: false }], exp: "Geography maps." }
+                { id: 5, prompt: "What does an atlas contain?", img: "🗺️", opts: [{ l: "Geopolitical and physical maps", c: true }, { l: "Recipes", c: false }], explanation: "Geography maps." }
               ],
               [
-                { id: 1, prompt: "What is peer review in academic publishing?", img: "👥", opts: [{ l: "Evaluation of research by independent expert scholars", c: true }, { l: "Checking grammar with spellcheck", c: false }], exp: "Expert vetting." },
-                { id: 2, prompt: "What is a primary research source?", img: "📜", opts: [{ l: "Original firsthand data or historical documents", c: true }, { l: "A textbook summary", c: false }], exp: "Firsthand data." },
-                { id: 3, prompt: "What is qualitative research?", img: "📊", opts: [{ l: "Focusing on descriptive data, interviews, and observations", c: true }, { l: "Counting numerical statistics only", c: false }], exp: "Descriptive study." },
-                { id: 4, prompt: "What is quantitative research?", img: "📈", opts: [{ l: "Analyzing numerical data using statistical methods", c: true }, { l: "Writing poetry", c: false }], exp: "Numerical data." },
-                { id: 5, prompt: "What is an abstract in a research paper?", img: "📄", opts: [{ l: "A concise summary of the entire study's findings", c: true }, { l: "The back cover", c: false }], exp: "Summary abstract." }
+                { id: 1, prompt: "What is peer review in academic publishing?", img: "👥", opts: [{ l: "Evaluation of research by independent expert scholars", c: true }, { l: "Checking grammar with spellcheck", c: false }], explanation: "Expert vetting." },
+                { id: 2, prompt: "What is a primary research source?", img: "📜", opts: [{ l: "Original firsthand data or historical documents", c: true }, { l: "A textbook summary", c: false }], explanation: "Firsthand data." },
+                { id: 3, prompt: "What is qualitative research?", img: "📊", opts: [{ l: "Focusing on descriptive data, interviews, and observations", c: true }, { l: "Counting numerical statistics only", c: false }], explanation: "Descriptive study." },
+                { id: 4, prompt: "What is quantitative research?", img: "📈", opts: [{ l: "Analyzing numerical data using statistical methods", c: true }, { l: "Writing poetry", c: false }], explanation: "Numerical data." },
+                { id: 5, prompt: "What is an abstract in a research paper?", img: "📄", opts: [{ l: "A concise summary of the entire study's findings", c: true }, { l: "The back cover", c: false }], explanation: "Summary abstract." }
               ],
               [
-                { id: 1, prompt: "What is plagiarism?", img: "⚠️", opts: [{ l: "Using someone else's work without proper citation", c: true }, { l: "Writing original essays", c: false }], exp: "Academic theft." },
-                { id: 2, prompt: "What is a control group in scientific experiments?", img: "🧪", opts: [{ l: "The baseline group kept unchanged for comparison", c: true }, { l: "The group receiving experimental treatment", c: false }], exp: "Experimental baseline." },
-                { id: 3, prompt: "What is an empirical study?", img: "🔬", opts: [{ l: "Research based on direct observation and experimentation", c: true }, { l: "Pure theoretical philosophy", c: false }], exp: "Observational science." },
-                { id: 4, prompt: "What is a thesis statement in academic writing?", img: "🏛️", opts: [{ l: "The core central argument driving the entire paper", c: true }, { l: "A random concluding sentence", c: false }], exp: "Central argument." },
-                { id: 5, prompt: "What is academic integrity?", img: "⭐", opts: [{ l: "Honesty and ethical standards in scholarship", c: true }, { l: "Getting 100% grades", c: false }], exp: "Ethical scholarship." }
+                { id: 1, prompt: "What is plagiarism?", img: "⚠️", opts: [{ l: "Using someone else's work without proper citation", c: true }, { l: "Writing original essays", c: false }], explanation: "Academic theft." },
+                { id: 2, prompt: "What is a control group in scientific experiments?", img: "🧪", opts: [{ l: "The baseline group kept unchanged for comparison", c: true }, { l: "The group receiving experimental treatment", c: false }], explanation: "Experimental baseline." },
+                { id: 3, prompt: "What is an empirical study?", img: "🔬", opts: [{ l: "Research based on direct observation and experimentation", c: true }, { l: "Pure theoretical philosophy", c: false }], explanation: "Observational science." },
+                { id: 4, prompt: "What is a thesis statement in academic writing?", img: "🏛️", opts: [{ l: "The core central argument driving the entire paper", c: true }, { l: "A random concluding sentence", c: false }], explanation: "Central argument." },
+                { id: 5, prompt: "What is academic integrity?", img: "⭐", opts: [{ l: "Honesty and ethical standards in scholarship", c: true }, { l: "Getting 100% grades", c: false }], explanation: "Ethical scholarship." }
               ],
               [
-                { id: 1, prompt: "What is a literature review?", img: "📚", opts: [{ l: "A comprehensive survey of prior research on a topic", c: true }, { l: "A fictional novel", c: false }], exp: "Research survey." },
-                { id: 2, prompt: "What is deductive reasoning?", img: "🧠", opts: [{ l: "Applying general principles to reach a specific conclusion", c: true }, { l: "Guessing randomly", c: false }], exp: "General to specific." },
-                { id: 3, prompt: "What is inductive reasoning?", img: "💡", opts: [{ l: "Deriving general theories from specific observations", c: true }, { l: "Memorizing facts", c: false }], exp: "Specific to general." },
-                { id: 4, prompt: "What is a methodological framework?", img: "⚙️", opts: [{ l: "The structured system of methods used in a study", c: true }, { l: "A computer hardware diagram", c: false }], exp: "Method system." },
-                { id: 5, prompt: "What is citation formatting (APA / MLA)?", img: "📝", opts: [{ l: "Standardized rules for acknowledging reference sources", c: true }, { l: "Font styling choices", c: false }], exp: "Reference standards." }
+                { id: 1, prompt: "What is a literature review?", img: "📚", opts: [{ l: "A comprehensive survey of prior research on a topic", c: true }, { l: "A fictional novel", c: false }], explanation: "Research survey." },
+                { id: 2, prompt: "What is deductive reasoning?", img: "🧠", opts: [{ l: "Applying general principles to reach a specific conclusion", c: true }, { l: "Guessing randomly", c: false }], explanation: "General to specific." },
+                { id: 3, prompt: "What is inductive reasoning?", img: "💡", opts: [{ l: "Deriving general theories from specific observations", c: true }, { l: "Memorizing facts", c: false }], explanation: "Specific to general." },
+                { id: 4, prompt: "What is a methodological framework?", img: "⚙️", opts: [{ l: "The structured system of methods used in a study", c: true }, { l: "A computer hardware diagram", c: false }], explanation: "Method system." },
+                { id: 5, prompt: "What is citation formatting (APA / MLA)?", img: "📝", opts: [{ l: "Standardized rules for acknowledging reference sources", c: true }, { l: "Font styling choices", c: false }], explanation: "Reference standards." }
               ],
               [
-                { id: 1, prompt: "What is an independent variable in experiments?", img: "🔬", opts: [{ l: "The variable manipulated or changed by the researcher", c: true }, { l: "The measured outcome", c: false }], exp: "Manipulated variable." },
-                { id: 2, prompt: "What is a dependent variable?", img: "📈", opts: [{ l: "The outcome measured and affected during the experiment", c: true }, { l: "The researcher", c: false }], exp: "Measured outcome." },
-                { id: 3, prompt: "What is peer debriefing in qualitative research?", img: "👥", opts: [{ l: "Discussing findings with fellow researchers to ensure validity", c: true }, { l: "Arguing in class", c: false }], exp: "Validity check." },
-                { id: 4, prompt: "What is scholarly citation?", img: "🔖", opts: [{ l: "Giving credit to authors within academic texts", c: true }, { l: "Writing footnotes for fun", c: false }], exp: "Author credit." },
-                { id: 5, prompt: "What is academic publishing?", img: "📰", opts: [{ l: "Releasing peer-reviewed research in professional journals", c: true }, { l: "Posting on TikTok", c: false }], exp: "Journal release." }
+                { id: 1, prompt: "What is an independent variable in experiments?", img: "🔬", opts: [{ l: "The variable manipulated or changed by the researcher", c: true }, { l: "The measured outcome", c: false }], explanation: "Manipulated variable." },
+                { id: 2, prompt: "What is a dependent variable?", img: "📈", opts: [{ l: "The outcome measured and affected during the experiment", c: true }, { l: "The researcher", c: false }], explanation: "Measured outcome." },
+                { id: 3, prompt: "What is peer debriefing in qualitative research?", img: "👥", opts: [{ l: "Discussing findings with fellow researchers to ensure validity", c: true }, { l: "Arguing in class", c: false }], explanation: "Validity check." },
+                { id: 4, prompt: "What is scholarly citation?", img: "🔖", opts: [{ l: "Giving credit to authors within academic texts", c: true }, { l: "Writing footnotes for fun", c: false }], explanation: "Author credit." },
+                { id: 5, prompt: "What is academic publishing?", img: "📰", opts: [{ l: "Releasing peer-reviewed research in professional journals", c: true }, { l: "Posting on TikTok", c: false }], explanation: "Journal release." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           }
         } 
         // 4. SENIOR HIGH
@@ -509,7 +510,7 @@ export default function Home() {
                 { id: 5, prompt: "What is a municipal bond?", img: "🏛️", opts: [{ l: "Debt security issued by local governments", c: true }, { l: "Private company stock", c: false }], explanation: "Government bond." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -548,7 +549,7 @@ export default function Home() {
                 { id: 5, prompt: "What is cloud storage data redundancy?", img: "☁️", opts: [{ l: "Storing data across multiple servers to prevent loss", c: true }, { l: "Deleting duplicate files", c: false }], explanation: "Backup redundancy." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Job Interviews") {
             const pools = [
               [
@@ -669,11 +670,7 @@ export default function Home() {
                 { id: 5, prompt: "What is the semantic nuance of 'pusillanimous'?", img: "🦁", opts: [{ l: "Showing a lack of courage or determination; timid", c: true }, { l: "Brave and heroic", c: false }], explanation: "Cowardly/timid." }
               ]
             ];
-            questions = pools[batchNum - 1].map(q => ({
-              id: q.id, prompt: q.prompt, imageIllustration: q.img,
-              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
-              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
-            }));
+            rawQuestions = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -712,11 +709,7 @@ export default function Home() {
                 { id: 5, prompt: "What is data provenance?", img: "🏷️", opts: [{ l: "The verifiable chronological origin and history of digital data", c: true }, { l: "Deleting old files", c: false }], explanation: "Data history." }
               ]
             ];
-            questions = pools[batchNum - 1].map(q => ({
-              id: q.id, prompt: q.prompt, imageIllustration: q.img,
-              options: q.opts.map(o => ({ label: o.l, isCorrect: o.c })),
-              explanation: "exp" in q ? (q.exp as string) : (q.explanation as string)
-            }));
+            rawQuestions = pools[batchNum - 1];
           } else if (top === "Job Interviews") {
             const pools = [
               [
