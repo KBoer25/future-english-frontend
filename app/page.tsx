@@ -59,7 +59,7 @@ export default function Home() {
 
   const topics = getTopicsForLevel(selectedLevel);
 
-  // COMPLETELY CLEAN, FLAT, VERCEL-COMPLIANT QUIZ GENERATOR
+  // COMPLETELY CLEAN, VERCEL-COMPLIANT QUIZ GENERATOR USING poolData CORRECTLY
   const getCurrentLevelQuizzes = () => {
     const list: Record<string, ModuleData> = {};
     const icons = ["🍎", "📱", "ABC", "🔢", "🎒", "🔬", "🗺️", "💼", "🏛️", "📊"];
@@ -219,7 +219,7 @@ export default function Home() {
                 { id: 2, prompt: "What class teaches running, jumping, and team sports?", img: "🏃", opts: [{ l: "Physical Education (PE)", c: true }, { l: "Spelling", c: false }], exp: "PE promotes fitness." },
                 { id: 3, prompt: "What device rings loudly to signal the start and end of classes?", img: "🔔", opts: [{ l: "The school bell", c: true }, { l: "A doorbell", c: false }], exp: "Bells signal schedules." },
                 { id: 4, prompt: "What sticky adhesive is used to attach paper cutouts together?", img: "🧴", opts: [{ l: "Glue stick", c: true }, { l: "Toothpaste", c: false }], exp: "Glue bonds paper." },
-                { id: 5, prompt: "Who drives students safely to and from school each day?", img: "🚌", opts: [{ l: "The school bus driver", c: true }, { l: "The pilot", c: false }], exp: "Bus drivers transport kids." }
+                { id: 5, prompt: "Who drives students safely to and from school each day?", img: "🚌", opts: [{ l: "The school bus driver", c: true }, { l: "The pilot", c: false }], explanation: "Bus drivers transport kids." }
               ],
               [
                 { id: 1, prompt: "What notebook contains lined paper for practicing handwriting?", img: "📓", opts: [{ l: "A lined exercise book", c: true }, { l: "A sketchbook", c: false }], exp: "Exercise books hold writing." },
@@ -588,7 +588,7 @@ export default function Home() {
                 { id: 5, prompt: "What is adaptability in modern workplaces?", img: "🔄", opts: [{ l: "The capacity to adjust smoothly to changing priorities and tools", c: true }, { l: "Refusing to change methods", c: false }], explanation: "Flexibility." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else {
             const pools = [
               [
@@ -627,7 +627,7 @@ export default function Home() {
                 { id: 5, prompt: "What is academic publishing?", img: "📰", opts: [{ l: "Releasing peer-reviewed research in professional journals", c: true }, { l: "Posting on TikTok", c: false }], explanation: "Journal release." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           }
         } 
         // 5. C1 ADVANCED
@@ -670,7 +670,7 @@ export default function Home() {
                 { id: 5, prompt: "What is the semantic nuance of 'pusillanimous'?", img: "🦁", opts: [{ l: "Showing a lack of courage or determination; timid", c: true }, { l: "Brave and heroic", c: false }], explanation: "Cowardly/timid." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Social Media") {
             const pools = [
               [
@@ -709,7 +709,7 @@ export default function Home() {
                 { id: 5, prompt: "What is data provenance?", img: "🏷️", opts: [{ l: "The verifiable chronological origin and history of digital data", c: true }, { l: "Deleting old files", c: false }], explanation: "Data history." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else if (top === "Job Interviews") {
             const pools = [
               [
@@ -748,7 +748,7 @@ export default function Home() {
                 { id: 5, prompt: "What is psychological safety in high-performing teams?", img: "🛡️", opts: [{ l: "A shared belief that the team is safe for interpersonal risk-taking", c: true }, { l: "Never challenging ideas", c: false }], explanation: "Safe risk-taking." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           } else {
             const pools = [
               [
@@ -756,7 +756,7 @@ export default function Home() {
                 { id: 2, prompt: "A priori vs a posteriori knowledge?", img: "🧠", opts: [{ l: "Independent of experience vs empirical observation", c: true }, { l: "Identical", c: false }], exp: "Deduction vs observation." },
                 { id: 3, prompt: "What is a logical tautology?", img: "📜", opts: [{ l: "Necessarily true by logical form", c: true }, { l: "Experiment", c: false }], exp: "Tautology." },
                 { id: 4, prompt: "Advanced concession marker: '___ empirical data is complex...'", img: "⚖️", opts: [{ l: "Albeit", c: true }, { l: "Because", c: false }], exp: "Concession." },
-                { id: 5, prompt: "German concept 'Zeitgeist' signify?", img: "🏛️", opts: [{ l: "Defining spirit or mood of a historical period", c: true }, { l: "Building", c: false }], exp: "Zeitgeist." }
+                { id: 5, prompt: "German concept 'Zeitgeist' signify?", img: "🏛️", opts: [{ l: "Defining spirit or mood of a particular historical period", c: true }, { l: "Building", c: false }], exp: "Zeitgeist." }
               ],
               [
                 { id: 1, prompt: "What is ontological philosophy concerned with?", img: "🌌", opts: [{ l: "The nature of being, existence, and reality", c: true }, { l: "Rules of grammar", c: false }], explanation: "Nature of being." },
@@ -787,7 +787,7 @@ export default function Home() {
                 { id: 5, prompt: "What is logical positivism?", img: "🔬", opts: [{ l: "The philosophical doctrine that only statements verifiable through experience are cognitively meaningful", c: true }, { l: "Metaphysical speculation", c: false }], explanation: "Verifiable meaningfulness." }
               ]
             ];
-            rawQuestions = pools[batchNum - 1];
+            poolData = pools[batchNum - 1];
           }
         }
 
@@ -797,7 +797,7 @@ export default function Home() {
           level: selectedLevel,
           category: top,
           source: `${selectedLevel} Certified Academic Framework (Batch ${batchNum})`,
-          questions: rawQuestions.map((q: any) => ({
+          questions: poolData.map((q: any) => ({
             id: q.id,
             prompt: q.prompt,
             imageIllustration: q.img,
