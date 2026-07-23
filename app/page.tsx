@@ -19,7 +19,6 @@ type ModuleData = {
 
 type StudyMaterial = {
   id: string;
-  quizKey: string;
   title: string;
   level: string;
   category: string;
@@ -38,7 +37,7 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Full quiz banks
+  // Quiz banks
   const quizDataBank: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
@@ -56,16 +55,6 @@ export default function Home() {
           ],
           explanation: "In early phonics, consonants like 'S' represent continuous phonemes making a hissing sound.",
         },
-        {
-          id: 2,
-          prompt: "Which word starts with the short 'A' sound (/æ/), like in 'Apple'?",
-          options: [
-            { label: "Cat", isCorrect: true },
-            { label: "Dog", isCorrect: false },
-            { label: "Sun", isCorrect: false },
-          ],
-          explanation: "Short vowel sounds (like /æ/ in cat) are foundational building blocks for decoding CVC words.",
-        },
       ],
     },
     "Primary-Reading": {
@@ -76,7 +65,7 @@ export default function Home() {
       questions: [
         {
           id: 1,
-          prompt: 'Story excerpt: "Leo loves to paint pictures of blue oceans and green trees." What does Leo like to do?',
+          prompt: 'Story excerpt: "Leo loves to paint pictures of blue oceans and green trees."',
           options: [
             { label: "Paint pictures", isCorrect: true },
             { label: "Play soccer", isCorrect: false },
@@ -93,7 +82,7 @@ export default function Home() {
       questions: [
         {
           id: 1,
-          prompt: 'Message from Stefan: "We\'re outside the cinema. Text if you\'re going to be late..." What should Peter do?',
+          prompt: 'Message from Stefan: "We\'re outside the cinema. Text if you\'re going to be late..."',
           options: [
             { label: "Let Stefan know if he is delayed", isCorrect: true },
             { label: "Wait for Stefan inside the cinema", isCorrect: false },
@@ -110,7 +99,7 @@ export default function Home() {
       questions: [
         {
           id: 1,
-          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning, educators noted a rise in independent student research."',
+          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning..."',
           options: [
             { label: "People doubted remote learning at first, but student independence grew.", isCorrect: true },
             { label: "Remote learning failed completely.", isCorrect: false },
@@ -138,82 +127,82 @@ export default function Home() {
     },
   };
 
-  // Complete Study Materials with Linked Quiz Keys
+  // Expanded, Content-Heavy Study Guides across all levels
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
-      quizKey: "Kindergarten-Phonics",
-      title: "Kindergarten: Phonics & Letter Sounds Curriculum",
+      title: "Kindergarten: Complete Phonics & Letter Sounds Guide",
       level: "Kindergarten",
       category: "Daily Life",
-      summary: "Systematic synthetic phonics framework for early childhood literacy development.",
+      summary: "Comprehensive framework for early childhood phonemic awareness, alphabet sounds, and blending rules.",
       illustration: "🧸🧩✨",
       accentColor: "bg-pink-50 border-pink-100 text-pink-600",
       content: [
-        "Phonemic Awareness: The ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before seeing print.",
-        "Synthetic Phonics Sequence: Introducing single letter sounds systematically rather than alphabetically so children can blend simple words immediately.",
-        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat).",
-        "Multisensory Practice: Tracing letter shapes in sand or air while producing the precise phonetic sound."
+        "1. Phonemic Awareness: The foundational ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before introducing text.",
+        "2. Synthetic Phonics Sequence: Introducing high-utility letter sounds systematically (such as S, A, T, P, I, N) rather than strict alphabetical order so kids can build words instantly.",
+        "3. CVC Blending Mastery: Blending consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat, /p/ - /i/ - /g/ = pig).",
+        "4. Multisensory Engagement: Incorporating physical movement, sand tracing, and audio repetition to anchor sound-symbol recognition.",
+        "5. Sight Words Introduction: Teaching non-decodable high frequency words (the, to, go, no) through visual flashcards."
       ]
     },
     {
       id: "primary-grammar",
-      quizKey: "Primary-Reading",
-      title: "Primary School: Elementary Grammar & Sentence Structures",
+      title: "Primary School: Elementary Grammar & Vocabulary Foundations",
       level: "Primary School (A1-A2)",
       category: "Daily Life",
-      summary: "Core structural rules for young elementary learners transitioning into independent writing.",
+      summary: "Core structural rules, sentence patterns, and vocabulary sets for young elementary students.",
       illustration: "🎨✏️🎒",
       accentColor: "bg-green-50 border-green-100 text-green-600",
       content: [
-        "Basic Sentence Architecture: Standard Subject-Verb-Object (SVO) word order in declarative sentences.",
-        "Pronoun Case Agreement: Correct usage of subject pronouns (I, you, he, she, it) vs. object pronouns (me, him, her).",
-        "Simple Tense Consistency: Practicing simple present routines and simple past actions with regular verbs."
+        "1. Sentence Architecture: Mastering standard Subject-Verb-Object (SVO) word order in positive, negative, and interrogative sentences.",
+        "2. Pronoun Rules: Clear differentiation between subject pronouns (I, you, he, she, it, we, they) and object pronouns (me, him, her, us, them).",
+        "3. Basic Tenses: Establishing daily routines using the Simple Present tense and describing past events with regular/irregular Simple Past verbs.",
+        "4. Descriptive Adjectives: Expanding vocabulary sets for size, color, feelings, and weather to enrich basic writing paragraphs."
       ]
     },
     {
       id: "juniorhigh-pet",
-      quizKey: "Junior High-Reading",
-      title: "Junior High: Cambridge B1 PET Exam Strategies",
+      title: "Junior High: Cambridge B1 Preliminary (PET) Study Guide",
       level: "Junior High (B1)",
       category: "Social Media",
-      summary: "Official guidance for tackling B1 Preliminary reading, writing transformations, and listening tasks.",
+      summary: "In-depth breakdown of intermediate grammar structures, functional text messages, and exam strategies.",
       illustration: "🎧📱💡",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       content: [
-        "Reading Part 1: Always analyze short notices, text messages, and signs for safety warnings or explicit instructions.",
-        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility (e.g., adjectives followed by specific prepositions like 'keen on').",
-        "Listening Part 2: Read questions ahead of time to anticipate specific constraints like names, places, or numbers."
+        "1. Reading Part 1 (Signs & Notices): How to analyze public notices, text messages, and emails for implied meanings and restrictions.",
+        "2. Writing Part 1 (Transformations): Mastering grammar equivalents, passive voices, and fixed adjective prepositions (e.g., 'keen on', 'interested in').",
+        "3. Modal Verbs of Obligation: Correct usage of must, have to, should, and mustn't in real-world contexts.",
+        "4. Listening Strategies: Anticipating key vocabulary, spelling checks, and identifying speaker attitudes in dialogue snippets."
       ]
     },
     {
       id: "seniorhigh-fce",
-      quizKey: "Senior High-Reading",
-      title: "Senior High: Cambridge B2 First Cohesion & Essay Writing",
+      title: "Senior High: Cambridge B2 First (FCE) Essay & Cohesion Guide",
       level: "Senior High (B2)",
       category: "Academic & Debate",
-      summary: "Advanced coherence strategies and discursive writing techniques for upper-intermediate students.",
+      summary: "Advanced coherence strategies, discursive writing templates, and formal upper-intermediate structures.",
       illustration: "📊📝🎯",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       content: [
-        "Discursive Paragraphing: Organizing essays with a clear thesis statement, balanced opposing arguments, and a definitive conclusion.",
-        "Cohesive Devices: Moving beyond basic linkers (and, but) to sophisticated transitions (furthermore, consequently, nevertheless).",
-        "Lexical Precision: Avoiding repetitive vocabulary by utilizing precise synonyms and thematic word sets."
+        "1. Discursive Essay Structure: Crafting a compelling introduction with a clear thesis, two balanced body paragraphs, and a definitive summary conclusion.",
+        "2. Advanced Cohesive Devices: Moving past basic linkers (and, but) to sophisticated transitional phrases (furthermore, consequently, nevertheless, on the contrary).",
+        "3. Relative Clauses & Participles: Elevating sentence complexity using non-defining relative clauses and participial phrases.",
+        "4. Lexical Precision: Avoiding vague words (good, bad, nice) by substituting precise academic synonyms."
       ]
     },
     {
       id: "advanced-cae",
-      quizKey: "Advanced-Reading",
-      title: "C1 Advanced: CAE Use of English & Discourse Mastery",
+      title: "C1 Advanced: CAE Use of English & Discourse Masterclass",
       level: "C1 Advanced",
       category: "Academic & Debate",
-      summary: "Rigorous academic and professional frameworks aligned with Cambridge C1 standards.",
+      summary: "Rigorous academic frameworks, collocation rules, and advanced word-formation mastery for CAE success.",
       illustration: "🏛️📜🎓",
       accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       content: [
-        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, complementation, and phrasal verbs.",
-        "Part 3 (Word Formation): Demands mastery over prefixes (un-, dis-, mis-), internal vowel changes, and compound word structures.",
-        "Discourse Management: Producing extended, coherent stretches of language with sophisticated control of grammatical structures."
+        "1. Part 1 (Multiple-Choice Cloze): Analyzing subtle semantic differences, fixed collocations, idiom constraints, and phrasal verb valency.",
+        "2. Part 3 (Word Formation): Mastering complex root transformations, prefix modifications (un-, dis-, mis-, inter-), and plural noun agreements.",
+        "3. Advanced Syntax & Inversion: Utilizing negative adverbial inversions for rhetorical impact (e.g., 'Not only was the experiment successful...').",
+        "4. Discourse Management: Structuring spoken and written arguments with absolute grammatical precision and nuanced stylistic control."
       ]
     }
   ];
@@ -225,7 +214,7 @@ export default function Home() {
   const currentModule = activeModuleKey ? quizDataBank[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
-  // ================= 1. FOCUSED QUIZ MODULE PAGE =================
+  // FOCUSED QUIZ MODULE PAGE
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -309,7 +298,7 @@ export default function Home() {
     );
   }
 
-  // ================= 2. FOCUSED STUDY MATERIAL READING PAGE WITH "GET STARTED" BUTTON =================
+  // FOCUSED STUDY MATERIAL READING PAGE (Pure Material, No Quiz Trigger)
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -335,7 +324,7 @@ export default function Home() {
           </p>
 
           <div className="space-y-4 mb-10">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Curriculum Breakdown</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Comprehensive Study Material</h3>
             {currentStudyGuide.content.map((section, idx) => (
               <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
                 <span className="bg-[#55b1d4] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
@@ -346,16 +335,12 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Action Button to Jump to Practice Quiz */}
           <div className="pt-6 border-t border-gray-100 text-center">
             <button
-              onClick={() => {
-                setActiveStudyId(null);
-                setActiveModuleKey(currentStudyGuide.quizKey);
-              }}
-              className="bg-[#f2b705] hover:bg-[#e0a804] text-white text-base font-bold py-4 px-8 rounded-2xl shadow-md transition cursor-pointer w-full md:w-auto"
+              onClick={() => setActiveStudyId(null)}
+              className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold py-3 px-6 rounded-xl transition cursor-pointer"
             >
-              🚀 Let's Get Started (Take Practice Quiz)
+              ✓ Finished Reading (Return to Guides)
             </button>
           </div>
         </div>
@@ -363,7 +348,7 @@ export default function Home() {
     );
   }
 
-  // ================= 3. MAIN DASHBOARD HOMEPAGE =================
+  // MAIN DASHBOARD HOMEPAGE
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -400,7 +385,7 @@ export default function Home() {
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           {activeTab === "quizzes"
             ? "Structured school tiers from Phonics foundations to C1 Advanced mastery."
-            : "Explore core grammar rules, synthetic phonics guides, and verified exam cheat sheets."}
+            : "Explore core grammar rules, complete phonics breakdowns, and verified exam study guides."}
         </p>
 
         {activeTab === "quizzes" && (
@@ -425,7 +410,6 @@ export default function Home() {
       {/* TAB 1: PRACTICE QUIZZES GRID */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          {/* Kindergarten */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#E95599]/10 text-[#E95599] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               KINDERGARTEN
@@ -440,7 +424,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Primary School */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               PRIMARY SCHOOL
@@ -455,7 +438,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Junior High */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               JUNIOR HIGH (B1)
@@ -470,7 +452,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Senior High */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#a855f7]/10 text-[#a855f7] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               SENIOR HIGH (B2)
@@ -485,7 +466,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Advanced */}
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
             <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
               C1 ADVANCED (CAE)
@@ -502,7 +482,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS INDEX */}
+      {/* TAB 2: STUDY MATERIALS INDEX (Pure Learning Guides) */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => {
@@ -525,7 +505,7 @@ export default function Home() {
                       {guide.level}
                     </span>
                     <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                      Read Guide & Get Started →
+                      Read Complete Study Guide →
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
