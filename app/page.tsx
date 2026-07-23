@@ -23,6 +23,8 @@ type StudyMaterial = {
   level: string;
   category: string;
   summary: string;
+  illustration: string;
+  accentColor: string;
   content: string[];
 };
 
@@ -37,7 +39,6 @@ export default function Home() {
 
   // Comprehensive Quizzes across all school tiers
   const materials: Record<string, ModuleData> = {
-    // ================= KINDERGARTEN (Phonics Focus) =================
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
       image: "🔤",
@@ -54,38 +55,8 @@ export default function Home() {
           ],
           explanation: "In early phonics, consonants like 'S' represent continuous phonemes making a hissing sound.",
         },
-        {
-          id: 2,
-          prompt: "Which word starts with the short 'A' sound (/æ/), like in 'Apple'?",
-          options: [
-            { label: "Cat", isCorrect: true },
-            { label: "Dog", isCorrect: false },
-            { label: "Sun", isCorrect: false },
-          ],
-          explanation: "Short vowel sounds (like /æ/ in cat) are foundational building blocks for decoding CVC words.",
-        },
       ],
     },
-    "Kindergarten-Listening": {
-      title: "Kindergarten: Auditory Rhymes & Sounds",
-      image: "🎵",
-      category: "Daily Life",
-      source: "Phonological Awareness Framework",
-      questions: [
-        {
-          id: 1,
-          prompt: "Which word rhymes with 'Cat'?",
-          options: [
-            { label: "Hat", isCorrect: true },
-            { label: "Dog", isCorrect: false },
-            { label: "Pen", isCorrect: false },
-          ],
-          explanation: "Rhyming helps young children recognize word families and phonological structures.",
-        },
-      ],
-    },
-
-    // ================= PRIMARY SCHOOL (Elementary A1-A2) =================
     "Primary-Reading": {
       title: "Primary School: Short Stories & Sentences",
       image: "📚",
@@ -103,25 +74,6 @@ export default function Home() {
         },
       ],
     },
-    "Primary-Writing": {
-      title: "Primary School: Basic Sentence Building",
-      image: "✏️",
-      category: "Daily Life",
-      source: "Elementary ESL Curriculum",
-      questions: [
-        {
-          id: 1,
-          prompt: "Choose the correct pronoun: '____ is my best friend. Her name is Anna.'",
-          options: [
-            { label: "She", isCorrect: true },
-            { label: "He", isCorrect: false },
-          ],
-          explanation: "'She' is the correct subject pronoun for a female individual.",
-        },
-      ],
-    },
-
-    // ================= JUNIOR HIGH SCHOOL (B1 Preliminary) =================
     "Junior High-Reading": {
       title: "Junior High: Cambridge B1 Reading",
       image: "📱",
@@ -139,25 +91,6 @@ export default function Home() {
         },
       ],
     },
-    "Junior High-Writing": {
-      title: "Junior High: Key Word Transformations",
-      image: "✍️",
-      category: "Daily Life",
-      source: "Cambridge Assessment English (PET)",
-      questions: [
-        {
-          id: 1,
-          prompt: 'Original: "Niko really enjoys playing basketball."\nRewrite: "Niko is very keen _______ basketball."',
-          options: [
-            { label: "on", isCorrect: true },
-            { label: "in", isCorrect: false },
-          ],
-          explanation: "Fixed prepositional expression: 'keen on'.",
-        },
-      ],
-    },
-
-    // ================= SENIOR HIGH SCHOOL (B2 First / FCE) =================
     "Senior High-Reading": {
       title: "Senior High: B2 Discursive Reading",
       image: "📰",
@@ -175,25 +108,6 @@ export default function Home() {
         },
       ],
     },
-    "Senior High-Writing": {
-      title: "Senior High: B2 Essay Cohesion",
-      image: "📝",
-      category: "Academic & Debate",
-      source: "Cambridge B2 First (FCE)",
-      questions: [
-        {
-          id: 1,
-          prompt: "Which transition phrase best introduces an additional argument in a formal B2 essay?",
-          options: [
-            { label: "Furthermore, it is worth noting that...", isCorrect: true },
-            { label: "Plus, also and stuff...", isCorrect: false },
-          ],
-          explanation: "'Furthermore' demonstrates appropriate formal register for B2 writing criteria.",
-        },
-      ],
-    },
-
-    // ================= C1 ADVANCED (CAE) =================
     "Advanced-Reading": {
       title: "C1 Advanced: Reading & Use of English",
       image: "📖",
@@ -211,26 +125,9 @@ export default function Home() {
         },
       ],
     },
-    "Advanced-Writing": {
-      title: "C1 Advanced: Word Formation",
-      image: "✒️",
-      category: "Academic & Debate",
-      source: "Cambridge Certificate in Advanced English (CAE)",
-      questions: [
-        {
-          id: 1,
-          prompt: 'Part 3 Word Formation (Freud and Dreams): "Sigmund Freud is regarded as the _____ (FOUND) of psychoanalysis."',
-          options: [
-            { label: "FOUNDER", isCorrect: true },
-            { label: "FOUNDATION", isCorrect: false },
-          ],
-          explanation: "CAE Part 3 requires correct suffix/affix derivation (Root: FOUND ➔ FOUNDER).",
-        },
-      ],
-    },
   };
 
-  // Detailed Study Guides & Curriculum Curated from Verified Sources
+  // Visual Study Guides with Graphic Emojis & Custom Color Accents
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
@@ -238,6 +135,8 @@ export default function Home() {
       level: "Kindergarten",
       category: "Daily Life",
       summary: "Systematic synthetic phonics framework for early childhood literacy development.",
+      illustration: "🧸🧩✨",
+      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
       content: [
         "Phonemic Awareness: The ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before seeing print.",
         "Synthetic Phonics Sequence: Introducing single letter sounds systematically rather than alphabetically so children can blend simple words immediately.",
@@ -251,6 +150,8 @@ export default function Home() {
       level: "Primary School (A1-A2)",
       category: "Daily Life",
       summary: "Core structural rules for young elementary learners transitioning into independent writing.",
+      illustration: "🎨✏️🎒",
+      accentColor: "bg-green-50 border-green-100 text-green-600",
       content: [
         "Basic Sentence Architecture: Standard Subject-Verb-Object (SVO) word order in declarative sentences.",
         "Pronoun Case Agreement: Correct usage of subject pronouns (I, you, he, she, it, we, they) vs. object pronouns (me, him, her, us, them).",
@@ -263,6 +164,8 @@ export default function Home() {
       level: "Junior High (B1)",
       category: "Social Media",
       summary: "Official guidance for tackling B1 Preliminary reading, writing transformations, and listening tasks.",
+      illustration: "🎧📱💡",
+      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       content: [
         "Reading Part 1: Always analyze short notices, text messages, and signs for safety warnings or explicit instructions.",
         "Writing Part 1 (Transformations): Focus closely on grammatical compatibility (e.g., adjectives followed by specific prepositions like 'keen on').",
@@ -275,6 +178,8 @@ export default function Home() {
       level: "Senior High (B2)",
       category: "Academic & Debate",
       summary: "Advanced coherence strategies and discursive writing techniques for upper-intermediate students.",
+      illustration: "📊📝🎯",
+      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       content: [
         "Discursive Paragraphing: Organizing essays with a clear thesis statement, balanced opposing arguments, and a definitive conclusion.",
         "Cohesive Devices: Moving beyond basic linkers (and, but) to sophisticated transitions (furthermore, consequently, nevertheless).",
@@ -287,6 +192,8 @@ export default function Home() {
       level: "C1 Advanced",
       category: "Academic & Debate",
       summary: "Rigorous academic and professional frameworks aligned with Cambridge C1 standards.",
+      illustration: "🏛️📜🎓",
+      accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       content: [
         "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, complementation, and phrasal verbs.",
         "Part 3 (Word Formation): Demands mastery over prefixes (un-, dis-, mis-), internal vowel changes, and compound word structures.",
@@ -405,6 +312,7 @@ export default function Home() {
             <span className="text-xs text-gray-400 font-medium">{currentStudyGuide.category}</span>
           </div>
 
+          <div className="text-5xl mb-4">{currentStudyGuide.illustration}</div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">{currentStudyGuide.title}</h2>
           <p className="text-gray-600 text-base mb-8 pb-6 border-b border-gray-100 leading-relaxed">
             {currentStudyGuide.summary}
@@ -496,14 +404,14 @@ export default function Home() {
             <h3 className="text-xl font-medium text-gray-800 mb-2">Phonics & Sounds</h3>
             <p className="text-sm text-gray-500 mb-6">Focus on phonics, letter sounds, and early phonological awareness.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Phonics", "Listening"].map((skill) => {
+              {["Phonics"].map((skill) => {
                 const key = `Kindergarten-${skill}`;
                 const item = materials[key];
                 return (
                   <button
                     key={skill}
                     onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium ${
+                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
                       item ? "bg-gray-50 hover:bg-[#E95599] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
                     }`}
                   >
@@ -522,14 +430,14 @@ export default function Home() {
             <h3 className="text-xl font-medium text-gray-800 mb-2">Elementary Foundations</h3>
             <p className="text-sm text-gray-500 mb-6">Simple sentences, basic reading comprehension, and vocabulary.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading", "Writing"].map((skill) => {
+              {["Reading"].map((skill) => {
                 const key = `Primary-${skill}`;
                 const item = materials[key];
                 return (
                   <button
                     key={skill}
                     onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium ${
+                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
                       item ? "bg-gray-50 hover:bg-[#22c55e] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
                     }`}
                   >
@@ -548,14 +456,14 @@ export default function Home() {
             <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 PET</h3>
             <p className="text-sm text-gray-500 mb-6">Intermediate grammar, messaging texts, and key-word transformations.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
+              {["Reading"].map((skill) => {
                 const key = `Junior High-${skill}`;
                 const item = materials[key];
                 return (
                   <button
                     key={skill}
                     onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium ${
+                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
                       item ? "bg-gray-50 hover:bg-[#55b1d4] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
                     }`}
                   >
@@ -574,14 +482,14 @@ export default function Home() {
             <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B2 First</h3>
             <p className="text-sm text-gray-500 mb-6">Discursive reading articles, essay transitions, and formal cohesion.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading", "Writing"].map((skill) => {
+              {["Reading"].map((skill) => {
                 const key = `Senior High-${skill}`;
                 const item = materials[key];
                 return (
                   <button
                     key={skill}
                     onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium ${
+                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
                       item ? "bg-gray-50 hover:bg-[#a855f7] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
                     }`}
                   >
@@ -600,14 +508,14 @@ export default function Home() {
             <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
             <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis.</p>
             <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
+              {["Reading"].map((skill) => {
                 const key = `Advanced-${skill}`;
                 const item = materials[key];
                 return (
                   <button
                     key={skill}
                     onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium ${
+                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
                       item ? "bg-gray-50 hover:bg-[#f2b705] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
                     }`}
                   >
@@ -620,25 +528,30 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS INDEX (Clicking cards opens full dedicated page) */}
+      {/* TAB 2: VISUAL STUDY MATERIALS CARDS WITH ILLUSTRATIONS */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => (
             <div
               key={guide.id}
               onClick={() => setActiveStudyId(guide.id)}
-              className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:border-[#55b1d4] hover:shadow-md transition cursor-pointer group"
+              className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:border-[#55b1d4] hover:shadow-md transition cursor-pointer overflow-hidden group flex flex-col md:flex-row items-center"
             >
-              <div className="flex justify-between items-center mb-4">
-                <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
-                  {guide.level}
-                </span>
-                <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                  Read Guide →
-                </span>
+              <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
+                {guide.illustration}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
-              <p className="text-gray-600 text-sm">{guide.summary}</p>
+              <div className="p-8 flex-1">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
+                    {guide.level}
+                  </span>
+                  <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
+                    Read Guide →
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{guide.summary}</p>
+              </div>
             </div>
           ))}
         </section>
