@@ -45,133 +45,209 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  const quizCards = [
-    {
-      key: "Kindergarten-Phonics",
-      badge: "KINDERGARTEN",
-      title: "Phonics & Sounds",
-      description: "Focus on phonics, letter sounds, and early phonological awareness.",
-      buttonText: "Phonics",
-      accent: "bg-[#E95599]/10 text-[#E95599]",
-    },
-    {
-      key: "Primary-Reading",
-      badge: "PRIMARY SCHOOL",
-      title: "Elementary Foundations",
-      description: "Simple sentences, basic reading comprehension, and vocabulary.",
-      buttonText: "Reading",
-      accent: "bg-[#22c55e]/10 text-[#22c55e]",
-    },
-    {
-      key: "Junior High-Reading",
-      badge: "JUNIOR HIGH (B1)",
-      title: "Cambridge B1 PET",
-      description: "Intermediate grammar, messaging texts, and key-word transformations.",
-      buttonText: "Reading",
-      accent: "bg-[#55b1d4]/10 text-[#55b1d4]",
-    },
-    {
-      key: "Senior High-Reading",
-      badge: "SENIOR HIGH (B2)",
-      title: "Cambridge B2 First",
-      description: "Discursive reading articles, essay transitions, and formal cohesion.",
-      buttonText: "Reading",
-      accent: "bg-[#a855f7]/10 text-[#a855f7]",
-    },
-    {
-      key: "Advanced-Reading",
-      badge: "C1 ADVANCED (CAE)",
-      title: "Cambridge C1 CAE",
-      description: "Advanced multiple choice cloze, word formation, and listening analysis.",
-      buttonText: "Reading",
-      accent: "bg-[#f2b705]/10 text-[#f2b705]",
-    },
-  ];
-
   const quizDataBank: Record<string, ModuleData> = {
-    "Kindergarten-Phonics": {
-      title: "Kindergarten: Letter Sounds & Phonics",
-      image: "🔤",
+    "DailyLife-1": {
+      title: "Daily Life: Grocery Shopping & Supermarket Expressions",
+      image: "🛒",
       category: "Daily Life",
-      source: "Systematic Synthetic Phonics Standard",
+      source: "Practical English Usage Standard",
       questions: [
         {
           id: 1,
-          prompt: "What sound does the letter 'S' make at the beginning of 'Snake'?",
+          prompt: "Where can you find fresh apples and bananas in a supermarket?",
           options: [
-            { label: "Ssss...", isCorrect: true },
-            { label: "Mmmm...", isCorrect: false },
-            { label: "Buh-buh...", isCorrect: false },
+            { label: "The produce section", isCorrect: true },
+            { label: "The frozen aisle", isCorrect: false },
+            { label: "The checkout counter", isCorrect: false },
           ],
-          explanation: "In early phonics, consonants like 'S' represent continuous phonemes making a hissing sound.",
+          explanation: "Fresh fruits and vegetables are located in the produce section.",
         },
       ],
     },
-    "Primary-Reading": {
-      title: "Primary School: Short Stories & Sentences",
-      image: "📚",
+    "DailyLife-2": {
+      title: "Daily Life: Ordering Food at a Restaurant",
+      image: "🍔",
       category: "Daily Life",
-      source: "Elementary ESL Curriculum",
+      source: "Cambridge English Standard",
       questions: [
         {
           id: 1,
-          prompt: 'Story excerpt: "Leo loves to paint pictures of blue oceans and green trees."',
+          prompt: "Which phrase is polite when asking the waiter for the bill?",
           options: [
-            { label: "Paint pictures", isCorrect: true },
-            { label: "Play soccer", isCorrect: false },
+            { label: "Give me the check right now.", isCorrect: false },
+            { label: "Could we have the bill, please?", isCorrect: true },
           ],
-          explanation: "Reading comprehension at this stage tracks direct statements in simple texts.",
+          explanation: "'Could we have the bill, please?' uses polite modal verbs appropriate for dining out.",
         },
       ],
     },
-    "Junior High-Reading": {
-      title: "Junior High: Cambridge B1 Reading",
+    "DailyLife-3": {
+      title: "Daily Life: Asking for Directions in a City",
+      image: "🗺️",
+      category: "Daily Life",
+      source: "ESL Daily Communication Guide",
+      questions: [
+        {
+          id: 1,
+          prompt: "Someone tells you: 'Turn right at the second traffic light.' What should you do?",
+          options: [
+            { label: "Turn right immediately at the first corner.", isCorrect: false },
+            { label: "Continue past the first traffic light and make a right at the second one.", isCorrect: true },
+          ],
+          explanation: "'Second traffic light' requires passing one intersection and turning at the next designated signal.",
+        },
+      ],
+    },
+    "SocialMedia-1": {
+      title: "Social Media: Netiquette & Comment Etiquette",
+      image: "💬",
+      category: "Social Media",
+      source: "Digital Communication Standard",
+      questions: [
+        {
+          id: 1,
+          prompt: "What does typing an entire message in ALL CAPS usually convey online?",
+          options: [
+            { label: "Shouting or extreme excitement", isCorrect: true },
+            { label: "A quiet, whispered comment", isCorrect: false },
+          ],
+          explanation: "In digital culture, writing in uppercase letters represents shouting.",
+        },
+      ],
+    },
+    "SocialMedia-2": {
+      title: "Social Media: Slang, Hashtags & Trends",
       image: "📱",
       category: "Social Media",
-      source: "Cambridge Assessment English (PET)",
+      source: "Modern Internet Lexicon",
       questions: [
         {
           id: 1,
-          prompt: 'Message from Stefan: "We\'re outside the cinema. Text if you\'re going to be late..."',
+          prompt: "What does the acronym 'TBH' stand for in a text message?",
           options: [
-            { label: "Let Stefan know if he is delayed", isCorrect: true },
-            { label: "Wait for Stefan inside the cinema", isCorrect: false },
+            { label: "To Be Honest", isCorrect: true },
+            { label: "Total Big House", isCorrect: false },
           ],
-          explanation: "PET Reading Part 1 tests functional messages and short notices.",
+          explanation: "'TBH' is a widely used internet slang abbreviation for 'To Be Honest'.",
         },
       ],
     },
-    "Senior High-Reading": {
-      title: "Senior High: B2 Discursive Reading",
-      image: "📰",
-      category: "Academic & Debate",
-      source: "Cambridge B2 First (FCE)",
+    "SocialMedia-3": {
+      title: "Social Media: Spotting Misinformation Online",
+      image: "🔍",
+      category: "Social Media",
+      source: "Media Literacy Curriculum",
       questions: [
         {
           id: 1,
-          prompt: 'Article excerpt: "Despite initial skepticism regarding remote learning..."',
+          prompt: "Which step is most reliable when encountering a sensational news headline on social media?",
           options: [
-            { label: "People doubted remote learning at first, but student independence grew.", isCorrect: true },
-            { label: "Remote learning failed completely.", isCorrect: false },
+            { label: "Share it instantly with all your friends", isCorrect: false },
+            { label: "Cross-check facts with reputable news outlets", isCorrect: true },
           ],
-          explanation: "FCE texts test advanced vocabulary like 'skepticism' (doubt) and paragraph-level implications.",
+          explanation: "Verification with trusted journalistic sources prevents the spread of fake news.",
         },
       ],
     },
-    "Advanced-Reading": {
-      title: "C1 Advanced: Reading & Use of English",
-      image: "📖",
-      category: "Academic & Debate",
-      source: "Cambridge Certificate in Advanced English (CAE)",
+    "JobInterviews-1": {
+      title: "Job Interviews: Professional Self-Introduction",
+      image: "💼",
+      category: "Job Interviews",
+      source: "Corporate Communication Handbook",
       questions: [
         {
           id: 1,
-          prompt: 'Part 1 Multiple Choice Cloze (Girls & Technology): "That is the _____ from Britain\'s foremost female engineers."',
+          prompt: "When asked 'Tell me about yourself,' what is the best strategy?",
           options: [
-            { label: "instruction", isCorrect: false },
-            { label: "advice", isCorrect: true },
+            { label: "Summarize your professional background, key achievements, and career goals.", isCorrect: true },
+            { label: "List your favorite childhood memories and hobbies.", isCorrect: false },
           ],
-          explanation: "Official Cambridge Assessment answer: 'advice' matches semantic precision requirements.",
+          explanation: "Interviewers look for a concise professional elevator pitch, not a life story.",
+        },
+      ],
+    },
+    "JobInterviews-2": {
+      title: "Job Interviews: Behavioral STAR Method Answers",
+      image: "⭐",
+      category: "Job Interviews",
+      source: "Recruitment Best Practices",
+      questions: [
+        {
+          id: 1,
+          prompt: "What does the letter 'A' stand for in the STAR interview technique?",
+          options: [
+            { label: "Action", isCorrect: true },
+            { label: "Ambition", isCorrect: false },
+          ],
+          explanation: "STAR stands for Situation, Task, Action, and Result.",
+        },
+      ],
+    },
+    "JobInterviews-3": {
+      title: "Job Interviews: Asking Smart Questions to Employers",
+      image: "🤝",
+      category: "Job Interviews",
+      source: "Professional Development Standard",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which question shows strong engagement at the end of an interview?",
+          options: [
+            { label: "How soon can I take vacation days?", isCorrect: false },
+            { label: "What does success look like in the first 90 days in this role?", isCorrect: true },
+          ],
+          explanation: "Inquiring about performance benchmarks demonstrates proactive dedication and alignment with team goals.",
+        },
+      ],
+    },
+    "Academic-1": {
+      title: "Academic & Debate: Structuring a Counter-Argument",
+      image: "⚖️",
+      category: "Academic & Debate",
+      source: "Cambridge Advanced English Standards",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which transitional phrase effectively introduces a concession before a counter-argument?",
+          options: [
+            { label: "Admittedly, online databases are vast; nevertheless, physical archives remain irreplaceable.", isCorrect: true },
+            { label: "And then everyone clapped.", isCorrect: false },
+          ],
+          explanation: "Concession markers like 'Admittedly... nevertheless' balance complex academic discussions.",
+        },
+      ],
+    },
+    "Academic-2": {
+      title: "Academic & Debate: Advanced Vocabulary & Collocations",
+      image: "📜",
+      category: "Academic & Debate",
+      source: "IELTS & CAE Academic Corpus",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which verb collocates correctly with 'research' when conducting a study?",
+          options: [
+            { label: "To make research", isCorrect: false },
+            { label: "To carry out research", isCorrect: true },
+          ],
+          explanation: "In academic English, researchers 'carry out' or 'conduct' research.",
+        },
+      ],
+    },
+    "Academic-3": {
+      title: "Academic & Debate: Formal Essay Register & Tone",
+      image: "🏛️",
+      category: "Academic & Debate",
+      source: "University Writing Center Guidelines",
+      questions: [
+        {
+          id: 1,
+          prompt: "Which sentence maintains the proper formal academic tone?",
+          options: [
+            { label: "Kids these days spend way too much time staring at glowing screens.", isCorrect: false },
+            { label: "Contemporary adolescents exhibit a pronounced reliance on digital screens.", isCorrect: true },
+          ],
+          explanation: "Academic writing avoids colloquial expressions ('kids', 'way too much') in favor of precise vocabulary.",
         },
       ],
     },
@@ -179,165 +255,350 @@ export default function Home() {
 
   const studyGuides: StudyMaterial[] = [
     {
-      id: "kindergarten-phonics",
-      title: "Kindergarten: Complete Phonics & Letter Sounds Guide",
-      level: "Kindergarten",
+      id: "dailylife-1",
+      title: "Daily Life: Essential Grocery & Supermarket Vocabulary",
+      level: "Beginner (A1)",
       category: "Daily Life",
-      summary: "Comprehensive framework for early childhood phonemic awareness, alphabet sounds, and blending rules.",
-      illustration: "🧸🧩✨",
+      summary: "Master everyday vocabulary for navigating supermarkets, reading labels, and making purchases.",
+      illustration: "🛒🍎🧀",
       accentColor: "bg-pink-50 border-pink-100 text-pink-600",
       subTopics: [
         {
-          title: "1. Phonemic Awareness",
-          subtitle: "Isolating individual sounds in spoken words before seeing print",
+          title: "1. Supermarket Aisles & Sections",
+          subtitle: "Locating food groups quickly",
           explanation: [
-            "Phonemic awareness is purely auditory. Before children learn to read letters, they must learn to hear individual sound units (phonemes) inside words.",
-            "For example, hearing that the word 'cat' starts with the /k/ sound, has a middle /æ/ sound, and ends with the /t/ sound."
+            "Supermarkets are organized into distinct departments: produce, dairy, bakery, and frozen foods.",
+            "Knowing these terms helps you find items without wandering."
           ],
-          examples: ["Say 'sun' without the /s/ sound -> 'un'", "Identify the beginning sound of 'Ball' -> /b/"]
+          examples: ["'Produce' = fresh fruits and vegetables", "'Dairy' = milk, cheese, and yogurt"]
         },
         {
-          title: "2. Synthetic Phonics Sequence",
-          subtitle: "Learning letter sounds systematically rather than alphabetically",
+          title: "2. Payment & Checkout Phrases",
+          subtitle: "Interacting with cashiers",
           explanation: [
-            "Instead of teaching A-B-C in order, synthetic phonics introduces high-frequency letters first so children can start building words immediately.",
-            "The standard first group of sounds taught is usually S, A, T, P, I, N."
+            "Learn how to respond to common checkout inquiries regarding payment methods and bags.",
+            "Always use polite expressions like 'Card, please' or 'Receipt, thank you'."
           ],
-          examples: ["Using S, A, T children can instantly decode words like 'sat', 'at', 'tap', and 'pat'."]
+          examples: ["'Would you like paper or plastic?'", "'Do you accept contactless payment?'"]
         }
       ]
     },
     {
-      id: "primary-grammar",
-      title: "Primary School: Elementary Grammar & Vocabulary Foundations",
-      level: "Primary School (A1-A2)",
+      id: "dailylife-2",
+      title: "Daily Life: Dining Out & Restaurant Etiquette",
+      level: "Elementary (A2)",
       category: "Daily Life",
-      summary: "Core structural rules, sentence patterns, and vocabulary sets for young elementary students.",
-      illustration: "🎨✏️🎒",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
+      summary: "Phrases and cultural norms for booking tables, reading menus, and paying the check.",
+      illustration: "🍽️🍷💬",
+      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
       subTopics: [
         {
-          title: "1. Basic Sentence Architecture (SVO)",
-          subtitle: "Mastering Subject-Verb-Object word order",
+          title: "1. Making Reservations",
+          subtitle: "Booking a table over the phone or online",
           explanation: [
-            "In English, simple sentences follow a strict order: Subject + Verb + Object.",
-            "This creates clear, direct communication for elementary writers."
+            "State your party size, preferred time, and any dietary restrictions clearly.",
+            "Use modal verbs like 'I would like to book...' for politeness."
           ],
-          examples: ["'The cat (Subject) eats (Verb) fish (Object).'", "'Maria plays soccer.'"]
+          examples: ["'I'd like a table for four at 7:30 PM, please.'"]
         },
         {
-          title: "2. Pronoun Case Agreement",
-          subtitle: "Subject vs. Object pronouns",
+          title: "2. Asking for Recommendations",
+          subtitle: "Consulting the server about house specialties",
           explanation: [
-            "Subject pronouns perform the action (I, you, he, she, it, we, they).",
-            "Object pronouns receive the action (me, you, him, her, it, us, them)."
+            "Ask the waiter for their personal favorite dish or the chef's specialty.",
+            "Inquire about ingredients if you have allergies."
           ],
-          examples: ["'She gave the book to him.'", "'They invited us to the party.'"]
+          examples: ["'What do you recommend on the menu today?'"]
         }
       ]
     },
     {
-      id: "juniorhigh-pet",
-      title: "Junior High: Cambridge B1 Preliminary (PET) Study Guide",
-      level: "Junior High (B1)",
+      id: "dailylife-3",
+      title: "Daily Life: Navigating Public Transport & City Travel",
+      level: "Elementary (A2)",
+      category: "Daily Life",
+      summary: "How to read transit maps, buy tickets, and ask for travel directions.",
+      illustration: "🚇🚌🗺️",
+      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
+      subTopics: [
+        {
+          title: "1. Buying Tickets & Passes",
+          subtitle: "Interacting with station ticket booths",
+          explanation: [
+            "Specify whether you need a one-way (single) ticket or a round-trip (return) ticket.",
+            "Check for day-pass discounts if you plan multiple journeys."
+          ],
+          examples: ["'A single ticket to downtown, please.'"]
+        },
+        {
+          title: "2. Asking for Clarification",
+          subtitle: "Making sure you are on the right route",
+          explanation: [
+            "Always double-check platform numbers and direction indicators with transit staff.",
+            "Use polite phrasing when interrupting station agents."
+          ],
+          examples: ["'Does this platform go toward the central station?'"]
+        }
+      ]
+    },
+    {
+      id: "socialmedia-1",
+      title: "Social Media: Netiquette & Digital Communication",
+      level: "Intermediate (B1)",
       category: "Social Media",
-      summary: "In-depth breakdown of intermediate grammar structures, functional text messages, and exam strategies.",
-      illustration: "🎧📱💡",
+      summary: "Understand the unwritten rules of online discourse, constructive commenting, and tone.",
+      illustration: "💬🌐✨",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       subTopics: [
         {
-          title: "1. Reading Part 1 (Signs & Notices)",
-          subtitle: "Analyzing short functional messages and public warnings",
+          title: "1. Tone and Textual Clarity",
+          subtitle: "Avoiding misunderstandings without facial cues",
           explanation: [
-            "Cambridge PET Reading Part 1 tests your ability to understand short notices, text messages, and signs.",
-            "Always distinguish between what a sign says versus what it implies or warns against."
+            "Because text lacks vocal tone, punctuation and emojis help convey emotion accurately.",
+            "Sarcasm can easily be misinterpreted online without clear context."
           ],
-          examples: ["'Staff Only' -> Customers are not allowed to enter this area."]
+          examples: ["Using emojis to clarify playful intent.", "Avoiding ALL CAPS to prevent sounding angry."]
         },
         {
-          title: "2. Writing Part 1 (Key Word Transformations)",
-          subtitle: "Rewriting sentences using a specific grammar target",
+          title: "2. Constructive vs. Toxic Engagement",
+          subtitle: "Handling disagreement respectfully",
           explanation: [
-            "You must rewrite a sentence so it means the exact same thing using a given keyword.",
-            "This heavily tests adjectives followed by fixed prepositions and passive voices."
+            "Engage with ideas rather than attacking individuals in comment sections.",
+            "Use phrases like 'From my perspective...' instead of definitive dismissals."
           ],
-          examples: ["'Niko really enjoys basketball.' -> 'Niko is very keen ON basketball.'"]
+          examples: ["'I see your point, though evidence suggests otherwise...'"]
         }
       ]
     },
     {
-      id: "seniorhigh-fce",
-      title: "Senior High: Cambridge B2 First (FCE) Essay & Cohesion Guide",
-      level: "Senior High (B2)",
+      id: "socialmedia-2",
+      title: "Social Media: Internet Slang, Acronyms & Trends",
+      level: "Intermediate (B1)",
+      category: "Social Media",
+      summary: "Decode modern internet terminology used across Twitter, Instagram, TikTok, and Reddit.",
+      illustration: "📱🔥🚀",
+      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
+      subTopics: [
+        {
+          title: "1. Common Digital Abbreviations",
+          subtitle: "Understanding text-speak and chat slang",
+          explanation: [
+            "Fast-paced messaging relies on shorthand expressions like IMHO, TL;DR, and ICYMI.",
+            "These streamline casual conversations among online communities."
+          ],
+          examples: ["'TL;DR' = Too Long; Didn't Read", "'IMHO' = In My Humble Opinion"]
+        },
+        {
+          title: "2. Viral Content Vocabulary",
+          subtitle: "Tracking online trends and algorithms",
+          explanation: [
+            "Learn terms like 'engagement', 'reach', 'algorithm', and 'going viral'.",
+            "Useful for discussing digital marketing and modern media trends."
+          ],
+          examples: ["'The video gained massive traction overnight.'"]
+        }
+      ]
+    },
+    {
+      id: "socialmedia-3",
+      title: "Social Media: Media Literacy & Spotting Fake News",
+      level: "Upper-Intermediate (B2)",
+      category: "Social Media",
+      summary: "Evaluate online claims, check sources, and develop critical thinking in digital feeds.",
+      illustration: "🔍📰🛡️",
+      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
+      subTopics: [
+        {
+          title: "1. Evaluating Source Credibility",
+          subtitle: "Checking author authority and institutional backing",
+          explanation: [
+            "Verify whether a publishing domain is verified and whether articles cite empirical evidence.",
+            "Beware of sensationalized headlines designed solely to provoke emotional clicks."
+          ],
+          examples: ["Cross-referencing claims with established journalistic archives."]
+        },
+        {
+          title: "2. Understanding Confirmation Bias",
+          subtitle: "Recognizing how algorithms shape your feed",
+          explanation: [
+            "Social algorithms feed users content that matches prior beliefs.",
+            "Actively seeking diverse viewpoints prevents ideological echo chambers."
+          ],
+          examples: ["Deliberately reading opposing editorials to gain balanced insight."]
+        }
+      ]
+    },
+    {
+      id: "jobinterviews-1",
+      title: "Job Interviews: Professional Self-Introduction Masterclass",
+      level: "Upper-Intermediate (B2)",
+      category: "Job Interviews",
+      summary: "Craft a compelling elevator pitch highlighting your professional history and career trajectory.",
+      illustration: "💼👔📈",
+      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
+      subTopics: [
+        {
+          title: "1. The 60-Second Pitch Structure",
+          subtitle: "Presenting past, present, and future in harmony",
+          explanation: [
+            "Begin with your current professional title and key years of experience.",
+            "Highlight a standout achievement before pivoting to why you want this specific role."
+          ],
+          examples: ["'With over four years in project management, I specialize in...'"]
+        },
+        {
+          title: "2. Aligning Skills with Company Needs",
+          subtitle: "Tailoring your introduction to the job description",
+          explanation: [
+            "Focus on transferable skills and accomplishments relevant to the hiring manager.",
+            "Avoid reciting your entire resume verbatim."
+          ],
+          examples: ["Connecting past optimization successes directly to the target company's goals."]
+        }
+      ]
+    },
+    {
+      id: "jobinterviews-2",
+      title: "Job Interviews: Behavioral Questions & The STAR Method",
+      level: "Upper-Intermediate (B2)",
+      category: "Job Interviews",
+      summary: "Structure compelling stories about past challenges using Situation, Task, Action, and Result.",
+      illustration: "⭐🏆🧠",
+      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
+      subTopics: [
+        {
+          title: "1. Structuring Your Narrative (STAR)",
+          subtitle: "Keeping answers concise and impactful",
+          explanation: [
+            "Situation & Task: Set the context and explain the challenge you faced.",
+            "Action & Result: Detail what specific steps you took and the measurable outcome."
+          ],
+          examples: ["'When our server crashed (Situation), I had to restore backups (Action), reducing downtime by 50% (Result).''"]
+        },
+        {
+          title: "2. Quantifying Achievements",
+          subtitle: "Using data points to prove effectiveness",
+          explanation: [
+            "Numbers provide concrete proof of your competence.",
+            "Use percentages, dollar amounts, or time saved whenever possible."
+          ],
+          examples: ["'Spearheaded a marketing campaign that boosted user retention by 25%.'"]
+        }
+      ]
+    },
+    {
+      id: "jobinterviews-3",
+      title: "Job Interviews: Closing Strong & Asking Smart Questions",
+      level: "Advanced (C1)",
+      category: "Job Interviews",
+      summary: "Turn the tables in an interview by asking insightful questions that demonstrate high-level business acumen.",
+      illustration: "🤝💡🎯",
+      accentColor: "bg-emerald-50 border-emerald-100 text-emerald-600",
+      subTopics: [
+        {
+          title: "1. Asking Strategic Questions",
+          subtitle: "Moving beyond basic salary and benefit inquiries",
+          explanation: [
+            "Ask about upcoming product launches, team bottlenecks, or company culture challenges.",
+            "This shows you are already thinking like an integrated team member."
+          ],
+          examples: ["'What is the biggest operational hurdle the team expects to face this quarter?'"]
+        },
+        {
+          title: "2. Professional Closing Statements",
+          subtitle: "Reiterating enthusiasm and outlining next steps",
+          explanation: [
+            "Conclude by reaffirming your unique fit for the position and asking about hiring timelines.",
+            "Send a thoughtful thank-you note within 24 hours."
+          ],
+          examples: ["'Thank you for your time today; I am very excited about contributing to this initiative.'"]
+        }
+      ]
+    },
+    {
+      id: "academic-1",
+      title: "Academic & Debate: Counter-Arguments & Concession Clauses",
+      level: "Advanced (C1)",
       category: "Academic & Debate",
-      summary: "Advanced coherence strategies, discursive writing templates, and formal upper-intermediate structures.",
-      illustration: "📊📝🎯",
+      summary: "Master sophisticated transitional structures to dismantle opposing views with rhetorical precision.",
+      illustration: "⚖️🏛️📝",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       subTopics: [
         {
-          title: "1. Discursive Essay Structure",
-          subtitle: "Crafting balanced arguments and clear thesis statements",
+          title: "1. Concession and Refutation",
+          subtitle: "Acknowledging validity while defending your thesis",
           explanation: [
-            "A B2 First essay requires an introduction stating your stance, two well-argued body paragraphs, and a conclusive summary.",
-            "Avoid overly emotional language; maintain a neutral, formal academic tone."
+            "Use advanced conjunctions like 'Notwithstanding', 'Albeit', and 'While it is tempting to argue...' to grant minor points to opponents before presenting your core argument.",
+            "Demonstrates balanced intellectual rigor."
           ],
-          examples: ["Introduction thesis: 'While online learning offers flexibility, social interaction remains vital.'"]
+          examples: ["'Notwithstanding potential budgetary constraints, the long-term yield justifies the expenditure.'"]
         },
         {
-          title: "2. Sophisticated Cohesive Devices",
-          subtitle: "Moving beyond basic linkers like 'and' and 'but'",
+          title: "2. Nuanced Phrasing in Formal Debate",
+          subtitle: "Elevating rhetorical impact",
           explanation: [
-            "Upper-intermediate writing requires transition markers that signal contrast, concession, or addition smoothly.",
-            "Using words like 'furthermore', 'nevertheless', and 'consequently' elevates your score."
+            "Replace absolute words like 'always' or 'never' with academic qualifiers like 'predominantly', 'arguably', or 'to a large extent'.",
+            "Maintains scientific and scholarly accuracy."
           ],
-          examples: ["'The project was costly; nevertheless, the benefits outweighed the expenses.'"]
+          examples: ["'The data arguably points toward a correlation rather than direct causation.'"]
         }
       ]
     },
     {
-      id: "advanced-cae",
-      title: "C1 Advanced: CAE Use of English & Discourse Masterclass",
+      id: "academic-2",
+      title: "Academic & Debate: Advanced Collocations & Lexical Resource",
       level: "C1 Advanced",
       category: "Academic & Debate",
-      summary: "Rigorous academic frameworks, collocation rules, and advanced word-formation mastery for CAE success.",
-      illustration: "🏛️📜🎓",
-      accentColor: "bg-amber-50 border-amber-100 text-amber-600",
+      summary: "Enhance your academic writing score by mastering high-level verb-noun and adjective-noun pairings.",
+      illustration: "📜✍️🔬",
+      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       subTopics: [
         {
-          title: "1. Part 1 (Multiple-Choice Cloze)",
-          subtitle: "Analyzing subtle semantic differences, fixed collocations, idiom constraints, and phrasal verb valency.",
+          title: "1. Academic Verb Collocations",
+          subtitle: "Choosing precise verbs for scholarly prose",
           explanation: [
-            "Words in options often look similar in meaning, but only one collocates naturally with the surrounding context.",
-            "Mastering dependent prepositions and fixed phrasal verb patterns is essential here."
+            "Avoid generic verbs like 'show' or 'make' in favor of 'elucidate', 'substantiate', 'spearhead', or 'delineate'.",
+            "Elevates your register to match international journal standards."
           ],
-          examples: ["'That is the advice from Britain's foremost female engineers.'"]
+          examples: ["'Recent findings substantiate the hypothesis regarding...'"]
         },
         {
-          title: "2. Part 3 (Word Formation)",
-          subtitle: "Mastering complex root transformations, prefix modifications (un-, dis-, mis-), and plural noun agreements.",
+          title: "2. Complex Noun Phrases",
+          subtitle: "Packing dense information into single subject clauses",
           explanation: [
-            "CAE Part 3 requires you to take a root word and transform it into a noun, adjective, adverb, or verb depending on the sentence gap.",
-            "You must also watch out for negative prefixes and plural noun endings."
+            "Academic English favors noun-heavy structures over long verb chains.",
+            "Transforms wordy sentences into crisp, professional summaries."
           ],
-          examples: ["Root: FOUND -> Noun person: FOUNDER | Noun abstract: FOUNDATION"]
+          examples: ["'The rapid acceleration of technological integration...' instead of 'Technology is integrating quickly and...'"]
+        }
+      ]
+    },
+    {
+      id: "academic-3",
+      title: "Academic & Debate: Formal Essay Register & Stylistic Control",
+      level: "C1 Advanced",
+      category: "Academic & Debate",
+      summary: "Eliminate informal bias, colloquialisms, and emotional language to maintain immaculate academic tone.",
+      illustration: "🎓📊📖",
+      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
+      subTopics: [
+        {
+          title: "1. Impersonal Passive Voice",
+          subtitle: "Removing subjective bias from research reporting",
+          explanation: [
+            "Shift focus from personal pronouns ('I discovered') to objective observations ('It was observed that...').",
+            "Maintains scholarly distance and neutrality."
+          ],
+          examples: ["'Experiments were conducted under controlled thermal conditions.'"]
         },
         {
-          title: "3. Advanced Syntax & Inversion",
-          subtitle: "Utilizing negative adverbial inversions for rhetorical impact (e.g., 'Not only was the experiment successful...')",
+          title: "2. Avoiding Contractions and Clichés",
+          subtitle: "Maintaining strict formal guidelines",
           explanation: [
-            "For dramatic or formal emphasis, negative expressions can be placed at the start of a sentence, forcing the auxiliary verb before the subject.",
-            "Formula: Negative Adverb + Auxiliary Verb + Subject + Main Verb."
+            "Always write out words fully ('do not' instead of 'don't').",
+            "Refrain from using conversational metaphors or slang idioms in research papers."
           ],
-          examples: ["'Not only was the experiment successful, but it was also completed under budget.'"]
-        },
-        {
-          title: "4. Discourse Management",
-          subtitle: "Structuring spoken and written arguments with absolute grammatical precision and nuanced stylistic control.",
-          explanation: [
-            "Discourse management evaluates how well your ideas hang together logically across sentences and paragraphs.",
-            "It requires balancing complex grammatical structures with an appropriate formal tone."
-          ],
-          examples: ["Using advanced concession clauses like 'Notwithstanding the initial setbacks...'"]
+          examples: ["'The results are inconclusive' rather than 'We are back to square one.'"]
         }
       ]
     }
@@ -570,57 +831,54 @@ export default function Home() {
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           {activeTab === "quizzes"
-            ? "Structured school tiers from Phonics foundations to C1 Advanced mastery."
-            : "Explore core grammar rules, complete phonics breakdowns, and verified exam study guides."}
+            ? "Over 12+ fully interactive modules covering Daily Life, Social Media, Job Interviews, and Academic & Debate."
+            : "Comprehensive study guides with fully accessible deep-dive learning breakdowns for every category."}
         </p>
 
-        {activeTab === "quizzes" && (
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {topics.map((topic) => (
-              <button
-                key={topic}
-                onClick={() => setSelectedTopic(topic)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
-                  selectedTopic === topic
-                    ? "bg-gray-900 text-white shadow-md"
-                    : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
-                }`}
-              >
-                {topic}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {topics.map((topic) => (
+            <button
+              key={topic}
+              onClick={() => setSelectedTopic(topic)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition cursor-pointer ${
+                selectedTopic === topic
+                  ? "bg-gray-900 text-white shadow-md"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+              }`}
+            >
+              {topic}
+            </button>
+          ))}
+        </div>
       </section>
 
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          {quizCards.map((card) => {
-            const moduleData = quizDataBank[card.key];
-            const isMatch = selectedTopic === "All" || moduleData.category === selectedTopic;
+          {Object.entries(quizDataBank).map(([key, mod]) => {
+            const isMatch = selectedTopic === "All" || mod.category === selectedTopic;
 
             return (
               <div
-                key={card.key}
-                className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition ${
-                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30"
+                key={key}
+                className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition flex flex-col justify-between ${
+                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30 pointer-events-none"
                 }`}
               >
-                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4 ${card.accent}`}>
-                  {card.badge}
-                </span>
-                <h3 className="text-xl font-medium text-gray-800 mb-2">{card.title}</h3>
-                <p className="text-sm text-gray-500 mb-6">{card.description}</p>
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full">
+                      {mod.category}
+                    </span>
+                    <span className="text-2xl">{mod.image}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{mod.title}</h3>
+                  <p className="text-xs text-gray-500 mb-6 font-medium">Source: {mod.source}</p>
+                </div>
                 <button
-                  onClick={() => isMatch && setActiveModuleKey(card.key)}
-                  disabled={!isMatch}
-                  className={`w-full p-2 rounded-lg border border-gray-200 bg-gray-50 transition font-medium text-xs ${
-                    isMatch
-                      ? "hover:bg-[#55b1d4] hover:text-white cursor-pointer"
-                      : "cursor-not-allowed"
-                  }`}
+                  onClick={() => isMatch && setActiveModuleKey(key)}
+                  className="w-full py-3 px-4 rounded-xl border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-semibold text-xs cursor-pointer"
                 >
-                  {card.buttonText} ({moduleData.questions.length})
+                  Start Quiz →
                 </button>
               </div>
             );
