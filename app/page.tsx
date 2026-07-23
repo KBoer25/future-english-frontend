@@ -37,7 +37,7 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Comprehensive Quizzes across all school tiers
+  // Full rich quiz question banks for every tier
   const materials: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
@@ -54,6 +54,26 @@ export default function Home() {
             { label: "Buh-buh...", isCorrect: false },
           ],
           explanation: "In early phonics, consonants like 'S' represent continuous phonemes making a hissing sound.",
+        },
+        {
+          id: 2,
+          prompt: "Which word starts with the short 'A' sound (/æ/), like in 'Apple'?",
+          options: [
+            { label: "Cat", isCorrect: true },
+            { label: "Dog", isCorrect: false },
+            { label: "Sun", isCorrect: false },
+          ],
+          explanation: "Short vowel sounds (like /æ/ in cat) are foundational building blocks for decoding CVC words.",
+        },
+        {
+          id: 3,
+          prompt: "Listen to the word 'M-O-P'. What is the middle vowel sound?",
+          options: [
+            { label: "Short 'O' (/ɒ/)", isCorrect: true },
+            { label: "Short 'I' (/ɪ/)", isCorrect: false },
+            { label: "Long 'E' (/i:/)", isCorrect: false },
+          ],
+          explanation: "The middle sound in M-O-P is the short 'O' sound.",
         },
       ],
     },
@@ -72,6 +92,15 @@ export default function Home() {
           ],
           explanation: "Reading comprehension at this stage tracks direct statements in simple texts.",
         },
+        {
+          id: 2,
+          prompt: 'Story excerpt: "Every morning, Mia walks her brown dog, Max, in the sunny park."',
+          options: [
+            { label: "Mia walks her dog in the park", isCorrect: true },
+            { label: "Mia rides a bike at night", isCorrect: false },
+          ],
+          explanation: "The text directly states Mia walks Max in the park every morning.",
+        },
       ],
     },
     "Junior High-Reading": {
@@ -88,6 +117,15 @@ export default function Home() {
             { label: "Wait for Stefan inside the cinema", isCorrect: false },
           ],
           explanation: "PET Reading Part 1 tests functional messages and short notices.",
+        },
+        {
+          id: 2,
+          prompt: 'Library Notice: "Books must be returned before 5 PM on Friday to avoid fines."',
+          options: [
+            { label: "Return books by Friday afternoon to avoid penalties", isCorrect: true },
+            { label: "Books can be kept over the weekend for free", isCorrect: false },
+          ],
+          explanation: "The notice explicitly states fines apply if books are late past Friday 5 PM.",
         },
       ],
     },
@@ -106,6 +144,15 @@ export default function Home() {
           ],
           explanation: "FCE texts test advanced vocabulary like 'skepticism' (doubt) and paragraph-level implications.",
         },
+        {
+          id: 2,
+          prompt: 'Article excerpt: "Urban green spaces play a pivotal role in mitigating city heat island effects."',
+          options: [
+            { label: "Parks and trees help reduce high urban temperatures.", isCorrect: true },
+            { label: "City concrete absorbs less heat than soil.", isCorrect: false },
+          ],
+          explanation: "'Mitigating city heat' refers to reducing high temperatures in urban areas.",
+        },
       ],
     },
     "Advanced-Reading": {
@@ -123,11 +170,19 @@ export default function Home() {
           ],
           explanation: "Official Cambridge Assessment answer: 'advice' matches semantic precision requirements.",
         },
+        {
+          id: 2,
+          prompt: 'Part 3 Word Formation (Freud and Dreams): "Sigmund Freud is regarded as the _____ (FOUND) of psychoanalysis."',
+          options: [
+            { label: "FOUNDER", isCorrect: true },
+            { label: "FOUNDATION", isCorrect: false },
+          ],
+          explanation: "CAE Part 3 requires correct suffix/affix derivation (Root: FOUND ➔ FOUNDER).",
+        },
       ],
     },
   };
 
-  // Visual Study Guides with Graphic Emojis & Custom Color Accents
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
@@ -209,7 +264,7 @@ export default function Home() {
   const currentModule = activeModuleKey ? materials[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
-  // ================= 1. FOCUSED QUIZ MODULE PAGE =================
+  // FOCUSED QUIZ MODULE PAGE
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -293,7 +348,7 @@ export default function Home() {
     );
   }
 
-  // ================= 2. FOCUSED STUDY MATERIAL READING PAGE =================
+  // FOCUSED STUDY MATERIAL READING PAGE
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -334,7 +389,7 @@ export default function Home() {
     );
   }
 
-  // ================= 3. MAIN DASHBOARD HOMEPAGE =================
+  // MAIN DASHBOARD HOMEPAGE
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -528,7 +583,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: VISUAL STUDY MATERIALS CARDS WITH ILLUSTRATIONS */}
+      {/* TAB 2: STUDY MATERIALS INDEX */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => (
