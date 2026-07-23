@@ -19,6 +19,7 @@ type ModuleData = {
 
 type StudyMaterial = {
   id: string;
+  quizKey: string;
   title: string;
   level: string;
   category: string;
@@ -37,55 +38,7 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Quiz Modules mapped with specific categories
-  const materials: Record<string, { key: string; levelName: string; category: string; badgeColor: string; title: string; desc: string; skill: string }> = {
-    "Kindergarten-Phonics": {
-      key: "Kindergarten-Phonics",
-      levelName: "KINDERGARTEN",
-      category: "Daily Life",
-      badgeColor: "bg-[#E95599]/10 text-[#E95599]",
-      title: "Phonics & Sounds",
-      desc: "Focus on phonics, letter sounds, and early phonological awareness.",
-      skill: "Phonics",
-    },
-    "Primary-Reading": {
-      key: "Primary-Reading",
-      levelName: "PRIMARY SCHOOL",
-      category: "Daily Life",
-      badgeColor: "bg-[#22c55e]/10 text-[#22c55e]",
-      title: "Elementary Foundations",
-      desc: "Simple sentences, basic reading comprehension, and vocabulary.",
-      skill: "Reading",
-    },
-    "Junior High-Reading": {
-      key: "Junior High-Reading",
-      levelName: "JUNIOR HIGH (B1)",
-      category: "Social Media",
-      badgeColor: "bg-[#55b1d4]/10 text-[#55b1d4]",
-      title: "Cambridge B1 PET",
-      desc: "Intermediate grammar, messaging texts, and key-word transformations.",
-      skill: "Reading",
-    },
-    "Senior High-Reading": {
-      key: "Senior High-Reading",
-      levelName: "SENIOR HIGH (B2)",
-      category: "Academic & Debate",
-      badgeColor: "bg-[#a855f7]/10 text-[#a855f7]",
-      title: "Cambridge B2 First",
-      desc: "Discursive reading articles, essay transitions, and formal cohesion.",
-      skill: "Reading",
-    },
-    "Advanced-Reading": {
-      key: "Advanced-Reading",
-      levelName: "C1 ADVANCED (CAE)",
-      category: "Academic & Debate",
-      badgeColor: "bg-[#f2b705]/10 text-[#f2b705]",
-      title: "Cambridge C1 CAE",
-      desc: "Advanced multiple choice cloze, word formation, and listening analysis.",
-      skill: "Reading",
-    },
-  };
-
+  // Full quiz banks
   const quizDataBank: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
@@ -185,9 +138,11 @@ export default function Home() {
     },
   };
 
+  // Complete Study Materials with Linked Quiz Keys
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
+      quizKey: "Kindergarten-Phonics",
       title: "Kindergarten: Phonics & Letter Sounds Curriculum",
       level: "Kindergarten",
       category: "Daily Life",
@@ -197,11 +152,13 @@ export default function Home() {
       content: [
         "Phonemic Awareness: The ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before seeing print.",
         "Synthetic Phonics Sequence: Introducing single letter sounds systematically rather than alphabetically so children can blend simple words immediately.",
-        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat)."
+        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat).",
+        "Multisensory Practice: Tracing letter shapes in sand or air while producing the precise phonetic sound."
       ]
     },
     {
       id: "primary-grammar",
+      quizKey: "Primary-Reading",
       title: "Primary School: Elementary Grammar & Sentence Structures",
       level: "Primary School (A1-A2)",
       category: "Daily Life",
@@ -210,11 +167,13 @@ export default function Home() {
       accentColor: "bg-green-50 border-green-100 text-green-600",
       content: [
         "Basic Sentence Architecture: Standard Subject-Verb-Object (SVO) word order in declarative sentences.",
-        "Pronoun Case Agreement: Correct usage of subject pronouns vs. object pronouns."
+        "Pronoun Case Agreement: Correct usage of subject pronouns (I, you, he, she, it) vs. object pronouns (me, him, her).",
+        "Simple Tense Consistency: Practicing simple present routines and simple past actions with regular verbs."
       ]
     },
     {
       id: "juniorhigh-pet",
+      quizKey: "Junior High-Reading",
       title: "Junior High: Cambridge B1 PET Exam Strategies",
       level: "Junior High (B1)",
       category: "Social Media",
@@ -223,11 +182,13 @@ export default function Home() {
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       content: [
         "Reading Part 1: Always analyze short notices, text messages, and signs for safety warnings or explicit instructions.",
-        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility."
+        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility (e.g., adjectives followed by specific prepositions like 'keen on').",
+        "Listening Part 2: Read questions ahead of time to anticipate specific constraints like names, places, or numbers."
       ]
     },
     {
       id: "seniorhigh-fce",
+      quizKey: "Senior High-Reading",
       title: "Senior High: Cambridge B2 First Cohesion & Essay Writing",
       level: "Senior High (B2)",
       category: "Academic & Debate",
@@ -235,12 +196,14 @@ export default function Home() {
       illustration: "📊📝🎯",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       content: [
-        "Discursive Paragraphing: Organizing essays with a clear thesis statement and balanced arguments.",
-        "Cohesive Devices: Sophisticated transitions (furthermore, consequently, nevertheless)."
+        "Discursive Paragraphing: Organizing essays with a clear thesis statement, balanced opposing arguments, and a definitive conclusion.",
+        "Cohesive Devices: Moving beyond basic linkers (and, but) to sophisticated transitions (furthermore, consequently, nevertheless).",
+        "Lexical Precision: Avoiding repetitive vocabulary by utilizing precise synonyms and thematic word sets."
       ]
     },
     {
       id: "advanced-cae",
+      quizKey: "Advanced-Reading",
       title: "C1 Advanced: CAE Use of English & Discourse Mastery",
       level: "C1 Advanced",
       category: "Academic & Debate",
@@ -248,8 +211,9 @@ export default function Home() {
       illustration: "🏛️📜🎓",
       accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       content: [
-        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, and phrasal verbs.",
-        "Part 3 (Word Formation): Demands mastery over prefixes and internal root changes."
+        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, complementation, and phrasal verbs.",
+        "Part 3 (Word Formation): Demands mastery over prefixes (un-, dis-, mis-), internal vowel changes, and compound word structures.",
+        "Discourse Management: Producing extended, coherent stretches of language with sophisticated control of grammatical structures."
       ]
     }
   ];
@@ -261,7 +225,7 @@ export default function Home() {
   const currentModule = activeModuleKey ? quizDataBank[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
-  // FOCUSED QUIZ MODULE PAGE
+  // ================= 1. FOCUSED QUIZ MODULE PAGE =================
   if (currentModule) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -345,7 +309,7 @@ export default function Home() {
     );
   }
 
-  // FOCUSED STUDY MATERIAL READING PAGE
+  // ================= 2. FOCUSED STUDY MATERIAL READING PAGE WITH "GET STARTED" BUTTON =================
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -370,7 +334,7 @@ export default function Home() {
             {currentStudyGuide.summary}
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-4 mb-10">
             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Curriculum Breakdown</h3>
             {currentStudyGuide.content.map((section, idx) => (
               <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
@@ -381,12 +345,25 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Action Button to Jump to Practice Quiz */}
+          <div className="pt-6 border-t border-gray-100 text-center">
+            <button
+              onClick={() => {
+                setActiveStudyId(null);
+                setActiveModuleKey(currentStudyGuide.quizKey);
+              }}
+              className="bg-[#f2b705] hover:bg-[#e0a804] text-white text-base font-bold py-4 px-8 rounded-2xl shadow-md transition cursor-pointer w-full md:w-auto"
+            >
+              🚀 Let's Get Started (Take Practice Quiz)
+            </button>
+          </div>
         </div>
       </main>
     );
   }
 
-  // MAIN DASHBOARD HOMEPAGE
+  // ================= 3. MAIN DASHBOARD HOMEPAGE =================
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
@@ -445,41 +422,87 @@ export default function Home() {
         )}
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES GRID WITH CATEGORY FILTERING */}
+      {/* TAB 1: PRACTICE QUIZZES GRID */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          {Object.values(materials).map((mod) => {
-            const isMatch = selectedTopic === "All" || mod.category === selectedTopic;
-            const qCount = quizDataBank[mod.key]?.questions.length || 0;
+          {/* Kindergarten */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#E95599]/10 text-[#E95599] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              KINDERGARTEN
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Phonics & Sounds</h3>
+            <p className="text-sm text-gray-500 mb-6">Focus on phonics, letter sounds, and early phonological awareness.</p>
+            <button
+              onClick={() => setActiveModuleKey("Kindergarten-Phonics")}
+              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#E95599] hover:text-white transition font-medium text-xs cursor-pointer"
+            >
+              Phonics ({quizDataBank["Kindergarten-Phonics"].questions.length})
+            </button>
+          </div>
 
-            return (
-              <div
-                key={mod.key}
-                className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition ${
-                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30 pointer-events-none"
-                }`}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${mod.badgeColor}`}>
-                    {mod.levelName}
-                  </span>
-                  <span className="text-xs text-gray-400 font-medium">{mod.category}</span>
-                </div>
-                <h3 className="text-xl font-medium text-gray-800 mb-2">{mod.title}</h3>
-                <p className="text-sm text-gray-500 mb-6">{mod.desc}</p>
-                <button
-                  onClick={() => setActiveModuleKey(mod.key)}
-                  className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-medium text-xs cursor-pointer"
-                >
-                  {mod.skill} ({qCount})
-                </button>
-              </div>
-            );
-          })}
+          {/* Primary School */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              PRIMARY SCHOOL
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Elementary Foundations</h3>
+            <p className="text-sm text-gray-500 mb-6">Simple sentences, basic reading comprehension, and vocabulary.</p>
+            <button
+              onClick={() => setActiveModuleKey("Primary-Reading")}
+              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#22c55e] hover:text-white transition font-medium text-xs cursor-pointer"
+            >
+              Reading ({quizDataBank["Primary-Reading"].questions.length})
+            </button>
+          </div>
+
+          {/* Junior High */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              JUNIOR HIGH (B1)
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 PET</h3>
+            <p className="text-sm text-gray-500 mb-6">Intermediate grammar, messaging texts, and key-word transformations.</p>
+            <button
+              onClick={() => setActiveModuleKey("Junior High-Reading")}
+              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-medium text-xs cursor-pointer"
+            >
+              Reading ({quizDataBank["Junior High-Reading"].questions.length})
+            </button>
+          </div>
+
+          {/* Senior High */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#a855f7]/10 text-[#a855f7] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              SENIOR HIGH (B2)
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B2 First</h3>
+            <p className="text-sm text-gray-500 mb-6">Discursive reading articles, essay transitions, and formal cohesion.</p>
+            <button
+              onClick={() => setActiveModuleKey("Senior High-Reading")}
+              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#a855f7] hover:text-white transition font-medium text-xs cursor-pointer"
+            >
+              Reading ({quizDataBank["Senior High-Reading"].questions.length})
+            </button>
+          </div>
+
+          {/* Advanced */}
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+            <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              C1 ADVANCED (CAE)
+            </span>
+            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
+            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis.</p>
+            <button
+              onClick={() => setActiveModuleKey("Advanced-Reading")}
+              className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#f2b705] hover:text-white transition font-medium text-xs cursor-pointer"
+            >
+              Reading ({quizDataBank["Advanced-Reading"].questions.length})
+            </button>
+          </div>
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS */}
+      {/* TAB 2: STUDY MATERIALS INDEX */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => {
@@ -490,7 +513,7 @@ export default function Home() {
                 key={guide.id}
                 onClick={() => isMatch && setActiveStudyId(guide.id)}
                 className={`bg-white rounded-3xl border border-gray-200 shadow-sm transition overflow-hidden group flex flex-col md:flex-row items-center ${
-                  isMatch ? "opacity-150 hover:border-[#55b1d4] hover:shadow-md cursor-pointer" : "opacity-30 pointer-events-none"
+                  isMatch ? "opacity-100 hover:border-[#55b1d4] hover:shadow-md cursor-pointer" : "opacity-30 pointer-events-none"
                 }`}
               >
                 <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
@@ -502,7 +525,7 @@ export default function Home() {
                       {guide.level}
                     </span>
                     <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                      Read Guide →
+                      Read Guide & Get Started →
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
