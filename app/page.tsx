@@ -37,8 +37,56 @@ export default function Home() {
 
   const topics = ["All", "Daily Life", "Social Media", "Job Interviews", "Academic & Debate"];
 
-  // Full rich quiz question banks for every tier
-  const materials: Record<string, ModuleData> = {
+  // Quiz Modules mapped with specific categories
+  const materials: Record<string, { key: string; levelName: string; category: string; badgeColor: string; title: string; desc: string; skill: string }> = {
+    "Kindergarten-Phonics": {
+      key: "Kindergarten-Phonics",
+      levelName: "KINDERGARTEN",
+      category: "Daily Life",
+      badgeColor: "bg-[#E95599]/10 text-[#E95599]",
+      title: "Phonics & Sounds",
+      desc: "Focus on phonics, letter sounds, and early phonological awareness.",
+      skill: "Phonics",
+    },
+    "Primary-Reading": {
+      key: "Primary-Reading",
+      levelName: "PRIMARY SCHOOL",
+      category: "Daily Life",
+      badgeColor: "bg-[#22c55e]/10 text-[#22c55e]",
+      title: "Elementary Foundations",
+      desc: "Simple sentences, basic reading comprehension, and vocabulary.",
+      skill: "Reading",
+    },
+    "Junior High-Reading": {
+      key: "Junior High-Reading",
+      levelName: "JUNIOR HIGH (B1)",
+      category: "Social Media",
+      badgeColor: "bg-[#55b1d4]/10 text-[#55b1d4]",
+      title: "Cambridge B1 PET",
+      desc: "Intermediate grammar, messaging texts, and key-word transformations.",
+      skill: "Reading",
+    },
+    "Senior High-Reading": {
+      key: "Senior High-Reading",
+      levelName: "SENIOR HIGH (B2)",
+      category: "Academic & Debate",
+      badgeColor: "bg-[#a855f7]/10 text-[#a855f7]",
+      title: "Cambridge B2 First",
+      desc: "Discursive reading articles, essay transitions, and formal cohesion.",
+      skill: "Reading",
+    },
+    "Advanced-Reading": {
+      key: "Advanced-Reading",
+      levelName: "C1 ADVANCED (CAE)",
+      category: "Academic & Debate",
+      badgeColor: "bg-[#f2b705]/10 text-[#f2b705]",
+      title: "Cambridge C1 CAE",
+      desc: "Advanced multiple choice cloze, word formation, and listening analysis.",
+      skill: "Reading",
+    },
+  };
+
+  const quizDataBank: Record<string, ModuleData> = {
     "Kindergarten-Phonics": {
       title: "Kindergarten: Letter Sounds & Phonics",
       image: "🔤",
@@ -65,16 +113,6 @@ export default function Home() {
           ],
           explanation: "Short vowel sounds (like /æ/ in cat) are foundational building blocks for decoding CVC words.",
         },
-        {
-          id: 3,
-          prompt: "Listen to the word 'M-O-P'. What is the middle vowel sound?",
-          options: [
-            { label: "Short 'O' (/ɒ/)", isCorrect: true },
-            { label: "Short 'I' (/ɪ/)", isCorrect: false },
-            { label: "Long 'E' (/i:/)", isCorrect: false },
-          ],
-          explanation: "The middle sound in M-O-P is the short 'O' sound.",
-        },
       ],
     },
     "Primary-Reading": {
@@ -91,15 +129,6 @@ export default function Home() {
             { label: "Play soccer", isCorrect: false },
           ],
           explanation: "Reading comprehension at this stage tracks direct statements in simple texts.",
-        },
-        {
-          id: 2,
-          prompt: 'Story excerpt: "Every morning, Mia walks her brown dog, Max, in the sunny park."',
-          options: [
-            { label: "Mia walks her dog in the park", isCorrect: true },
-            { label: "Mia rides a bike at night", isCorrect: false },
-          ],
-          explanation: "The text directly states Mia walks Max in the park every morning.",
         },
       ],
     },
@@ -118,15 +147,6 @@ export default function Home() {
           ],
           explanation: "PET Reading Part 1 tests functional messages and short notices.",
         },
-        {
-          id: 2,
-          prompt: 'Library Notice: "Books must be returned before 5 PM on Friday to avoid fines."',
-          options: [
-            { label: "Return books by Friday afternoon to avoid penalties", isCorrect: true },
-            { label: "Books can be kept over the weekend for free", isCorrect: false },
-          ],
-          explanation: "The notice explicitly states fines apply if books are late past Friday 5 PM.",
-        },
       ],
     },
     "Senior High-Reading": {
@@ -143,15 +163,6 @@ export default function Home() {
             { label: "Remote learning failed completely.", isCorrect: false },
           ],
           explanation: "FCE texts test advanced vocabulary like 'skepticism' (doubt) and paragraph-level implications.",
-        },
-        {
-          id: 2,
-          prompt: 'Article excerpt: "Urban green spaces play a pivotal role in mitigating city heat island effects."',
-          options: [
-            { label: "Parks and trees help reduce high urban temperatures.", isCorrect: true },
-            { label: "City concrete absorbs less heat than soil.", isCorrect: false },
-          ],
-          explanation: "'Mitigating city heat' refers to reducing high temperatures in urban areas.",
         },
       ],
     },
@@ -170,15 +181,6 @@ export default function Home() {
           ],
           explanation: "Official Cambridge Assessment answer: 'advice' matches semantic precision requirements.",
         },
-        {
-          id: 2,
-          prompt: 'Part 3 Word Formation (Freud and Dreams): "Sigmund Freud is regarded as the _____ (FOUND) of psychoanalysis."',
-          options: [
-            { label: "FOUNDER", isCorrect: true },
-            { label: "FOUNDATION", isCorrect: false },
-          ],
-          explanation: "CAE Part 3 requires correct suffix/affix derivation (Root: FOUND ➔ FOUNDER).",
-        },
       ],
     },
   };
@@ -195,8 +197,7 @@ export default function Home() {
       content: [
         "Phonemic Awareness: The ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before seeing print.",
         "Synthetic Phonics Sequence: Introducing single letter sounds systematically rather than alphabetically so children can blend simple words immediately.",
-        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat).",
-        "Multisensory Practice: Tracing letter shapes in sand or air while producing the precise phonetic sound."
+        "CVC Blending: Connecting consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat)."
       ]
     },
     {
@@ -209,8 +210,7 @@ export default function Home() {
       accentColor: "bg-green-50 border-green-100 text-green-600",
       content: [
         "Basic Sentence Architecture: Standard Subject-Verb-Object (SVO) word order in declarative sentences.",
-        "Pronoun Case Agreement: Correct usage of subject pronouns (I, you, he, she, it, we, they) vs. object pronouns (me, him, her, us, them).",
-        "Simple Tense Consistency: Practicing simple present routines and simple past actions with regular/irregular verbs."
+        "Pronoun Case Agreement: Correct usage of subject pronouns vs. object pronouns."
       ]
     },
     {
@@ -223,8 +223,7 @@ export default function Home() {
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
       content: [
         "Reading Part 1: Always analyze short notices, text messages, and signs for safety warnings or explicit instructions.",
-        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility (e.g., adjectives followed by specific prepositions like 'keen on').",
-        "Listening Part 2: Read questions ahead of time to anticipate specific constraints like names, places, or numbers."
+        "Writing Part 1 (Transformations): Focus closely on grammatical compatibility."
       ]
     },
     {
@@ -236,9 +235,8 @@ export default function Home() {
       illustration: "📊📝🎯",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
       content: [
-        "Discursive Paragraphing: Organizing essays with a clear thesis statement, balanced opposing arguments, and a definitive conclusion.",
-        "Cohesive Devices: Moving beyond basic linkers (and, but) to sophisticated transitions (furthermore, consequently, nevertheless).",
-        "Lexical Precision: Avoiding repetitive vocabulary by utilizing precise synonyms and thematic word sets."
+        "Discursive Paragraphing: Organizing essays with a clear thesis statement and balanced arguments.",
+        "Cohesive Devices: Sophisticated transitions (furthermore, consequently, nevertheless)."
       ]
     },
     {
@@ -250,9 +248,8 @@ export default function Home() {
       illustration: "🏛️📜🎓",
       accentColor: "bg-amber-50 border-amber-100 text-amber-600",
       content: [
-        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, complementation, and phrasal verbs.",
-        "Part 3 (Word Formation): Demands mastery over prefixes (un-, dis-, mis-), internal vowel changes, and compound word structures.",
-        "Discourse Management: Producing extended, coherent stretches of language with sophisticated control of grammatical structures."
+        "Part 1 (Multiple-Choice Cloze): Tests subtle shades of meaning, fixed collocations, and phrasal verbs.",
+        "Part 3 (Word Formation): Demands mastery over prefixes and internal root changes."
       ]
     }
   ];
@@ -261,7 +258,7 @@ export default function Home() {
     setSelectedAnswers((prev) => ({ ...prev, [qId]: optIdx }));
   };
 
-  const currentModule = activeModuleKey ? materials[activeModuleKey] : null;
+  const currentModule = activeModuleKey ? quizDataBank[activeModuleKey] : null;
   const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
 
   // FOCUSED QUIZ MODULE PAGE
@@ -448,167 +445,72 @@ export default function Home() {
         )}
       </section>
 
-      {/* TAB 1: PRACTICE QUIZZES GRID */}
+      {/* TAB 1: PRACTICE QUIZZES GRID WITH CATEGORY FILTERING */}
       {activeTab === "quizzes" && (
         <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-          {/* Kindergarten */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#E95599]/10 text-[#E95599] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              KINDERGARTEN
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Phonics & Sounds</h3>
-            <p className="text-sm text-gray-500 mb-6">Focus on phonics, letter sounds, and early phonological awareness.</p>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Phonics"].map((skill) => {
-                const key = `Kindergarten-${skill}`;
-                const item = materials[key];
-                return (
-                  <button
-                    key={skill}
-                    onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
-                      item ? "bg-gray-50 hover:bg-[#E95599] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
-                    }`}
-                  >
-                    {skill} {item ? `(${item.questions.length})` : ""}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          {Object.values(materials).map((mod) => {
+            const isMatch = selectedTopic === "All" || mod.category === selectedTopic;
+            const qCount = quizDataBank[mod.key]?.questions.length || 0;
 
-          {/* Primary School */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              PRIMARY SCHOOL
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Elementary Foundations</h3>
-            <p className="text-sm text-gray-500 mb-6">Simple sentences, basic reading comprehension, and vocabulary.</p>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading"].map((skill) => {
-                const key = `Primary-${skill}`;
-                const item = materials[key];
-                return (
-                  <button
-                    key={skill}
-                    onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
-                      item ? "bg-gray-50 hover:bg-[#22c55e] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
-                    }`}
-                  >
-                    {skill} {item ? `(${item.questions.length})` : ""}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Junior High */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              JUNIOR HIGH (B1)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 PET</h3>
-            <p className="text-sm text-gray-500 mb-6">Intermediate grammar, messaging texts, and key-word transformations.</p>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading"].map((skill) => {
-                const key = `Junior High-${skill}`;
-                const item = materials[key];
-                return (
-                  <button
-                    key={skill}
-                    onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
-                      item ? "bg-gray-50 hover:bg-[#55b1d4] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
-                    }`}
-                  >
-                    {skill} {item ? `(${item.questions.length})` : ""}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Senior High */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#a855f7]/10 text-[#a855f7] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              SENIOR HIGH (B2)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B2 First</h3>
-            <p className="text-sm text-gray-500 mb-6">Discursive reading articles, essay transitions, and formal cohesion.</p>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading"].map((skill) => {
-                const key = `Senior High-${skill}`;
-                const item = materials[key];
-                return (
-                  <button
-                    key={skill}
-                    onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
-                      item ? "bg-gray-50 hover:bg-[#a855f7] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
-                    }`}
-                  >
-                    {skill} {item ? `(${item.questions.length})` : ""}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Advanced */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
-            <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              C1 ADVANCED (CAE)
-            </span>
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 CAE</h3>
-            <p className="text-sm text-gray-500 mb-6">Advanced multiple choice cloze, word formation, and listening analysis.</p>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
-              {["Reading"].map((skill) => {
-                const key = `Advanced-${skill}`;
-                const item = materials[key];
-                return (
-                  <button
-                    key={skill}
-                    onClick={() => item && setActiveModuleKey(key)}
-                    className={`p-2 rounded-lg border transition font-medium w-full col-span-2 ${
-                      item ? "bg-gray-50 hover:bg-[#f2b705] hover:text-white border-gray-200 cursor-pointer" : "opacity-30 border-dashed border-gray-200 cursor-not-allowed"
-                    }`}
-                  >
-                    {skill} {item ? `(${item.questions.length})` : ""}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+            return (
+              <div
+                key={mod.key}
+                className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition ${
+                  isMatch ? "opacity-100 hover:shadow-md" : "opacity-30 pointer-events-none"
+                }`}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${mod.badgeColor}`}>
+                    {mod.levelName}
+                  </span>
+                  <span className="text-xs text-gray-400 font-medium">{mod.category}</span>
+                </div>
+                <h3 className="text-xl font-medium text-gray-800 mb-2">{mod.title}</h3>
+                <p className="text-sm text-gray-500 mb-6">{mod.desc}</p>
+                <button
+                  onClick={() => setActiveModuleKey(mod.key)}
+                  className="w-full p-2 rounded-lg border border-gray-200 bg-gray-50 hover:bg-[#55b1d4] hover:text-white transition font-medium text-xs cursor-pointer"
+                >
+                  {mod.skill} ({qCount})
+                </button>
+              </div>
+            );
+          })}
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS INDEX */}
+      {/* TAB 2: STUDY MATERIALS */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
-          {studyGuides.map((guide) => (
-            <div
-              key={guide.id}
-              onClick={() => setActiveStudyId(guide.id)}
-              className="bg-white rounded-3xl border border-gray-200 shadow-sm hover:border-[#55b1d4] hover:shadow-md transition cursor-pointer overflow-hidden group flex flex-col md:flex-row items-center"
-            >
-              <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
-                {guide.illustration}
-              </div>
-              <div className="p-8 flex-1">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
-                    {guide.level}
-                  </span>
-                  <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                    Read Guide →
-                  </span>
+          {studyGuides.map((guide) => {
+            const isMatch = selectedTopic === "All" || guide.category === selectedTopic;
+
+            return (
+              <div
+                key={guide.id}
+                onClick={() => isMatch && setActiveStudyId(guide.id)}
+                className={`bg-white rounded-3xl border border-gray-200 shadow-sm transition overflow-hidden group flex flex-col md:flex-row items-center ${
+                  isMatch ? "opacity-150 hover:border-[#55b1d4] hover:shadow-md cursor-pointer" : "opacity-30 pointer-events-none"
+                }`}
+              >
+                <div className={`w-full md:w-48 h-36 md:h-full flex items-center justify-center text-5xl border-r border-gray-100 ${guide.accentColor}`}>
+                  {guide.illustration}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{guide.summary}</p>
+                <div className="p-8 flex-1">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full">
+                      {guide.level}
+                    </span>
+                    <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
+                      Read Guide →
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{guide.summary}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </section>
       )}
     </main>
