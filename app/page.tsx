@@ -128,58 +128,59 @@ export default function Home() {
       explanation: "Official Cambridge Key: Using collaborative openers like 'What about...?' invites turn-taking and discussion with your partner.",
     },
 
-    // ADVANCED (Career, STAR Interviews & Debates)
+    // ADVANCED (Official Cambridge C1 CAE Materials)
     "Advanced-Reading": {
-      title: "Advanced: Rhetorical Tone Analysis",
-      image: "🏛️",
+      title: "C1 Advanced: Multiple-Choice Cloze",
+      image: "📖",
       category: "Academic & Debate",
-      source: "Academic Literary Standard",
-      prompt: 'Analyze the tone: "The relentless clock ticked away, counting down the fleeting hours of opportunity."',
+      source: "Cambridge Certificate in Advanced English (CAE Test 1)",
+      prompt: 'Extract from "Girls and Technology":\n"If you want your daughter to succeed, buy her a toy construction set. That is the _____ from Britain\'s foremost female engineers and scientists."',
       options: [
-        { label: "Joyful and relaxed", isCorrect: false },
-        { label: "Urgent and apprehensive", isCorrect: true },
-        { label: "Indifferent and bored", isCorrect: false },
+        { label: "instruction", isCorrect: false },
+        { label: "information", isCorrect: false },
+        { label: "opinion", isCorrect: false },
+        { label: "advice", isCorrect: true },
       ],
-      explanation: "Words like 'relentless' and 'fleeting' evoke time pressure and tension.",
+      explanation: "Official Cambridge Key: 'Advice' is the correct collocate and noun used here in the context of professional guidance.",
     },
     "Advanced-Writing": {
-      title: "Advanced: Essay Transitions",
+      title: "C1 Advanced: Word Formation",
       image: "✒️",
       category: "Academic & Debate",
-      source: "Academic Writing Standard",
-      prompt: "Which transition best introduces a counter-argument in formal academic writing?",
+      source: "Cambridge Certificate in Advanced English (CAE Test 1)",
+      prompt: 'Text: "Freud and Dreams"\n"Sigmund Freud is regarded as the _____ (FOUND) of psychoanalysis. His work has been influential in many areas..."',
       options: [
-        { label: "Conversely, recent studies suggest...", isCorrect: true },
-        { label: "Also another thing is...", isCorrect: false },
-        { label: "By the way...", isCorrect: false },
+        { label: "FOUNDER", isCorrect: true },
+        { label: "FOUNDATION", isCorrect: false },
+        { label: "FOUNDING", isCorrect: false },
       ],
-      explanation: "'Conversely' explicitly signals a formal structural pivot in academic arguments.",
+      explanation: "Official Cambridge Key: The noun required for a person who creates or establishes something is 'FOUNDER'.",
     },
     "Advanced-Listening": {
-      title: "Advanced: Executive STAR Method",
+      title: "C1 Advanced: Audio Comprehension",
       image: "💼",
       category: "Job Interviews",
-      source: "Professional Career Standard",
-      prompt: "Answering: 'Tell me about a high-pressure situation.' Which answer effectively utilizes the STAR method?",
+      source: "Cambridge C1 Advanced Listening (Test 1 Extract 1)",
+      prompt: 'Context: Two friends discuss college selection and marketing campaigns.\nQuestion: What point does the woman make regarding corporate charity sponsorships?',
       options: [
-        { label: "I usually avoid high-pressure situations.", isCorrect: false },
-        { label: "When our system crashed, I re-routed the data pipeline, restoring access in 30 mins.", isCorrect: true },
-        { label: "My team was stressed, but we eventually finished.", isCorrect: false },
+        { label: "They increase retail sales significantly.", isCorrect: false },
+        { label: "Companies use them primarily to appear softer in the public eye.", isCorrect: true },
+        { label: "Consumers prefer companies that ignore charities.", isCorrect: false },
       ],
-      explanation: "Effective STAR answers provide Situation, Task, Action, and quantifiable Results.",
+      explanation: "Official Cambridge Key: The speaker notes that companies make noise about charity credentials mainly to look 'softer in the public eye'.",
     },
     "Advanced-Speaking": {
-      title: "Advanced: Rebutting Assumptions",
+      title: "C1 Advanced: Collaborative Negotiation",
       image: "🎙️",
       category: "Academic & Debate",
-      source: "Parliamentary Debate Standard",
-      prompt: "How do you professionally address a logical flaw in an opponent's argument?",
+      source: "Cambridge C1 Advanced Speaking (Paper 4)",
+      prompt: 'Scenario: Discussing ways of communicating.\nHow should a candidate effectively initiate a collaborative negotiation on which communication method is least effective?',
       options: [
-        { label: "While that premise holds in isolation, empirical data demonstrates...", isCorrect: true },
-        { label: "That argument makes zero sense.", isCorrect: false },
-        { label: "Let's change the topic completely.", isCorrect: false },
+        { label: "Shall we start by evaluating face-to-face meetings versus video conferencing?", isCorrect: true },
+        { label: "I think video conferencing is terrible.", isCorrect: false },
+        { label: "You decide first.", isCorrect: false },
       ],
-      explanation: "Highlighting conditions under which a premise fails shows advanced analytical capability.",
+      explanation: "Official Cambridge Key: Initiating with structured, polite prompts like 'Shall we start by...?' demonstrates high interactive communication scores.",
     },
   };
 
@@ -190,6 +191,80 @@ export default function Home() {
 
   const currentData = activeModule ? materials[`${activeModule.level}-${activeModule.skill}`] : null;
 
+  // IF A MODULE IS SELECTED: Render Dedicated Focused Page View
+  if (activeModule && currentData) {
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
+        <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200">
+          
+          {/* Top Navigation Bar */}
+          <button
+            onClick={() => setActiveModule(null)}
+            className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition mb-8 cursor-pointer"
+          >
+            ← Back to Main Menu
+          </button>
+
+          {/* Module Badges */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">
+              {activeModule.level.toUpperCase()} • {activeModule.skill.toUpperCase()}
+            </span>
+            <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full">
+              {currentData.source}
+            </span>
+          </div>
+
+          {/* Module Header */}
+          <div className="text-6xl mb-4">{currentData.image}</div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">{currentData.title}</h2>
+
+          {/* Exercise Prompt */}
+          <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-gray-800 font-medium mb-8 whitespace-pre-line leading-relaxed">
+            {currentData.prompt}
+          </div>
+
+          {/* Options List */}
+          <div className="space-y-4 mb-8">
+            {currentData.options.map((opt, idx) => {
+              let btnStyle = "bg-white border-gray-200 text-gray-700 hover:border-[#55b1d4] hover:bg-[#55b1d4]/5";
+
+              if (selectedOption !== null) {
+                if (idx === selectedOption) {
+                  btnStyle = opt.isCorrect
+                    ? "bg-green-500 text-white border-green-500 shadow-md"
+                    : "bg-red-500 text-white border-red-500 shadow-md";
+                } else if (opt.isCorrect) {
+                  btnStyle = "bg-green-100 border-green-400 text-green-800";
+                }
+              }
+
+              return (
+                <button
+                  key={idx}
+                  disabled={selectedOption !== null}
+                  onClick={() => setSelectedOption(idx)}
+                  className={`w-full py-4 px-6 rounded-2xl border-2 transition text-left text-base font-semibold cursor-pointer ${btnStyle}`}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Answer Explanation & Source Notes */}
+          {selectedOption !== null && (
+            <div className="p-6 rounded-2xl bg-blue-50/60 border border-blue-100 text-sm text-blue-900 leading-relaxed">
+              <span className="font-bold text-blue-950 block mb-1">Answer Analysis:</span>
+              {currentData.explanation}
+            </div>
+          )}
+        </div>
+      </main>
+    );
+  }
+
+  // DEFAULT VIEW: Main Homepage / Dashboard
   return (
     <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
       {/* Navigation Header */}
@@ -266,7 +341,7 @@ export default function Home() {
           <span className="inline-block bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full mb-4">
             JUNIOR HIGH (B1)
           </span>
-          <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge Materials</h3>
+          <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge B1 Materials</h3>
           <p className="text-sm text-gray-500 mb-6">Verified Cambridge English PET reading, writing, and interview dialogs.</p>
           <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
             {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
@@ -292,10 +367,10 @@ export default function Home() {
         {/* Advanced Card */}
         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
           <span className="inline-block bg-[#f2b705]/10 text-[#f2b705] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-            ADVANCED
+            C1 ADVANCED (CAE)
           </span>
-          <h3 className="text-xl font-medium text-gray-800 mb-2">Academic & Career</h3>
-          <p className="text-sm text-gray-500 mb-6">STAR Method interviews, academic essay transitions, and debate logic.</p>
+          <h3 className="text-xl font-medium text-gray-800 mb-2">Cambridge C1 Materials</h3>
+          <p className="text-sm text-gray-500 mb-6">Authentic Cambridge CAE multiple choice cloze, word formation, & listening.</p>
           <div className="grid grid-cols-2 gap-2 text-center text-xs text-gray-600">
             {["Reading", "Writing", "Listening", "Speaking"].map((skill) => {
               const item = materials[`Advanced-${skill}`];
@@ -317,68 +392,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Interactive Modal Pop-up */}
-      {activeModule && currentData && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-gray-100 relative text-center">
-            <button
-              onClick={() => setActiveModule(null)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold cursor-pointer"
-            >
-              ✕
-            </button>
-
-            <div className="flex justify-center gap-2 mb-3">
-              <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full">
-                {currentData.category}
-              </span>
-              <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-semibold px-3 py-1 rounded-full">
-                {currentData.source}
-              </span>
-            </div>
-
-            <div className="text-5xl mb-3">{currentData.image}</div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">{currentData.title}</h3>
-            <p className="text-gray-600 mb-6 text-sm whitespace-pre-line text-left bg-gray-50 p-4 rounded-xl border border-gray-100">
-              {currentData.prompt}
-            </p>
-
-            <div className="space-y-3 mb-6">
-              {currentData.options.map((opt, idx) => {
-                let btnStyle = "border-gray-200 text-gray-700 hover:border-[#55b1d4] hover:bg-[#55b1d4]/5";
-
-                if (selectedOption !== null) {
-                  if (idx === selectedOption) {
-                    btnStyle = opt.isCorrect
-                      ? "bg-green-500 text-white border-green-500"
-                      : "bg-red-500 text-white border-red-500";
-                  } else if (opt.isCorrect) {
-                    btnStyle = "bg-green-100 border-green-400 text-green-800";
-                  }
-                }
-
-                return (
-                  <button
-                    key={idx}
-                    disabled={selectedOption !== null}
-                    onClick={() => setSelectedOption(idx)}
-                    className={`w-full py-3 px-4 rounded-xl border transition text-left text-sm font-medium cursor-pointer ${btnStyle}`}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {selectedOption !== null && (
-              <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100 text-xs text-gray-700 text-left">
-                <strong>Source Notes:</strong> {currentData.explanation}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </main>
   );
 }
