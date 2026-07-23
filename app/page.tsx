@@ -17,6 +17,13 @@ type ModuleData = {
   questions: Question[];
 };
 
+type SubTopic = {
+  title: string;
+  subtitle: string;
+  explanation: string[];
+  examples: string[];
+};
+
 type StudyMaterial = {
   id: string;
   title: string;
@@ -25,13 +32,14 @@ type StudyMaterial = {
   summary: string;
   illustration: string;
   accentColor: string;
-  content: string[];
+  subTopics: SubTopic[];
 };
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"quizzes" | "materials">("quizzes");
   const [activeModuleKey, setActiveModuleKey] = useState<string | null>(null);
   const [activeStudyId, setActiveStudyId] = useState<string | null>(null);
+  const [activeSubTopic, setActiveSubTopic] = useState<SubTopic | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [selectedTopic, setSelectedTopic] = useState<string>("All");
 
@@ -127,7 +135,7 @@ export default function Home() {
     },
   };
 
-  // Expanded, Content-Heavy Study Guides across all levels
+  // Detailed Study Guides with Clickable Sub-Topics & Deep Explanations
   const studyGuides: StudyMaterial[] = [
     {
       id: "kindergarten-phonics",
@@ -137,12 +145,34 @@ export default function Home() {
       summary: "Comprehensive framework for early childhood phonemic awareness, alphabet sounds, and blending rules.",
       illustration: "🧸🧩✨",
       accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      content: [
-        "1. Phonemic Awareness: The foundational ability to hear, isolate, and manipulate individual sounds (phonemes) in spoken words before introducing text.",
-        "2. Synthetic Phonics Sequence: Introducing high-utility letter sounds systematically (such as S, A, T, P, I, N) rather than strict alphabetical order so kids can build words instantly.",
-        "3. CVC Blending Mastery: Blending consonant-vowel-consonant sounds smoothly together (e.g., /c/ - /a/ - /t/ = cat, /p/ - /i/ - /g/ = pig).",
-        "4. Multisensory Engagement: Incorporating physical movement, sand tracing, and audio repetition to anchor sound-symbol recognition.",
-        "5. Sight Words Introduction: Teaching non-decodable high frequency words (the, to, go, no) through visual flashcards."
+      subTopics: [
+        {
+          title: "1. Phonemic Awareness",
+          subtitle: "Isolating individual sounds in spoken words before seeing print",
+          explanation: [
+            "Phonemic awareness is purely auditory. Before children learn to read letters, they must learn to hear individual sound units (phonemes) inside words.",
+            "For example, hearing that the word 'cat' starts with the /k/ sound, has a middle /æ/ sound, and ends with the /t/ sound."
+          ],
+          examples: ["Say 'sun' without the /s/ sound -> 'un'", "Identify the beginning sound of 'Ball' -> /b/"]
+        },
+        {
+          title: "2. Synthetic Phonics Sequence",
+          subtitle: "Learning letter sounds systematically rather than alphabetically",
+          explanation: [
+            "Instead of teaching A-B-C in order, synthetic phonics introduces high-frequency letters first so children can start building words immediately.",
+            "The standard first group of sounds taught is usually S, A, T, P, I, N."
+          ],
+          examples: ["Using S, A, T children can instantly decode words like 'sat', 'at', 'tap', and 'pat'."]
+        },
+        {
+          title: "3. CVC Blending",
+          subtitle: "Connecting Consonant-Vowel-Consonant sounds smoothly",
+          explanation: [
+            "Blending is the process of sliding individual sounds together without stopping between them to form a complete spoken word.",
+            "Children practice saying /m/ - /a/ - /p/ slowly, then speeding it up to say 'map'."
+          ],
+          examples: ["/p/ - /i/ - /g/ = pig", "/d/ - /o/ - /g/ = dog"]
+        }
       ]
     },
     {
@@ -153,11 +183,25 @@ export default function Home() {
       summary: "Core structural rules, sentence patterns, and vocabulary sets for young elementary students.",
       illustration: "🎨✏️🎒",
       accentColor: "bg-green-50 border-green-100 text-green-600",
-      content: [
-        "1. Sentence Architecture: Mastering standard Subject-Verb-Object (SVO) word order in positive, negative, and interrogative sentences.",
-        "2. Pronoun Rules: Clear differentiation between subject pronouns (I, you, he, she, it, we, they) and object pronouns (me, him, her, us, them).",
-        "3. Basic Tenses: Establishing daily routines using the Simple Present tense and describing past events with regular/irregular Simple Past verbs.",
-        "4. Descriptive Adjectives: Expanding vocabulary sets for size, color, feelings, and weather to enrich basic writing paragraphs."
+      subTopics: [
+        {
+          title: "1. Basic Sentence Architecture (SVO)",
+          subtitle: "Mastering Subject-Verb-Object word order",
+          explanation: [
+            "In English, simple sentences follow a strict order: Who/What does the action (Subject) + Action (Verb) + Receiver of action (Object).",
+            "This creates clear, direct communication for elementary writers."
+          ],
+          examples: ["'The cat (Subject) eats (Verb) fish (Object).'", "'Maria (Subject) plays (Verb) soccer (Object).'"]
+        },
+        {
+          title: "2. Pronoun Case Agreement",
+          subtitle: "Subject vs. Object pronouns",
+          explanation: [
+            "Subject pronouns perform the action at the beginning of a clause (I, you, he, she, it, we, they).",
+            "Object pronouns receive the action after verbs or prepositions (me, you, him, her, it, us, them)."
+          ],
+          examples: ["'She (Subject) gave the book to him (Object).'", "'They invited us to the party.'"]
+        }
       ]
     },
     {
@@ -168,11 +212,25 @@ export default function Home() {
       summary: "In-depth breakdown of intermediate grammar structures, functional text messages, and exam strategies.",
       illustration: "🎧📱💡",
       accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      content: [
-        "1. Reading Part 1 (Signs & Notices): How to analyze public notices, text messages, and emails for implied meanings and restrictions.",
-        "2. Writing Part 1 (Transformations): Mastering grammar equivalents, passive voices, and fixed adjective prepositions (e.g., 'keen on', 'interested in').",
-        "3. Modal Verbs of Obligation: Correct usage of must, have to, should, and mustn't in real-world contexts.",
-        "4. Listening Strategies: Anticipating key vocabulary, spelling checks, and identifying speaker attitudes in dialogue snippets."
+      subTopics: [
+        {
+          title: "1. Reading Part 1 (Signs & Notices)",
+          subtitle: "Analyzing short functional messages and public warnings",
+          explanation: [
+            "Cambridge PET Reading Part 1 tests your ability to understand short notices, text messages, website blurbs, and signs.",
+            "Always distinguish between what a sign *says* versus what it *implies* or warns against."
+          ],
+          examples: ["'Staff Only' -> Customers are not allowed to enter this area."]
+        },
+        {
+          title: "2. Writing Part 1 (Key Word Transformations)",
+          subtitle: "Rewriting sentences using a specific grammar target",
+          explanation: [
+            "You must rewrite a sentence so it means the exact same thing using a given keyword.",
+            "This heavily tests adjectives followed by fixed prepositions and passive-to-active voice swaps."
+          ],
+          examples: ["'Niko really enjoys basketball.' -> 'Niko is very keen ON basketball.'"]
+        }
       ]
     },
     {
@@ -183,11 +241,25 @@ export default function Home() {
       summary: "Advanced coherence strategies, discursive writing templates, and formal upper-intermediate structures.",
       illustration: "📊📝🎯",
       accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      content: [
-        "1. Discursive Essay Structure: Crafting a compelling introduction with a clear thesis, two balanced body paragraphs, and a definitive summary conclusion.",
-        "2. Advanced Cohesive Devices: Moving past basic linkers (and, but) to sophisticated transitional phrases (furthermore, consequently, nevertheless, on the contrary).",
-        "3. Relative Clauses & Participles: Elevating sentence complexity using non-defining relative clauses and participial phrases.",
-        "4. Lexical Precision: Avoiding vague words (good, bad, nice) by substituting precise academic synonyms."
+      subTopics: [
+        {
+          title: "1. Discursive Essay Structure",
+          subtitle: "Crafting balanced arguments and clear thesis statements",
+          explanation: [
+            "A B2 First essay requires an introduction stating your stance, two well-argued body paragraphs addressing prompt points, and a conclusive summary.",
+            "Avoid overly emotional language; maintain a neutral, formal academic tone."
+          ],
+          examples: ["Introduction thesis: 'While online learning offers flexibility, social interaction remains vital.'"]
+        },
+        {
+          title: "2. Sophisticated Cohesive Devices",
+          subtitle: "Moving beyond basic linkers like 'and' and 'but'",
+          explanation: [
+            "Upper-intermediate writing requires transition markers that signal contrast, concession, or addition smoothly.",
+            "Using words like 'furthermore', 'neveretheless', and 'consequently' elevates your score."
+          ],
+          examples: ["'The project was costly; nevertheless, the long-term benefits outweighed the expenses.'"]
+        }
       ]
     },
     {
@@ -198,11 +270,34 @@ export default function Home() {
       summary: "Rigorous academic frameworks, collocation rules, and advanced word-formation mastery for CAE success.",
       illustration: "🏛️📜🎓",
       accentColor: "bg-amber-50 border-amber-100 text-amber-600",
-      content: [
-        "1. Part 1 (Multiple-Choice Cloze): Analyzing subtle semantic differences, fixed collocations, idiom constraints, and phrasal verb valency.",
-        "2. Part 3 (Word Formation): Mastering complex root transformations, prefix modifications (un-, dis-, mis-, inter-), and plural noun agreements.",
-        "3. Advanced Syntax & Inversion: Utilizing negative adverbial inversions for rhetorical impact (e.g., 'Not only was the experiment successful...').",
-        "4. Discourse Management: Structuring spoken and written arguments with absolute grammatical precision and nuanced stylistic control."
+      subTopics: [
+        {
+          title: "1. Part 3 Word Formation",
+          subtitle: "Mastering complex root transformations and prefix modifications",
+          explanation: [
+            "CAE Part 3 requires you to take a root word and transform it into a noun, adjective, adverb, or verb depending on the sentence gap.",
+            "You must also watch out for negative prefixes (un-, dis-, mis-, in-) and plural noun endings (-s/-es)."
+          ],
+          examples: ["Root: FOUND -> Noun person: FOUNDER | Noun abstract: FOUNDATION"],
+        },
+        {
+          title: "2. Part 1 Multiple-Choice Cloze",
+          subtitle: "Analyzing subtle semantic differences and fixed collocations",
+          explanation: [
+            "Words in options often look similar in meaning (e.g., advice, information, opinion, instruction), but only one collocates naturally with the surrounding context.",
+            "Mastering dependent prepositions and fixed idioms is essential here."
+          ],
+          explanationText: ["Example: 'That is the **advice** from Britain's foremost female engineers.' (Advice collocates correctly with professional guidance guidance)."]
+        },
+        {
+          title: "3. Advanced Syntax & Inversion",
+          subtitle: "Utilizing negative adverbial inversions for rhetorical impact",
+          explanation: [
+            "For dramatic or formal emphasis, negative expressions can be placed at the start of a sentence, forcing the auxiliary verb before the subject.",
+            "Formula: Negative Adverb + Auxiliary Verb + Subject + Main Verb."
+          ],
+          examples: ["'Not only was the experiment successful, but it was also completed under budget.'"]
+        }
       ]
     }
   ];
@@ -298,7 +393,56 @@ export default function Home() {
     );
   }
 
-  // FOCUSED STUDY MATERIAL READING PAGE (Pure Material, No Quiz Trigger)
+  // FOCUSED SUB-TOPIC DETAILED LEARNING PAGE
+  if (activeSubTopic) {
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
+        <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200">
+          <button
+            onClick={() => setActiveSubTopic(null)}
+            className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition mb-8 cursor-pointer"
+          >
+            ← Back to Study Guide
+          </button>
+
+          <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Detailed Learning & Explanation
+          </span>
+          <h2 className="text-3xl font-bold text-gray-900 mt-4 mb-2">{activeSubTopic.title}</h2>
+          <p className="text-gray-500 text-sm mb-8 pb-6 border-b border-gray-100">{activeSubTopic.subtitle}</p>
+
+          <div className="space-y-6 mb-10">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">Core Concepts & Rules</h3>
+            {activeSubTopic.explanation.map((para, idx) => (
+              <p key={idx} className="text-base text-gray-700 leading-relaxed bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                {para}
+              </p>
+            ))}
+          </div>
+
+          <div className="space-y-4 mb-10">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">Practical Examples</h3>
+            <div className="bg-blue-50/60 p-6 rounded-2xl border border-blue-100 space-y-2">
+              {activeSubTopic.examples.map((ex, idx) => (
+                <div key={idx} className="text-sm md:text-base text-blue-950 font-medium flex items-center gap-2">
+                  <span className="text-[#55b1d4]">✦</span> {ex}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={() => setActiveSubTopic(null)}
+            className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 rounded-2xl transition cursor-pointer"
+          >
+            ✓ Done Learning This Topic (Return to Guide)
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  // FOCUSED STUDY MATERIAL OVERVIEW PAGE
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -307,7 +451,7 @@ export default function Home() {
             onClick={() => setActiveStudyId(null)}
             className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition mb-8 cursor-pointer"
           >
-            ← Back to Materials
+            ← Back to Materials List
           </button>
 
           <div className="flex justify-between items-center mb-6">
@@ -323,25 +467,30 @@ export default function Home() {
             {currentStudyGuide.summary}
           </p>
 
-          <div className="space-y-4 mb-10">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Comprehensive Study Material</h3>
-            {currentStudyGuide.content.map((section, idx) => (
-              <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-start gap-4">
-                <span className="bg-[#55b1d4] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                  {idx + 1}
-                </span>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed">{section}</p>
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">
+              Click any topic below to open detailed explanations:
+            </h3>
+            {currentStudyGuide.subTopics.map((sub, idx) => (
+              <div
+                key={idx}
+                onClick={() => setActiveSubTopic(sub)}
+                className="bg-white hover:bg-sky-50/40 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#55b1d4] transition flex items-center justify-between cursor-pointer group shadow-sm"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="bg-[#55b1d4] text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
+                    {idx + 1}
+                  </span>
+                  <div>
+                    <h4 className="text-base font-bold text-gray-900 group-hover:text-[#55b1d4] transition">
+                      {sub.title}
+                    </h4>
+                    <p className="text-xs md:text-sm text-gray-500 mt-1">{sub.subtitle}</p>
+                  </div>
+                </div>
+                <span className="text-gray-300 group-hover:text-[#55b1d4] font-bold text-lg transition">→</span>
               </div>
             ))}
-          </div>
-
-          <div className="pt-6 border-t border-gray-100 text-center">
-            <button
-              onClick={() => setActiveStudyId(null)}
-              className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold py-3 px-6 rounded-xl transition cursor-pointer"
-            >
-              ✓ Finished Reading (Return to Guides)
-            </button>
           </div>
         </div>
       </main>
@@ -482,7 +631,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS INDEX (Pure Learning Guides) */}
+      {/* TAB 2: STUDY MATERIALS INDEX */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {studyGuides.map((guide) => {
@@ -505,7 +654,7 @@ export default function Home() {
                       {guide.level}
                     </span>
                     <span className="text-xs text-gray-400 font-medium group-hover:text-[#55b1d4] transition">
-                      Read Complete Study Guide →
+                      Explore Study Topics →
                     </span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{guide.title}</h3>
