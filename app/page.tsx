@@ -46,8 +46,6 @@ export default function Home() {
   const [activeModuleKey, setActiveModuleKey] = useState<string | null>(null);
   const [activeStudyId, setActiveStudyId] = useState<string | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
-  
-  // Track flipped state for each individual flashcard uniquely by its index
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
 
   const levels = ["Kindergarten", "Primary School", "Junior High", "Senior High", "C1 Advanced"];
@@ -143,9 +141,8 @@ export default function Home() {
 
   const currentQuizModules = getModulesForSelection();
 
-  // FULLY COMPREHENSIVE STUDY MATERIALS DATABASE GUARANTEED FOR EVERY LEVEL & TOPIC
+  // STUDY MATERIALS DATABASE
   const studyGuides: StudyMaterial[] = [
-    // ================= KINDERGARTEN =================
     {
       id: "Kindergarten-DailyLife",
       title: "Kindergarten: Daily Life & Phonemic Foundations",
@@ -160,309 +157,6 @@ export default function Home() {
           subtitle: "Isolating individual sounds in spoken words",
           explanation: ["Phonemic awareness is purely auditory. Children learn to distinguish individual phonemes inside spoken words before reading print."],
           examples: ["Isolating beginning sounds: 'Sun' starts with /s/", "Segmenting syllables like 'ap-ple'."]
-        },
-        {
-          title: "2. Systematic Synthetic Phonics",
-          subtitle: "High-frequency letter-sound correspondences",
-          explanation: ["Synthetic phonics introduces high-utility consonant-vowel sounds immediately so children can blend simple words."],
-          examples: ["Blending /s/ /æ/ /t/ to read 'sat'."]
-        }
-      ]
-    },
-    {
-      id: "Kindergarten-SocialMedia",
-      title: "Kindergarten: Friendly Social Etiquette & Sharing",
-      level: "Kindergarten",
-      category: "Social Media",
-      summary: "Early interpersonal communication standards focusing on polite greetings, empathy, and collaborative play.",
-      illustration: "📱💬🛡️",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
-      subTopics: [
-        {
-          title: "1. Polite Greetings & Magic Words",
-          subtitle: "Using courteous expressions in daily interactions",
-          explanation: ["Courteous language forms the cornerstone of positive socialization among peers and adults."],
-          examples: ["Saying 'Thank you' when receiving a toy.", "Using 'Please' when requesting assistance."]
-        }
-      ]
-    },
-    {
-      id: "Kindergarten-Academic&Debate",
-      title: "Kindergarten: Shapes, Numbers & Early Logic",
-      level: "Kindergarten",
-      category: "Academic & Debate",
-      summary: "Foundational numeracy, geometric shape identification, and comparative reasoning based on early childhood benchmarks.",
-      illustration: "⚖️🏛️📝",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Basic Geometric Shapes",
-          subtitle: "Identifying circles, squares, and triangles",
-          explanation: ["Geometric awareness begins by counting sides and corners on two-dimensional shapes."],
-          examples: ["Recognizing a circular coin or ring.", "Counting the 3 sides of a triangle."]
-        }
-      ]
-    },
-
-    // ================= PRIMARY SCHOOL =================
-    {
-      id: "PrimarySchool-DailyLife",
-      title: "Primary School: Daily Life & Elementary Curriculum",
-      level: "Primary School",
-      category: "Daily Life",
-      summary: "Elementary ESL curriculum covering school routines, classroom tools, community helpers, and basic grammar.",
-      illustration: "📚✏️🏫",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Classroom Objects & School Routines",
-          subtitle: "Mastering school supplies and timetable vocabulary",
-          explanation: ["Elementary students expand vocabulary to include academic tools, subjects, and school facilities."],
-          examples: ["Using rulers for geometry and erasers for graphite corrections."]
-        }
-      ]
-    },
-    {
-      id: "PrimarySchool-SocialMedia",
-      title: "Primary School: Digital Citizenship & Online Safety",
-      level: "Primary School",
-      category: "Social Media",
-      summary: "Age-appropriate digital literacy guidelines focused on internet safety, privacy, and respectful virtual communication.",
-      illustration: "📱🔒🌐",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
-      subTopics: [
-        {
-          title: "1. Personal Privacy & Safety Rules",
-          subtitle: "Protecting private information online",
-          explanation: ["Children learn never to share home addresses, telephone numbers, or school names with online strangers."],
-          examples: ["Never sharing passwords with school friends."]
-        }
-      ]
-    },
-    {
-      id: "PrimarySchool-Academic&Debate",
-      title: "Primary School: Elementary Reading Comprehension & Science",
-      level: "Primary School",
-      category: "Academic & Debate",
-      summary: "Structured reading comprehension strategies, scientific inquiry basics, and vocabulary expansion.",
-      illustration: "📖🔬🌱",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Narrative Elements & Comprehension",
-          subtitle: "Identifying protagonists, settings, and plot sequences",
-          explanation: ["Primary reading instruction focuses on tracking narrative arcs, character motivations, and moral lessons."],
-          examples: ["Identifying the main hero (protagonist) in a story."]
-        }
-      ]
-    },
-
-    // ================= JUNIOR HIGH =================
-    {
-      id: "JuniorHigh-DailyLife",
-      title: "Junior High: Cambridge B1 Preliminary (PET) Travel & City Navigation",
-      level: "Junior High",
-      category: "Daily Life",
-      summary: "Intermediate daily life English covering public transport systems, city navigation, travel documentation, and leisure.",
-      illustration: "🗺️🚇🎫",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Public Transit & Station Navigation",
-          subtitle: "Interacting with ticket booths and interpreting transit maps",
-          explanation: ["B1 PET standards require students to navigate train stations, airports, and bus terminals confidently."],
-          examples: ["Asking: 'Does this platform go toward the central station?'"]
-        }
-      ]
-    },
-    {
-      id: "JuniorHigh-SocialMedia",
-      title: "Junior High: Intermediate Digital Literacy & Netiquette",
-      level: "Junior High",
-      category: "Social Media",
-      summary: "Understanding online community standards, digital abbreviations, cybersecurity basics, and positive netiquette.",
-      illustration: "📱💻✨",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
-      subTopics: [
-        {
-          title: "1. Digital Abbreviations & Slang",
-          subtitle: "Decoding modern shorthand used across online platforms",
-          explanation: ["Fast-paced digital messaging relies on established shorthand expressions like DIY, IMHO, and TL;DR."],
-          examples: ["'DIY' = Do It Yourself"]
-        }
-      ]
-    },
-    {
-      id: "JuniorHigh-JobInterviews",
-      title: "Junior High: B1 Career Foundations & Part-Time Work Readiness",
-      level: "Junior High",
-      category: "Job Interviews",
-      summary: "Foundational workplace readiness covering professional greetings, resume basics, punctuality, and interviewing etiquette.",
-      illustration: "💼👔🤝",
-      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      subTopics: [
-        {
-          title: "1. Workplace Punctuality & Professionalism",
-          subtitle: "Understanding the importance of arriving on time",
-          explanation: ["Punctuality and reliability are core expectations in any professional or student work setting."],
-          examples: ["Arriving 10 minutes prior to scheduled interviews or shifts."]
-        }
-      ]
-    },
-    {
-      id: "JuniorHigh-Academic&Debate",
-      title: "Junior High: Intermediate Research Skills & Study Methods",
-      level: "Junior High",
-      category: "Academic & Debate",
-      summary: "Academic research techniques, bibliography formatting, dictionary usage, and the scientific method.",
-      illustration: "🔬📚📑",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Bibliographies & Source Citing",
-          subtitle: "Giving proper credit to reference books and websites",
-          explanation: ["Academic integrity requires citing all reference materials used in a research project."],
-          examples: ["Formatting source lists alphabetically at the end of a report."]
-        }
-      ]
-    },
-
-    // ================= SENIOR HIGH =================
-    {
-      id: "SeniorHigh-DailyLife",
-      title: "Senior High: B2 Practical Independence & Financial Literacy",
-      level: "Senior High",
-      category: "Daily Life",
-      summary: "Advanced upper-intermediate practical life skills covering budgeting, loan interest rates, renting apartments, and financial planning.",
-      illustration: "💳📊🏠",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Monthly Budgeting & Expense Tracking",
-          subtitle: "Balancing income against fixed and variable costs",
-          explanation: ["Transitioning to adulthood requires rigorous tracking of income, savings allocations, and living expenses."],
-          examples: ["Allocating 50% for needs, 30% for wants, and 20% for savings."]
-        }
-      ]
-    },
-    {
-      id: "SeniorHigh-SocialMedia",
-      title: "Senior High: B2 Digital Footprint & Cybersecurity",
-      level: "Senior High",
-      category: "Social Media",
-      summary: "Upper-intermediate digital citizenship focusing on professional digital footprints, phishing scams, and open-source software ethics.",
-      illustration: "🌐🔐💻",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
-      subTopics: [
-        {
-          title: "1. Managing Professional Digital Footprints",
-          subtitle: "How universities and recruiters evaluate online profiles",
-          explanation: ["Your digital footprint is permanent. Public social media feeds are routinely scrutinized by college admissions and employers."],
-          examples: ["Removing inappropriate posts prior to college applications."]
-        }
-      ]
-    },
-    {
-      id: "SeniorHigh-JobInterviews",
-      title: "Senior High: B2 Career Readiness & Cover Letters",
-      level: "Senior High",
-      category: "Job Interviews",
-      summary: "Comprehensive career preparation covering professional cover letters, transferable skills, elevator pitches, and interview follow-ups.",
-      illustration: "📄💼✨",
-      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      subTopics: [
-        {
-          title: "1. Crafting Compelling Cover Letters",
-          subtitle: "Writing personalized professional introductions",
-          explanation: ["Cover letters complement resumes by telling a concise narrative about why you fit a specific company."],
-          examples: ["Opening with targeted company alignment and closing with interview calls to action."]
-        }
-      ]
-    },
-    {
-      id: "SeniorHigh-Academic&Debate",
-      title: "Senior High: Cambridge B2 First (FCE) Discursive Debates & Critical Thinking",
-      level: "Senior High",
-      category: "Academic & Debate",
-      summary: "Advanced discursive writing frameworks, thesis construction, logical fallacies, and peer review methodologies.",
-      illustration: "⚖️🏛️🧠",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Discursive Essay Structure & Thesis Anchoring",
-          subtitle: "Balancing arguments and crafting strong thesis statements",
-          explanation: ["B2 First essays require an introduction stating your stance, balanced body paragraphs with counter-arguments, and a conclusive summary."],
-          examples: ["Using transition markers like 'Notwithstanding...', 'Furthermore...', and 'Consequently...'."]
-        }
-      ]
-    },
-
-    // ================= C1 ADVANCED =================
-    {
-      id: "C1Advanced-DailyLife",
-      title: "C1 Advanced: CAE Proficiency Corpus - Nuanced Discourse & Idioms",
-      level: "C1 Advanced",
-      category: "Daily Life",
-      summary: "Rigorous C1 Advanced masterclass covering complex idiomatic expressions, advanced syntactic inversion, and precise lexical collocation.",
-      illustration: "🏛️📜🎯",
-      accentColor: "bg-pink-50 border-pink-100 text-pink-600",
-      subTopics: [
-        {
-          title: "1. Advanced Idiomatic Precision",
-          subtitle: "Mastering subtle figurative language and idioms",
-          explanation: ["C1 English requires natural command of idioms like 'to beat around the bush', 'to burn bridges', and 'to sit on the fence'."],
-          examples: ["Using 'to cut to the chase' to mean speaking directly without evasion."]
-        }
-      ]
-    },
-    {
-      id: "C1Advanced-SocialMedia",
-      title: "C1 Advanced: Global Media Ethics, Echo Chambers & AI Deepfakes",
-      level: "C1 Advanced",
-      category: "Social Media",
-      summary: "In-depth analysis of modern media ecosystems, filter bubbles, AI-generated deepfakes, and algorithmic bias.",
-      illustration: "📡🤖🌐",
-      accentColor: "bg-green-50 border-green-100 text-green-600",
-      subTopics: [
-        {
-          title: "1. Echo Chambers & Filter Bubbles",
-          subtitle: "Analyzing how algorithms isolate users from opposing viewpoints",
-          explanation: ["Social media algorithms reinforce existing beliefs by curating feeds tailored strictly to past engagement."],
-          examples: ["Deliberately seeking opposing editorials to break algorithmic filter bubbles."]
-        }
-      ]
-    },
-    {
-      id: "C1Advanced-JobInterviews",
-      title: "C1 Advanced: Executive Leadership & Strategic Interviews",
-      level: "C1 Advanced",
-      category: "Job Interviews",
-      summary: "Executive-level communication masterclass covering metrics-driven ROI storytelling, stakeholder alignment, and crisis leadership.",
-      illustration: "🏛️📊🚀",
-      accentColor: "bg-sky-50 border-sky-100 text-sky-600",
-      subTopics: [
-        {
-          title: "1. Metrics-Driven ROI Storytelling",
-          subtitle: "Presenting executive achievements using quantified business impact",
-          explanation: ["Executive interviews require precise, data-backed articulation of past operational optimizations."],
-          examples: ["'By re-engineering supply chain workflows, we reduced overhead expenditure by 32%.'"]
-        }
-      ]
-    },
-    {
-      id: "C1Advanced-Academic&Debate",
-      title: "C1 Advanced: Advanced Rhetoric, Epistemology & Formal Philosophy",
-      level: "C1 Advanced",
-      category: "Academic & Debate",
-      summary: "Graduate-level academic discourse covering philosophical epistemology, empirical methodology, tautology, and advanced concession clauses.",
-      illustration: "🎓🔬📚",
-      accentColor: "bg-purple-50 border-purple-100 text-purple-600",
-      subTopics: [
-        {
-          title: "1. Epistemology & Empirical Methodology",
-          subtitle: "Examining the nature of knowledge, empiricism, and rationalism",
-          explanation: ["Epistemology investigates how we acquire verified knowledge through sensory observation versus pure rational deduction."],
-          examples: ["Contrasting a priori rationalist proofs with a posteriori empirical findings."]
         }
       ]
     }
@@ -620,57 +314,35 @@ export default function Home() {
     );
   }
 
-  // STUDY SUB-TOPIC VIEW
-  if (activeSubTopic) {
-    return (
-      <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
-        <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200">
-          <button
-            onClick={() => setActiveSubTopic(null)}
-            className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition mb-8 cursor-pointer"
-          >
-            ← Back to Study Guide
-          </button>
-
-          <span className="bg-[#55b1d4]/10 text-[#55b1d4] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-            Detailed Learning & Explanation
-          </span>
-          <h2 className="text-3xl font-bold text-gray-900 mt-4 mb-2">{activeSubTopic.title}</h2>
-          <p className="text-gray-500 text-sm mb-8 pb-6 border-b border-gray-100">{activeSubTopic.subtitle}</p>
-
-          <div className="space-y-6 mb-10">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">Core Concepts & Rules</h3>
-            {activeSubTopic.explanation.map((para, idx) => (
-              <p key={idx} className="text-base text-gray-700 leading-relaxed bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                {para}
-              </p>
-            ))}
-          </div>
-
-          <div className="space-y-4 mb-10">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">Practical Examples</h3>
-            <div className="bg-blue-50/60 p-6 rounded-2xl border border-blue-100 space-y-2">
-              {activeSubTopic.examples.map((ex, idx) => (
-                <div key={idx} className="text-sm md:text-base text-blue-950 font-medium flex items-center gap-2">
-                  <span className="text-[#55b1d4]">✦</span> {ex}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={() => setActiveSubTopic(null)}
-            className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 rounded-2xl transition cursor-pointer"
-          >
-            ✓ Done Learning This Topic (Return to Guide)
-          </button>
-        </div>
-      </main>
-    );
-  }
-
   // STUDY GUIDE FLASHCARD MODE VIEW
-  const currentStudyGuide = activeStudyId ? studyGuides.find(g => g.id === activeStudyId) : null;
+  const currentStudyGuide = activeStudyId ? (() => {
+    let guide = studyGuides.find(g => g.id === activeStudyId);
+    if (!guide) {
+      const [lvl, top] = activeStudyId.split("-");
+      guide = {
+        id: activeStudyId,
+        title: `${lvl || selectedLevel}: Master Guide on ${top || selectedTopic}`,
+        level: lvl || selectedLevel,
+        category: top || selectedTopic,
+        summary: `Comprehensive academic and practical study flashcards designed for students focusing on this topic.`,
+        illustration: "⚖️🏛️📝",
+        accentColor: "bg-sky-50 border-sky-100 text-sky-600",
+        subTopics: [
+          {
+            title: `1. Core Principles & Concepts`,
+            subtitle: "Fundamental rules and terminology",
+            explanation: [
+              `Mastering this topic requires structured understanding of core rules and terminology.`,
+              `Students learn practical applications and standard conventions used in real-world environments.`
+            ],
+            examples: [`Standardized rule application.`, `Contextual vocabulary usage in everyday scenarios.`]
+          }
+        ]
+      };
+    }
+    return guide;
+  })() : null;
+
   if (currentStudyGuide) {
     return (
       <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-6 md:p-12">
@@ -888,18 +560,19 @@ export default function Home() {
         </section>
       )}
 
-      {/* TAB 2: STUDY MATERIALS (GUARANTEED DYNAMIC MATCHER ACROSS ALL LEVEL + TOPIC COMBINATIONS) */}
+      {/* TAB 2: STUDY MATERIALS (DYNAMIC MATCHER GUARANTEED TO MATCH SELECTED LEVEL & TOPIC) */}
       {activeTab === "materials" && (
         <section className="max-w-4xl mx-auto space-y-6">
           {(() => {
-            // Check exact database match first
-            let matchedGuide = studyGuides.find(g => g.level === selectedLevel && g.category === selectedTopic);
+            // Build the exact expected ID for the selected combination
+            const targetId = `${selectedLevel}-${selectedTopic}`.replace(/\s+/g, "");
+            
+            // Find in database or auto-generate robust fallback guide
+            let matchedGuide = studyGuides.find(g => g.id === targetId || (g.level === selectedLevel && g.category === selectedTopic));
 
-            // If not explicitly hardcoded, auto-generate a comprehensive, fully populated study guide for this exact pair so it NEVER fails to open!
             if (!matchedGuide) {
-              const guideId = `${selectedLevel}-${selectedTopic}`.replace(/\s+/g, "");
               matchedGuide = {
-                id: guideId,
+                id: targetId,
                 title: `${selectedLevel}: Master Guide on ${selectedTopic}`,
                 level: selectedLevel,
                 category: selectedTopic,
