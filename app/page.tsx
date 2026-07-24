@@ -4,6 +4,8 @@ import { useState } from "react";
 import { kindergartenData, UnitModule } from "../data/kindergarten";
 import { primarySchoolData } from "../data/primarySchool";
 import { juniorHighData } from "../data/juniorHigh";
+import { seniorHighData } from "../data/seniorHigh";
+import { c1AdvancedData } from "../data/c1Advanced";
 
 export default function Home() {
   const [hasEntered, setHasEntered] = useState<boolean>(false);
@@ -54,11 +56,17 @@ export default function Home() {
     if (lvl === "Primary School" && primarySchoolData[top]) {
       return primarySchoolData[top];
     }
-    if ((lvl === "Junior High" || lvl === "Senior High") && juniorHighData[top]) {
+    if (lvl === "Junior High" && juniorHighData[top]) {
       return juniorHighData[top];
     }
+    if (lvl === "Senior High" && seniorHighData[top]) {
+      return seniorHighData[top];
+    }
+    if (lvl === "C1 Advanced" && c1AdvancedData[top]) {
+      return c1AdvancedData[top];
+    }
 
-    // SHORT & FUN CLEAN FALLBACK FOR OTHER TOPICS
+    // SHORT & FUN CLEAN FALLBACK FOR UNFILLED TOPICS
     const fallbackUnits: UnitModule[] = [];
     for (let uNum = 1; uNum <= 3; uNum++) {
       fallbackUnits.push({
