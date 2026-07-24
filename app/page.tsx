@@ -191,7 +191,7 @@ export default function Home() {
       ],
 
       // ----------------------------------------------------
-      // C1 ADVANCED TIER (EXECUTIVE STRATEGY WITH TYPO FIX)
+      // C1 ADVANCED TIER
       // ----------------------------------------------------
       "C1 Advanced_Executive Corporate Strategy": [
         {
@@ -615,32 +615,26 @@ export default function Home() {
     );
   }
 
-  // MAIN DASHBOARD HOMEPAGE
+  // MAIN DASHBOARD HOMEPAGE (TWO-COLUMN SIDEBAR LAYOUT)
   return (
-    <main className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans p-8 relative">
-      <nav className="max-w-6xl mx-auto flex justify-between items-center py-4 mb-6">
-        <h1 className="text-3xl font-light text-[#E95599] tracking-wide">
-          Future<span className="font-bold text-[#55b1d4]">English</span>
-        </h1>
-        <span className="text-xs bg-sky-50 text-sky-600 font-semibold px-4 py-2 rounded-full border border-sky-100">
-          📚 Curriculum Path: Material First, Quiz at the End
-        </span>
-      </nav>
-
-      <section className="max-w-4xl mx-auto text-center my-10">
-        <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 leading-tight">
-          Learn English <span className="text-[#E95599] font-normal">Fun</span>,{" "}
-          <span className="text-[#55b1d4] font-normal">Simple</span>, &{" "}
-          <span className="text-[#f2b705] font-normal">Practical</span>
-        </h2>
-        <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Select your school level and explore verified curriculum topics. Each topic is divided into sequential units featuring core explanations, etymology, grammar, and end-of-unit knowledge checks.
-        </p>
-
-        {/* STEP 1: SELECT SCHOOL LEVEL */}
+    <div className="min-h-screen bg-[#FAFAFA] text-gray-800 font-sans flex flex-col md:flex-row">
+      
+      {/* COLUMN 1: STICKY LEFT SIDEBAR (CONTROLS) */}
+      <aside className="w-full md:w-80 bg-white border-r border-gray-200 p-6 flex flex-col shrink-0 md:sticky md:top-0 md:h-screen overflow-y-auto">
+        {/* BRAND LOGO */}
         <div className="mb-8">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Select School Level</h3>
-          <div className="flex flex-wrap justify-center gap-2">
+          <h1 className="text-2xl font-light text-[#E95599] tracking-wide">
+            Future<span className="font-bold text-[#55b1d4]">English</span>
+          </h1>
+          <p className="text-xs text-gray-400 mt-1">Interactive Learning Portal</p>
+        </div>
+
+        {/* STEP 1: SCHOOL LEVEL SELECTOR */}
+        <div className="mb-8">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+            1. Select School Level
+          </h3>
+          <div className="flex flex-col gap-1.5">
             {levels.map((lvl) => (
               <button
                 key={lvl}
@@ -651,81 +645,112 @@ export default function Home() {
                     setSelectedTopic(validTopics[0]);
                   }
                 }}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition cursor-pointer ${
+                className={`w-full text-left px-4 py-2.5 rounded-2xl text-xs font-semibold transition cursor-pointer flex justify-between items-center ${
                   selectedLevel === lvl
-                    ? "bg-[#55b1d4] text-white shadow-md"
-                    : "bg-white text-gray-700 border border-gray-200 hover:border-gray-400"
+                    ? "bg-[#55b1d4] text-white shadow-sm"
+                    : "text-gray-600 hover:bg-gray-50"
                 }`}
               >
-                {lvl}
+                <span>{lvl}</span>
+                {selectedLevel === lvl && <span>✓</span>}
               </button>
             ))}
           </div>
         </div>
 
-        {/* STEP 2: SELECT TOPIC CATEGORY */}
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Select Curriculum Topic</h3>
-          <div className="flex flex-wrap justify-center gap-2">
+        {/* STEP 2: TOPIC CATEGORY SELECTOR */}
+        <div className="mb-8">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+            2. Select Topic
+          </h3>
+          <div className="flex flex-col gap-1.5">
             {topics.map((topic) => (
               <button
                 key={topic}
                 onClick={() => setSelectedTopic(topic)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition cursor-pointer ${
+                className={`w-full text-left px-4 py-2.5 rounded-2xl text-xs font-medium transition cursor-pointer flex justify-between items-center ${
                   selectedTopic === topic
-                    ? "bg-gray-900 text-white shadow-md"
-                    : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                    ? "bg-gray-900 text-white shadow-sm font-semibold"
+                    : "text-gray-600 hover:bg-gray-50 border border-transparent"
                 }`}
               >
-                {topic}
+                <span>{topic}</span>
+                {selectedTopic === topic && <span className="text-xs">→</span>}
               </button>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* SEQUENTIAL UNITS GRID */}
-      <section className="max-w-5xl mx-auto my-12">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500">
-            📚 Sequential Units for {selectedTopic} ({selectedLevel})
-          </h3>
-          <span className="text-xs text-gray-400 font-medium">3 Comprehensive Units Available</span>
+        <div className="mt-auto pt-6 border-t border-gray-100 text-[11px] text-gray-400">
+          📖 Material First • 📝 10-Q Quiz at End
         </div>
+      </aside>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {currentUnits.map((unit) => (
-            <div
-              key={unit.id}
-              onClick={() => {
-                setActiveUnitId(unit.id);
-                setSelectedAnswers({});
-              }}
-              className="bg-white p-6 md:p-8 rounded-3xl border border-gray-200 shadow-sm transition hover:border-[#55b1d4] hover:shadow-md cursor-pointer flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="bg-pink-100 text-[#E95599] text-xs font-bold px-3 py-1 rounded-full">
-                    Unit {unit.unitNumber}
-                  </span>
-                  <span className="text-3xl">{unit.illustration}</span>
+      {/* COLUMN 2: RIGHT CONTENT AREA (HEADER & UNIT CARDS) */}
+      <main className="flex-1 p-6 md:p-10 max-w-5xl overflow-y-auto">
+        
+        {/* HERO BANNER */}
+        <header className="bg-gradient-to-r from-pink-50/60 via-sky-50/60 to-amber-50/60 p-8 rounded-3xl border border-gray-200/80 mb-8 shadow-xs">
+          <span className="text-xs bg-sky-100 text-[#55b1d4] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">
+            Curriculum Path
+          </span>
+          <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-2 leading-snug">
+            Learn English <span className="text-[#E95599] font-normal">Fun</span>,{" "}
+            <span className="text-[#55b1d4] font-normal">Simple</span>, &{" "}
+            <span className="text-[#f2b705] font-normal">Practical</span>
+          </h2>
+          <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-xl">
+            Currently exploring <strong>{selectedTopic}</strong> for <strong>{selectedLevel}</strong> level. Read the lesson material, review grammar & vocabulary, and complete the 10-question quiz at the end of each unit.
+          </p>
+        </header>
+
+        {/* SEQUENTIAL UNITS SECTION */}
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-500">
+              📚 Available Units for {selectedTopic}
+            </h3>
+            <span className="text-xs bg-gray-100 text-gray-600 font-semibold px-3 py-1 rounded-full">
+              3 Units
+            </span>
+          </div>
+
+          {/* UNIT CARDS GRID */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {currentUnits.map((unit) => (
+              <div
+                key={unit.id}
+                onClick={() => {
+                  setActiveUnitId(unit.id);
+                  setSelectedAnswers({});
+                }}
+                className="bg-white p-6 rounded-3xl border border-gray-200 shadow-xs hover:border-[#55b1d4] hover:shadow-md transition cursor-pointer flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="bg-pink-100 text-[#E95599] text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                      Unit {unit.unitNumber}
+                    </span>
+                    <span className="text-2xl">{unit.illustration}</span>
+                  </div>
+                  <h4 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#55b1d4] transition line-clamp-2">
+                    {unit.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 mb-6 leading-relaxed line-clamp-3">
+                    {unit.summary}
+                  </p>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#55b1d4] transition">
-                  {unit.title}
-                </h4>
-                <p className="text-xs md:text-sm text-gray-600 mb-6 leading-relaxed">
-                  {unit.summary}
-                </p>
-              </div>
 
-              <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#55b1d4]">
-                <span>📖 Read Material & Take Quiz</span>
-                <span>→</span>
+                <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#55b1d4]">
+                  <span>Start Unit</span>
+                  <span>→</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </main>
+            ))}
+          </div>
+        </section>
+      </main>
+
+    </div>
   );
 }
